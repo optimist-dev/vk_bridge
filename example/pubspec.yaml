@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   vk_bridge:
-    path: ../vk_bridge
+    path: ../
 
 dev_dependencies:
   flutter_test:
