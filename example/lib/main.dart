@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:vk_bridge/vk_bridge.dart';
 
@@ -6,7 +8,10 @@ import 'examples_page.dart';
 Future<void> main() async {
   final result = await VKBridge.init();
 
-  print("VKBridge.init: ${result.result}");
+  print("VKBridge.init: ${result}");
+
+  Location currentLocation = window.location;
+  print("params" + currentLocation.search);
 
   runApp(MyApp());
 }
