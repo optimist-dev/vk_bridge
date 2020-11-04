@@ -8,7 +8,7 @@ abstract class City implements Built<City, CityBuilder> {
 
   int get id;
 
-  String get tite;
+  String get title;
 
   City._();
 

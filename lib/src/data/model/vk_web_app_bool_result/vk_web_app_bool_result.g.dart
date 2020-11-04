@@ -97,9 +97,7 @@ class VKWebAppBoolResultBuilder
   _$VKWebAppBoolResult _$v;
 
   bool _result;
-
   bool get result => _$this._result;
-
   set result(bool result) => _$this._result = result;
 
   VKWebAppBoolResultBuilder();

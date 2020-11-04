@@ -8,7 +8,7 @@ abstract class Country implements Built<Country, CountryBuilder> {
 
   int get id;
 
-  String get tite;
+  String get title;
 
   Country._();
 
