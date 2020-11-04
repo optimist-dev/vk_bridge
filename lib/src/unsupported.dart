@@ -1,6 +1,12 @@
+import 'package:vk_bridge/src/data/model/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+
 class VKBridge {
-  static Future<bool> init() {
-    throw UnsupportedError("VK Bridge only for web");
+  static final _unsupportedError = UnsupportedError("VK Bridge only for web");
+
+  static Future<bool> init() => throw _unsupportedError;
+
+  static Future<VKWebAppGetUserInfoResult> getUserInfo() {
+    throw _unsupportedError;
   }
 
 // static Future<VKWebAppGetUserInfoResult> getUserInfo() {

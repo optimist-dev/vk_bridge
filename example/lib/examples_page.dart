@@ -18,12 +18,12 @@ class _ExamplesPageState extends State<ExamplesPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Main Events"),
-              _button(
-                title: "allowNotifications",
-                onPressed: () => VKBridge
-                    .allowNotifications(), //.catchError(showErrorDialog),
-              ),
+              // Text("Main Events"),
+              // _button(
+              //   title: "allowNotifications",
+              //   onPressed: () => VKBridge
+              //       .allowNotifications(), //.catchError(showErrorDialog),
+              // ),
               // _button(
               //   title: "denyNotifications",
               //   onPressed: () =>

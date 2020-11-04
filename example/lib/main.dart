@@ -10,9 +10,6 @@ Future<void> main() async {
 
   print("VKBridge.init: ${result}");
 
-  Location currentLocation = window.location;
-  print("params" + currentLocation.search);
-
   runApp(MyApp());
 }
 
