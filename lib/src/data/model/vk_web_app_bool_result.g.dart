@@ -20,12 +20,8 @@ class _$VKWebAppBoolResultSerializer
   Iterable<Object> serialize(Serializers serializers, VKWebAppBoolResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'firstName',
-      serializers.serialize(object.firstName,
-          specifiedType: const FullType(String)),
-      'lastName',
-      serializers.serialize(object.lastName,
-          specifiedType: const FullType(String)),
+      'result',
+      serializers.serialize(object.result, specifiedType: const FullType(bool)),
     ];
 
     return result;
@@ -43,13 +39,9 @@ class _$VKWebAppBoolResultSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'firstName':
-          result.firstName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'lastName':
-          result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'result':
+          result.result = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
           break;
       }
     }
@@ -60,20 +52,15 @@ class _$VKWebAppBoolResultSerializer
 
 class _$VKWebAppBoolResult extends VKWebAppBoolResult {
   @override
-  final String firstName;
-  @override
-  final String lastName;
+  final bool result;
 
   factory _$VKWebAppBoolResult(
           [void Function(VKWebAppBoolResultBuilder) updates]) =>
       (new VKWebAppBoolResultBuilder()..update(updates)).build();
 
-  _$VKWebAppBoolResult._({this.firstName, this.lastName}) : super._() {
-    if (firstName == null) {
-      throw new BuiltValueNullFieldError('VKWebAppBoolResult', 'firstName');
-    }
-    if (lastName == null) {
-      throw new BuiltValueNullFieldError('VKWebAppBoolResult', 'lastName');
+  _$VKWebAppBoolResult._({this.result}) : super._() {
+    if (result == null) {
+      throw new BuiltValueNullFieldError('VKWebAppBoolResult', 'result');
     }
   }
 
@@ -89,21 +76,18 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VKWebAppBoolResult &&
-        firstName == other.firstName &&
-        lastName == other.lastName;
+    return other is VKWebAppBoolResult && result == other.result;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, firstName.hashCode), lastName.hashCode));
+    return $jf($jc(0, result.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppBoolResult')
-          ..add('firstName', firstName)
-          ..add('lastName', lastName))
+          ..add('result', result))
         .toString();
   }
 }
@@ -112,20 +96,15 @@ class VKWebAppBoolResultBuilder
     implements Builder<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
   _$VKWebAppBoolResult _$v;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
-
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  bool _result;
+  bool get result => _$this._result;
+  set result(bool result) => _$this._result = result;
 
   VKWebAppBoolResultBuilder();
 
   VKWebAppBoolResultBuilder get _$this {
     if (_$v != null) {
-      _firstName = _$v.firstName;
-      _lastName = _$v.lastName;
+      _result = _$v.result;
       _$v = null;
     }
     return this;
@@ -146,8 +125,7 @@ class VKWebAppBoolResultBuilder
 
   @override
   _$VKWebAppBoolResult build() {
-    final _$result = _$v ??
-        new _$VKWebAppBoolResult._(firstName: firstName, lastName: lastName);
+    final _$result = _$v ?? new _$VKWebAppBoolResult._(result: result);
     replace(_$result);
     return _$result;
   }

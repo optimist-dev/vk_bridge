@@ -9,9 +9,7 @@ abstract class VKWebAppBoolResult
   static Serializer<VKWebAppBoolResult> get serializer =>
       _$vKWebAppBoolResultSerializer;
 
-  String get firstName;
-
-  String get lastName;
+  bool get result;
 
   VKWebAppBoolResult._();
 
