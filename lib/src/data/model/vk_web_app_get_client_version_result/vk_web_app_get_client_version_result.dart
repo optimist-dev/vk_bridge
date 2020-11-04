@@ -10,6 +10,7 @@ abstract class VKWebAppGetClientVersionResult
   static Serializer<VKWebAppGetClientVersionResult> get serializer =>
       _$vKWebAppGetClientVersionResultSerializer;
 
+  //TODO: Сделать enum
   String get platform;
 
   String get version;
