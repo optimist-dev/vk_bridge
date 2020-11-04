@@ -4,8 +4,7 @@ import 'package:built_value/serializer.dart';
 part 'vk_web_app_bool_result.g.dart';
 
 abstract class VKWebAppBoolResult
-    implements
-        Built<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
+    implements Built<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
   static Serializer<VKWebAppBoolResult> get serializer =>
       _$vKWebAppBoolResultSerializer;
 

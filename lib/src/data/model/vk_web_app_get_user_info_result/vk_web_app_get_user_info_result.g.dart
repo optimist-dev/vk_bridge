@@ -24,9 +24,8 @@ class _$VKWebAppGetUserInfoResultSerializer
       Serializers serializers, VKWebAppGetUserInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'user_id',
-      serializers.serialize(object.userId,
-          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
       'first_name',
       serializers.serialize(object.firstName,
           specifiedType: const FullType(String)),
@@ -72,9 +71,9 @@ class _$VKWebAppGetUserInfoResultSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'user_id':
-          result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
         case 'first_name':
           result.firstName = serializers.deserialize(value,
@@ -125,7 +124,7 @@ class _$VKWebAppGetUserInfoResultSerializer
 
 class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
   @override
-  final String userId;
+  final int id;
   @override
   final String firstName;
   @override
@@ -152,7 +151,7 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
       (new VKWebAppGetUserInfoResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetUserInfoResult._(
-      {this.userId,
+      {this.id,
       this.firstName,
       this.lastName,
       this.sex,
@@ -164,8 +163,8 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
       this.photoMaxOrig,
       this.timezone})
       : super._() {
-    if (userId == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'userId');
+    if (id == null) {
+      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'id');
     }
     if (firstName == null) {
       throw new BuiltValueNullFieldError(
@@ -219,7 +218,7 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VKWebAppGetUserInfoResult &&
-        userId == other.userId &&
+        id == other.id &&
         firstName == other.firstName &&
         lastName == other.lastName &&
         sex == other.sex &&
@@ -243,7 +242,7 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, userId.hashCode),
+                                        $jc($jc(0, id.hashCode),
                                             firstName.hashCode),
                                         lastName.hashCode),
                                     sex.hashCode),
@@ -259,7 +258,7 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppGetUserInfoResult')
-          ..add('userId', userId)
+          ..add('id', id)
           ..add('firstName', firstName)
           ..add('lastName', lastName)
           ..add('sex', sex)
@@ -279,9 +278,9 @@ class VKWebAppGetUserInfoResultBuilder
         Builder<VKWebAppGetUserInfoResult, VKWebAppGetUserInfoResultBuilder> {
   _$VKWebAppGetUserInfoResult _$v;
 
-  String _userId;
-  String get userId => _$this._userId;
-  set userId(String userId) => _$this._userId = userId;
+  int _id;
+  int get id => _$this._id;
+  set id(int id) => _$this._id = id;
 
   String _firstName;
   String get firstName => _$this._firstName;
@@ -327,7 +326,7 @@ class VKWebAppGetUserInfoResultBuilder
 
   VKWebAppGetUserInfoResultBuilder get _$this {
     if (_$v != null) {
-      _userId = _$v.userId;
+      _id = _$v.id;
       _firstName = _$v.firstName;
       _lastName = _$v.lastName;
       _sex = _$v.sex;
@@ -362,7 +361,7 @@ class VKWebAppGetUserInfoResultBuilder
     try {
       _$result = _$v ??
           new _$VKWebAppGetUserInfoResult._(
-              userId: userId,
+              id: id,
               firstName: firstName,
               lastName: lastName,
               sex: sex,

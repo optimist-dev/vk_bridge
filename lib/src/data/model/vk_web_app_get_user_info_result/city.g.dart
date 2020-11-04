@@ -20,8 +20,9 @@ class _$CitySerializer implements StructuredSerializer<City> {
     final result = <Object>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
-      'tite',
-      serializers.serialize(object.tite, specifiedType: const FullType(String)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -42,8 +43,8 @@ class _$CitySerializer implements StructuredSerializer<City> {
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'tite':
-          result.tite = serializers.deserialize(value,
+        case 'title':
+          result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -57,17 +58,17 @@ class _$City extends City {
   @override
   final int id;
   @override
-  final String tite;
+  final String title;
 
   factory _$City([void Function(CityBuilder) updates]) =>
       (new CityBuilder()..update(updates)).build();
 
-  _$City._({this.id, this.tite}) : super._() {
+  _$City._({this.id, this.title}) : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('City', 'id');
     }
-    if (tite == null) {
-      throw new BuiltValueNullFieldError('City', 'tite');
+    if (title == null) {
+      throw new BuiltValueNullFieldError('City', 'title');
     }
   }
 
@@ -81,19 +82,19 @@ class _$City extends City {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is City && id == other.id && tite == other.tite;
+    return other is City && id == other.id && title == other.title;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, id.hashCode), tite.hashCode));
+    return $jf($jc($jc(0, id.hashCode), title.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('City')
           ..add('id', id)
-          ..add('tite', tite))
+          ..add('title', title))
         .toString();
   }
 }
@@ -105,16 +106,16 @@ class CityBuilder implements Builder<City, CityBuilder> {
   int get id => _$this._id;
   set id(int id) => _$this._id = id;
 
-  String _tite;
-  String get tite => _$this._tite;
-  set tite(String tite) => _$this._tite = tite;
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
 
   CityBuilder();
 
   CityBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
-      _tite = _$v.tite;
+      _title = _$v.title;
       _$v = null;
     }
     return this;
@@ -135,7 +136,7 @@ class CityBuilder implements Builder<City, CityBuilder> {
 
   @override
   _$City build() {
-    final _$result = _$v ?? new _$City._(id: id, tite: tite);
+    final _$result = _$v ?? new _$City._(id: id, title: title);
     replace(_$result);
     return _$result;
   }

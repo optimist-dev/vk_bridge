@@ -2,25 +2,32 @@
 @JS()
 library vkBridge;
 
+import 'dart:convert';
 import 'dart:js_util';
 
 import 'package:js/js.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/data/model/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
-import 'package:vk_bridge/src/results/results.dart';
 import 'package:vk_bridge/src/utils.dart';
 
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
 
 class VKBridge {
-  static Future<String> _sendInternal(String method, [String propsJson]) async {
+  static Future<T> _sendInternal<T>(String method, [String propsJson]) async {
+    print("vk_bridge: send($method)");
     try {
       final jsObjectResult =
           await promiseToFuture(_send(method, parse(propsJson ?? "{}")));
-      return stringify(jsObjectResult);
+      final jsonResult = stringify(jsObjectResult);
+      print("vk_bridge: send($method) result: $jsonResult");
+      final decodedJson = jsonDecode(jsonResult);
+      final result = deserialize<T>(decodedJson);
+      return result;
     } catch (e) {
+      print("vk_bridge: __ERROR__");
+      print("error: $e");
       print("error_type: ${e.error_type}");
       print("error_code: ${e.error_data.error_code}");
       print("error_reason: ${e.error_data.error_reason}");
@@ -29,11 +36,11 @@ class VKBridge {
   }
 
   static Future<VKWebAppBoolResult> init() {
-    return deserialize(_sendInternal('VKWebAppInit'));
+    return _sendInternal('VKWebAppInit');
   }
 
   static Future<VKWebAppGetUserInfoResult> getUserInfo() {
-    return deserialize(_sendInternal('VKWebAppGetUserInfo'));
+    return _sendInternal('VKWebAppGetUserInfo');
   }
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
