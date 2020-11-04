@@ -6,9 +6,9 @@ import 'dart:js_util';
 
 import 'package:js/js.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
-import 'package:vk_bridge/src/data/model/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
-import 'package:vk_bridge/src/results/results.dart';
 import 'package:vk_bridge/src/utils.dart';
 
 @JS("vkBridge.send")
@@ -34,6 +34,10 @@ class VKBridge {
 
   static Future<VKWebAppGetUserInfoResult> getUserInfo() {
     return deserialize(_sendInternal('VKWebAppGetUserInfo'));
+  }
+
+  static Future<VKWebAppGetClientVersionResult> getClientVersion() {
+    return deserialize(_sendInternal('VKWebAppGetClientVersion'));
   }
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {

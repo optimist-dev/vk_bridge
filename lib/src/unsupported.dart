@@ -1,4 +1,5 @@
-import 'package:vk_bridge/src/data/model/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 
 class VKBridge {
@@ -7,6 +8,10 @@ class VKBridge {
   static Future<VKWebAppBoolResult> init() => throw _unsupportedError;
 
   static Future<VKWebAppGetUserInfoResult> getUserInfo() {
+    throw _unsupportedError;
+  }
+
+  static Future<VKWebAppGetClientVersionResult> getClientVersion() {
     throw _unsupportedError;
   }
 

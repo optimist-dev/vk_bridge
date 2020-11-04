@@ -3,19 +3,14 @@ import 'package:built_value/serializer.dart';
 
 part 'country.g.dart';
 
-abstract class Country
-    implements
-        Built<Country, CountryBuilder> {
-  static Serializer<Country> get serializer =>
-      _$countrySerializer;
+abstract class Country implements Built<Country, CountryBuilder> {
+  static Serializer<Country> get serializer => _$countrySerializer;
 
   int get id;
-  String get tite;
 
+  String get tite;
 
   Country._();
 
-  factory Country(
-      [void Function(CountryBuilder) updates]) =
-  _$Country;
+  factory Country([void Function(CountryBuilder) updates]) = _$Country;
 }
