@@ -11,6 +11,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Country.serializer)
       ..add(VKWebAppBoolResult.serializer)
       ..add(VKWebAppGetClientVersionResult.serializer)
+      ..add(VKWebAppGetEmailResult.serializer)
       ..add(VKWebAppGetUserInfoResult.serializer))
     .build();
 
