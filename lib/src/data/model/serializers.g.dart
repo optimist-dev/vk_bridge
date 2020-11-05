@@ -9,7 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(City.serializer)
       ..add(Country.serializer)
-      ..add(VKWebAppGetClientVersionResult.serializer)
+      ..add(VKWebAppBoolResult.serializer)
       ..add(VKWebAppGetUserInfoResult.serializer))
     .build();
 
