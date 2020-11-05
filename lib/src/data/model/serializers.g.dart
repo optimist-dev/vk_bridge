@@ -10,6 +10,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(City.serializer)
       ..add(Country.serializer)
       ..add(VKWebAppBoolResult.serializer)
+      ..add(VKWebAppGetEmailResult.serializer)
       ..add(VKWebAppGetUserInfoResult.serializer))
     .build();
 
