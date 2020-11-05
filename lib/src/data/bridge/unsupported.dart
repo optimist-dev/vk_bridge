@@ -5,9 +5,9 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 
 class VKBridge implements VKBridgeContract {
-  VKBridge._privateConstructor();
+  VKBridge._();
 
-  static final VKBridge _instance = VKBridge._privateConstructor();
+  static final VKBridge _instance = VKBridge._();
 
   static VKBridge get instance => _instance;
 
