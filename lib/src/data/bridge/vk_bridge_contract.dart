@@ -5,7 +5,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result
 
 /// Контракт для общения с VK Bridge
 /// https://vk.com/dev/vk_bridge_events
-abstract class VKBridgeContact {
+abstract class VKBridgeContract {
   /// При запуске сервиса на указанный в управлении приложением URL
   /// передаются дополнительные параметры, содержащие в себе данные о
   /// пользователе и об источнике запуска.

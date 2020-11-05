@@ -18,7 +18,7 @@ import 'package:vk_bridge/src/utils.dart';
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
 
-class VKBridge implements VKBridgeContact {
+class VKBridge implements VKBridgeContract {
   VKBridge._privateConstructor();
 
   static final VKBridge _instance = VKBridge._privateConstructor();
