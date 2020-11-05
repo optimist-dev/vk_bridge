@@ -11,6 +11,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
+import 'package:vk_bridge/src/data/model/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/utils.dart';
 
 @JS("vkBridge.send")
@@ -66,6 +67,10 @@ class VKBridge {
 
   static Future<VKWebAppGetEmailResult> getEmail() {
     return _sendInternal('VKWebAppGetEmail');
+  }
+
+  static Future<VKWebAppGetClientVersionResult> getClientVersion() {
+    return deserialize(_sendInternal('VKWebAppGetClientVersion'));
   }
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
