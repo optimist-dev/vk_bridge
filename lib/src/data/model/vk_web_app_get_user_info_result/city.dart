@@ -3,19 +3,14 @@ import 'package:built_value/serializer.dart';
 
 part 'city.g.dart';
 
-abstract class City
-    implements
-        Built<City, CityBuilder> {
-  static Serializer<City> get serializer =>
-      _$citySerializer;
+abstract class City implements Built<City, CityBuilder> {
+  static Serializer<City> get serializer => _$citySerializer;
 
   int get id;
-  String get tite;
 
+  String get title;
 
   City._();
 
-  factory City(
-      [void Function(CityBuilder) updates]) =
-  _$City;
+  factory City([void Function(CityBuilder) updates]) = _$City;
 }

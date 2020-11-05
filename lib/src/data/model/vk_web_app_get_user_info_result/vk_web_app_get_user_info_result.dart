@@ -11,8 +11,7 @@ abstract class VKWebAppGetUserInfoResult
   static Serializer<VKWebAppGetUserInfoResult> get serializer =>
       _$vKWebAppGetUserInfoResultSerializer;
 
-  @BuiltValueField(wireName: 'user_id')
-  String get userId;
+  int get id;
 
   @BuiltValueField(wireName: 'first_name')
   String get firstName;
