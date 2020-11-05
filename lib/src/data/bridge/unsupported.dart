@@ -1,26 +1,33 @@
+import 'package:vk_bridge/src/data/bridge/vk_bridge_contract.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 
-class VKBridge {
+class VKBridge implements VKBridgeContact {
+  VKBridge._privateConstructor();
+
+  static final VKBridge _instance = VKBridge._privateConstructor();
+
+  static VKBridge get instance => _instance;
+
   static final _unsupportedError = UnsupportedError("VK Bridge only for web");
 
-  static String get launchParams => throw _unsupportedError;
+  @override
+  String get launchParams => throw _unsupportedError;
 
-  static Future<VKWebAppBoolResult> init() => throw _unsupportedError;
+  @override
+  Future<VKWebAppBoolResult> init() => throw _unsupportedError;
 
-  static Future<VKWebAppGetUserInfoResult> getUserInfo() {
-    throw _unsupportedError;
-  }
+  @override
+  Future<VKWebAppGetUserInfoResult> getUserInfo() => throw _unsupportedError;
 
-  static Future<VKWebAppGetEmailResult> getEmail() {
-    throw _unsupportedError;
-  }
+  @override
+  Future<VKWebAppGetEmailResult> getEmail() => throw _unsupportedError;
 
-  static Future<VKWebAppGetClientVersionResult> getClientVersion() {
-    throw _unsupportedError;
-  }
+  @override
+  Future<VKWebAppGetClientVersionResult> getClientVersion() =>
+      throw _unsupportedError;
 
 // static Future<VKWebAppGetUserInfoResult> getUserInfo() {
 //   return _sendInternal('VKWebAppGetUserInfo');
