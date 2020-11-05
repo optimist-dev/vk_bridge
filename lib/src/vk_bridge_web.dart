@@ -21,8 +21,8 @@ class VKBridge {
       final jsObjectResult =
           await promiseToFuture(_send(method, parse(propsJson ?? "{}")));
       final jsonResult = stringify(jsObjectResult);
+      final decodedJson = jsonDecode(jsonResult);
       try {
-        final decodedJson = jsonDecode(jsonResult);
         final result = deserialize<T>(decodedJson);
         print("vk_bridge: send($method) result: $result");
         return result;
