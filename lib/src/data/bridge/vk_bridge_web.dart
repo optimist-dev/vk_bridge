@@ -7,22 +7,29 @@ import 'dart:html';
 import 'dart:js_util';
 
 import 'package:js/js.dart';
+import 'package:vk_bridge/src/data/bridge/vk_bridge_contract.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 
-import 'data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
-
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
 
-class VKBridge {
-  // TODO: добавить модель
-  static String _launchParams;
+class VKBridge implements VKBridgeContract {
+  VKBridge._();
 
-  static String get launchParams => _launchParams;
+  static final VKBridge _instance = VKBridge._();
+
+  static VKBridge get instance => _instance;
+
+  // TODO: добавить модель
+  String _launchParams;
+
+  @override
+  String get launchParams => _launchParams;
 
   static Future<T> _sendInternal<T>(String method, [String propsJson]) async {
     print("vk_bridge: send($method)");
@@ -49,28 +56,32 @@ class VKBridge {
     }
   }
 
-  static Future<VKWebAppBoolResult> init() async {
-    final vkWebAppInitResult =
-        await _sendInternal<VKWebAppBoolResult>('VKWebAppInit');
+  @override
+  Future<VKWebAppBoolResult> init() async {
+    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult>(
+      'VKWebAppInit',
+    );
 
-    /// https://vk.com/dev/vk_apps_docs3?f=6.1%2B%D0%9F%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D1%8C%2B%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D0%BE%D0%B2%2B%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0
+    /// https://vk.cc/9AjsnM
     _launchParams = window.location.search;
     if (_launchParams.startsWith('\?')) {
       _launchParams = launchParams.substring(1);
     }
-
     return vkWebAppInitResult;
   }
 
-  static Future<VKWebAppGetUserInfoResult> getUserInfo() {
+  @override
+  Future<VKWebAppGetUserInfoResult> getUserInfo() {
     return _sendInternal('VKWebAppGetUserInfo');
   }
 
-  static Future<VKWebAppGetEmailResult> getEmail() {
+  @override
+  Future<VKWebAppGetEmailResult> getEmail() {
     return _sendInternal('VKWebAppGetEmail');
   }
 
-  static Future<VKWebAppGetClientVersionResult> getClientVersion() {
+  @override
+  Future<VKWebAppGetClientVersionResult> getClientVersion() {
     return deserialize(_sendInternal('VKWebAppGetClientVersion'));
   }
 //
