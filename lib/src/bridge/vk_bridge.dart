@@ -3,9 +3,14 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_r
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 
+import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
+    as _vkBridge;
+
 /// Контракт для общения с VK Bridge
 /// https://vk.com/dev/vk_bridge_events
-abstract class VKBridgeContract {
+abstract class VKBridge {
+  static final instance = _vkBridge.VKBridge();
+
   /// При запуске сервиса на указанный в управлении приложением URL
   /// передаются дополнительные параметры, содержащие в себе данные о
   /// пользователе и об источнике запуска.

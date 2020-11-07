@@ -4,7 +4,7 @@ import 'package:vk_bridge/vk_bridge.dart';
 import 'examples_page.dart';
 
 Future<void> main() async {
-  final result = await VKBridge.init();
+  final result = await VKBridge.instance.init();
 
   print("VKBridge.init: $result");
 

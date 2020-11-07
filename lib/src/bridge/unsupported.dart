@@ -1,16 +1,10 @@
-import 'package:vk_bridge/src/data/bridge/vk_bridge_contract.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 
-class VKBridge implements VKBridgeContract {
-  VKBridge._();
-
-  static final VKBridge _instance = VKBridge._();
-
-  static VKBridge get instance => _instance;
-
+class VKBridge implements vkBridge.VKBridge {
   static final _unsupportedError = UnsupportedError("VK Bridge only for web");
 
   @override
