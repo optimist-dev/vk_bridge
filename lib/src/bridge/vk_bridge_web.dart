@@ -7,7 +7,7 @@ import 'dart:html';
 import 'dart:js_util';
 
 import 'package:js/js.dart';
-import 'package:vk_bridge/src/data/bridge/vk_bridge_contract.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -18,13 +18,7 @@ import 'package:vk_bridge/src/utils.dart';
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
 
-class VKBridge implements VKBridgeContract {
-  VKBridge._();
-
-  static final VKBridge _instance = VKBridge._();
-
-  static VKBridge get instance => _instance;
-
+class VKBridge implements vkBridge.VKBridge {
   // TODO: добавить модель
   String _launchParams;
 
