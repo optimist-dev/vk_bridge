@@ -26,17 +26,28 @@ class VKBridge implements vkBridge.VKBridge {
   @override
   String get launchParams => _launchParams;
 
-  static Future<T> _sendInternal<T>(String method, [dynamic props]) async {
-    print("vk_bridge: send($method)");
+  static Future<Result> _sendInternal<Result, Options>(
+    String method, [
+    Options props,
+  ]) async {
+    assert(Result.toString() != "dynamic", "Result type can't be dynamic.");
+    assert(props == null || Options.toString() != "dynamic",
+        "Options type can't be dynamic.");
+
+    print("vk_bridge: _sendInternal($method)");
+
     try {
-      final propsJson = props == null ? "{}" : jsonEncode(serialize(props));
+      final propsJson =
+          props == null ? "{}" : jsonEncode(serialize<Options>(props));
+
+      print("vk_bridge: send($method, $propsJson)");
 
       final jsObjectResult =
           await promiseToFuture(_send(method, parse(propsJson)));
       final jsonResult = stringify(jsObjectResult);
       final decodedJson = jsonDecode(jsonResult);
       try {
-        final result = deserialize<T>(decodedJson);
+        final result = deserialize<Result>(decodedJson);
         print("vk_bridge: send($method) result: $result");
         return result;
       } catch (e) {
@@ -63,7 +74,7 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> init() async {
-    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult>(
+    final VKWebAppBoolResult vkWebAppInitResult = await _sendInternal(
       'VKWebAppInit',
     );
 
