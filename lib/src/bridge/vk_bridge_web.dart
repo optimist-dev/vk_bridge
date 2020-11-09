@@ -31,8 +31,10 @@ class VKBridge implements vkBridge.VKBridge {
     Options props,
   ]) async {
     assert(Result.toString() != "dynamic", "Result type can't be dynamic.");
-    assert(props == null || Options.toString() != "dynamic",
-        "Options type can't be dynamic.");
+    assert(
+      props == null || Options.toString() != "dynamic",
+      "Options type can't be dynamic.",
+    );
 
     print("vk_bridge: _sendInternal($method)");
 
@@ -98,7 +100,7 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   Future<VKWebAppGetClientVersionResult> getClientVersion() {
-    return deserialize(_sendInternal('VKWebAppGetClientVersion'));
+    return _sendInternal('VKWebAppGetClientVersion');
   }
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
