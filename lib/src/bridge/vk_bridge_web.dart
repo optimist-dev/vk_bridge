@@ -8,6 +8,8 @@ import 'dart:js_util';
 
 import 'package:js/js.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
+import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -25,11 +27,13 @@ class VKBridge implements vkBridge.VKBridge {
   @override
   String get launchParams => _launchParams;
 
-  static Future<T> _sendInternal<T>(String method, [String propsJson]) async {
+  static Future<T> _sendInternal<T>(String method, [dynamic props]) async {
     print("vk_bridge: send($method)");
     try {
+      final propsJson = props == null ? "{}" : jsonEncode(serialize(props));
+
       final jsObjectResult =
-          await promiseToFuture(_send(method, parse(propsJson ?? "{}")));
+          await promiseToFuture(_send(method, parse(propsJson)));
       final jsonResult = stringify(jsObjectResult);
       final decodedJson = jsonDecode(jsonResult);
       try {
@@ -40,13 +44,21 @@ class VKBridge implements vkBridge.VKBridge {
         print("vk_bridge: send($method) jsonResult: $jsonResult");
         throw e;
       }
-    } catch (e) {
-      print("vk_bridge: __ERROR__");
-      print("error: $e");
-      print("error_type: ${e.error_type}");
-      print("error_code: ${e.error_data.error_code}");
-      print("error_reason: ${e.error_data.error_reason}");
-      return null;
+    } catch (jsObjectError) {
+      final jsonError = stringify(jsObjectError);
+      final decodedJson = jsonDecode(jsonError);
+
+      VKWebAppError error;
+      try {
+        error = deserialize<VKWebAppError>(decodedJson);
+      } catch (e) {
+        print("vk_bridge: send($method) jsonError: $jsonError");
+        print("vk_bridge: can't deserialize error");
+        throw e;
+      }
+
+      print("vk_bridge: send($method) error: $error");
+      throw error;
     }
   }
 
