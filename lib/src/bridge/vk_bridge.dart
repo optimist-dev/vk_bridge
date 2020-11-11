@@ -1,7 +1,11 @@
+import 'dart:html';
+
+import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 
 import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
     as _vkBridge;
@@ -16,6 +20,10 @@ abstract class VKBridge {
   /// пользователе и об источнике запуска.
   /// https://vk.cc/9AjsnM
   String get launchParams;
+
+  /// При запуске сервиса на указанный в управлении приложением URL
+  /// может передаваться дополнительный хэш параметр
+  String get launchHash;
 
   /// VKWebAppInit — первое событие, которое Ваше приложение должно отправить
   /// официальному приложению для начала работы с VK Bridge. В противном случае
@@ -36,4 +44,10 @@ abstract class VKBridge {
   /// ВКонтакте.
   /// https://vk.com/dev/vk_bridge_events_3
   Future<VKWebAppGetClientVersionResult> getClientVersion();
+
+  /// VKWebAppShare позволяет поделиться ссылкой.
+  /// https://vk.com/dev/vk_bridge_events_2
+  Future<VKWebAppShareResult> share(ShareOptions options);
+
+
 }
