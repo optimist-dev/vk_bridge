@@ -9,10 +9,12 @@ import 'dart:js_util';
 import 'package:js/js.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 
@@ -25,6 +27,11 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   String get launchParams => _launchParams;
+
+  String _launchHash;
+
+  @override
+  String get launchHash => _launchHash;
 
   static Future<Result> _sendInternal<Result, Options>(
     String method, [
@@ -85,6 +92,12 @@ class VKBridge implements vkBridge.VKBridge {
     if (_launchParams.startsWith('\?')) {
       _launchParams = launchParams.substring(1);
     }
+
+    _launchHash = window.location.hash;
+    if (_launchHash.startsWith('#')) {
+      _launchHash = launchHash.substring(1);
+    }
+
     return vkWebAppInitResult;
   }
 
@@ -102,17 +115,17 @@ class VKBridge implements vkBridge.VKBridge {
   Future<VKWebAppGetClientVersionResult> getClientVersion() {
     return _sendInternal('VKWebAppGetClientVersion');
   }
+
+  @override
+  Future<VKWebAppShareResult> share(ShareOptions options) {
+    return _sendInternal("VKWebAppShare", options);
+  }
+
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
 //   return _sendInternal('VKWebAppAllowNotifications');
 // }
 //
-// static Future<VKWebAppShareResult> share([String link]) {
-//   return _sendInternal(
-//     'VKWebAppShare',
-//     // ShareOptions(link: link),
-//   );
-// }
 //
 // static Future<void> showImages() {
 //   return _sendInternal(
