@@ -116,6 +116,8 @@ class VKBridge implements vkBridge.VKBridge {
   void _eventHandler(Object jsEvent) {
     final jsonEvent = stringify(jsEvent);
 
+    _logger.d("_eventHandler: $jsonEvent");
+
     final decodedJsonEvent = jsonDecode(jsonEvent);
 
     final type = decodedJsonEvent["type"] as String;
@@ -124,6 +126,7 @@ class VKBridge implements vkBridge.VKBridge {
     switch (type) {
       case "VKWebAppUpdateConfig":
         final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
+        _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
         break;
     }
