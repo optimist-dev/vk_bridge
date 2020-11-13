@@ -1,4 +1,6 @@
+import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
+import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
@@ -10,7 +12,11 @@ class VKBridge implements vkBridge.VKBridge {
   static final _unsupportedError = UnsupportedError("VK Bridge only for web");
 
   @override
+  void setLogger(Logger logger) => throw _unsupportedError;
+
+  @override
   String get launchParams => throw _unsupportedError;
+
   @override
   String get launchHash => throw _unsupportedError;
 
@@ -28,10 +34,12 @@ class VKBridge implements vkBridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppShareResult> share(ShareOptions options) {
-    // TODO: implement share
-    throw UnimplementedError();
-  }
+  Future<VKWebAppShareResult> share(ShareOptions options) =>
+      throw _unsupportedError;
+
+  @override
+  Stream<VKWebAppUpdateConfig> get updateConfigStream =>
+      throw UnimplementedError();
 
 // static Future<VKWebAppGetUserInfoResult> getUserInfo() {
 //   return _sendInternal('VKWebAppGetUserInfo');
