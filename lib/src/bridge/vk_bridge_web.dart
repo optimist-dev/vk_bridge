@@ -2,13 +2,18 @@
 @JS()
 library vkBridge;
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
+import 'dart:js';
 import 'dart:js_util';
 
 import 'package:js/js.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
@@ -21,7 +26,28 @@ import 'package:vk_bridge/src/utils.dart';
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
 
+/// Allows assigning a function to be callable from `window.vkBridgeDartListener()`
+@JS('vkBridgeDartListener')
+external set _vkBridgeDartListener(void Function(Object event) f);
+
+class _Logger implements Logger {
+  @override
+  void d(Object message) {
+    print("vk_bridge.d: " + message);
+  }
+
+  @override
+  void e(Object message) {
+    print("vk_bridge.e: " + message);
+  }
+}
+
 class VKBridge implements vkBridge.VKBridge {
+  @override
+  void setLogger(Logger logger) => _logger = logger ?? _Logger();
+
+  Logger _logger = _Logger();
+
   // TODO: добавить модель
   String _launchParams;
 
@@ -33,7 +59,13 @@ class VKBridge implements vkBridge.VKBridge {
   @override
   String get launchHash => _launchHash;
 
-  static Future<Result> _sendInternal<Result, Options>(
+  final _updateConfigSubject = BehaviorSubject<VKWebAppUpdateConfig>();
+
+  @override
+  Stream<VKWebAppUpdateConfig> get updateConfigStream =>
+      _updateConfigSubject.stream;
+
+  Future<Result> _sendInternal<Result, Options>(
     String method, [
     Options props,
   ]) async {
@@ -43,13 +75,13 @@ class VKBridge implements vkBridge.VKBridge {
       "Options type can't be dynamic.",
     );
 
-    print("vk_bridge: _sendInternal($method)");
+    _logger.d("vk_bridge: _sendInternal($method)");
 
     try {
       final propsJson =
           props == null ? "{}" : jsonEncode(serialize<Options>(props));
 
-      print("vk_bridge: send($method, $propsJson)");
+      _logger.d("send($method, $propsJson)");
 
       final jsObjectResult =
           await promiseToFuture(_send(method, parse(propsJson)));
@@ -57,10 +89,10 @@ class VKBridge implements vkBridge.VKBridge {
       final decodedJson = jsonDecode(jsonResult);
       try {
         final result = deserialize<Result>(decodedJson);
-        print("vk_bridge: send($method) result: $result");
+        _logger.d("send($method) result: $result");
         return result;
       } catch (e) {
-        print("vk_bridge: send($method) jsonResult: $jsonResult");
+        _logger.d("send($method) jsonResult: $jsonResult");
         throw e;
       }
     } catch (jsObjectError) {
@@ -71,18 +103,39 @@ class VKBridge implements vkBridge.VKBridge {
       try {
         error = deserialize<VKWebAppError>(decodedJson);
       } catch (e) {
-        print("vk_bridge: send($method) jsonError: $jsonError");
-        print("vk_bridge: can't deserialize error");
+        _logger.d(" send($method) jsonError: $jsonError");
+        _logger.e("can't deserialize error");
         throw e;
       }
 
-      print("vk_bridge: send($method) error: $error");
+      _logger.d("send($method) error: $error");
       throw error;
+    }
+  }
+
+  void _eventHandler(Object jsEvent) {
+    final jsonEvent = stringify(jsEvent);
+
+    _logger.d("_eventHandler: $jsonEvent");
+
+    final decodedJsonEvent = jsonDecode(jsonEvent);
+
+    final type = decodedJsonEvent["type"] as String;
+    final data = decodedJsonEvent["data"];
+
+    switch (type) {
+      case "VKWebAppUpdateConfig":
+        final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
+        _logger.d(updateConfig);
+        _updateConfigSubject.add(updateConfig);
+        break;
     }
   }
 
   @override
   Future<VKWebAppBoolResult> init() async {
+    _vkBridgeDartListener = allowInterop(_eventHandler);
+
     final VKWebAppBoolResult vkWebAppInitResult = await _sendInternal(
       'VKWebAppInit',
     );
@@ -152,3 +205,21 @@ class VKBridge implements vkBridge.VKBridge {
 //   );
 // }
 }
+
+@JS()
+@anonymous
+class Event {
+  external Detail get detail;
+}
+
+@JS()
+@anonymous
+class Detail {
+  external String get type;
+
+  external Data get data;
+}
+
+@JS()
+@anonymous
+class Data {}
