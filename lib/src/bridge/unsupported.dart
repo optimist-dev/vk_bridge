@@ -39,7 +39,7 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   Stream<VKWebAppUpdateConfig> get updateConfigStream =>
-      throw UnimplementedError();
+      throw _unsupportedError;
 
 // static Future<VKWebAppGetUserInfoResult> getUserInfo() {
 //   return _sendInternal('VKWebAppGetUserInfo');
