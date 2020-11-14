@@ -8,6 +8,7 @@ import 'dart:html';
 import 'dart:js';
 import 'dart:js_util';
 
+import 'package:built_collection/src/list.dart';
 import 'package:js/js.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
@@ -15,6 +16,7 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -104,7 +106,7 @@ class VKBridge implements vkBridge.VKBridge {
         error = deserialize<VKWebAppError>(decodedJson);
       } catch (e) {
         _logger.d(" send($method) jsonError: $jsonError");
-        _logger.e("can't deserialize error");
+        _logger.e("can't deserialize error: $decodedJson");
         throw e;
       }
 
@@ -174,25 +176,30 @@ class VKBridge implements vkBridge.VKBridge {
     return _sendInternal("VKWebAppShare", options);
   }
 
+  @override
+  Future<VKWebAppBoolResult> showImages(
+    BuiltList<String> images, {
+    int startIndex,
+  }) {
+    assert(images != null, "Images can't be null");
+    assert(images.isNotEmpty, "Images can't be empty");
+    assert(
+      startIndex == null || (startIndex >= 0 && startIndex < images.length),
+      "StartIndex should be null or inside images range",
+    );
+    final options = ShowImagesOptions(
+      (b) => b
+        ..images = images.toBuilder()
+        ..startIndex = startIndex,
+    );
+    return _sendInternal("VKWebAppShowImages", options);
+  }
+
 //
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
 //   return _sendInternal('VKWebAppAllowNotifications');
 // }
 //
-//
-// static Future<void> showImages() {
-//   return _sendInternal(
-//     'VKWebAppShowImages',
-//     // ShowImagesOptions(
-//     //   images: [
-//     //     "https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg",
-//     //     "https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg",
-//     //     "https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg"
-//     //   ],
-//     // ),
-//   );
-//   // }
-// }
 //
 // static Future<dynamic> showStoryBox() {
 //   return _sendInternal(

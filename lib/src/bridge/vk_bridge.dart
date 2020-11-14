@@ -6,6 +6,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_r
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+import 'package:built_collection/built_collection.dart';
 
 import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
     as _vkBridge;
@@ -52,4 +53,13 @@ abstract class VKBridge {
   /// VKWebAppShare позволяет поделиться ссылкой.
   /// https://vk.com/dev/vk_bridge_events_2
   Future<VKWebAppShareResult> share(ShareOptions options);
+
+  /// VKWebAppShowImages открывает нативный экран для просмотра изображений.
+  /// [images] массив строк, содержащих URL изображений.
+  /// [startIndex] индекс картинки, с которой нужно начать отображение, начиная с 0.
+  /// https://vk.com/dev/vk_bridge_events_2
+  Future<VKWebAppBoolResult> showImages(
+    BuiltList<String> images, {
+    int startIndex,
+  });
 }

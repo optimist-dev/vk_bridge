@@ -7,6 +7,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_r
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+import 'package:built_collection/built_collection.dart';
 
 class VKBridge implements vkBridge.VKBridge {
   static final _unsupportedError = UnsupportedError("VK Bridge only for web");
@@ -41,35 +42,17 @@ class VKBridge implements vkBridge.VKBridge {
   Stream<VKWebAppUpdateConfig> get updateConfigStream =>
       throw _unsupportedError;
 
-// static Future<VKWebAppGetUserInfoResult> getUserInfo() {
-//   return _sendInternal('VKWebAppGetUserInfo');
-// }
-//
+  @override
+  Future<VKWebAppBoolResult> showImages(
+    BuiltList<String> images, {
+    int startIndex,
+  }) =>
+      throw _unsupportedError;
+
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
 //   return _sendInternal('VKWebAppAllowNotifications');
 // }
 //
-// static Future<VKWebAppShareResult> share([String link]) {
-//   return _sendInternal(
-//     'VKWebAppShare',
-//     // ShareOptions(link: link),
-//   );
-// }
-//
-// static Future<void> showImages() {
-//   return _sendInternal(
-//     'VKWebAppShowImages',
-//     // ShowImagesOptions(
-//     //   images: [
-//     //     "https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg",
-//     //     "https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg",
-//     //     "https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg"
-//     //   ],
-//     // ),
-//   );
-//   // }
-// }
-
 // static Future<dynamic> showStoryBox() {
 //   return _sendInternal(
 //     'VKWebAppShowStoryBox',
