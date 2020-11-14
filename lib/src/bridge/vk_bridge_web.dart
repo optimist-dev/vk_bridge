@@ -15,6 +15,7 @@ import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -193,6 +194,21 @@ class VKBridge implements vkBridge.VKBridge {
         ..startIndex = startIndex,
     );
     return _sendInternal("VKWebAppShowImages", options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> downloadFile(String url, String filename) {
+    assert(url != null && url.isNotEmpty, "Url can't be null or empty");
+    assert(
+      filename != null && filename.isNotEmpty,
+      "Filename can't be null or empty",
+    );
+    final options = DownloadFileOptions(
+      (b) => b
+        ..url = url
+        ..filename = filename,
+    );
+    return _sendInternal("VKWebAppDownloadFile", options);
   }
 
 //

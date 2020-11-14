@@ -4,6 +4,7 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:vk_bridge/src/data/model/errors/error_data.dart';
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -29,6 +30,7 @@ part 'serializers.g.dart';
   VKWebAppShareResult,
   VKWebAppUpdateConfig,
   ShowImagesOptions,
+  DownloadFileOptions,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
