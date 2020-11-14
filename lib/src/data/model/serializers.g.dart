@@ -9,6 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(City.serializer)
       ..add(Country.serializer)
+      ..add(DownloadFileOptions.serializer)
       ..add(ErrorData.serializer)
       ..add(ShareOptions.serializer)
       ..add(ShowImagesOptions.serializer)

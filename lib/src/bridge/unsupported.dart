@@ -49,6 +49,10 @@ class VKBridge implements vkBridge.VKBridge {
   }) =>
       throw _unsupportedError;
 
+  @override
+  Future<VKWebAppBoolResult> downloadFile(String url, String filename) =>
+      throw _unsupportedError;
+
 // static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
 //   return _sendInternal('VKWebAppAllowNotifications');
 // }

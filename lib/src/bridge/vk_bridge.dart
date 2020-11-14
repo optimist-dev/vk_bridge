@@ -33,28 +33,35 @@ abstract class VKBridge {
   /// VKWebAppInit — первое событие, которое Ваше приложение должно отправить
   /// официальному приложению для начала работы с VK Bridge. В противном случае
   /// сервис может не работать на мобильных клиентах iOS и Android.
+  /// Платформы: iOS, Android, Web, Mobile Web
+  /// https://vk.com/dev/vk_bridge_events
   Future<VKWebAppBoolResult> init();
 
   /// VKWebAppGetUserInfo позволяет получить основные данные о профиле текущего
   /// пользователя.
+  /// Платформы: iOS, Android, Web, Mobile Web
   /// https://vk.com/dev/vk_bridge_events_5
   Future<VKWebAppGetUserInfoResult> getUserInfo();
 
   /// VKWebAppGetEmail позволяет получить адрес электронной почты пользователя.
   /// После вызова отображает экран с запросом прав на доступ к e-mail.
+  /// Платформы: iOS, Android, Web
   /// https://vk.com/dev/vk_bridge_events_6
   Future<VKWebAppGetEmailResult> getEmail();
 
   /// VKWebAppGetClientVersion возвращает номер версии официального приложения
   /// ВКонтакте.
+  /// Платформы: iOS, Android, Web, Mobile Web
   /// https://vk.com/dev/vk_bridge_events_3
   Future<VKWebAppGetClientVersionResult> getClientVersion();
 
   /// VKWebAppShare позволяет поделиться ссылкой.
+  /// Платформы: iOS, Android, Web, Mobile Web
   /// https://vk.com/dev/vk_bridge_events_2
   Future<VKWebAppShareResult> share(ShareOptions options);
 
   /// VKWebAppShowImages открывает нативный экран для просмотра изображений.
+  /// Платформы: iOS, Android, Mobile Web
   /// [images] массив строк, содержащих URL изображений.
   /// [startIndex] индекс картинки, с которой нужно начать отображение, начиная с 0.
   /// https://vk.com/dev/vk_bridge_events_2
@@ -62,4 +69,11 @@ abstract class VKBridge {
     BuiltList<String> images, {
     int startIndex,
   });
+
+  /// Вызов события VKWebAppDownloadFile позволяет скачать файл на устройство.
+  /// Платформы: iOS, Android
+  /// [url] ссылка на файл, который необходимо скачать.
+  /// [filename] название файла.
+  /// https://vk.com/dev/vk_bridge_events_4
+  Future<VKWebAppBoolResult> downloadFile(String url, String filename);
 }
