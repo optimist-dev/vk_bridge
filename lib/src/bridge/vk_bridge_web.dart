@@ -15,6 +15,7 @@ import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
@@ -211,22 +212,11 @@ class VKBridge implements vkBridge.VKBridge {
     return _sendInternal("VKWebAppDownloadFile", options);
   }
 
-//
-// static Future<VKWebAppAllowNotificationsResult> allowNotifications() {
-//   return _sendInternal('VKWebAppAllowNotifications');
-// }
-//
-//
-// static Future<dynamic> showStoryBox() {
-//   return _sendInternal(
-//     'VKWebAppShowStoryBox',
-//     // StoryOptions(
-//     //   background_type: "image",
-//     //   url:
-//     //       "https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg",
-//     // ),
-//   );
-// }
+  @override
+  Future<VKWebAppBoolResult> copyText(String text) {
+    final options = CopyTextOptions((b) => b.text = text);
+    return _sendInternal("VKWebAppCopyText", options);
+  }
 }
 
 @JS()

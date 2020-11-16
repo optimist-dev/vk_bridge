@@ -8,6 +8,7 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(City.serializer)
+      ..add(CopyTextOptions.serializer)
       ..add(Country.serializer)
       ..add(DownloadFileOptions.serializer)
       ..add(ErrorData.serializer)

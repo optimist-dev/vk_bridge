@@ -76,4 +76,8 @@ abstract class VKBridge {
   /// [filename] название файла.
   /// https://vk.com/dev/vk_bridge_events_4
   Future<VKWebAppBoolResult> downloadFile(String url, String filename);
+
+  /// Copy [text] to the clipboard.
+  /// https://vk.com/dev/vk_bridge_events_4
+  Future<VKWebAppBoolResult> copyText(String text);
 }
