@@ -52,7 +52,6 @@ abstract class LaunchParams
   @BuiltValueField(wireName: 'vk_ts')
   int get ts;
 
-  @BuiltValueField(wireName: 'sign')
   String get sign;
 
   LaunchParams._();
