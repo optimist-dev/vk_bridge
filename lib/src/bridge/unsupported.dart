@@ -2,6 +2,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
@@ -16,7 +17,7 @@ class VKBridge implements vkBridge.VKBridge {
   void setLogger(Logger logger) => throw _unsupportedError;
 
   @override
-  String get launchParams => throw _unsupportedError;
+  LaunchParams get launchParams => throw _unsupportedError;
 
   @override
   String get launchHash => throw _unsupportedError;

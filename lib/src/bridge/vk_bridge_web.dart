@@ -15,6 +15,7 @@ import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
@@ -26,6 +27,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
+import 'package:vk_bridge/vk_bridge.dart';
 
 @JS("vkBridge.send")
 external _send(String method, [Object props]);
@@ -34,29 +36,16 @@ external _send(String method, [Object props]);
 @JS('vkBridgeDartListener')
 external set _vkBridgeDartListener(void Function(Object event) f);
 
-class _Logger implements Logger {
-  @override
-  void d(Object message) {
-    print("vk_bridge.d: " + message);
-  }
-
-  @override
-  void e(Object message) {
-    print("vk_bridge.e: " + message);
-  }
-}
-
 class VKBridge implements vkBridge.VKBridge {
   @override
   void setLogger(Logger logger) => _logger = logger ?? _Logger();
 
   Logger _logger = _Logger();
 
-  // TODO: добавить модель
-  String _launchParams;
+  LaunchParams _launchParams;
 
   @override
-  String get launchParams => _launchParams;
+  LaunchParams get launchParams => _launchParams;
 
   String _launchHash;
 
@@ -145,9 +134,17 @@ class VKBridge implements vkBridge.VKBridge {
     );
 
     /// https://vk.cc/9AjsnM
-    _launchParams = window.location.search;
-    if (_launchParams.startsWith('\?')) {
-      _launchParams = launchParams.substring(1);
+    String rawLaunchParams = window.location.search;
+    if (rawLaunchParams.startsWith('\?')) {
+      rawLaunchParams = rawLaunchParams.substring(1);
+    }
+
+    try {
+      _launchParams = LaunchParams.parse(rawLaunchParams);
+      _logger.d(_launchParams);
+    } catch (e) {
+      _logger.e("Can't parse launch params: $rawLaunchParams");
+      _logger.e(e);
     }
 
     _launchHash = window.location.hash;
@@ -219,20 +216,14 @@ class VKBridge implements vkBridge.VKBridge {
   }
 }
 
-@JS()
-@anonymous
-class Event {
-  external Detail get detail;
+class _Logger implements Logger {
+  @override
+  void d(Object message) {
+    print("vk_bridge.d: " + message);
+  }
+
+  @override
+  void e(Object message) {
+    print("vk_bridge.e: " + message);
+  }
 }
-
-@JS()
-@anonymous
-class Detail {
-  external String get type;
-
-  external Data get data;
-}
-
-@JS()
-@anonymous
-class Data {}
