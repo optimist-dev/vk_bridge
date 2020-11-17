@@ -1,5 +1,6 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 
 part 'vk_web_app_update_config.g.dart';
 
@@ -14,6 +15,9 @@ abstract class VKWebAppUpdateConfig
   /// TODO: enum
   @nullable
   String get appearance;
+
+  @nullable
+  Insets get insets;
 
   VKWebAppUpdateConfig._();
 

@@ -30,6 +30,12 @@ class _$VKWebAppUpdateConfigSerializer
         ..add(serializers.serialize(object.appearance,
             specifiedType: const FullType(String)));
     }
+    if (object.insets != null) {
+      result
+        ..add('insets')
+        ..add(serializers.serialize(object.insets,
+            specifiedType: const FullType(Insets)));
+    }
     return result;
   }
 
@@ -49,6 +55,10 @@ class _$VKWebAppUpdateConfigSerializer
           result.appearance = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'insets':
+          result.insets.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Insets)) as Insets);
+          break;
       }
     }
 
@@ -59,12 +69,14 @@ class _$VKWebAppUpdateConfigSerializer
 class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
   final String appearance;
+  @override
+  final Insets insets;
 
   factory _$VKWebAppUpdateConfig(
           [void Function(VKWebAppUpdateConfigBuilder) updates]) =>
       (new VKWebAppUpdateConfigBuilder()..update(updates)).build();
 
-  _$VKWebAppUpdateConfig._({this.appearance}) : super._();
+  _$VKWebAppUpdateConfig._({this.appearance, this.insets}) : super._();
 
   @override
   VKWebAppUpdateConfig rebuild(
@@ -78,18 +90,21 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VKWebAppUpdateConfig && appearance == other.appearance;
+    return other is VKWebAppUpdateConfig &&
+        appearance == other.appearance &&
+        insets == other.insets;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, appearance.hashCode));
+    return $jf($jc($jc(0, appearance.hashCode), insets.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppUpdateConfig')
-          ..add('appearance', appearance))
+          ..add('appearance', appearance)
+          ..add('insets', insets))
         .toString();
   }
 }
@@ -102,11 +117,16 @@ class VKWebAppUpdateConfigBuilder
   String get appearance => _$this._appearance;
   set appearance(String appearance) => _$this._appearance = appearance;
 
+  InsetsBuilder _insets;
+  InsetsBuilder get insets => _$this._insets ??= new InsetsBuilder();
+  set insets(InsetsBuilder insets) => _$this._insets = insets;
+
   VKWebAppUpdateConfigBuilder();
 
   VKWebAppUpdateConfigBuilder get _$this {
     if (_$v != null) {
       _appearance = _$v.appearance;
+      _insets = _$v.insets?.toBuilder();
       _$v = null;
     }
     return this;
@@ -127,8 +147,22 @@ class VKWebAppUpdateConfigBuilder
 
   @override
   _$VKWebAppUpdateConfig build() {
-    final _$result =
-        _$v ?? new _$VKWebAppUpdateConfig._(appearance: appearance);
+    _$VKWebAppUpdateConfig _$result;
+    try {
+      _$result = _$v ??
+          new _$VKWebAppUpdateConfig._(
+              appearance: appearance, insets: _insets?.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'insets';
+        _insets?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'VKWebAppUpdateConfig', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

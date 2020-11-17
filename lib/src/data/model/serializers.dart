@@ -3,6 +3,7 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:vk_bridge/src/data/model/errors/error_data.dart';
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
@@ -35,6 +36,7 @@ part 'serializers.g.dart';
   DownloadFileOptions,
   CopyTextOptions,
   LaunchParams,
+  Insets,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
