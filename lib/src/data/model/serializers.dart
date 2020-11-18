@@ -13,6 +13,7 @@ import 'package:vk_bridge/src/data/model/options/show_images_options/show_images
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/city.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/country.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
@@ -37,6 +38,7 @@ part 'serializers.g.dart';
   CopyTextOptions,
   LaunchParams,
   Insets,
+  VKWebAppGetGeodataResult,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

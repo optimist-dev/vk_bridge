@@ -7,6 +7,7 @@ import 'package:vk_bridge/src/data/model/options/share_options/share_options.dar
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 
@@ -56,4 +57,7 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> copyText(String text) => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppGetGeodataResult> getGeodata() => throw _unsupportedError;
 }

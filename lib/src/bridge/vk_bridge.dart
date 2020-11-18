@@ -5,6 +5,7 @@ import 'package:vk_bridge/src/data/model/options/share_options/share_options.dar
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:built_collection/built_collection.dart';
@@ -81,4 +82,10 @@ abstract class VKBridge {
   /// Copy [text] to the clipboard.
   /// https://vk.com/dev/vk_bridge_events_4
   Future<VKWebAppBoolResult> copyText(String text);
+
+  /// VKWebAppGetGeodata позволяет получить данные о геопозиции пользователя.
+  /// Событие не принимает параметров.
+  /// Официальное приложение показывает окно с запросом разрешения на передачу местоположения.
+  /// https://vk.com/dev/vk_bridge_events_5
+  Future<VKWebAppGetGeodataResult> getGeodata();
 }
