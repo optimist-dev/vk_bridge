@@ -1,14 +1,15 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
-import 'package:built_collection/built_collection.dart';
 
 import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
     as _vkBridge;
@@ -88,4 +89,8 @@ abstract class VKBridge {
   /// Официальное приложение показывает окно с запросом разрешения на передачу местоположения.
   /// https://vk.com/dev/vk_bridge_events_5
   Future<VKWebAppGetGeodataResult> getGeodata();
+
+  /// VKWebAppShowStoryBox открывает редактор историй.
+  /// https://vk.com/dev/vk_bridge_events_15
+  Future<dynamic> showStoryBox(ShowStoryBoxOptions options);
 }

@@ -10,6 +10,14 @@ import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_opt
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_app.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_link.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/attachment.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/clickable_zone.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/renderable_sticker.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/sticker_container.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/transform.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -39,6 +47,14 @@ part 'serializers.g.dart';
   LaunchParams,
   Insets,
   VKWebAppGetGeodataResult,
+  ShowStoryBoxOptions,
+  Attachment,
+  StickerContainer,
+  RenderableSticker,
+  ClickableZone,
+  ActionApp,
+  ActionLink,
+  Transform,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
