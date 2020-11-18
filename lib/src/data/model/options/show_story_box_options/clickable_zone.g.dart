@@ -24,7 +24,7 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
           specifiedType: const FullType(String)),
       'action',
       serializers.serialize(object.action,
-          specifiedType: const FullType(ActionApp)),
+          specifiedType: const FullType(Action)),
     ];
 
     return result;
@@ -47,8 +47,8 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'action':
-          result.action.replace(serializers.deserialize(value,
-              specifiedType: const FullType(ActionApp)) as ActionApp);
+          result.action = serializers.deserialize(value,
+              specifiedType: const FullType(Action)) as Action;
           break;
       }
     }
@@ -61,7 +61,7 @@ class _$ClickableZone extends ClickableZone {
   @override
   final String actionType;
   @override
-  final ActionApp action;
+  final Action action;
 
   factory _$ClickableZone([void Function(ClickableZoneBuilder) updates]) =>
       (new ClickableZoneBuilder()..update(updates)).build();
@@ -112,16 +112,16 @@ class ClickableZoneBuilder
   String get actionType => _$this._actionType;
   set actionType(String actionType) => _$this._actionType = actionType;
 
-  ActionAppBuilder _action;
-  ActionAppBuilder get action => _$this._action ??= new ActionAppBuilder();
-  set action(ActionAppBuilder action) => _$this._action = action;
+  Action _action;
+  Action get action => _$this._action;
+  set action(Action action) => _$this._action = action;
 
   ClickableZoneBuilder();
 
   ClickableZoneBuilder get _$this {
     if (_$v != null) {
       _actionType = _$v.actionType;
-      _action = _$v.action?.toBuilder();
+      _action = _$v.action;
       _$v = null;
     }
     return this;
@@ -142,21 +142,8 @@ class ClickableZoneBuilder
 
   @override
   _$ClickableZone build() {
-    _$ClickableZone _$result;
-    try {
-      _$result = _$v ??
-          new _$ClickableZone._(actionType: actionType, action: action.build());
-    } catch (_) {
-      String _$failedField;
-      try {
-        _$failedField = 'action';
-        action.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'ClickableZone', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result =
+        _$v ?? new _$ClickableZone._(actionType: actionType, action: action);
     replace(_$result);
     return _$result;
   }

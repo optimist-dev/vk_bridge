@@ -6,6 +6,7 @@ export 'src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.
 export 'src/data/model/launch_params.dart';
 export 'src/data/model/options/share_options/share_options.dart';
 export 'src/data/model/options/share_options/share_options.dart';
+export 'src/data/model/options/show_story_box_options/action.dart';
 export 'src/data/model/options/show_story_box_options/action_app.dart';
 export 'src/data/model/options/show_story_box_options/action_link.dart';
 export 'src/data/model/options/show_story_box_options/attachment.dart';
