@@ -7,15 +7,23 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(ActionApp.serializer)
+      ..add(ActionLink.serializer)
+      ..add(Attachment.serializer)
       ..add(City.serializer)
+      ..add(ClickableZone.serializer)
       ..add(CopyTextOptions.serializer)
       ..add(Country.serializer)
       ..add(DownloadFileOptions.serializer)
       ..add(ErrorData.serializer)
       ..add(Insets.serializer)
       ..add(LaunchParams.serializer)
+      ..add(RenderableSticker.serializer)
       ..add(ShareOptions.serializer)
       ..add(ShowImagesOptions.serializer)
+      ..add(ShowStoryBoxOptions.serializer)
+      ..add(StickerContainer.serializer)
+      ..add(Transform.serializer)
       ..add(VKWebAppBoolResult.serializer)
       ..add(VKWebAppError.serializer)
       ..add(VKWebAppGetClientVersionResult.serializer)
@@ -24,6 +32,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VKWebAppGetUserInfoResult.serializer)
       ..add(VKWebAppShareResult.serializer)
       ..add(VKWebAppUpdateConfig.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ClickableZone)]),
+          () => new ListBuilder<ClickableZone>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(StickerContainer)]),
+          () => new ListBuilder<StickerContainer>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>()))
