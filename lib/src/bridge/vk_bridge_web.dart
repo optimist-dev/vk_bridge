@@ -23,6 +23,7 @@ import 'package:vk_bridge/src/data/model/options/show_images_options/show_images
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
@@ -213,6 +214,11 @@ class VKBridge implements vkBridge.VKBridge {
   Future<VKWebAppBoolResult> copyText(String text) {
     final options = CopyTextOptions((b) => b.text = text);
     return _sendInternal("VKWebAppCopyText", options);
+  }
+
+  @override
+  Future<VKWebAppGetGeodataResult> getGeodata() {
+    return _sendInternal("VKWebAppGetGeodata");
   }
 }
 
