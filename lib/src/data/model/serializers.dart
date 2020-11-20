@@ -29,7 +29,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_
 
 part 'serializers.g.dart';
 
-@SerializersFor(const [
+@SerializersFor([
   VKWebAppBoolResult,
   VKWebAppGetUserInfoResult,
   City,
@@ -56,17 +56,24 @@ part 'serializers.g.dart';
   ActionLink,
   Transform,
 ])
+
+/// Serializers
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
 
-T deserialize<T>(dynamic value) =>
-    serializers.deserializeWith<T>(serializers.serializerForType(T), value);
+/// Deserialize [value]
+T deserialize<T>(dynamic value) => serializers.deserializeWith<T>(
+    serializers.serializerForType(T) as Serializer<T>, value);
 
-BuiltList<T> deserializeListOf<T>(dynamic value) => BuiltList.from(
-    value.map((value) => deserialize<T>(value)).toList(growable: false));
+/// Deserialize list of [value]
+BuiltList<T> deserializeListOf<T>(dynamic value) => BuiltList<T>.from(value
+    .map<T>((dynamic value) => deserialize<T>(value))
+    .toList(growable: false) as List<T>);
 
-dynamic serialize<T>(T value) =>
-    serializers.serializeWith(serializers.serializerForType(T), value);
+/// Serialize list of [value]
+dynamic serialize<T>(T value) => serializers.serializeWith(
+    serializers.serializerForType(T) as Serializer<T>, value);
 
+/// Serialize iterable of [value]
 dynamic serializeIterable<T>(Iterable<T> value) =>
-    value.map((value) => serialize<T>(value)).toList();
+    value.map<dynamic>((value) => serialize<T>(value)).toList();

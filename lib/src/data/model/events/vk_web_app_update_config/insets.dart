@@ -3,18 +3,25 @@ import 'package:built_value/serializer.dart';
 
 part 'insets.g.dart';
 
+/// Insets from the edge of the screen to the content
 abstract class Insets implements Built<Insets, InsetsBuilder> {
-  static Serializer<Insets> get serializer => _$insetsSerializer;
-
-  double get right;
-
-  double get top;
-
-  double get left;
-
-  double get bottom;
+  /// [Insets] factory
+  factory Insets([void Function(InsetsBuilder) updates]) = _$Insets;
 
   Insets._();
 
-  factory Insets([void Function(InsetsBuilder) updates]) = _$Insets;
+  /// [Insets] serializer
+  static Serializer<Insets> get serializer => _$insetsSerializer;
+
+  /// Right inset
+  double get right;
+
+  /// Top inset
+  double get top;
+
+  /// Left inset
+  double get left;
+
+  /// Bottom inset
+  double get bottom;
 }

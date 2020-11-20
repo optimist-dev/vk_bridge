@@ -6,7 +6,7 @@ import 'examples_page.dart';
 Future<void> main() async {
   final result = await VKBridge.instance.init();
 
-  print("VKBridge.init: $result");
+  print('VKBridge.init: $result');
 
   runApp(MyApp());
 }

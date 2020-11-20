@@ -5,44 +5,64 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result
 
 part 'vk_web_app_get_user_info_result.g.dart';
 
+/// Result of method getUserInfo
 abstract class VKWebAppGetUserInfoResult
     implements
         Built<VKWebAppGetUserInfoResult, VKWebAppGetUserInfoResultBuilder> {
-  static Serializer<VKWebAppGetUserInfoResult> get serializer =>
-      _$vKWebAppGetUserInfoResultSerializer;
-
-  int get id;
-
-  @BuiltValueField(wireName: 'first_name')
-  String get firstName;
-
-  @BuiltValueField(wireName: 'last_name')
-  String get lastName;
-
-  // TODO: переделать в enum?
-  int get sex;
-
-  // TODO: переделать в DateTime?
-  String get bdate;
-
-  City get city;
-
-  Country get country;
-
-  @BuiltValueField(wireName: 'photo_100')
-  String get photo100;
-
-  @BuiltValueField(wireName: 'photo_200')
-  String get photo200;
-
-  @BuiltValueField(wireName: 'photo_max_orig')
-  String get photoMaxOrig;
-
-  int get timezone;
-
-  VKWebAppGetUserInfoResult._();
-
+  /// [VKWebAppGetUserInfoResult] factory
   factory VKWebAppGetUserInfoResult(
           [void Function(VKWebAppGetUserInfoResultBuilder) updates]) =
       _$VKWebAppGetUserInfoResult;
+
+  VKWebAppGetUserInfoResult._();
+
+  /// [VKWebAppGetUserInfoResult] serializer
+  static Serializer<VKWebAppGetUserInfoResult> get serializer =>
+      _$vKWebAppGetUserInfoResultSerializer;
+
+  /// User ID
+  int get id;
+
+  /// First name
+  @BuiltValueField(wireName: 'first_name')
+  String get firstName;
+
+  /// Last name
+  @BuiltValueField(wireName: 'last_name')
+  String get lastName;
+
+  // TODO(sanekyy): enum
+  /// Sex. Possible values: 1 - female; 2 - male; 0 - gender is not specified
+  int get sex;
+
+  // TODO(sanekyy): DateTime
+  /// Date of Birth. Returned in the format D.M.YYYY or D.M (if the year of
+  /// birth is hidden). If the date of birth is hidden entirely, the field is
+  /// missing in the response
+  String get bdate;
+
+  /// Information about the user's city
+  City get city;
+
+  /// Information about the user's country
+  Country get country;
+
+  /// Url of a square user photo with a width of 100 pixels. If the user does
+  /// not have a photo, https://vk.com/images/camera_100.png is returned
+  @BuiltValueField(wireName: 'photo_100')
+  String get photo100;
+
+  /// url of a square user photo with a width of 200 pixels. If the user does
+  /// not have a photo, https://vk.com/images/camera_200.png is returned
+  @BuiltValueField(wireName: 'photo_200')
+  String get photo200;
+
+  /// url photo of maximum size. A photo that is both 400 and 200 pixels wide
+  /// can be returned. If the user does not have a photo,
+  /// https://vk.com/images/camera_400.png is returned
+  @BuiltValueField(wireName: 'photo_max_orig')
+  String get photoMaxOrig;
+
+  /// Time zone
+  int get timezone;
 }

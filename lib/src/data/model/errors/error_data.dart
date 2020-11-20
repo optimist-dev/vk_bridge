@@ -3,18 +3,21 @@ import 'package:built_value/serializer.dart';
 
 part 'error_data.g.dart';
 
-abstract class ErrorData
-    implements Built<ErrorData, ErrorDataBuilder> {
-  static Serializer<ErrorData> get serializer => _$errorDataSerializer;
-
-  @BuiltValueField(wireName: 'error_code')
-  int get errorCode;
-
-  @BuiltValueField(wireName: 'error_reason')
-  String get errorReason;
+/// VK Bridge event error data
+abstract class ErrorData implements Built<ErrorData, ErrorDataBuilder> {
+  /// [ErrorData] factory
+  factory ErrorData([void Function(ErrorDataBuilder) updates]) = _$ErrorData;
 
   ErrorData._();
 
-  factory ErrorData([void Function(ErrorDataBuilder) updates]) =
-  _$ErrorData;
+  /// [ErrorData] serializer
+  static Serializer<ErrorData> get serializer => _$errorDataSerializer;
+
+  /// Error code
+  @BuiltValueField(wireName: 'error_code')
+  int get errorCode;
+
+  /// Error description.
+  @BuiltValueField(wireName: 'error_reason')
+  String get errorReason;
 }

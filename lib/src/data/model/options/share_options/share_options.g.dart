@@ -18,11 +18,13 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   @override
   Iterable<Object> serialize(Serializers serializers, ShareOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'link',
-      serializers.serialize(object.link, specifiedType: const FullType(String)),
-    ];
-
+    final result = <Object>[];
+    if (object.link != null) {
+      result
+        ..add('link')
+        ..add(serializers.serialize(object.link,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -55,11 +57,7 @@ class _$ShareOptions extends ShareOptions {
   factory _$ShareOptions([void Function(ShareOptionsBuilder) updates]) =>
       (new ShareOptionsBuilder()..update(updates)).build();
 
-  _$ShareOptions._({this.link}) : super._() {
-    if (link == null) {
-      throw new BuiltValueNullFieldError('ShareOptions', 'link');
-    }
-  }
+  _$ShareOptions._({this.link}) : super._();
 
   @override
   ShareOptions rebuild(void Function(ShareOptionsBuilder) updates) =>

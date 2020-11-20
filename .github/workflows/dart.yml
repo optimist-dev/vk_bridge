@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image:  google/dart:latest
+      image: google/dart:latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: pub get
-    - name: Run tests
-      run: pub run test
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pub get
+      - name: Check format
+        run: flutter format --set-exit-if-changed .
+      - name: Flutter analyze
+        run: flutter analyze .
+      - name: Run tests
+        run: pub run test

@@ -1,6 +1,5 @@
-// @JS('vkBridge')
 @JS()
-library vkBridge;
+library vk_bridge;
 
 import 'dart:async';
 import 'dart:convert';
@@ -8,11 +7,11 @@ import 'dart:html';
 import 'dart:js';
 import 'dart:js_util';
 
-import 'package:built_collection/src/list.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:js/js.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
-import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vkBridge;
+import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
@@ -31,14 +30,17 @@ import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 import 'package:vk_bridge/vk_bridge.dart';
 
-@JS("vkBridge.send")
-external _send(String method, [Object props]);
+/// Method for sending something to the VK Mini Aps platform
+@JS('vkBridge.send')
+external Object _send(String method, [Object props]);
 
-/// Allows assigning a function to be callable from `window.vkBridgeDartListener()`
+/// Allows assigning a function to be callable from
+/// `window.vkBridgeDartListener()`
 @JS('vkBridgeDartListener')
 external set _vkBridgeDartListener(void Function(Object event) f);
 
-class VKBridge implements vkBridge.VKBridge {
+/// Implementation of the VK Mini Aps platform contact
+class VKBridge implements vk_bridge.VKBridge {
   @override
   void setLogger(Logger logger) => _logger = logger ?? _Logger();
 
@@ -64,46 +66,46 @@ class VKBridge implements vkBridge.VKBridge {
     String method, [
     Options props,
   ]) async {
-    assert(Result.toString() != "dynamic", "Result type can't be dynamic.");
+    assert(Result.toString() != 'dynamic', "Result type can't be dynamic");
     assert(
-      props == null || Options.toString() != "dynamic",
-      "Options type can't be dynamic.",
+      props == null || Options.toString() != 'dynamic',
+      "Options type can't be dynamic",
     );
 
-    _logger.d("vk_bridge: _sendInternal($method)");
+    _logger.d('vk_bridge: _sendInternal($method)');
 
     try {
       final propsJson =
-          props == null ? "{}" : jsonEncode(serialize<Options>(props));
+          props == null ? '{}' : jsonEncode(serialize<Options>(props));
 
-      _logger.d("send($method, $propsJson)");
+      _logger.d('send($method, $propsJson)');
 
-      final jsObjectResult =
+      final Object jsObjectResult =
           await promiseToFuture(_send(method, parse(propsJson)));
       final jsonResult = stringify(jsObjectResult);
-      final decodedJson = jsonDecode(jsonResult);
+      final Object decodedJson = jsonDecode(jsonResult);
       try {
         final result = deserialize<Result>(decodedJson);
-        _logger.d("send($method) result: $result");
+        _logger.d('send($method) result: $result');
         return result;
       } catch (e) {
-        _logger.d("send($method) jsonResult: $jsonResult");
-        throw e;
+        _logger.d('send($method) jsonResult: $jsonResult');
+        rethrow;
       }
     } catch (jsObjectError) {
       final jsonError = stringify(jsObjectError);
-      final decodedJson = jsonDecode(jsonError);
+      final Object decodedJson = jsonDecode(jsonError);
 
       VKWebAppError error;
       try {
         error = deserialize<VKWebAppError>(decodedJson);
       } catch (e) {
-        _logger.d(" send($method) jsonError: $jsonError");
+        _logger.d('send($method) jsonError: $jsonError');
         _logger.e("can't deserialize error: $decodedJson");
-        throw e;
+        rethrow;
       }
 
-      _logger.d("send($method) error: $error");
+      _logger.d('send($method) error: $error');
       throw error;
     }
   }
@@ -111,15 +113,15 @@ class VKBridge implements vkBridge.VKBridge {
   void _eventHandler(Object jsEvent) {
     final jsonEvent = stringify(jsEvent);
 
-    _logger.d("_eventHandler: $jsonEvent");
+    _logger.d('_eventHandler: $jsonEvent');
 
-    final decodedJsonEvent = jsonDecode(jsonEvent);
+    final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, Object>;
 
-    final type = decodedJsonEvent["type"] as String;
-    final data = decodedJsonEvent["data"];
+    final type = decodedJsonEvent['type'] as String;
+    final data = decodedJsonEvent['data'];
 
     switch (type) {
-      case "VKWebAppUpdateConfig":
+      case 'VKWebAppUpdateConfig':
         final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
         _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
@@ -131,13 +133,13 @@ class VKBridge implements vkBridge.VKBridge {
   Future<VKWebAppBoolResult> init() async {
     _vkBridgeDartListener = allowInterop(_eventHandler);
 
-    final VKWebAppBoolResult vkWebAppInitResult = await _sendInternal(
+    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult, Object>(
       'VKWebAppInit',
     );
 
     /// https://vk.cc/9AjsnM
     String rawLaunchParams = window.location.search;
-    if (rawLaunchParams.startsWith('\?')) {
+    if (rawLaunchParams.startsWith('?')) {
       rawLaunchParams = rawLaunchParams.substring(1);
     }
 
@@ -159,22 +161,27 @@ class VKBridge implements vkBridge.VKBridge {
 
   @override
   Future<VKWebAppGetUserInfoResult> getUserInfo() {
-    return _sendInternal('VKWebAppGetUserInfo');
+    return _sendInternal<VKWebAppGetUserInfoResult, Object>(
+      'VKWebAppGetUserInfo',
+    );
   }
 
   @override
   Future<VKWebAppGetEmailResult> getEmail() {
-    return _sendInternal('VKWebAppGetEmail');
+    return _sendInternal<VKWebAppGetEmailResult, Object>('VKWebAppGetEmail');
   }
 
   @override
   Future<VKWebAppGetClientVersionResult> getClientVersion() {
-    return _sendInternal('VKWebAppGetClientVersion');
+    return _sendInternal<VKWebAppGetClientVersionResult, Object>(
+      'VKWebAppGetClientVersion',
+    );
   }
 
   @override
-  Future<VKWebAppShareResult> share(ShareOptions options) {
-    return _sendInternal("VKWebAppShare", options);
+  Future<VKWebAppShareResult> share(String link) {
+    final options = ShareOptions((b) => b..link = link);
+    return _sendInternal('VKWebAppShare', options);
   }
 
   @override
@@ -186,14 +193,14 @@ class VKBridge implements vkBridge.VKBridge {
     assert(images.isNotEmpty, "Images can't be empty");
     assert(
       startIndex == null || (startIndex >= 0 && startIndex < images.length),
-      "StartIndex should be null or inside images range",
+      'StartIndex should be null or inside images range',
     );
     final options = ShowImagesOptions(
       (b) => b
         ..images = images.toBuilder()
         ..startIndex = startIndex,
     );
-    return _sendInternal("VKWebAppShowImages", options);
+    return _sendInternal('VKWebAppShowImages', options);
   }
 
   @override
@@ -208,18 +215,20 @@ class VKBridge implements vkBridge.VKBridge {
         ..url = url
         ..filename = filename,
     );
-    return _sendInternal("VKWebAppDownloadFile", options);
+    return _sendInternal('VKWebAppDownloadFile', options);
   }
 
   @override
   Future<VKWebAppBoolResult> copyText(String text) {
     final options = CopyTextOptions((b) => b.text = text);
-    return _sendInternal("VKWebAppCopyText", options);
+    return _sendInternal('VKWebAppCopyText', options);
   }
 
   @override
   Future<VKWebAppGetGeodataResult> getGeodata() {
-    return _sendInternal("VKWebAppGetGeodata");
+    return _sendInternal<VKWebAppGetGeodataResult, Object>(
+      'VKWebAppGetGeodata',
+    );
   }
 
   @override
@@ -228,14 +237,11 @@ class VKBridge implements vkBridge.VKBridge {
   }
 }
 
+/// Empty logger. Do nothing
 class _Logger implements Logger {
   @override
-  void d(Object message) {
-    print("vk_bridge.d: " + message);
-  }
+  void d(Object message) {}
 
   @override
-  void e(Object message) {
-    print("vk_bridge.e: " + message);
-  }
+  void e(Object message) {}
 }

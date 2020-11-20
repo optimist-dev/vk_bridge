@@ -6,24 +6,37 @@ import 'package:vk_bridge/src/data/model/options/show_story_box_options/sticker_
 
 part 'show_story_box_options.g.dart';
 
+/// Options for showStoryBox method
 abstract class ShowStoryBoxOptions
     implements Built<ShowStoryBoxOptions, ShowStoryBoxOptionsBuilder> {
-  static Serializer<ShowStoryBoxOptions> get serializer =>
-      _$showStoryBoxOptionsSerializer;
-
-  @BuiltValueField(wireName: 'background_type')
-  String get backgroundType;
-
-  String get url;
-
-  @nullable
-  Attachment get attachment;
-
-  @nullable
-  BuiltList<StickerContainer> get stickers;
+  /// [ShowStoryBoxOptions] factory
+  factory ShowStoryBoxOptions(
+          [void Function(ShowStoryBoxOptionsBuilder) updates]) =
+      _$ShowStoryBoxOptions;
 
   ShowStoryBoxOptions._();
 
-  factory ShowStoryBoxOptions([void Function(ShowStoryBoxOptionsBuilder) updates]) =
-      _$ShowStoryBoxOptions;
+  /// [ShowStoryBoxOptions] serializer
+  static Serializer<ShowStoryBoxOptions> get serializer =>
+      _$showStoryBoxOptionsSerializer;
+
+  /// Story type. Possible values:
+  /// - image (Platforms: iOS, Android, Web, Mobile Web)
+  /// - video (Platforms: iOS, Android)
+  /// - none (for the case of transferring the sticker directly to the camera,
+  /// Platforms: iOS, Android).
+  @BuiltValueField(wireName: 'background_type')
+  String get backgroundType;
+
+  /// Link to an image or video (the transmission must follow a direct link to
+  /// mp4)
+  String get url;
+
+  /// Description of the object of attachment to history
+  @nullable
+  Attachment get attachment;
+
+  /// An array of objects describing stickers on the canvas
+  @nullable
+  BuiltList<StickerContainer> get stickers;
 }

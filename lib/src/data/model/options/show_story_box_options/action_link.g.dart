@@ -24,12 +24,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
       serializers.serialize(object.tooltipTextKey,
           specifiedType: const FullType(String)),
     ];
-    if (object.url != null) {
-      result
-        ..add('url')
-        ..add(serializers.serialize(object.url,
-            specifiedType: const FullType(String)));
-    }
+
     return result;
   }
 
@@ -52,10 +47,6 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
           result.tooltipTextKey = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
       }
     }
 
@@ -68,13 +59,11 @@ class _$ActionLink extends ActionLink {
   final String link;
   @override
   final String tooltipTextKey;
-  @override
-  final String url;
 
   factory _$ActionLink([void Function(ActionLinkBuilder) updates]) =>
       (new ActionLinkBuilder()..update(updates)).build();
 
-  _$ActionLink._({this.link, this.tooltipTextKey, this.url}) : super._() {
+  _$ActionLink._({this.link, this.tooltipTextKey}) : super._() {
     if (link == null) {
       throw new BuiltValueNullFieldError('ActionLink', 'link');
     }
@@ -95,22 +84,19 @@ class _$ActionLink extends ActionLink {
     if (identical(other, this)) return true;
     return other is ActionLink &&
         link == other.link &&
-        tooltipTextKey == other.tooltipTextKey &&
-        url == other.url;
+        tooltipTextKey == other.tooltipTextKey;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, link.hashCode), tooltipTextKey.hashCode), url.hashCode));
+    return $jf($jc($jc(0, link.hashCode), tooltipTextKey.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('ActionLink')
           ..add('link', link)
-          ..add('tooltipTextKey', tooltipTextKey)
-          ..add('url', url))
+          ..add('tooltipTextKey', tooltipTextKey))
         .toString();
   }
 }
@@ -127,17 +113,12 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
   set tooltipTextKey(String tooltipTextKey) =>
       _$this._tooltipTextKey = tooltipTextKey;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
-
   ActionLinkBuilder();
 
   ActionLinkBuilder get _$this {
     if (_$v != null) {
       _link = _$v.link;
       _tooltipTextKey = _$v.tooltipTextKey;
-      _url = _$v.url;
       _$v = null;
     }
     return this;
@@ -158,9 +139,8 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
 
   @override
   _$ActionLink build() {
-    final _$result = _$v ??
-        new _$ActionLink._(
-            link: link, tooltipTextKey: tooltipTextKey, url: url);
+    final _$result =
+        _$v ?? new _$ActionLink._(link: link, tooltipTextKey: tooltipTextKey);
     replace(_$result);
     return _$result;
   }

@@ -4,19 +4,25 @@ import 'package:vk_bridge/src/data/model/options/show_story_box_options/renderab
 
 part 'sticker_container.g.dart';
 
+/// Sticker container
 abstract class StickerContainer
     implements Built<StickerContainer, StickerContainerBuilder> {
-  static Serializer<StickerContainer> get serializer =>
-      _$stickerContainerSerializer;
-
-  // TODO: enum
-  @BuiltValueField(wireName: 'sticker_type')
-  String get stickerType;
-
-  RenderableSticker get sticker;
+  /// [StickerContainer] factory
+  factory StickerContainer([void Function(StickerContainerBuilder) updates]) =
+      _$StickerContainer;
 
   StickerContainer._();
 
-  factory StickerContainer([void Function(StickerContainerBuilder) updates]) =
-      _$StickerContainer;
+  /// [StickerContainer] serializer
+  static Serializer<StickerContainer> get serializer =>
+      _$stickerContainerSerializer;
+
+  // TODO(sanekyy): enum
+  /// Type of sticker. Possible values:
+  /// - renderable
+  @BuiltValueField(wireName: 'sticker_type')
+  String get stickerType;
+
+  /// Sticker object
+  RenderableSticker get sticker;
 }
