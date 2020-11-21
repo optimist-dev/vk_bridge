@@ -1,4 +1,4 @@
-import 'package:built_collection/built_collection.dart';
+import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
@@ -9,7 +9,8 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
-import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
+
+import 'vk_bridge_web.dart' if (dart.library.io) 'unsupported.dart'
     as vk_bridge;
 
 /// Contact for interacting with VK Mini Aps platform
@@ -20,7 +21,7 @@ abstract class VKBridge {
   void setLogger(Logger logger);
 
   /// Singleton of the VK Bridge
-  static final instance = vk_bridge.VKBridge();
+  static final VKBridge instance = vk_bridge.VKBridge();
 
   /// When the service is started, additional parameters are passed to the URL
   /// specified in the application control, containing data about the user and
@@ -66,7 +67,7 @@ abstract class VKBridge {
   /// [link] the link to share
   /// (by default - the current link in the form of https://vk.com/app123#hash)
   /// Platforms: iOS, Android, Web, Mobile Web
-  Future<VKWebAppShareResult> share(String link);
+  Future<VKWebAppShareResult> share([String link]);
 
   /// [VKWebAppShowImages] opens the native screen for viewing images.
   /// Platforms: iOS, Android, Mobile Web
@@ -74,7 +75,7 @@ abstract class VKBridge {
   /// [startIndex] index of the image from which to start displaying, starting
   /// from 0.
   Future<VKWebAppBoolResult> showImages(
-    BuiltList<String> images, {
+    List<String> images, {
     int startIndex,
   });
 
@@ -83,7 +84,10 @@ abstract class VKBridge {
   /// Platforms: iOS, Android
   /// [url] link to the file to download.
   /// [filename] file name.
-  Future<VKWebAppBoolResult> downloadFile(String url, String filename);
+  Future<VKWebAppBoolResult> downloadFile({
+    @required String url,
+    @required String filename,
+  });
 
   /// Raising the [VKWebAppCopyText] event allows you to copy text to the
   /// clipboard.

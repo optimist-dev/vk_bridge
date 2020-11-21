@@ -9,6 +9,7 @@ import 'dart:js_util';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:js/js.dart';
+import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
@@ -179,14 +180,14 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppShareResult> share(String link) {
+  Future<VKWebAppShareResult> share([String link]) {
     final options = ShareOptions((b) => b..link = link);
     return _sendInternal('VKWebAppShare', options);
   }
 
   @override
   Future<VKWebAppBoolResult> showImages(
-    BuiltList<String> images, {
+    List<String> images, {
     int startIndex,
   }) {
     assert(images != null, "Images can't be null");
@@ -197,14 +198,17 @@ class VKBridge implements vk_bridge.VKBridge {
     );
     final options = ShowImagesOptions(
       (b) => b
-        ..images = images.toBuilder()
+        ..images = ListBuilder<String>(images)
         ..startIndex = startIndex,
     );
     return _sendInternal('VKWebAppShowImages', options);
   }
 
   @override
-  Future<VKWebAppBoolResult> downloadFile(String url, String filename) {
+  Future<VKWebAppBoolResult> downloadFile({
+    @required String url,
+    @required String filename,
+  }) {
     assert(url != null && url.isNotEmpty, "Url can't be null or empty");
     assert(
       filename != null && filename.isNotEmpty,

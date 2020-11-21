@@ -20,6 +20,11 @@ abstract class VKWebAppShareResult
 
   /// string containing owner_id - user ID and record id in the format
   /// <owner_id>_<id>
+  @nullable
   @BuiltValueField(wireName: 'post_id')
   int get postId;
+
+  /// TODO(sanekyy): enum
+  /// this field missed in official documentation :(
+  String get type;
 }

@@ -1,4 +1,4 @@
-import 'package:built_collection/built_collection.dart';
+import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
@@ -38,7 +38,7 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppShareResult> share(String link) => throw _unsupportedError;
+  Future<VKWebAppShareResult> share([String link]) => throw _unsupportedError;
 
   @override
   Stream<VKWebAppUpdateConfig> get updateConfigStream =>
@@ -46,13 +46,16 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> showImages(
-    BuiltList<String> images, {
+    List<String> images, {
     int startIndex,
   }) =>
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppBoolResult> downloadFile(String url, String filename) =>
+  Future<VKWebAppBoolResult> downloadFile({
+    @required String url,
+    @required String filename,
+  }) =>
       throw _unsupportedError;
 
   @override

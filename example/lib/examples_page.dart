@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vk_bridge/vk_bridge.dart';
 
 class ExamplesPage extends StatefulWidget {
   @override
@@ -9,18 +10,21 @@ class _ExamplesPageState extends State<ExamplesPage> {
   // static const _flutterSampleVkMiniAppId = 7638841;
   // static const _vkMiniAppGroupId = 166562603;
 
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              // Text("Main Events"),
+            children: [
+              const Text('Main Events'),
               // _button(
               //   title: "allowNotifications",
-              //   onPressed: () => VKBridge
+              //   onPressed: () => VKBridge.instance
               //       .allowNotifications(), //.catchError(showErrorDialog),
               // ),
               // _button(
@@ -28,31 +32,35 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //   onPressed: () =>
               //       VKBridge.denyNotifications().catchError(showErrorDialog),
               // ),
-              // _button(
-              //   title: "share",
-              //   onPressed: () => VKBridge.share().catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'share',
+                onPressed: () => VKBridge.instance
+                    .share()
+                    .then(_showResultDialog)
+                    .catchError(_showErrorDialog),
+              ),
               // _button(
               //   title: "showWallPostBox",
               //   onPressed: () => VKBridge.showWallPostBox("Hello World!")
               //       .catchError(showErrorDialog),
               // ),
-              // _button(
-              //   title: "showImages",
-              //   onPressed: () => VKBridge.showImages(
-              //     [
-              //       "https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg",
-              //       "https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg",
-              //       "https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg"
-              //     ],
-              //   ).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getClientVersion",
-              //   onPressed: () => VKBridge.getClientVersion()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'showImages',
+                onPressed: () => VKBridge.instance.showImages(
+                  [
+                    'https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg',
+                    'https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg',
+                    'https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg'
+                  ],
+                ).catchError(_showErrorDialog),
+              ),
+              _button(
+                title: 'getClientVersion',
+                onPressed: () => VKBridge.instance
+                    .getClientVersion()
+                    .then(_showResultDialog)
+                    .catchError(_showErrorDialog),
+              ),
               // _button(
               //   title: "addToFavorites",
               //   onPressed: () =>
@@ -73,20 +81,23 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //   onPressed: () => VKBridge.appClose(status: "success")
               //       .catchError(showErrorDialog),
               // ),
-              // _button(
-              //   title: "copyText",
-              //   onPressed: () =>
-              //       VKBridge.copyText(text: "Sample text for copy buffer")
-              //           .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "downloadFile",
-              //   onPressed: () => VKBridge.downloadFile(
-              //     url:
-              //     "https://sun9-28.userapi.com/c846420/v846420985/1526c3/ISX7VF8NjZk.jpg",
-              //     filename: "test.jpg",
-              //   ).catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'copyText',
+                onPressed: () => VKBridge.instance
+                    .copyText('Sample text for copy buffer')
+                    .then(_showSuccessBottomSheet)
+                    .catchError(_showErrorDialog),
+              ),
+              _button(
+                title: 'downloadFile',
+                onPressed: () => VKBridge.instance
+                    .downloadFile(
+                      url:
+                          'https://sun9-28.userapi.com/c846420/v846420985/1526c3/ISX7VF8NjZk.jpg',
+                      filename: 'test.jpg',
+                    )
+                    .catchError(_showErrorDialog),
+              ),
               // _button(
               //   title: "addToHomeScreenInfo",
               //   onPressed: () => VKBridge.addToHomeScreenInfo()
@@ -105,28 +116,33 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //       .then(showResultDialog)
               //       .catchError(showErrorDialog),
               // ),
-              // Text("Getting user data"),
+              const Text('Getting user data'),
+              _button(
+                title: 'getUserInfo',
+                onPressed: () => VKBridge.instance
+                    .getUserInfo()
+                    .then(_showResultDialog)
+                    .catchError(_showErrorDialog),
+              ),
+              _button(
+                title: 'getGeodata',
+                onPressed: () => VKBridge.instance
+                    .getGeodata()
+                    .then(_showResultDialog)
+                    .catchError(_showErrorDialog),
+              ),
               // _button(
-              //   title: "getUserInfo",
-              //   onPressed: () => VKBridge.getUserInfo()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getGeodata",
-              //   onPressed: () => VKBridge.getGeodata()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getPersonalCard",
-              //   onPressed: () => VKBridge.getPersonalCard(
-              //     [
-              //       "phone",
-              //       "email",
-              //       "address",
-              //     ],
-              //   ).then(showResultDialog).catchError(showErrorDialog),
+              //   title: 'getPersonalCard',
+              //   onPressed: () => VKBridge.instance
+              //       .getPersonalCard(
+              //         [
+              //           'phone',
+              //           'email',
+              //           'address',
+              //         ],
+              //       )
+              //       .then(_showResultDialog)
+              //       .catchError(_showErrorDialog),
               // ),
               // _button(
               //   title: "getPhoneNumber",
@@ -291,11 +307,18 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //     description: "Donate on VK Bridge for Flutter",
               //   ).then(showResultDialog).catchError(showErrorDialog),
               // ),
-              // Text("Opening story editor"),
-              // _button(
-              //   title: "showStoryBox",
-              //   onPressed: () => VKBridge.showStoryBox(),
-              // ),
+              const Text('Opening story editor'),
+              _button(
+                title: 'showStoryBox',
+                onPressed: () => VKBridge.instance.showStoryBox(
+                  ShowStoryBoxOptions(
+                    (b) => b
+                      ..backgroundType = 'image'
+                      ..url =
+                          'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg',
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -303,44 +326,60 @@ class _ExamplesPageState extends State<ExamplesPage> {
     );
   }
 
-  // Widget _button({
-  //   @required String title,
-  //   @required VoidCallback onPressed,
-  // }) {
-  //   return Padding(
-  //     padding: EdgeInsets.all(16),
-  //     child: RaisedButton(
-  //       child: Text(title),
-  //       onPressed: onPressed,
-  //     ),
-  //   );
-  // }
-//
-//   void showResultDialog(Object result) {
-//     if (result == null) return;
-//
-//     showDialog(
-//       context: context,
-//       builder: (context) => Dialog(
-//         child: Text(
-//           stringify(result),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   void showErrorDialog(Object error) {
-//     if (error == null) return;
-//
-//     showDialog(
-//       context: context,
-//       builder: (context) => Dialog(
-//         child: Text(
-//           stringify(error),
-//         ),
-//       ),
-//     );
-//   }
+  Widget _button({
+    @required String title,
+    @required VoidCallback onPressed,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: RaisedButton(
+        child: Text(title),
+        onPressed: onPressed,
+      ),
+    );
+  }
+
+  void _showSuccessBottomSheet(VKWebAppBoolResult result) {
+    if (result.result) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Success'),
+        ),
+      );
+    }
+  }
+
+  void _showResultDialog(Object result) {
+    if (result == null) {
+      return;
+    }
+
+    showDialog<void>(
+      context: context,
+      builder: (context) => Dialog(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(result.toString()),
+        ),
+      ),
+    );
+  }
+
+  void _showErrorDialog(Object error) {
+    if (error == null) {
+      return;
+    }
+
+    showDialog<void>(
+      context: context,
+      builder: (context) => Dialog(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(error.toString()),
+        ),
+      ),
+    );
+  }
 //
 //   Widget _showCommunityWidgetPreviewBoxButton() {
 //     return _button(

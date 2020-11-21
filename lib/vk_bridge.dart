@@ -19,3 +19,4 @@ export 'src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_g
 export 'src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 export 'src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 export 'src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+export 'src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
