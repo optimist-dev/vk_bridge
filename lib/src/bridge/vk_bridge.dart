@@ -16,7 +16,7 @@ import 'unsupported.dart' if (dart.library.html) 'vk_bridge_web.dart'
 /// Original VK documentation here: https://vk.com/dev/vk_bridge_events
 abstract class VKBridge {
   /// Set the [logger] as logger
-  /// The library can print debug and error logs at runtime
+  /// The package can print debug and error logs at runtime
   void setLogger(Logger logger);
 
   /// Singleton of the VK Bridge

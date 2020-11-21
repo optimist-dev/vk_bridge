@@ -1,9 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'share_options.g.dart';
 
-/// Options for share method
+/// Options for [VKBridge.share]
 abstract class ShareOptions
     implements Built<ShareOptions, ShareOptionsBuilder> {
   /// [ShareOptions] factory
@@ -15,7 +16,8 @@ abstract class ShareOptions
   /// [ShareOptions] serializer
   static Serializer<ShareOptions> get serializer => _$shareOptionsSerializer;
 
-  /// link for sharing
+  /// Link for sharing
+  /// (by default - the current link in the form of https://vk.com/app123#hash)
   @nullable
   String get link;
 }

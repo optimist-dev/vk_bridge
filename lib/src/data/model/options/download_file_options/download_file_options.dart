@@ -1,9 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'download_file_options.g.dart';
 
-/// Options for downloadFile method
+/// Options for [VKBridge.downloadFile]
 abstract class DownloadFileOptions
     implements Built<DownloadFileOptions, DownloadFileOptionsBuilder> {
   /// [DownloadFileOptions] factory

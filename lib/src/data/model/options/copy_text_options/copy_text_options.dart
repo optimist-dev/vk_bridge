@@ -1,9 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'copy_text_options.g.dart';
 
-/// Options for copyText method
+/// Options for [VKBridge.copyText]
 abstract class CopyTextOptions
     implements Built<CopyTextOptions, CopyTextOptionsBuilder> {
   /// [CopyTextOptions] factory

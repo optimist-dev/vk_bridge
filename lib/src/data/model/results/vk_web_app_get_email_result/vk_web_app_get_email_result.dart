@@ -1,9 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'vk_web_app_get_email_result.g.dart';
 
-/// Result of getEmail method
+/// Result of [VKBridge.getEmail]
 abstract class VKWebAppGetEmailResult
     implements Built<VKWebAppGetEmailResult, VKWebAppGetEmailResultBuilder> {
   /// [VKWebAppGetEmailResult] factory

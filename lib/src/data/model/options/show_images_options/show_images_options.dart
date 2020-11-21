@@ -1,10 +1,11 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'show_images_options.g.dart';
 
-/// Options for showImages method
+/// Options for [VKBridge.showImages]
 abstract class ShowImagesOptions
     implements Built<ShowImagesOptions, ShowImagesOptionsBuilder> {
   /// [ShowImagesOptions] factory

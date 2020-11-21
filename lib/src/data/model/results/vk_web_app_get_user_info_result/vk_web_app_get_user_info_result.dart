@@ -1,11 +1,12 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/city.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/country.dart';
 
 part 'vk_web_app_get_user_info_result.g.dart';
 
-/// Result of method getUserInfo
+/// Result of [VKBridge.getUserInfo]
 abstract class VKWebAppGetUserInfoResult
     implements
         Built<VKWebAppGetUserInfoResult, VKWebAppGetUserInfoResultBuilder> {
@@ -32,7 +33,10 @@ abstract class VKWebAppGetUserInfoResult
   String get lastName;
 
   // TODO(sanekyy): enum
-  /// Sex. Possible values: 1 - female; 2 - male; 0 - gender is not specified
+  /// Sex. Possible values:
+  /// - 1 - female
+  /// - 2 - male
+  /// - 0 - gender is not specified
   int get sex;
 
   // TODO(sanekyy): DateTime

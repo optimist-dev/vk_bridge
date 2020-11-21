@@ -3,7 +3,7 @@ import 'package:built_value/serializer.dart';
 
 part 'launch_params.g.dart';
 
-/// Params of init method
+/// Launch params
 abstract class LaunchParams
     implements Built<LaunchParams, LaunchParamsBuilder> {
   /// [LaunchParams] factory

@@ -1,9 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'vk_web_app_get_geodata_result.g.dart';
 
-/// Result of getGeodata method
+/// Result of [VKBridge.getGeodata]
 abstract class VKWebAppGetGeodataResult
     implements
         Built<VKWebAppGetGeodataResult, VKWebAppGetGeodataResultBuilder> {

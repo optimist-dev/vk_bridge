@@ -39,7 +39,7 @@ external Object _send(String method, [Object props]);
 @JS('vkBridgeDartListener')
 external set _vkBridgeDartListener(void Function(Object event) f);
 
-/// Implementation of the VK Mini Aps platform contact
+/// Web implementation of the VK Mini Aps platform contact
 class VKBridge implements vk_bridge.VKBridge {
   @override
   void setLogger(Logger logger) => _logger = logger ?? _Logger();
@@ -133,7 +133,7 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> init() async {
     _vkBridgeDartListener = allowInterop(_eventHandler);
 
-    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult, Object>(
+    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult, void>(
       'VKWebAppInit',
     );
 
@@ -161,19 +161,19 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetUserInfoResult> getUserInfo() {
-    return _sendInternal<VKWebAppGetUserInfoResult, Object>(
+    return _sendInternal<VKWebAppGetUserInfoResult, void>(
       'VKWebAppGetUserInfo',
     );
   }
 
   @override
   Future<VKWebAppGetEmailResult> getEmail() {
-    return _sendInternal<VKWebAppGetEmailResult, Object>('VKWebAppGetEmail');
+    return _sendInternal<VKWebAppGetEmailResult, void>('VKWebAppGetEmail');
   }
 
   @override
   Future<VKWebAppGetClientVersionResult> getClientVersion() {
-    return _sendInternal<VKWebAppGetClientVersionResult, Object>(
+    return _sendInternal<VKWebAppGetClientVersionResult, void>(
       'VKWebAppGetClientVersion',
     );
   }
@@ -226,7 +226,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetGeodataResult> getGeodata() {
-    return _sendInternal<VKWebAppGetGeodataResult, Object>(
+    return _sendInternal<VKWebAppGetGeodataResult, void>(
       'VKWebAppGetGeodata',
     );
   }

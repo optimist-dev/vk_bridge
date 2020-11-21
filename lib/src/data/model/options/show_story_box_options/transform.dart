@@ -35,9 +35,16 @@ abstract class Transform implements Built<Transform, TransformBuilder> {
   double get translationY;
 
   // TODO(sanekyy): enum
-  /// Gravity. Default: center. Possible values: left_top, left_center,
-  /// left_bottom, center_top, center, center_bottom, right_top, right_center,
-  /// right_bottom
+  /// Gravity. Default: center. Possible values:
+  /// - left_top
+  /// - left_center
+  /// - left_bottom
+  /// - center_top
+  /// - center
+  /// - center_bottom
+  /// - right_top
+  /// - right_center
+  /// - right_bottom
   @nullable
   String get gravity;
 }

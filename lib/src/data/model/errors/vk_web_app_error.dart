@@ -4,7 +4,7 @@ import 'package:vk_bridge/src/data/model/errors/error_data.dart';
 
 part 'vk_web_app_error.g.dart';
 
-/// VK Bridge event errors
+/// VK Bridge event error
 abstract class VKWebAppError
     implements Built<VKWebAppError, VKWebAppErrorBuilder> {
   /// [VKWebAppError] factory
