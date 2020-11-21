@@ -80,8 +80,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
       _logger.d('send($method, $propsJson)');
 
-      final Object jsObjectResult =
-          await promiseToFuture(_send(method, parse(propsJson)));
+      final jsObjectResult =
+          await promiseToFuture<Object>(_send(method, parse(propsJson)));
       final jsonResult = stringify(jsObjectResult);
       final Object decodedJson = jsonDecode(jsonResult);
       try {
@@ -138,7 +138,7 @@ class VKBridge implements vk_bridge.VKBridge {
     );
 
     /// https://vk.cc/9AjsnM
-    String rawLaunchParams = window.location.search;
+    var rawLaunchParams = window.location.search;
     if (rawLaunchParams.startsWith('?')) {
       rawLaunchParams = rawLaunchParams.substring(1);
     }
