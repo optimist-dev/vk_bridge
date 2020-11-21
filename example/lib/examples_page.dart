@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vk_bridge/vk_bridge.dart';
 
 class ExamplesPage extends StatefulWidget {
   @override
@@ -7,8 +6,8 @@ class ExamplesPage extends StatefulWidget {
 }
 
 class _ExamplesPageState extends State<ExamplesPage> {
-  static const _flutterSampleVkMiniAppId = 7638841;
-  static const _vkMiniAppGroupId = 166562603;
+  // static const _flutterSampleVkMiniAppId = 7638841;
+  // static const _vkMiniAppGroupId = 166562603;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               // Text("Main Events"),
               // _button(
               //   title: "allowNotifications",
@@ -221,7 +220,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //       .then(showResultDialog)
               //       .catchError(showErrorDialog),
               // ),
-              // // TODO: тут можно по изменению хеша открыть другую страницу
+              // TODO(sanekyy): тут можно по изменению хеша открыть другую страницу
               // _button(
               //   title: "setLocation",
               //   onPressed: () => VKBridge.setLocation("hash-sample-page")
@@ -304,18 +303,18 @@ class _ExamplesPageState extends State<ExamplesPage> {
     );
   }
 
-  Widget _button({
-    @required String title,
-    @required VoidCallback onPressed,
-  }) {
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: RaisedButton(
-        child: Text(title),
-        onPressed: onPressed,
-      ),
-    );
-  }
+  // Widget _button({
+  //   @required String title,
+  //   @required VoidCallback onPressed,
+  // }) {
+  //   return Padding(
+  //     padding: EdgeInsets.all(16),
+  //     child: RaisedButton(
+  //       child: Text(title),
+  //       onPressed: onPressed,
+  //     ),
+  //   );
+  // }
 //
 //   void showResultDialog(Object result) {
 //     if (result == null) return;

@@ -3,16 +3,20 @@ import 'package:built_value/serializer.dart';
 
 part 'vk_web_app_bool_result.g.dart';
 
+/// Boolean result of operation
 abstract class VKWebAppBoolResult
     implements Built<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
-  static Serializer<VKWebAppBoolResult> get serializer =>
-      _$vKWebAppBoolResultSerializer;
-
-  bool get result;
-
-  VKWebAppBoolResult._();
-
+  /// [VKWebAppBoolResult] factory
   factory VKWebAppBoolResult(
           [void Function(VKWebAppBoolResultBuilder) updates]) =
       _$VKWebAppBoolResult;
+
+  VKWebAppBoolResult._();
+
+  /// [VKWebAppBoolResult] serializer
+  static Serializer<VKWebAppBoolResult> get serializer =>
+      _$vKWebAppBoolResultSerializer;
+
+  /// Result
+  bool get result;
 }
