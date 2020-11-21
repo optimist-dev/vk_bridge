@@ -1,5 +1,6 @@
 name: vk_bridge
-
+description: A library for working with VK Mini Apps
+homepage: https://github.com/optimist-dev/vk_bridge
 version: 1.0.0+1
 
 environment:
