@@ -66,4 +66,10 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future showStoryBox(ShowStoryBoxOptions options) => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> allowNotifications() => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> denyNotifications() => throw _unsupportedError;
 }

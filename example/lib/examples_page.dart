@@ -22,16 +22,20 @@ class _ExamplesPageState extends State<ExamplesPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text('Main Events'),
-              // _button(
-              //   title: "allowNotifications",
-              //   onPressed: () => VKBridge.instance
-              //       .allowNotifications(), //.catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "denyNotifications",
-              //   onPressed: () =>
-              //       VKBridge.denyNotifications().catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'allowNotifications',
+                onPressed: () => VKBridge.instance
+                    .allowNotifications()
+                    .then(_showSuccessBottomSheet)
+                    .catchError(_showErrorDialog),
+              ),
+              _button(
+                title: "denyNotifications",
+                onPressed: () => VKBridge.instance
+                    .denyNotifications()
+                    .then(_showSuccessBottomSheet)
+                    .catchError(_showErrorDialog),
+              ),
               _button(
                 title: 'share',
                 onPressed: () => VKBridge.instance

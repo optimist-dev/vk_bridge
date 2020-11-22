@@ -104,4 +104,14 @@ abstract class VKBridge {
   /// [VKWebAppShowStoryBox] opens the story editor
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<dynamic> showStoryBox(ShowStoryBoxOptions options);
+
+  /// [VKWebAppAllowNotifications] allows you to ask the user for permission
+  /// to send notifications from the app.
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppBoolResult> allowNotifications();
+
+  /// [VKWebAppDenyNotifications] allows you
+  /// to disable notifications from an app.
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppBoolResult> denyNotifications();
 }

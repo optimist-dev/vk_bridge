@@ -63,7 +63,11 @@ class VKBridge implements vk_bridge.VKBridge {
   Stream<VKWebAppUpdateConfig> get updateConfigStream =>
       _updateConfigSubject.stream;
 
-  Future<Result> _sendInternal<Result, Options>(
+  Future<Result> _sendInternal<Result>(String method) async {
+    return _sendInternalWithOptions<Result, void>(method);
+  }
+
+  Future<Result> _sendInternalWithOptions<Result, Options>(
     String method, [
     Options props,
   ]) async {
@@ -134,7 +138,7 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> init() async {
     _vkBridgeDartListener = allowInterop(_eventHandler);
 
-    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult, void>(
+    final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult>(
       'VKWebAppInit',
     );
 
@@ -162,27 +166,23 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetUserInfoResult> getUserInfo() {
-    return _sendInternal<VKWebAppGetUserInfoResult, void>(
-      'VKWebAppGetUserInfo',
-    );
+    return _sendInternal('VKWebAppGetUserInfo');
   }
 
   @override
   Future<VKWebAppGetEmailResult> getEmail() {
-    return _sendInternal<VKWebAppGetEmailResult, void>('VKWebAppGetEmail');
+    return _sendInternal<VKWebAppGetEmailResult>('VKWebAppGetEmail');
   }
 
   @override
   Future<VKWebAppGetClientVersionResult> getClientVersion() {
-    return _sendInternal<VKWebAppGetClientVersionResult, void>(
-      'VKWebAppGetClientVersion',
-    );
+    return _sendInternal('VKWebAppGetClientVersion');
   }
 
   @override
   Future<VKWebAppShareResult> share([String link]) {
     final options = ShareOptions((b) => b..link = link);
-    return _sendInternal('VKWebAppShare', options);
+    return _sendInternalWithOptions('VKWebAppShare', options);
   }
 
   @override
@@ -201,7 +201,7 @@ class VKBridge implements vk_bridge.VKBridge {
         ..images = ListBuilder<String>(images)
         ..startIndex = startIndex,
     );
-    return _sendInternal('VKWebAppShowImages', options);
+    return _sendInternalWithOptions('VKWebAppShowImages', options);
   }
 
   @override
@@ -219,25 +219,33 @@ class VKBridge implements vk_bridge.VKBridge {
         ..url = url
         ..filename = filename,
     );
-    return _sendInternal('VKWebAppDownloadFile', options);
+    return _sendInternalWithOptions('VKWebAppDownloadFile', options);
   }
 
   @override
   Future<VKWebAppBoolResult> copyText(String text) {
     final options = CopyTextOptions((b) => b.text = text);
-    return _sendInternal('VKWebAppCopyText', options);
+    return _sendInternalWithOptions('VKWebAppCopyText', options);
   }
 
   @override
   Future<VKWebAppGetGeodataResult> getGeodata() {
-    return _sendInternal<VKWebAppGetGeodataResult, void>(
-      'VKWebAppGetGeodata',
-    );
+    return _sendInternal('VKWebAppGetGeodata');
   }
 
   @override
   Future<VKWebAppBoolResult> showStoryBox(ShowStoryBoxOptions options) {
-    return _sendInternal('VKWebAppShowStoryBox', options);
+    return _sendInternalWithOptions('VKWebAppShowStoryBox', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> allowNotifications() {
+    return _sendInternal('VKWebAppAllowNotifications');
+  }
+
+  @override
+  Future<VKWebAppBoolResult> denyNotifications() {
+    return _sendInternal('VKWebAppDenyNotifications');
   }
 }
 
