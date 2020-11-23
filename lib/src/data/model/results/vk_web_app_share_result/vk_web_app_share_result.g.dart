@@ -24,10 +24,15 @@ class _$VKWebAppShareResultSerializer
       Serializers serializers, VKWebAppShareResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'post_id',
-      serializers.serialize(object.postId, specifiedType: const FullType(int)),
+      'type',
+      serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
-
+    if (object.postId != null) {
+      result
+        ..add('post_id')
+        ..add(serializers.serialize(object.postId,
+            specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -47,6 +52,10 @@ class _$VKWebAppShareResultSerializer
           result.postId = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'type':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -57,14 +66,16 @@ class _$VKWebAppShareResultSerializer
 class _$VKWebAppShareResult extends VKWebAppShareResult {
   @override
   final int postId;
+  @override
+  final String type;
 
   factory _$VKWebAppShareResult(
           [void Function(VKWebAppShareResultBuilder) updates]) =>
       (new VKWebAppShareResultBuilder()..update(updates)).build();
 
-  _$VKWebAppShareResult._({this.postId}) : super._() {
-    if (postId == null) {
-      throw new BuiltValueNullFieldError('VKWebAppShareResult', 'postId');
+  _$VKWebAppShareResult._({this.postId, this.type}) : super._() {
+    if (type == null) {
+      throw new BuiltValueNullFieldError('VKWebAppShareResult', 'type');
     }
   }
 
@@ -80,18 +91,21 @@ class _$VKWebAppShareResult extends VKWebAppShareResult {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VKWebAppShareResult && postId == other.postId;
+    return other is VKWebAppShareResult &&
+        postId == other.postId &&
+        type == other.type;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, postId.hashCode));
+    return $jf($jc($jc(0, postId.hashCode), type.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppShareResult')
-          ..add('postId', postId))
+          ..add('postId', postId)
+          ..add('type', type))
         .toString();
   }
 }
@@ -104,11 +118,16 @@ class VKWebAppShareResultBuilder
   int get postId => _$this._postId;
   set postId(int postId) => _$this._postId = postId;
 
+  String _type;
+  String get type => _$this._type;
+  set type(String type) => _$this._type = type;
+
   VKWebAppShareResultBuilder();
 
   VKWebAppShareResultBuilder get _$this {
     if (_$v != null) {
       _postId = _$v.postId;
+      _type = _$v.type;
       _$v = null;
     }
     return this;
@@ -129,7 +148,8 @@ class VKWebAppShareResultBuilder
 
   @override
   _$VKWebAppShareResult build() {
-    final _$result = _$v ?? new _$VKWebAppShareResult._(postId: postId);
+    final _$result =
+        _$v ?? new _$VKWebAppShareResult._(postId: postId, type: type);
     replace(_$result);
     return _$result;
   }

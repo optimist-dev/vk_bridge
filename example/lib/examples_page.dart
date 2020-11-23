@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vk_bridge/vk_bridge.dart';
 
 class ExamplesPage extends StatefulWidget {
   @override
@@ -7,133 +8,116 @@ class ExamplesPage extends StatefulWidget {
 
 class _ExamplesPageState extends State<ExamplesPage> {
   // static const _flutterSampleVkMiniAppId = 7638841;
+  static const _vkBridgeOriginalVKMiniAppId = 6909581;
+
   // static const _vkMiniAppGroupId = 166562603;
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              // Text("Main Events"),
-              // _button(
-              //   title: "allowNotifications",
-              //   onPressed: () => VKBridge
-              //       .allowNotifications(), //.catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "denyNotifications",
-              //   onPressed: () =>
-              //       VKBridge.denyNotifications().catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "share",
-              //   onPressed: () => VKBridge.share().catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "showWallPostBox",
-              //   onPressed: () => VKBridge.showWallPostBox("Hello World!")
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "showImages",
-              //   onPressed: () => VKBridge.showImages(
-              //     [
-              //       "https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg",
-              //       "https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg",
-              //       "https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg"
-              //     ],
-              //   ).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getClientVersion",
-              //   onPressed: () => VKBridge.getClientVersion()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "addToFavorites",
-              //   onPressed: () =>
-              //       VKBridge.addToFavorites().catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "openCodeReader",
-              //   onPressed: () =>
-              //       VKBridge.openCodeReader().catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "openApp",
-              //   onPressed: () => VKBridge.openApp(appId: 6909581)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "appClose",
-              //   onPressed: () => VKBridge.appClose(status: "success")
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "copyText",
-              //   onPressed: () =>
-              //       VKBridge.copyText(text: "Sample text for copy buffer")
-              //           .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "downloadFile",
-              //   onPressed: () => VKBridge.downloadFile(
-              //     url:
-              //     "https://sun9-28.userapi.com/c846420/v846420985/1526c3/ISX7VF8NjZk.jpg",
-              //     filename: "test.jpg",
-              //   ).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "addToHomeScreenInfo",
-              //   onPressed: () => VKBridge.addToHomeScreenInfo()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "addToHomeScreen",
-              //   onPressed: () => VKBridge.addToHomeScreen()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "sendToClient",
-              //   onPressed: () => VKBridge.sendToClient()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // Text("Getting user data"),
-              // _button(
-              //   title: "getUserInfo",
-              //   onPressed: () => VKBridge.getUserInfo()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getGeodata",
-              //   onPressed: () => VKBridge.getGeodata()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getPersonalCard",
-              //   onPressed: () => VKBridge.getPersonalCard(
-              //     [
-              //       "phone",
-              //       "email",
-              //       "address",
-              //     ],
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getPhoneNumber",
-              //   onPressed: () => VKBridge.getPhoneNumber()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
+            children: [
+              const Text('Main Events'),
+              _button(
+                title: 'allowNotifications',
+                call: (it) => it.allowNotifications(),
+              ),
+              _button(
+                title: 'denyNotifications',
+                call: (it) => it.denyNotifications(),
+              ),
+              _button(
+                title: 'share',
+                call: (it) => it.share(),
+              ),
+              _button(
+                title: 'showWallPostBox',
+                call: (it) => it.showWallPostBox('Hello World!'),
+              ),
+              _button(
+                title: 'showImages',
+                call: (it) => it.showImages(
+                  [
+                    'https://pp.userapi.com/c639229/v639229113/31b31/KLVUrSZwAM4.jpg',
+                    'https://pp.userapi.com/c639229/v639229113/31b94/mWQwkgDjav0.jpg',
+                    'https://pp.userapi.com/c639229/v639229113/31b3a/Lw2it6bdISc.jpg'
+                  ],
+                ),
+              ),
+              _button(
+                title: 'getClientVersion',
+                call: (it) => it.getClientVersion(),
+              ),
+              _button(
+                title: 'addToFavorites',
+                call: (it) => it.addToFavorites(),
+              ),
+              _button(
+                title: 'openCodeReader',
+                call: (it) => it.openCodeReader(),
+              ),
+              _button(
+                title: 'openApp',
+                call: (it) => it.openApp(
+                  appId: _vkBridgeOriginalVKMiniAppId,
+                  location: 'test',
+                ),
+              ),
+              _button(
+                title: 'close',
+                call: (it) => it.close(status: 'success'),
+              ),
+              _button(
+                  title: 'copyText',
+                  call: (it) => it.copyText('Sample text for copy buffer')),
+              _button(
+                title: 'downloadFile',
+                call: (it) => it.downloadFile(
+                  url:
+                      'https://sun9-28.userapi.com/c846420/v846420985/1526c3/ISX7VF8NjZk.jpg',
+                  filename: 'test.jpg',
+                ),
+              ),
+              _button(
+                title: 'addToHomeScreenInfo',
+                call: (it) => it.addToHomeScreenInfo(),
+              ),
+              _button(
+                title: 'addToHomeScreen',
+                call: (it) => it.addToHomeScreen(),
+              ),
+              _button(
+                title: 'sendToClient',
+                call: (it) => it.sendToClient(),
+              ),
+              const Text('Getting user data'),
+              _button(
+                title: 'getUserInfo',
+                call: (it) => it.getUserInfo(),
+              ),
+              _button(
+                title: 'getGeodata',
+                call: (it) => it.getGeodata(),
+              ),
+              _button(
+                  title: 'getPersonalCard',
+                  call: (it) => it.getPersonalCard(
+                        [
+                          'phone',
+                          'email',
+                          'address',
+                        ],
+                      )),
+              _button(
+                title: 'getPhoneNumber',
+                call: (it) => it.getPhoneNumber(),
+              ),
               // _button(
               //   title: "getFriends",
               //   onPressed: () => VKBridge.getFriends()
@@ -291,11 +275,18 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //     description: "Donate on VK Bridge for Flutter",
               //   ).then(showResultDialog).catchError(showErrorDialog),
               // ),
-              // Text("Opening story editor"),
-              // _button(
-              //   title: "showStoryBox",
-              //   onPressed: () => VKBridge.showStoryBox(),
-              // ),
+              const Text('Opening story editor'),
+              _button(
+                title: 'showStoryBox',
+                call: (it) => it.showStoryBox(
+                  ShowStoryBoxOptions(
+                    (b) => b
+                      ..backgroundType = 'image'
+                      ..url =
+                          'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg',
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -303,44 +294,66 @@ class _ExamplesPageState extends State<ExamplesPage> {
     );
   }
 
-  // Widget _button({
-  //   @required String title,
-  //   @required VoidCallback onPressed,
-  // }) {
-  //   return Padding(
-  //     padding: EdgeInsets.all(16),
-  //     child: RaisedButton(
-  //       child: Text(title),
-  //       onPressed: onPressed,
-  //     ),
-  //   );
-  // }
-//
-//   void showResultDialog(Object result) {
-//     if (result == null) return;
-//
-//     showDialog(
-//       context: context,
-//       builder: (context) => Dialog(
-//         child: Text(
-//           stringify(result),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   void showErrorDialog(Object error) {
-//     if (error == null) return;
-//
-//     showDialog(
-//       context: context,
-//       builder: (context) => Dialog(
-//         child: Text(
-//           stringify(error),
-//         ),
-//       ),
-//     );
-//   }
+  Widget _button({
+    @required String title,
+    @required Future<Object> Function(VKBridge vkBridge) call,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: RaisedButton(
+        child: Text(title),
+        onPressed: () => _callVKBridge(call),
+      ),
+    );
+  }
+
+  void _callVKBridge(Future<Object> Function(VKBridge vkBridge) call) {
+    try {
+      call(VKBridge.instance).then(_showResult).catchError(_showErrorDialog);
+    } catch (e) {
+      print('_callVKBridge: $e');
+    }
+  }
+
+  void _showResult(Object result) {
+    if (result == null) {
+      return;
+    }
+
+    if (result is VKWebAppBoolResult && result.result) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Success'),
+        ),
+      );
+    } else {
+      showDialog<void>(
+        context: context,
+        builder: (context) => Dialog(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(result.toString()),
+          ),
+        ),
+      );
+    }
+  }
+
+  void _showErrorDialog(Object error) {
+    if (error == null) {
+      return;
+    }
+
+    showDialog<void>(
+      context: context,
+      builder: (context) => Dialog(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(error.toString()),
+        ),
+      ),
+    );
+  }
 //
 //   Widget _showCommunityWidgetPreviewBoxButton() {
 //     return _button(

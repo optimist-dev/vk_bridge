@@ -6,8 +6,12 @@ import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_personal_card_options/get_personal_card_options.dart';
+import 'package:vk_bridge/src/data/model/options/open_app_options/open_app_options.dart';
+import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_app.dart';
@@ -18,14 +22,21 @@ import 'package:vk_bridge/src/data/model/options/show_story_box_options/renderab
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/sticker_container.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/transform.dart';
+import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show_wall_post_box_options.dart';
+import 'package:vk_bridge/src/data/model/results/common/city.dart';
+import 'package:vk_bridge/src/data/model/results/common/country.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
-import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/city.dart';
-import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/country.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/address.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 
 part 'serializers.g.dart';
 
@@ -55,6 +66,17 @@ part 'serializers.g.dart';
   ActionApp,
   ActionLink,
   Transform,
+  VKWebAppShowWallPostBoxOptions,
+  VKWebAppShowWallPostBoxResult,
+  OpenAppOptions,
+  VKWebAppOpenAppResult,
+  CloseOptions,
+  VKWebAppAddToHomeScreenInfoResult,
+  SendToClientOptions,
+  GetPersonalCardOptions,
+  Address,
+  VKWebAppGetPersonalCardResult,
+  VKWebAppGetPhoneNumberResult,
 ])
 
 /// Serializers

@@ -3,7 +3,21 @@ import 'package:vk_bridge/vk_bridge.dart';
 
 import 'examples_page.dart';
 
+class SimpleLogger implements Logger {
+  @override
+  void d(Object message) {
+    print('vk_bridge.d: $message');
+  }
+
+  @override
+  void e(Object message) {
+    print('vk_bridge.e: $message');
+  }
+}
+
 Future<void> main() async {
+  VKBridge.instance.setLogger(SimpleLogger());
+
   final result = await VKBridge.instance.init();
 
   print('VKBridge.init: $result');
