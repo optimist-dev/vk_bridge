@@ -18,5 +18,5 @@ dev_dependencies:
   built_value_generator: ^7.1.0
 
 dependency_overrides:
-  # из-за built_value_generator
+  # dut to built_value_generator
   analyzer: ^0.41.0

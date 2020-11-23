@@ -6,7 +6,9 @@ part 'vk_web_app_add_to_home_screen_info_result.g.dart';
 
 /// Result of [VKBridge.appClose]
 abstract class VKWebAppAddToHomeScreenInfoResult
-    implements Built<VKWebAppAddToHomeScreenInfoResult, VKWebAppAddToHomeScreenInfoResultBuilder> {
+    implements
+        Built<VKWebAppAddToHomeScreenInfoResult,
+            VKWebAppAddToHomeScreenInfoResultBuilder> {
   /// [VKWebAppAddToHomeScreenInfoResult] factory
   factory VKWebAppAddToHomeScreenInfoResult(
           [void Function(VKWebAppAddToHomeScreenInfoResultBuilder) updates]) =
