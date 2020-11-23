@@ -3,12 +3,18 @@ import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 
 import 'vk_bridge_web.dart' if (dart.library.io) 'unsupported.dart'
     as vk_bridge;
@@ -45,32 +51,40 @@ abstract class VKBridge {
   /// [VKWebAppInit] - the first event that your application must send to the
   /// official application to start working with VK Bridge. Otherwise, the
   /// service may not work on iOS and Android mobile clients.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppBoolResult> init();
 
   /// [VKWebAppGetUserInfo] allows you to get basic data about the current user
   /// profile.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppGetUserInfoResult> getUserInfo();
 
   /// [VKWebAppGetEmail] allows you to get the user's email address. After the
   /// call, it displays a screen asking for permission to access e-mail.
+  ///
   /// Platforms: iOS, Android, Web
   Future<VKWebAppGetEmailResult> getEmail();
 
   /// [VKWebAppGetClientVersion] returns the version number of the official VK
   /// application.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppGetClientVersionResult> getClientVersion();
 
   /// [VKWebAppShare] allows you to share a link.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
   /// [link] the link to share
   /// (by default - the current link in the form of https://vk.com/app123#hash)
-  /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppShareResult> share([String link]);
 
   /// [VKWebAppShowImages] opens the native screen for viewing images.
+  ///
   /// Platforms: iOS, Android, Mobile Web
+  ///
   /// [images] array of strings containing image URLs.
   /// [startIndex] index of the image from which to start displaying, starting
   /// from 0.
@@ -81,7 +95,9 @@ abstract class VKBridge {
 
   /// Raising the [VKWebAppDownloadFile] event allows you to download a file to
   /// the device.
+  ///
   /// Platforms: iOS, Android
+  ///
   /// [url] link to the file to download.
   /// [filename] file name.
   Future<VKWebAppBoolResult> downloadFile({
@@ -91,27 +107,128 @@ abstract class VKBridge {
 
   /// Raising the [VKWebAppCopyText] event allows you to copy text to the
   /// clipboard.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   /// [text] the text to copy
+  ///
   Future<VKWebAppBoolResult> copyText(String text);
 
   /// [VKWebAppGetGeodata] allows you to get data about the user's geolocation.
   /// The event takes no parameters. The official app shows a window asking for
   /// permission to transfer location.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppGetGeodataResult> getGeodata();
 
   /// [VKWebAppShowStoryBox] opens the story editor
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<dynamic> showStoryBox(ShowStoryBoxOptions options);
 
   /// [VKWebAppAllowNotifications] allows you to ask the user for permission
   /// to send notifications from the app.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppBoolResult> allowNotifications();
 
   /// [VKWebAppDenyNotifications] allows you
   /// to disable notifications from an app.
+  ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppBoolResult> denyNotifications();
+
+  /// [VKWebAppShowWallPostBox] allows the user to post to the wall.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [message] message which will be posted
+  Future<VKWebAppShowWallPostBoxResult> showWallPostBox(String message);
+
+  /// [VKWebAppAddToFavorites] invokes a request window
+  /// for adding a service to favorites.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppBoolResult> addToFavorites();
+
+  /// [VKWebAppOpenCodeReader] allows you to open the camera
+  /// to read the QR code and get the scan result.
+  ///
+  /// Platforms: iOS, Android
+  Future<VKWebAppOpenCodeReaderResult> openCodeReader();
+
+  /// [VKWebAppOpenApp] allows you to open another app
+  /// from the current VK Mini Apps.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [appId] the identifier of the application to be opened.
+  /// [location] hash, the line after the # in a URL,
+  /// like https://vk.com/app123456#.
+  Future<VKWebAppBoolResult> openApp({
+    @required int appId,
+    String location,
+  });
+
+  /// [VKWebAppClose] If the application was launched using
+  /// the [VKWebAppOpenApp] event, then the parent application will receive
+  /// the VKWebAppOpenAppResult event when VKWebAppClose is called.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [status] the application close status passed to the parent application.
+  /// Possible values: Possible values: failed, success
+  /// [payload] data passed to the parent application.
+  Future<VKWebAppOpenAppResult> close({
+    String status,
+    Object payload,
+  });
+
+  /// Calling the [VKWebAppAddToHomeScreenInfo] event
+  /// allows you to get information
+  /// about adding a shortcut to the device's home screen.
+  ///
+  /// Platforms: Android
+  Future<VKWebAppAddToHomeScreenInfoResult> addToHomeScreenInfo();
+
+  /// Calling the [VKWebAppAddToHomeScreen] event
+  /// allows you to add VK Mini Apps to the device screen.
+  /// Platforms: Android
+  Future<VKWebAppBoolResult> addToHomeScreen();
+
+  /// Calling the [VKWebAppSendToClient] event allows you to send a notification to open a service on a mobile device.
+  ///
+  /// Platforms: Web, Mobile Web
+  ///
+  /// [fragment] hash in the notification. (https://vk.com/appXXXX#fragment)
+  Future<VKWebAppBoolResult> sendToClient([String fragment]);
+
+  /// "Contact card" is the place where the user indicates contact information
+  /// (phone number, address, e-mail),
+  /// which he is ready to share with third-party services.
+  ///
+  /// The data in the contact card is not linked to the profile data
+  /// and lives independently of it. At the same time,
+  /// in the interface of your application, the user will be able to choose
+  /// which data from the card to provide or edit data directly
+  /// in the process of requesting access rights.
+  ///
+  /// [VKWebAppGetPersonalCard] calls the user's contact card
+  /// with the fields that you requested.
+  /// The official app displays a screen asking for the user's permission
+  /// to transfer the selected data to the app.
+  ///
+  /// Platforms: iOS, Android
+  ///
+  /// [type] array of strings. Possible values:
+  /// phone - phone number.
+  /// email - mailing address.
+  /// address - user's address.
+  Future<VKWebAppGetPersonalCardResult> getPersonalCard(List<String> type);
+
+  /// Calling the [VKWebAppSendToClient] event allows you to send a notification to open a service on a mobile device.
+  ///
+  /// Platforms: Web, Mobile Web
+  ///
+  /// [fragment] hash in the notification. (https://vk.com/appXXXX#fragment)
+  Future<VKWebAppGetPhoneNumberResult> getPhoneNumber();
 }

@@ -14,5 +14,9 @@ dependencies:
 
 dev_dependencies:
   test: '>=1.15.0 <2.0.0'
-  build_runner: ^1.10.2
+  build_runner: ^1.10.6
   built_value_generator: ^7.1.0
+
+dependency_overrides:
+  # из-за built_value_generator
+  analyzer: ^0.41.0

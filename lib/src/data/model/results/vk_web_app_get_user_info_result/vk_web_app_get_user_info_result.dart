@@ -1,8 +1,8 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart';
-import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/city.dart';
-import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/country.dart';
+import 'package:vk_bridge/src/data/model/results/common/city.dart';
+import 'package:vk_bridge/src/data/model/results/common/country.dart';
 
 part 'vk_web_app_get_user_info_result.g.dart';
 

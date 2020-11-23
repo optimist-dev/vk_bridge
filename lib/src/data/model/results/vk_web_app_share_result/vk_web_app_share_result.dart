@@ -24,7 +24,7 @@ abstract class VKWebAppShareResult
   @BuiltValueField(wireName: 'post_id')
   int get postId;
 
-  /// TODO(sanekyy): enum
+  // TODO(sanekyy): enum
   /// this field missed in official documentation :(
   String get type;
 }

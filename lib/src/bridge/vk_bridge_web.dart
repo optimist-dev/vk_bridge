@@ -16,17 +16,28 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_personal_card_options/get_personal_card_options.dart';
+import 'package:vk_bridge/src/data/model/options/open_app_options/open_app_options.dart';
+import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show_wall_post_box_options.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 import 'package:vk_bridge/vk_bridge.dart';
@@ -246,6 +257,74 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppBoolResult> denyNotifications() {
     return _sendInternal('VKWebAppDenyNotifications');
+  }
+
+  @override
+  Future<VKWebAppShowWallPostBoxResult> showWallPostBox(String message) {
+    final options = VKWebAppShowWallPostBoxOptions((b) => b..message = message);
+    return _sendInternalWithOptions('VKWebAppShowWallPostBox', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> addToFavorites() {
+    return _sendInternal('VKWebAppAddToFavorites');
+  }
+
+  @override
+  Future<VKWebAppOpenCodeReaderResult> openCodeReader() {
+    return _sendInternal('VKWebAppOpenCodeReader');
+  }
+
+  @override
+  Future<VKWebAppBoolResult> openApp({
+    @required int appId,
+    String location,
+  }) {
+    final options = OpenAppOptions(
+      (b) => b
+        ..appId = appId
+        ..location = location,
+    );
+    return _sendInternalWithOptions('VKWebAppOpenApp', options);
+  }
+
+  @override
+  Future<VKWebAppOpenAppResult> close({String status, Object payload}) {
+    final options = CloseOptions(
+      (b) => b
+        ..status = status
+        ..payload = payload,
+    );
+    return _sendInternalWithOptions('VKWebAppClose', options);
+  }
+
+  @override
+  Future<VKWebAppAddToHomeScreenInfoResult> addToHomeScreenInfo() {
+    return _sendInternal('VKWebAppAddToHomeScreenInfo');
+  }
+
+  @override
+  Future<VKWebAppBoolResult> addToHomeScreen() {
+    return _sendInternal('VKWebAppAddToHomeScreen');
+  }
+
+  @override
+  Future<VKWebAppBoolResult> sendToClient([String fragment]) {
+    final options = SendToClientOptions((b) => b..fragment = fragment);
+    return _sendInternalWithOptions('VKWebAppSendToClient', options);
+  }
+
+  @override
+  Future<VKWebAppGetPersonalCardResult> getPersonalCard(List<String> type) {
+    final options = GetPersonalCardOptions(
+      (b) => b..type = ListBuilder<String>(type),
+    );
+    return _sendInternalWithOptions('VKWebAppGetPersonalCard', options);
+  }
+
+  @override
+  Future<VKWebAppGetPhoneNumberResult> getPhoneNumber() {
+    return _sendInternal('VKWebAppGetPhoneNumber');
   }
 }
 
