@@ -225,27 +225,22 @@ class _ExamplesPageState extends State<ExamplesPage> {
               //       .then(showResultDialog)
               //       .catchError(showErrorDialog),
               // ),
-              // Text("Storage events"),
-              // _button(
-              //   title: "storageGet",
-              //   onPressed: () => VKBridge.storageGet(["key_1", "key_2"])
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "storageSet",
-              //   onPressed: () => VKBridge.storageSet(
-              //     key: "key_1",
-              //     value: "value_1",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "storageGetKeys",
-              //   onPressed: () => VKBridge.storageGetKeys(
-              //     count: 20,
-              //     offset: 0,
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
+              const Text('Storage events'),
+              _button(
+                  title: 'storageGet',
+                  call: (it) => it.storageGet(['key_1', 'key_2'])),
+              _button(
+                  title: 'storageSet',
+                  call: (it) => it.storageSet(
+                        key: 'key_1',
+                        value: 'value_1',
+                      )),
+              _button(
+                title: 'storageGetKeys',
+                call: (it) => it.storageGetKeys(
+                  count: 20,
+                ),
+              ),
               // Text("Interacting with Taptic Engine"),
               // _button(
               //   title: "tapticNotificationOccurred",

@@ -15,6 +15,8 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_w
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 
 import 'vk_bridge_web.dart' if (dart.library.io) 'unsupported.dart'
     as vk_bridge;
@@ -231,4 +233,36 @@ abstract class VKBridge {
   ///
   /// [fragment] hash in the notification. (https://vk.com/appXXXX#fragment)
   Future<VKWebAppGetPhoneNumberResult> getPhoneNumber();
+
+  /// [VKWebAppStorageGet] returns the values of the variables,
+  /// the names of which were passed in the keys parameter.
+  ///
+  /// iOS, Android, Web, Mobile Web
+  ///
+  /// [keys] - the names of the keys, [a-zA-Z _ \ - 0-9],
+  /// passed in an array of strings.
+  Future<VKWebAppStorageGetResult> storageGet(List<String> keys);
+
+  /// The [VKWebAppStorageSet] call stores the value of the variable
+  /// whose name is passed in the key parameter.
+  ///
+  /// iOS, Android, Web, Mobile Web
+  ///
+  /// [key] - key name, [a-zA-Z _ \ - 0-9]. The maximum length is 100 characters.
+  /// [value] - variable value, only the first 4096 bytes are saved.
+  Future<VKWebAppBoolResult> storageSet({
+    @required String key,
+    String value,
+  });
+
+  /// Call [VKWebAppStorageGetKeys] returns the names of all variables.
+  ///
+  /// iOS, Android, Web, Mobile Web
+  ///
+  /// [count] - the number of variable names to get information about.
+  /// [offset] - the offset required to sample a specific subset of variable names.
+  Future<VKWebAppStorageGetKeysResult> storageGetKeys({
+    int count,
+    int offset,
+  });
 }
