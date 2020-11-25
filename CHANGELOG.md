@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Add methods for storage
+
 ## 1.0.0+1
 
 - Remove unused import
