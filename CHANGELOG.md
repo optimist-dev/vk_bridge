@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix internal error handling
+
 ## 1.1.0
 
 - Add methods for storage
