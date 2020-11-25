@@ -135,7 +135,7 @@ class VKBridge implements vk_bridge.VKBridge {
       }
 
       _logger.e('send($method) error: $error');
-      rethrow;
+      throw error;
     }
   }
 
