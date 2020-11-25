@@ -23,6 +23,9 @@ import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_sto
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/sticker_container.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/transform.dart';
 import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show_wall_post_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_get_keys_options/storage_get_keys_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
 import 'package:vk_bridge/src/data/model/results/common/city.dart';
 import 'package:vk_bridge/src/data/model/results/common/country.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
@@ -37,6 +40,9 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/key_value_pair.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 
 part 'serializers.g.dart';
 
@@ -77,6 +83,12 @@ part 'serializers.g.dart';
   Address,
   VKWebAppGetPersonalCardResult,
   VKWebAppGetPhoneNumberResult,
+  StorageGetOptions,
+  StorageSetOptions,
+  StorageGetKeysOptions,
+  VKWebAppStorageGetResult,
+  VKWebAppStorageGetKeysResult,
+  KeyValuePair,
 ])
 
 /// Serializers

@@ -20,6 +20,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ErrorData.serializer)
       ..add(GetPersonalCardOptions.serializer)
       ..add(Insets.serializer)
+      ..add(KeyValuePair.serializer)
       ..add(LaunchParams.serializer)
       ..add(OpenAppOptions.serializer)
       ..add(RenderableSticker.serializer)
@@ -28,6 +29,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ShowImagesOptions.serializer)
       ..add(ShowStoryBoxOptions.serializer)
       ..add(StickerContainer.serializer)
+      ..add(StorageGetKeysOptions.serializer)
+      ..add(StorageGetOptions.serializer)
+      ..add(StorageSetOptions.serializer)
       ..add(Transform.serializer)
       ..add(VKWebAppAddToHomeScreenInfoResult.serializer)
       ..add(VKWebAppBoolResult.serializer)
@@ -42,13 +46,24 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VKWebAppShareResult.serializer)
       ..add(VKWebAppShowWallPostBoxOptions.serializer)
       ..add(VKWebAppShowWallPostBoxResult.serializer)
+      ..add(VKWebAppStorageGetKeysResult.serializer)
+      ..add(VKWebAppStorageGetResult.serializer)
       ..add(VKWebAppUpdateConfig.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ClickableZone)]),
           () => new ListBuilder<ClickableZone>())
       ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(KeyValuePair)]),
+          () => new ListBuilder<KeyValuePair>())
+      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(StickerContainer)]),
           () => new ListBuilder<StickerContainer>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

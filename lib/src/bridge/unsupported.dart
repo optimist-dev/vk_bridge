@@ -16,6 +16,8 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_w
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 
 /// This is the stub implementation where every method throws UnsupportedError
 class VKBridge implements vk_bridge.VKBridge {
@@ -118,5 +120,23 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetPhoneNumberResult> getPhoneNumber() =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppStorageGetResult> storageGet(List<String> keys) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> storageSet({
+    @required String key,
+    String value,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppStorageGetKeysResult> storageGetKeys({
+    int count,
+    int offset,
+  }) =>
       throw _unsupportedError;
 }

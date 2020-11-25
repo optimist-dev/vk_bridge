@@ -26,6 +26,9 @@ import 'package:vk_bridge/src/data/model/options/share_options/share_options.dar
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show_wall_post_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_get_keys_options/storage_get_keys_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get_options.dart';
+import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
@@ -38,6 +41,8 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_w
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 import 'package:vk_bridge/vk_bridge.dart';
@@ -90,6 +95,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
     _logger.d('vk_bridge: _sendInternal($method)');
 
+    bool rethrowed = false;
+
     try {
       final propsJson =
           props == null ? '{}' : jsonEncode(serialize<Options>(props));
@@ -105,10 +112,16 @@ class VKBridge implements vk_bridge.VKBridge {
         _logger.d('send($method) result: $result');
         return result;
       } catch (e) {
-        _logger.d('send($method) jsonResult: $jsonResult');
+        _logger.e('send($method) jsonResult: $jsonResult');
+        _logger.e(e);
+        rethrowed = true;
         rethrow;
       }
     } catch (jsObjectError) {
+      if (rethrowed) {
+        rethrow;
+      }
+
       final jsonError = stringify(jsObjectError);
       final Object decodedJson = jsonDecode(jsonError);
 
@@ -116,13 +129,13 @@ class VKBridge implements vk_bridge.VKBridge {
       try {
         error = deserialize<VKWebAppError>(decodedJson);
       } catch (e) {
-        _logger.d('send($method) jsonError: $jsonError');
+        _logger.e('send($method) jsonError: $jsonError');
         _logger.e("can't deserialize error: $decodedJson");
         rethrow;
       }
 
-      _logger.d('send($method) error: $error');
-      throw error;
+      _logger.e('send($method) error: $error');
+      rethrow;
     }
   }
 
@@ -325,6 +338,39 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppGetPhoneNumberResult> getPhoneNumber() {
     return _sendInternal('VKWebAppGetPhoneNumber');
+  }
+
+  @override
+  Future<VKWebAppStorageGetResult> storageGet(List<String> keys) {
+    final options =
+        StorageGetOptions((b) => b.keys = ListBuilder<String>(keys));
+    return _sendInternalWithOptions('VKWebAppStorageGet', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> storageSet({
+    @required String key,
+    String value,
+  }) {
+    final options = StorageSetOptions(
+      (b) => b
+        ..key = key
+        ..value = value,
+    );
+    return _sendInternalWithOptions('VKWebAppStorageSet', options);
+  }
+
+  @override
+  Future<VKWebAppStorageGetKeysResult> storageGetKeys({
+    int count,
+    int offset,
+  }) {
+    final options = StorageGetKeysOptions(
+      (b) => b
+        ..count = count
+        ..offset = offset,
+    );
+    return _sendInternalWithOptions('VKWebAppStorageGetKeys', options);
   }
 }
 
