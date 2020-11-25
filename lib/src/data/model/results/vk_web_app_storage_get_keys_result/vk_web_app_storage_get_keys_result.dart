@@ -23,5 +23,4 @@ abstract class VKWebAppStorageGetKeysResult
 
   /// Array of keys
   BuiltList<String> get keys;
-
 }
