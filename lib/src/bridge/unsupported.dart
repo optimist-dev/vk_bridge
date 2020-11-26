@@ -4,14 +4,18 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_group_info_result/vk_web_app_get_group_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
@@ -155,5 +159,50 @@ class VKBridge implements vk_bridge.VKBridge {
     @required int appId,
     @required String scope,
   }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppGetGroupInfoResult> getGroupInfo(int groupId) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> joinGroup(int groupId) => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> leaveGroup(int groupId) => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> allowMessagesFromGroup({
+    @required int groupId,
+    String key,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppCommunityAccessTokenResult> getCommunityToken({
+    @required int appId,
+    @required int groupId,
+    @required String scope,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppAddToCommunityResult> addToCommunity() =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
+    @required int groupId,
+    @required String type,
+    @required String code,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppFlashGetInfoResult> flashGetInfo() =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> flashSetLevel(int level) =>
       throw _unsupportedError;
 }
