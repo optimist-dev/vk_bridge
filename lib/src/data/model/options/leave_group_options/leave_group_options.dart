@@ -14,7 +14,8 @@ abstract class LeaveGroupOptions
   LeaveGroupOptions._();
 
   /// [LeaveGroupOptions] serializer
-  static Serializer<LeaveGroupOptions> get serializer => _$leaveGroupOptionsSerializer;
+  static Serializer<LeaveGroupOptions> get serializer =>
+      _$leaveGroupOptionsSerializer;
 
   /// Group ID.
   @BuiltValueField(wireName: 'group_id')

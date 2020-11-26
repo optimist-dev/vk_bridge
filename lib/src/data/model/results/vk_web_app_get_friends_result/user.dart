@@ -5,20 +5,14 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 part 'user.g.dart';
 
 /// Part of [VKWebAppGetFriendsResult ]
-abstract class User
-    implements
-        Built<User,
-            UserBuilder> {
+abstract class User implements Built<User, UserBuilder> {
   /// [User] factory
-  factory User(
-          [void Function(UserBuilder) updates]) =
-      _$User;
+  factory User([void Function(UserBuilder) updates]) = _$User;
 
   User._();
 
   /// [User] serializer
-  static Serializer<User> get serializer =>
-      _$userSerializer;
+  static Serializer<User> get serializer => _$userSerializer;
 
   /// User ID
   int get id;
@@ -42,5 +36,4 @@ abstract class User
   /// not have a photo, https://vk.com/images/camera_200.png is returned
   @BuiltValueField(wireName: 'photo_200')
   String get photo200;
-
 }

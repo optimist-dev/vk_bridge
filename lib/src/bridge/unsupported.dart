@@ -199,8 +199,7 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppFlashGetInfoResult> flashGetInfo() =>
-      throw _unsupportedError;
+  Future<VKWebAppFlashGetInfoResult> flashGetInfo() => throw _unsupportedError;
 
   @override
   Future<VKWebAppBoolResult> flashSetLevel(int level) =>

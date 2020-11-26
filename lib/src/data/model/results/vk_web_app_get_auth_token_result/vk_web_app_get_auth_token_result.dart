@@ -6,7 +6,8 @@ part 'vk_web_app_get_auth_token_result.g.dart';
 
 /// Result of [VKBridge.getAuthToken]
 abstract class VKWebAppGetAuthTokenResult
-    implements Built<VKWebAppGetAuthTokenResult, VKWebAppGetAuthTokenResultBuilder> {
+    implements
+        Built<VKWebAppGetAuthTokenResult, VKWebAppGetAuthTokenResultBuilder> {
   /// [VKWebAppGetAuthTokenResult] factory
   factory VKWebAppGetAuthTokenResult(
           [void Function(VKWebAppGetAuthTokenResultBuilder) updates]) =

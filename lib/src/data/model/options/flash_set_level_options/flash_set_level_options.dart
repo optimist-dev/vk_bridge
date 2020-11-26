@@ -8,13 +8,15 @@ part 'flash_set_level_options.g.dart';
 abstract class FlashSetLevelOptions
     implements Built<FlashSetLevelOptions, FlashSetLevelOptionsBuilder> {
   /// [FlashSetLevelOptions] factory
-  factory FlashSetLevelOptions([void Function(FlashSetLevelOptionsBuilder) updates]) =
+  factory FlashSetLevelOptions(
+          [void Function(FlashSetLevelOptionsBuilder) updates]) =
       _$FlashSetLevelOptions;
 
   FlashSetLevelOptions._();
 
   /// [FlashSetLevelOptions] serializer
-  static Serializer<FlashSetLevelOptions> get serializer => _$flashSetLevelOptionsSerializer;
+  static Serializer<FlashSetLevelOptions> get serializer =>
+      _$flashSetLevelOptionsSerializer;
 
   /// Flashlight brightness level from 0 to 1.
   int get level;

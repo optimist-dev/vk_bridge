@@ -8,13 +8,15 @@ part 'get_group_info_options.g.dart';
 abstract class GetGroupInfoOptions
     implements Built<GetGroupInfoOptions, GetGroupInfoOptionsBuilder> {
   /// [GetGroupInfoOptions] factory
-  factory GetGroupInfoOptions([void Function(GetGroupInfoOptionsBuilder) updates]) =
+  factory GetGroupInfoOptions(
+          [void Function(GetGroupInfoOptionsBuilder) updates]) =
       _$GetGroupInfoOptions;
 
   GetGroupInfoOptions._();
 
   /// [GetGroupInfoOptions] serializer
-  static Serializer<GetGroupInfoOptions> get serializer => _$getGroupInfoOptionsSerializer;
+  static Serializer<GetGroupInfoOptions> get serializer =>
+      _$getGroupInfoOptionsSerializer;
 
   /// Group ID.
   @BuiltValueField(wireName: 'group_id')

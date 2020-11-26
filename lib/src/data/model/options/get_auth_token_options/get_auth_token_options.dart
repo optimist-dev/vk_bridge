@@ -8,13 +8,15 @@ part 'get_auth_token_options.g.dart';
 abstract class GetAuthTokenOptions
     implements Built<GetAuthTokenOptions, GetAuthTokenOptionsBuilder> {
   /// [GetAuthTokenOptions] factory
-  factory GetAuthTokenOptions([void Function(GetAuthTokenOptionsBuilder) updates]) =
+  factory GetAuthTokenOptions(
+          [void Function(GetAuthTokenOptionsBuilder) updates]) =
       _$GetAuthTokenOptions;
 
   GetAuthTokenOptions._();
 
   /// [GetAuthTokenOptions] serializer
-  static Serializer<GetAuthTokenOptions> get serializer => _$getAuthTokenOptionsSerializer;
+  static Serializer<GetAuthTokenOptions> get serializer =>
+      _$getAuthTokenOptionsSerializer;
 
   /// Application ID.
   @BuiltValueField(wireName: 'app_id')

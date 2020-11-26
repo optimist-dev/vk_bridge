@@ -14,7 +14,8 @@ abstract class JoinGroupOptions
   JoinGroupOptions._();
 
   /// [JoinGroupOptions] serializer
-  static Serializer<JoinGroupOptions> get serializer => _$joinGroupOptionsSerializer;
+  static Serializer<JoinGroupOptions> get serializer =>
+      _$joinGroupOptionsSerializer;
 
   /// Group ID.
   @BuiltValueField(wireName: 'group_id')
