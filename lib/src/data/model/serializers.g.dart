@@ -18,6 +18,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Country.serializer)
       ..add(DownloadFileOptions.serializer)
       ..add(ErrorData.serializer)
+      ..add(GetAuthTokenOptions.serializer)
+      ..add(GetFriendsOptions.serializer)
       ..add(GetPersonalCardOptions.serializer)
       ..add(Insets.serializer)
       ..add(KeyValuePair.serializer)
@@ -33,11 +35,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(StorageGetOptions.serializer)
       ..add(StorageSetOptions.serializer)
       ..add(Transform.serializer)
+      ..add(User.serializer)
       ..add(VKWebAppAddToHomeScreenInfoResult.serializer)
       ..add(VKWebAppBoolResult.serializer)
+      ..add(VKWebAppContactsDone.serializer)
       ..add(VKWebAppError.serializer)
+      ..add(VKWebAppGetAuthTokenResult.serializer)
       ..add(VKWebAppGetClientVersionResult.serializer)
       ..add(VKWebAppGetEmailResult.serializer)
+      ..add(VKWebAppGetFriendsResult.serializer)
       ..add(VKWebAppGetGeodataResult.serializer)
       ..add(VKWebAppGetPersonalCardResult.serializer)
       ..add(VKWebAppGetPhoneNumberResult.serializer)
@@ -69,7 +75,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(User)]),
+          () => new ListBuilder<User>()))
     .build();
 
 // ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

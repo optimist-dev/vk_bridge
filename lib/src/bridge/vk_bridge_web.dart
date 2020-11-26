@@ -19,6 +19,8 @@ import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/get_auth_token_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_friends_options/get_friends_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_personal_card_options/get_personal_card_options.dart';
 import 'package:vk_bridge/src/data/model/options/open_app_options/open_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
@@ -31,8 +33,11 @@ import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get
 import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
@@ -371,6 +376,30 @@ class VKBridge implements vk_bridge.VKBridge {
         ..offset = offset,
     );
     return _sendInternalWithOptions('VKWebAppStorageGetKeys', options);
+  }
+
+  @override
+  Future<VKWebAppGetFriendsResult> getFriends([bool multi = false]) {
+    final options = GetFriendsOptions((b) => b.multi = multi);
+    return _sendInternalWithOptions('VKWebAppGetFriends', options);
+  }
+
+  @override
+  Future<VKWebAppContactsDone> openContacts() {
+    return _sendInternal('VKWebAppOpenContacts');
+  }
+
+  @override
+  Future<VKWebAppGetAuthTokenResult> getAuthToken({
+    @required int appId,
+    @required String scope,
+  }) {
+    final options = GetAuthTokenOptions(
+      (b) => b
+        ..appId = appId
+        ..scope = scope,
+    );
+    return _sendInternalWithOptions('VKWebAppGetAuthToken', options);
   }
 }
 

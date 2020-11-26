@@ -7,7 +7,7 @@ class ExamplesPage extends StatefulWidget {
 }
 
 class _ExamplesPageState extends State<ExamplesPage> {
-  // static const _flutterSampleVkMiniAppId = 7638841;
+  static const _flutterSampleVkMiniAppId = 7638841;
   static const _vkBridgeOriginalVKMiniAppId = 6909581;
 
   // static const _vkMiniAppGroupId = 166562603;
@@ -106,37 +106,38 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 call: (it) => it.getGeodata(),
               ),
               _button(
-                  title: 'getPersonalCard',
-                  call: (it) => it.getPersonalCard(
-                        [
-                          'phone',
-                          'email',
-                          'address',
-                        ],
-                      )),
+                title: 'getPersonalCard',
+                call: (it) => it.getPersonalCard(
+                  [
+                    'phone',
+                    'email',
+                    'address',
+                  ],
+                ),
+              ),
               _button(
                 title: 'getPhoneNumber',
                 call: (it) => it.getPhoneNumber(),
               ),
-              // _button(
-              //   title: "getFriends",
-              //   onPressed: () => VKBridge.getFriends()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "openContacts",
-              //   onPressed: () => VKBridge.openContacts()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getAuthToken",
-              //   onPressed: () => VKBridge.getAuthToken(
-              //     appId: _flutterSampleVkMiniAppId,
-              //     scope: "status",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'getEmail',
+                call: (it) => it.getEmail(),
+              ),
+              _button(
+                title: 'getFriends',
+                call: (it) => it.getFriends(),
+              ),
+              _button(
+                title: 'openContacts',
+                call: (it) => it.openContacts(),
+              ),
+              _button(
+                title: 'getAuthToken',
+                call: (it) => it.getAuthToken(
+                  appId: _flutterSampleVkMiniAppId,
+                  scope: "status",
+                ),
+              ),
               // Text("Community events"),
               // _button(
               //   title: "getGroupInfo",

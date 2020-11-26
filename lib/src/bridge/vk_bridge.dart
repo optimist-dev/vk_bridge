@@ -5,8 +5,11 @@ import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
@@ -237,7 +240,7 @@ abstract class VKBridge {
   /// [VKWebAppStorageGet] returns the values of the variables,
   /// the names of which were passed in the keys parameter.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [keys] - the names of the keys, [a-zA-Z _ \ - 0-9],
   /// passed in an array of strings.
@@ -246,7 +249,7 @@ abstract class VKBridge {
   /// The [VKWebAppStorageSet] call stores the value of the variable
   /// whose name is passed in the key parameter.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [key] - key name, [a-zA-Z _ \ - 0-9]. The maximum length is 100 characters.
   /// [value] - variable value, only the first 4096 bytes are saved.
@@ -257,12 +260,58 @@ abstract class VKBridge {
 
   /// Call [VKWebAppStorageGetKeys] returns the names of all variables.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [count] - the number of variable names to get information about.
   /// [offset] - the offset required to sample a specific subset of variable names.
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
     int count,
     int offset,
+  });
+
+  /// [VKWebAppGetFriends] brings up a selection window from the friends list.
+  ///
+  /// Platforms: iOS, Android, Web
+  ///
+  /// [multi] -
+  /// false: selection of one friend from the list.
+  /// true: selection of several friends from the list.
+  /// The default is false.
+  Future<VKWebAppGetFriendsResult> getFriends([bool multi = false]);
+
+  /// [VKWebAppOpenContacts] opens a window for selecting contacts
+  /// from the phone book on the user's device.
+  ///
+  /// Platforms: iOS, Android
+  Future<VKWebAppContactsDone> openContacts();
+
+  /// [VKWebAppGetAuthToken] allows you to request access rights from the user
+  /// and get a key to work with the API. At the same time,
+  /// you do not need to request a token to identify a user in the service.
+  /// Use the signature of the launch parameters for this
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [app_id] - application ID.
+  /// [scope] - list of access rights, separated by commas.
+  /// To get a token without additional rights,
+  /// pass an empty string in the parameter. Available Values:
+  /// friends - access to the user's friends list,
+  /// photos - access to photos,
+  /// video - access to videos,
+  /// stories - access to stories,
+  /// pages - access to wiki pages,
+  /// status - access to user status,
+  /// notes - access to user notes,
+  /// wall - to methods of working with a wall,
+  /// docs - access to documents,
+  /// groups - access to user communities,
+  /// stats - access to statistics of groups and applications of the user, of which he is the administrator,
+  /// market - access to goods.
+  ///
+  // TODO: Set<Scope> scopes
+  Future<VKWebAppGetAuthTokenResult> getAuthToken({
+    @required int appId,
+    @required String scope,
   });
 }

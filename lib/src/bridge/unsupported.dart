@@ -6,8 +6,11 @@ import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
@@ -137,6 +140,20 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
     int count,
     int offset,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppGetFriendsResult> getFriends([bool multi = false]) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppContactsDone> openContacts() => throw _unsupportedError;
+
+  @override
+  Future<VKWebAppGetAuthTokenResult> getAuthToken({
+    @required int appId,
+    @required String scope,
   }) =>
       throw _unsupportedError;
 }

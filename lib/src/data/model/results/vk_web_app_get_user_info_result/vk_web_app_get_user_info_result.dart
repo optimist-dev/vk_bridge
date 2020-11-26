@@ -56,7 +56,7 @@ abstract class VKWebAppGetUserInfoResult
   @BuiltValueField(wireName: 'photo_100')
   String get photo100;
 
-  /// url of a square user photo with a width of 200 pixels. If the user does
+  /// Url of a square user photo with a width of 200 pixels. If the user does
   /// not have a photo, https://vk.com/images/camera_200.png is returned
   @BuiltValueField(wireName: 'photo_200')
   String get photo200;
