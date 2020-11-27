@@ -1,6 +1,8 @@
 import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
@@ -20,10 +22,13 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_res
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_resize_window_result/vk_web_app_resize_window_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_scroll_result/vk_web_app_scroll_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_result/vk_web_app_subscribe_story_app_result.dart';
 
 import 'vk_bridge_web.dart' if (dart.library.io) 'unsupported.dart'
     as vk_bridge;
@@ -57,6 +62,20 @@ abstract class VKBridge {
   /// - when changing the color scheme
   Stream<VKWebAppUpdateConfig> get updateConfigStream;
 
+  /// The event occurs when the hash value changes
+  /// after the # character in the browser address bar.
+  /// For example, this happens as a result of using the back and forward
+  /// buttons in the browser.
+  ///
+  /// Platforms: Web, Mobile Web
+  Stream<VKWebAppLocationChanged> get locationChangedStream;
+
+  /// After minimizing the service, the client dispatches an event
+  /// with VKWebAppViewHide with an empty data field.
+  ///
+  /// Platforms: iOS, Android
+  Stream<VKWebAppViewHide> get viewHideStream;
+
   /// [VKWebAppInit] - the first event that your application must send to the
   /// official application to start working with VK Bridge. Otherwise, the
   /// service may not work on iOS and Android mobile clients.
@@ -86,7 +105,7 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
   ///
-  /// [link] the link to share
+  /// [link] - the link to share
   /// (by default - the current link in the form of https://vk.com/app123#hash)
   Future<VKWebAppShareResult> share([String link]);
 
@@ -94,8 +113,8 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android, Mobile Web
   ///
-  /// [images] array of strings containing image URLs.
-  /// [startIndex] index of the image from which to start displaying, starting
+  /// [images] - array of strings containing image URLs.
+  /// [startIndex] - index of the image from which to start displaying, starting
   /// from 0.
   Future<VKWebAppBoolResult> showImages(
     List<String> images, {
@@ -107,8 +126,8 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android
   ///
-  /// [url] link to the file to download.
-  /// [filename] file name.
+  /// [url] - link to the file to download.
+  /// [filename] - file name.
   Future<VKWebAppBoolResult> downloadFile({
     @required String url,
     @required String filename,
@@ -118,8 +137,8 @@ abstract class VKBridge {
   /// clipboard.
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
-  /// [text] the text to copy
   ///
+  /// [text] - the text to copy
   Future<VKWebAppBoolResult> copyText(String text);
 
   /// [VKWebAppGetGeodata] allows you to get data about the user's geolocation.
@@ -150,7 +169,7 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
   ///
-  /// [message] message which will be posted
+  /// [message] - message which will be posted
   Future<VKWebAppShowWallPostBoxResult> showWallPostBox(String message);
 
   /// [VKWebAppAddToFavorites] invokes a request window
@@ -170,8 +189,8 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
   ///
-  /// [appId] the identifier of the application to be opened.
-  /// [location] hash, the line after the # in a URL,
+  /// [appId] - the identifier of the application to be opened.
+  /// [location] - hash, the line after the # in a URL,
   /// like https://vk.com/app123456#.
   Future<VKWebAppBoolResult> openApp({
     @required int appId,
@@ -184,9 +203,9 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
   ///
-  /// [status] the application close status passed to the parent application.
+  /// [status] - the application close status passed to the parent application.
   /// Possible values: Possible values: failed, success
-  /// [payload] data passed to the parent application.
+  /// [payload] - data passed to the parent application.
   Future<VKWebAppOpenAppResult> close({
     String status,
     Object payload,
@@ -201,6 +220,7 @@ abstract class VKBridge {
 
   /// Calling the [VKWebAppAddToHomeScreen] event
   /// allows you to add VK Mini Apps to the device screen.
+  ///
   /// Platforms: Android
   Future<VKWebAppBoolResult> addToHomeScreen();
 
@@ -208,7 +228,7 @@ abstract class VKBridge {
   ///
   /// Platforms: Web, Mobile Web
   ///
-  /// [fragment] hash in the notification. (https://vk.com/appXXXX#fragment)
+  /// [fragment] - hash in the notification. (https://vk.com/appXXXX#fragment)
   Future<VKWebAppBoolResult> sendToClient([String fragment]);
 
   /// "Contact card" is the place where the user indicates contact information
@@ -228,7 +248,7 @@ abstract class VKBridge {
   ///
   /// Platforms: iOS, Android
   ///
-  /// [type] array of strings. Possible values:
+  /// [type] - array of strings. Possible values:
   /// phone - phone number.
   /// email - mailing address.
   /// address - user's address.
@@ -238,7 +258,7 @@ abstract class VKBridge {
   ///
   /// Platforms: Web, Mobile Web
   ///
-  /// [fragment] hash in the notification. (https://vk.com/appXXXX#fragment)
+  /// [fragment] - hash in the notification. (https://vk.com/appXXXX#fragment)
   Future<VKWebAppGetPhoneNumberResult> getPhoneNumber();
 
   /// [VKWebAppStorageGet] returns the values of the variables,
@@ -402,6 +422,8 @@ abstract class VKBridge {
   /// to "Allow installation in communities" must be set.
   /// The app must be enabled and accessible to everyone.
   ///
+  /// Platforms: iOS, Android, Web
+  ///
   /// [groupId] - group ID.
   /// [type] - Widget type. Can take values:
   /// text,
@@ -418,8 +440,6 @@ abstract class VKBridge {
   /// The parameters of all supported widget types
   /// are described in detail on this page.
   /// ( https://vk.com/dev/objects/appWidget )
-  ///
-  /// Platforms: iOS, Android, Web
   Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
     @required int groupId,
     @required String type,
@@ -433,8 +453,138 @@ abstract class VKBridge {
 
   /// [VKWebAppFlashSetLevel] sets the brightness level of the flashlight.
   ///
+  /// Platforms: iOS, Android
+  ///
   /// [level] - flashlight brightness level from 0 to 1.
+  Future<VKWebAppBoolResult> flashSetLevel(int level);
+
+  /// [VKWebAppResizeWindow] initiates a change
+  /// in the width and height of the IFrame.
+  ///
+  /// Platforms: Web
+  ///
+  /// [width] - window width. It can take values from 630px to 1000px.
+  /// [height] - window height. It can take values from 500px to 4050px.
+  Future<VKWebAppResizeWindowResult> resizeWindow({
+    @required int width,
+    @required int height,
+  });
+
+  /// [VKWebAppScroll] initiates vertical scrolling of the browser window.
+  ///
+  /// Platforms: Web, Mobile Web
+  ///
+  /// [top] - scroll offset relative to the zero coordinate of the window.
+  /// For example, in order to scroll the window to the very top of the page,
+  /// you must pass the value 0.
+  /// [speed] - animation speed in milliseconds. The default is 0.
+  Future<VKWebAppScrollResult> scroll({
+    @required int top,
+    int speed = 0,
+  });
+
+  /// [VKWebAppSetLocation] allows you to set a new hash value
+  /// (hash string after https://vk.com/app23456#,
+  /// used for navigation within the application).
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [location] - the new hash value.
+  Future<VKWebAppBoolResult> setLocation(String location);
+
+  /// [VKWebAppSetViewSettings]
   ///
   /// Platforms: iOS, Android
-  Future<VKWebAppBoolResult> flashSetLevel(int level);
+  ///
+  /// [statusBarStyle] - theme for status bar icons.
+  /// Possible options: light, dark.
+  /// [actionBarColor] - the color of the action bar.
+  /// Possible options: hex-code (# 00ffff), none - transparent.
+  /// This parameter only works on Android.
+  /// [navigationBarColor] - the color of the navigation bar.
+  /// Possible option: hex-code (# 00ffff).
+  /// This parameter only works on Android.
+  ///
+  /// Result: The client sets the theme for the icons in the status bar based
+  /// on the statusBarStyle parameter and the color of the status bar based
+  /// on the actionBarColor parameter.
+  Future<VKWebAppBoolResult> setViewSettings({
+    @required String statusBarStyle,
+    String actionBarColor,
+    String navigationBarColor,
+  });
+
+  /// [VKWebAppSetSwipeSettings] enables the standard browser swipe behavior
+  /// on the client.
+  ///
+  /// Platforms: iOS
+  ///
+  /// [history] - flag for configuring the browser to work with swipe on iOS.
+  Future<VKWebAppBoolResult> setSwipeSettings(bool history);
+
+  /// An event for calling notificationOccurred (https://developer.apple.com/documentation/uikit/uinotificationfeedbackgenerator/2369826-notificationoccurred)
+  /// in the Taptic Engine.
+  ///
+  /// This method informs the generator that the task or action
+  /// was successfully completed, failed, or issued a warning.
+  /// In response, the generator can play the appropriate tactile signals
+  /// based on the supplied type value.
+  ///
+  /// Platforms: iOS
+  ///
+  /// [type] - the type of notification.
+  /// Available values: error, success, warning.
+  ///
+  /// If successful, the generator reproduces the tactile response
+  /// corresponding to the passed parameter.
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type);
+
+  /// The event to call selectionChanged (https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator/2374284-selectionchanged)
+  /// on the Taptic Engine.
+  ///
+  /// This method tells the generator that the user has changed the selection.
+  /// In response, the generator can reproduce appropriate tactile signals.
+  /// Do not use this type of feedback when the user makes or confirms a choice;
+  /// only use it when changing selection.
+  ///
+  /// Platforms: iOS
+  ///
+  /// [history] - flag for configuring the browser to work with swipe on iOS.
+  Future<VKWebAppBoolResult> tapticSelectionChanged();
+
+  /// The event to call impactOccurred (https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374287-impactoccurred)
+  /// in the Taptic Engine.
+  ///
+  /// Platforms: iOS
+  ///
+  /// [style] - the strength of vibration.
+  /// Possible options: light, medium, heavy.
+  ///
+  /// If successful, the generator reproduces a tactile response
+  /// corresponding to the strength of the passed style parameter.
+  Future<VKWebAppBoolResult> tapticImpactOccurred(String style);
+
+  /// VKWebAppSubscribeStoryApp allows the current user to subscribe
+  /// to updates from an app in history. After successful completion,
+  /// you can send a notification to the user about the reaction to the story
+  /// using the stories.sendInteraction method. (https://vk.com/dev/stories.sendInteraction)
+  ///
+  /// The method is called with the service token of your application,
+  /// you must pass access_key in the parameters,
+  /// which will return the VKWebAppSubscribeStoryAppResult event.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// Returned in launch parameters, vk_ref field:
+  ///
+  /// [storyOwnerId] - the story owner ID.
+  /// [storyId] - the story ID.
+  /// [stickerId] - the ID of the clickable sticker.
+  /// [accessKey] - access key for private stories.
+  Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
+    @required int storyOwnerId,
+    @required int storyId,
+    @required int stickerId,
+    String accessKey,
+  });
 }

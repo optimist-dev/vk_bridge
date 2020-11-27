@@ -1,7 +1,9 @@
 import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
+import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
@@ -21,10 +23,13 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_res
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_resize_window_result/vk_web_app_resize_window_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_scroll_result/vk_web_app_scroll_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_result/vk_web_app_subscribe_story_app_result.dart';
 
 /// This is the stub implementation where every method throws UnsupportedError
 class VKBridge implements vk_bridge.VKBridge {
@@ -38,6 +43,17 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   String get launchHash => throw _unsupportedError;
+
+  @override
+  Stream<VKWebAppUpdateConfig> get updateConfigStream =>
+      throw _unsupportedError;
+
+  @override
+  Stream<VKWebAppLocationChanged> get locationChangedStream =>
+      throw _unsupportedError;
+
+  @override
+  Stream<VKWebAppViewHide> get viewHideStream => throw _unsupportedError;
 
   @override
   Future<VKWebAppBoolResult> init() => throw _unsupportedError;
@@ -54,10 +70,6 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppShareResult> share([String link]) => throw _unsupportedError;
-
-  @override
-  Stream<VKWebAppUpdateConfig> get updateConfigStream =>
-      throw _unsupportedError;
 
   @override
   Future<VKWebAppBoolResult> showImages(
@@ -203,5 +215,53 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> flashSetLevel(int level) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppResizeWindowResult> resizeWindow({
+    @required int width,
+    @required int height,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppScrollResult> scroll({@required int top, int speed = 0}) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> setLocation(String location) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> setViewSettings({
+    @required String statusBarStyle,
+    String actionBarColor,
+    String navigationBarColor,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> setSwipeSettings(bool history) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> tapticSelectionChanged() =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> tapticImpactOccurred(String style) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
+    @required int storyOwnerId,
+    @required int storyId,
+    @required int stickerId,
+    String accessKey,
+  }) =>
       throw _unsupportedError;
 }

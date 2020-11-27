@@ -12,12 +12,18 @@ class _ExamplesPageState extends State<ExamplesPage> {
 
   static const _vkMiniAppGroupId = 166562603;
 
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    super.initState();
+
+    VKBridge.instance.updateConfigStream.listen(_showResult);
+    VKBridge.instance.locationChangedStream.listen(_showResult);
+    VKBridge.instance.viewHideStream.listen(_showResult);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -185,40 +191,32 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 title: 'flashSetLevel',
                 call: (it) => it.flashSetLevel(1),
               ),
-              // Text("Interface and navigation events"),
-              // _button(
-              //   title: "resizeWindow",
-              //   onPressed: () => VKBridge.resizeWindow(800, 1000)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "scroll",
-              //   onPressed: () => VKBridge.scroll(top: 20, speed: 300)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
+              const Text('Interface and navigation events'),
+              _button(
+                title: 'resizeWindow',
+                call: (it) => it.resizeWindow(width: 800, height: 1000),
+              ),
+              _button(
+                title: 'scroll',
+                call: (it) => it.scroll(top: 20, speed: 300),
+              ),
               // TODO(sanekyy): тут можно по изменению хеша открыть другую страницу
-              // _button(
-              //   title: "setLocation",
-              //   onPressed: () => VKBridge.setLocation("hash-sample-page")
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "setViewSettings",
-              //   onPressed: () => VKBridge.setViewSettings(
-              //     statusBarStyle: "light",
-              //     actionBarColor: "#ff00ff",
-              //     navigationBarColor: "#ff0000",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "setSwipeSettings",
-              //   onPressed: () => VKBridge.setSwipeSettings(true)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'setLocation',
+                call: (it) => it.setLocation('hash-sample-page'),
+              ),
+              _button(
+                title: 'setViewSettings',
+                call: (it) => it.setViewSettings(
+                  statusBarStyle: "light",
+                  actionBarColor: "#ff00ff",
+                  navigationBarColor: "#ff0000",
+                ),
+              ),
+              _button(
+                title: 'setSwipeSettings',
+                call: (it) => it.setSwipeSettings(true),
+              ),
               const Text('Storage events'),
               _button(
                   title: 'storageGet',
@@ -231,38 +229,33 @@ class _ExamplesPageState extends State<ExamplesPage> {
                       )),
               _button(
                 title: 'storageGetKeys',
-                call: (it) => it.storageGetKeys(
-                  count: 20,
-                ),
+                call: (it) => it.storageGetKeys(count: 20),
               ),
-              // Text("Interacting with Taptic Engine"),
-              // _button(
-              //   title: "tapticNotificationOccurred",
-              //   onPressed: () => VKBridge.tapticNotificationOccurred("error")
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "tapticSelectionChanged",
-              //   onPressed: () => VKBridge.tapticSelectionChanged()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "tapticImpactOccurred",
-              //   onPressed: () => VKBridge.tapticImpactOccurred("heavy")
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // Text("Payments in mini apps using VK Pay"),
+              const Text('Interacting with Taptic Engine'),
+              _button(
+                title: 'tapticNotificationOccurred',
+                call: (it) => it.tapticNotificationOccurred("error"),
+              ),
+              _button(
+                title: 'tapticSelectionChanged',
+                call: (it) => it.tapticSelectionChanged(),
+              ),
+              _button(
+                title: 'tapticImpactOccurred',
+                call: (it) => it.tapticImpactOccurred('heavy'),
+              ),
+              // const Text('Payments in mini apps using VK Pay'),
               // _button(
               //   title: "openPayForm",
-              //   onPressed: () => VKBridge.openPayForm(
-              //     appId: _flutterSampleVkMiniAppId,
-              //     action: "transfer-to-user",
-              //     userId: 620483496,
-              //     description: "Donate on VK Bridge for Flutter",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
+              //   call: (it) => it
+              //       .openPayForm(
+              //         appId: _flutterSampleVkMiniAppId,
+              //         action: "transfer-to-user",
+              //         userId: 620483496,
+              //         description: "Donate on VK Bridge for Flutter",
+              //       )
+              //       .then(showResultDialog)
+              //       .catchError(showErrorDialog),
               // ),
               const Text('Opening story editor'),
               _button(

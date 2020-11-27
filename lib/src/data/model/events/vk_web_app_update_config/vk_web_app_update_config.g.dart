@@ -23,7 +23,23 @@ class _$VKWebAppUpdateConfigSerializer
   Iterable<Object> serialize(
       Serializers serializers, VKWebAppUpdateConfig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      'scheme',
+      serializers.serialize(object.scheme,
+          specifiedType: const FullType(String)),
+    ];
+    if (object.app != null) {
+      result
+        ..add('app')
+        ..add(serializers.serialize(object.app,
+            specifiedType: const FullType(String)));
+    }
+    if (object.appId != null) {
+      result
+        ..add('app_id')
+        ..add(serializers.serialize(object.appId,
+            specifiedType: const FullType(String)));
+    }
     if (object.appearance != null) {
       result
         ..add('appearance')
@@ -35,6 +51,36 @@ class _$VKWebAppUpdateConfigSerializer
         ..add('insets')
         ..add(serializers.serialize(object.insets,
             specifiedType: const FullType(Insets)));
+    }
+    if (object.startTime != null) {
+      result
+        ..add('start_time')
+        ..add(serializers.serialize(object.startTime,
+            specifiedType: const FullType(int)));
+    }
+    if (object.viewportHeight != null) {
+      result
+        ..add('viewport_height')
+        ..add(serializers.serialize(object.viewportHeight,
+            specifiedType: const FullType(int)));
+    }
+    if (object.viewportWidth != null) {
+      result
+        ..add('viewport_width')
+        ..add(serializers.serialize(object.viewportWidth,
+            specifiedType: const FullType(int)));
+    }
+    if (object.apiHost != null) {
+      result
+        ..add('api_host')
+        ..add(serializers.serialize(object.apiHost,
+            specifiedType: const FullType(String)));
+    }
+    if (object.isLayer != null) {
+      result
+        ..add('is_layer')
+        ..add(serializers.serialize(object.isLayer,
+            specifiedType: const FullType(String)));
     }
     return result;
   }
@@ -51,6 +97,14 @@ class _$VKWebAppUpdateConfigSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'app':
+          result.app = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'app_id':
+          result.appId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'appearance':
           result.appearance = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -58,6 +112,30 @@ class _$VKWebAppUpdateConfigSerializer
         case 'insets':
           result.insets.replace(serializers.deserialize(value,
               specifiedType: const FullType(Insets)) as Insets);
+          break;
+        case 'scheme':
+          result.scheme = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'start_time':
+          result.startTime = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'viewport_height':
+          result.viewportHeight = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'viewport_width':
+          result.viewportWidth = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'api_host':
+          result.apiHost = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'is_layer':
+          result.isLayer = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -68,15 +146,46 @@ class _$VKWebAppUpdateConfigSerializer
 
 class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
+  final String app;
+  @override
+  final String appId;
+  @override
   final String appearance;
   @override
   final Insets insets;
+  @override
+  final String scheme;
+  @override
+  final int startTime;
+  @override
+  final int viewportHeight;
+  @override
+  final int viewportWidth;
+  @override
+  final String apiHost;
+  @override
+  final String isLayer;
 
   factory _$VKWebAppUpdateConfig(
           [void Function(VKWebAppUpdateConfigBuilder) updates]) =>
       (new VKWebAppUpdateConfigBuilder()..update(updates)).build();
 
-  _$VKWebAppUpdateConfig._({this.appearance, this.insets}) : super._();
+  _$VKWebAppUpdateConfig._(
+      {this.app,
+      this.appId,
+      this.appearance,
+      this.insets,
+      this.scheme,
+      this.startTime,
+      this.viewportHeight,
+      this.viewportWidth,
+      this.apiHost,
+      this.isLayer})
+      : super._() {
+    if (scheme == null) {
+      throw new BuiltValueNullFieldError('VKWebAppUpdateConfig', 'scheme');
+    }
+  }
 
   @override
   VKWebAppUpdateConfig rebuild(
@@ -91,20 +200,51 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VKWebAppUpdateConfig &&
+        app == other.app &&
+        appId == other.appId &&
         appearance == other.appearance &&
-        insets == other.insets;
+        insets == other.insets &&
+        scheme == other.scheme &&
+        startTime == other.startTime &&
+        viewportHeight == other.viewportHeight &&
+        viewportWidth == other.viewportWidth &&
+        apiHost == other.apiHost &&
+        isLayer == other.isLayer;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, appearance.hashCode), insets.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc($jc($jc(0, app.hashCode), appId.hashCode),
+                                    appearance.hashCode),
+                                insets.hashCode),
+                            scheme.hashCode),
+                        startTime.hashCode),
+                    viewportHeight.hashCode),
+                viewportWidth.hashCode),
+            apiHost.hashCode),
+        isLayer.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppUpdateConfig')
+          ..add('app', app)
+          ..add('appId', appId)
           ..add('appearance', appearance)
-          ..add('insets', insets))
+          ..add('insets', insets)
+          ..add('scheme', scheme)
+          ..add('startTime', startTime)
+          ..add('viewportHeight', viewportHeight)
+          ..add('viewportWidth', viewportWidth)
+          ..add('apiHost', apiHost)
+          ..add('isLayer', isLayer))
         .toString();
   }
 }
@@ -112,6 +252,14 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
 class VKWebAppUpdateConfigBuilder
     implements Builder<VKWebAppUpdateConfig, VKWebAppUpdateConfigBuilder> {
   _$VKWebAppUpdateConfig _$v;
+
+  String _app;
+  String get app => _$this._app;
+  set app(String app) => _$this._app = app;
+
+  String _appId;
+  String get appId => _$this._appId;
+  set appId(String appId) => _$this._appId = appId;
 
   String _appearance;
   String get appearance => _$this._appearance;
@@ -121,12 +269,45 @@ class VKWebAppUpdateConfigBuilder
   InsetsBuilder get insets => _$this._insets ??= new InsetsBuilder();
   set insets(InsetsBuilder insets) => _$this._insets = insets;
 
+  String _scheme;
+  String get scheme => _$this._scheme;
+  set scheme(String scheme) => _$this._scheme = scheme;
+
+  int _startTime;
+  int get startTime => _$this._startTime;
+  set startTime(int startTime) => _$this._startTime = startTime;
+
+  int _viewportHeight;
+  int get viewportHeight => _$this._viewportHeight;
+  set viewportHeight(int viewportHeight) =>
+      _$this._viewportHeight = viewportHeight;
+
+  int _viewportWidth;
+  int get viewportWidth => _$this._viewportWidth;
+  set viewportWidth(int viewportWidth) => _$this._viewportWidth = viewportWidth;
+
+  String _apiHost;
+  String get apiHost => _$this._apiHost;
+  set apiHost(String apiHost) => _$this._apiHost = apiHost;
+
+  String _isLayer;
+  String get isLayer => _$this._isLayer;
+  set isLayer(String isLayer) => _$this._isLayer = isLayer;
+
   VKWebAppUpdateConfigBuilder();
 
   VKWebAppUpdateConfigBuilder get _$this {
     if (_$v != null) {
+      _app = _$v.app;
+      _appId = _$v.appId;
       _appearance = _$v.appearance;
       _insets = _$v.insets?.toBuilder();
+      _scheme = _$v.scheme;
+      _startTime = _$v.startTime;
+      _viewportHeight = _$v.viewportHeight;
+      _viewportWidth = _$v.viewportWidth;
+      _apiHost = _$v.apiHost;
+      _isLayer = _$v.isLayer;
       _$v = null;
     }
     return this;
@@ -151,7 +332,16 @@ class VKWebAppUpdateConfigBuilder
     try {
       _$result = _$v ??
           new _$VKWebAppUpdateConfig._(
-              appearance: appearance, insets: _insets?.build());
+              app: app,
+              appId: appId,
+              appearance: appearance,
+              insets: _insets?.build(),
+              scheme: scheme,
+              startTime: startTime,
+              viewportHeight: viewportHeight,
+              viewportWidth: viewportWidth,
+              apiHost: apiHost,
+              isLayer: isLayer);
     } catch (_) {
       String _$failedField;
       try {

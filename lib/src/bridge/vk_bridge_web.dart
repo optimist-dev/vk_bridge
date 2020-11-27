@@ -14,7 +14,9 @@ import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
@@ -28,8 +30,13 @@ import 'package:vk_bridge/src/data/model/options/get_group_info_options/get_grou
 import 'package:vk_bridge/src/data/model/options/get_personal_card_options/get_personal_card_options.dart';
 import 'package:vk_bridge/src/data/model/options/join_group_options/join_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/leave_group_options/leave_group_options.dart';
+import 'package:vk_bridge/src/data/model/options/location_options/location_options.dart';
 import 'package:vk_bridge/src/data/model/options/open_app_options/open_app_options.dart';
+import 'package:vk_bridge/src/data/model/options/resize_window_options/resize_window_options.dart';
+import 'package:vk_bridge/src/data/model/options/scroll_options/scroll_options.dart';
 import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
+import 'package:vk_bridge/src/data/model/options/set_swipe_settings_options/set_swipe_settings_options.dart';
+import 'package:vk_bridge/src/data/model/options/set_view_settings_options/set_view_settings_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
@@ -38,6 +45,9 @@ import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show
 import 'package:vk_bridge/src/data/model/options/storage_get_keys_options/storage_get_keys_options.dart';
 import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get_options.dart';
 import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
+import 'package:vk_bridge/src/data/model/options/subscribe_story_app_options/subscribe_story_app_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_impact_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_notification_occured_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -55,10 +65,13 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_res
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_resize_window_result/vk_web_app_resize_window_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_scroll_result/vk_web_app_scroll_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_result/vk_web_app_subscribe_story_app_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 import 'package:vk_bridge/vk_bridge.dart';
@@ -92,8 +105,18 @@ class VKBridge implements vk_bridge.VKBridge {
   final _updateConfigSubject = BehaviorSubject<VKWebAppUpdateConfig>();
 
   @override
-  Stream<VKWebAppUpdateConfig> get updateConfigStream =>
-      _updateConfigSubject.stream;
+  Stream<VKWebAppUpdateConfig> get updateConfigStream => _updateConfigSubject;
+
+  final _locationChangedSubject = BehaviorSubject<VKWebAppLocationChanged>();
+
+  @override
+  Stream<VKWebAppLocationChanged> get locationChangedStream =>
+      _locationChangedSubject;
+
+  final _viewHideSubject = BehaviorSubject<VKWebAppViewHide>();
+
+  @override
+  Stream<VKWebAppViewHide> get viewHideStream => _viewHideSubject;
 
   Future<Result> _sendInternal<Result>(String method) async {
     return _sendInternalWithOptions<Result, void>(method);
@@ -114,8 +137,18 @@ class VKBridge implements vk_bridge.VKBridge {
     bool rethrowed = false;
 
     try {
-      final propsJson =
-          props == null ? '{}' : jsonEncode(serialize<Options>(props));
+      String propsJson;
+      if (props == null) {
+        propsJson = '{}';
+      } else {
+        try {
+          propsJson = jsonEncode(serialize<Options>(props));
+        } catch (e) {
+          _logger.e("can't serialize and encode to json. $e");
+          rethrowed = true;
+          rethrow;
+        }
+      }
 
       _logger.d('send($method, $propsJson)');
 
@@ -170,6 +203,16 @@ class VKBridge implements vk_bridge.VKBridge {
         final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
         _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
+        break;
+      case 'VKWebAppLocationChanged':
+        final locationChanged = deserialize<VKWebAppLocationChanged>(data);
+        _logger.d(locationChanged);
+        _locationChangedSubject.add(locationChanged);
+        break;
+      case 'VKWebAppViewHide':
+        final viewHide = deserialize<VKWebAppViewHide>(data);
+        _logger.d(viewHide);
+        _viewHideSubject.add(viewHide);
         break;
     }
   }
@@ -487,6 +530,92 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> flashSetLevel(int level) {
     final options = FlashSetLevelOptions((b) => b..level = level);
     return _sendInternalWithOptions('VKWebAppFlashSetLevel', options);
+  }
+
+  @override
+  Future<VKWebAppResizeWindowResult> resizeWindow({
+    @required int width,
+    @required int height,
+  }) {
+    final options = ResizeWindowOptions(
+      (b) => b
+        ..width = width
+        ..height = height,
+    );
+    return _sendInternalWithOptions('VKWebAppResizeWindow', options);
+  }
+
+  @override
+  Future<VKWebAppScrollResult> scroll({@required int top, int speed = 0}) {
+    final options = ScrollOptions(
+      (b) => b
+        ..top = top
+        ..speed = speed,
+    );
+    return _sendInternalWithOptions('VKWebAppScroll', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> setLocation(String location) {
+    final options = LocationOptions((b) => b..location = location);
+    return _sendInternalWithOptions('VKWebAppSetLocation', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> setViewSettings({
+    @required String statusBarStyle,
+    String actionBarColor,
+    String navigationBarColor,
+  }) {
+    final options = SetViewSettingsOptions(
+      (b) => b
+        ..statusBarStyle = statusBarStyle
+        ..actionBarColor = actionBarColor
+        ..navigationBarColor = navigationBarColor,
+    );
+    return _sendInternalWithOptions('VKWebAppSetViewSettings', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> setSwipeSettings(bool history) {
+    final options = SetSwipeSettingsOptions((b) => b..history = history);
+    return _sendInternalWithOptions('VKWebAppSetSwipeSettings', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type) {
+    final options = TapticNotificationOccurredOptions((b) => b..type = type);
+    return _sendInternalWithOptions(
+      'VKWebAppTapticNotificationOccurred',
+      options,
+    );
+  }
+
+  @override
+  Future<VKWebAppBoolResult> tapticSelectionChanged() {
+    return _sendInternal('VKWebAppTapticSelectionChanged');
+  }
+
+  @override
+  Future<VKWebAppBoolResult> tapticImpactOccurred(String style) {
+    final options = TapticImpactOccurredOptions((b) => b..style = style);
+    return _sendInternalWithOptions('VKWebAppTapticImpactOccurred', options);
+  }
+
+  @override
+  Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
+    @required int storyOwnerId,
+    @required int storyId,
+    @required int stickerId,
+    String accessKey,
+  }) {
+    final options = SubscribeStoryAppOptions(
+      (b) => b
+        ..storyOwnerId = storyOwnerId
+        ..storyId = storyId
+        ..stickerId = stickerId,
+    );
+    return _sendInternalWithOptions('VKWebAppSubscribeStoryApp', options);
   }
 }
 
