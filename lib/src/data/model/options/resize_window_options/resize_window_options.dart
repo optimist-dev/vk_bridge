@@ -8,13 +8,15 @@ part 'resize_window_options.g.dart';
 abstract class ResizeWindowOptions
     implements Built<ResizeWindowOptions, ResizeWindowOptionsBuilder> {
   /// [ResizeWindowOptions] factory
-  factory ResizeWindowOptions([void Function(ResizeWindowOptionsBuilder) updates]) =
+  factory ResizeWindowOptions(
+          [void Function(ResizeWindowOptionsBuilder) updates]) =
       _$ResizeWindowOptions;
 
   ResizeWindowOptions._();
 
   /// [ResizeWindowOptions] serializer
-  static Serializer<ResizeWindowOptions> get serializer => _$resizeWindowOptionsSerializer;
+  static Serializer<ResizeWindowOptions> get serializer =>
+      _$resizeWindowOptionsSerializer;
 
   /// Window width. It can take values from 630px to 1000px.
   int get width;

@@ -14,7 +14,8 @@ abstract class LocationOptions
   LocationOptions._();
 
   /// [LocationOptions] serializer
-  static Serializer<LocationOptions> get serializer => _$locationOptionsSerializer;
+  static Serializer<LocationOptions> get serializer =>
+      _$locationOptionsSerializer;
 
   /// The new hash value.
   String get location;

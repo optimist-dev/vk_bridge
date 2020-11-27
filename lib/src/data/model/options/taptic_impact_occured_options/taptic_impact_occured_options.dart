@@ -6,9 +6,11 @@ part 'taptic_impact_occured_options.g.dart';
 
 /// Options of [VKBridge.tapticImpactOccurred]
 abstract class TapticImpactOccurredOptions
-    implements Built<TapticImpactOccurredOptions, TapticImpactOccurredOptionsBuilder> {
+    implements
+        Built<TapticImpactOccurredOptions, TapticImpactOccurredOptionsBuilder> {
   /// [TapticImpactOccurredOptions] factory
-  factory TapticImpactOccurredOptions([void Function(TapticImpactOccurredOptionsBuilder) updates]) =
+  factory TapticImpactOccurredOptions(
+          [void Function(TapticImpactOccurredOptionsBuilder) updates]) =
       _$TapticImpactOccurredOptions;
 
   TapticImpactOccurredOptions._();

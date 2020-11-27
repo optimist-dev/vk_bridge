@@ -6,9 +6,12 @@ part 'taptic_notification_occured_options.g.dart';
 
 /// Options of [VKBridge.tapticNotificationOccurred]
 abstract class TapticNotificationOccurredOptions
-    implements Built<TapticNotificationOccurredOptions, TapticNotificationOccurredOptionsBuilder> {
+    implements
+        Built<TapticNotificationOccurredOptions,
+            TapticNotificationOccurredOptionsBuilder> {
   /// [TapticNotificationOccurredOptions] factory
-  factory TapticNotificationOccurredOptions([void Function(TapticNotificationOccurredOptionsBuilder) updates]) =
+  factory TapticNotificationOccurredOptions(
+          [void Function(TapticNotificationOccurredOptionsBuilder) updates]) =
       _$TapticNotificationOccurredOptions;
 
   TapticNotificationOccurredOptions._();

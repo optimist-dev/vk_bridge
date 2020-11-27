@@ -9,8 +9,7 @@ part 'vk_web_app_view_hide.g.dart';
 abstract class VKWebAppViewHide
     implements Built<VKWebAppViewHide, VKWebAppViewHideBuilder> {
   /// [VKWebAppViewHide] factory
-  factory VKWebAppViewHide(
-          [void Function(VKWebAppViewHideBuilder) updates]) =
+  factory VKWebAppViewHide([void Function(VKWebAppViewHideBuilder) updates]) =
       _$VKWebAppViewHide;
 
   VKWebAppViewHide._();

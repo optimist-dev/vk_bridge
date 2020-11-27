@@ -8,7 +8,8 @@ part 'set_view_settings_options.g.dart';
 abstract class SetViewSettingsOptions
     implements Built<SetViewSettingsOptions, SetViewSettingsOptionsBuilder> {
   /// [SetViewSettingsOptions] factory
-  factory SetViewSettingsOptions([void Function(SetViewSettingsOptionsBuilder) updates]) =
+  factory SetViewSettingsOptions(
+          [void Function(SetViewSettingsOptionsBuilder) updates]) =
       _$SetViewSettingsOptions;
 
   SetViewSettingsOptions._();

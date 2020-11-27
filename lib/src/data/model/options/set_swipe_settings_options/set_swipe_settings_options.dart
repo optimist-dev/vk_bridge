@@ -8,13 +8,15 @@ part 'set_swipe_settings_options.g.dart';
 abstract class SetSwipeSettingsOptions
     implements Built<SetSwipeSettingsOptions, SetSwipeSettingsOptionsBuilder> {
   /// [SetSwipeSettingsOptions] factory
-  factory SetSwipeSettingsOptions([void Function(SetSwipeSettingsOptionsBuilder) updates]) =
+  factory SetSwipeSettingsOptions(
+          [void Function(SetSwipeSettingsOptionsBuilder) updates]) =
       _$SetSwipeSettingsOptions;
 
   SetSwipeSettingsOptions._();
 
   /// [SetSwipeSettingsOptions] serializer
-  static Serializer<SetSwipeSettingsOptions> get serializer => _$setSwipeSettingsOptionsSerializer;
+  static Serializer<SetSwipeSettingsOptions> get serializer =>
+      _$setSwipeSettingsOptionsSerializer;
 
   /// Flag for configuring the browser to work with swipe on iOS.
   bool get history;

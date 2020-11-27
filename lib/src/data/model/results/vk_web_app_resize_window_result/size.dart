@@ -5,11 +5,9 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 part 'size.g.dart';
 
 /// Part of  [VKWebAppResizeWindowResult]
-abstract class Size
-    implements Built<Size, SizeBuilder> {
+abstract class Size implements Built<Size, SizeBuilder> {
   /// [Size] factory
-  factory Size([void Function(SizeBuilder) updates]) =
-      _$Size;
+  factory Size([void Function(SizeBuilder) updates]) = _$Size;
 
   Size._();
 

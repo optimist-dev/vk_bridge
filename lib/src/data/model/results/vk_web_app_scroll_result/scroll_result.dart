@@ -6,19 +6,15 @@ part 'scroll_result.g.dart';
 
 /// Result of [VKBridge.scroll]
 abstract class ScrollResult
-    implements
-        Built<ScrollResult,
-            ScrollResultBuilder> {
+    implements Built<ScrollResult, ScrollResultBuilder> {
   /// [ScrollResult] factory
-  factory ScrollResult(
-          [void Function(ScrollResultBuilder) updates]) =
+  factory ScrollResult([void Function(ScrollResultBuilder) updates]) =
       _$ScrollResult;
 
   ScrollResult._();
 
   /// [ScrollResult] serializer
-  static Serializer<ScrollResult> get serializer =>
-      _$scrollResultSerializer;
+  static Serializer<ScrollResult> get serializer => _$scrollResultSerializer;
 
   /// The current scroll position.
   int get top;
