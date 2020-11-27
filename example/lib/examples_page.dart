@@ -7,10 +7,10 @@ class ExamplesPage extends StatefulWidget {
 }
 
 class _ExamplesPageState extends State<ExamplesPage> {
-  // static const _flutterSampleVkMiniAppId = 7638841;
+  static const _flutterSampleVkMiniAppId = 7638841;
   static const _vkBridgeOriginalVKMiniAppId = 6909581;
 
-  // static const _vkMiniAppGroupId = 166562603;
+  static const _vkMiniAppGroupId = 166562603;
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -106,91 +106,85 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 call: (it) => it.getGeodata(),
               ),
               _button(
-                  title: 'getPersonalCard',
-                  call: (it) => it.getPersonalCard(
-                        [
-                          'phone',
-                          'email',
-                          'address',
-                        ],
-                      )),
+                title: 'getPersonalCard',
+                call: (it) => it.getPersonalCard(
+                  [
+                    'phone',
+                    'email',
+                    'address',
+                  ],
+                ),
+              ),
               _button(
                 title: 'getPhoneNumber',
                 call: (it) => it.getPhoneNumber(),
               ),
-              // _button(
-              //   title: "getFriends",
-              //   onPressed: () => VKBridge.getFriends()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "openContacts",
-              //   onPressed: () => VKBridge.openContacts()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getAuthToken",
-              //   onPressed: () => VKBridge.getAuthToken(
-              //     appId: _flutterSampleVkMiniAppId,
-              //     scope: "status",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // Text("Community events"),
-              // _button(
-              //   title: "getGroupInfo",
-              //   onPressed: () => VKBridge.getGroupInfo(_vkMiniAppGroupId)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "joinGroup",
-              //   onPressed: () => VKBridge.joinGroup(_vkMiniAppGroupId)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "leaveGroup",
-              //   onPressed: () => VKBridge.leaveGroup(_vkMiniAppGroupId)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "allowMessagesFromGroup",
-              //   onPressed: () => VKBridge.allowMessagesFromGroup(
-              //     groupId: _vkMiniAppGroupId,
-              //     key: "dBuBKe1kFcdemzB",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "getCommunityToken",
-              //   onPressed: () => VKBridge.getCommunityToken(
-              //     appId: _flutterSampleVkMiniAppId,
-              //     groupId: _vkMiniAppGroupId,
-              //     scope: "docs",
-              //   ).then(showResultDialog).catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "addToCommunity",
-              //   onPressed: () => VKBridge.addToCommunity()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _showCommunityWidgetPreviewBoxButton(),
-              // Text("Flashlight events"),
-              // _button(
-              //   title: "flashGetInfo",
-              //   onPressed: () => VKBridge.flashGetInfo()
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
-              // _button(
-              //   title: "flashSetLevel",
-              //   onPressed: () => VKBridge.flashSetLevel(1)
-              //       .then(showResultDialog)
-              //       .catchError(showErrorDialog),
-              // ),
+              _button(
+                title: 'getEmail',
+                call: (it) => it.getEmail(),
+              ),
+              _button(
+                title: 'getFriends',
+                call: (it) => it.getFriends(),
+              ),
+              _button(
+                title: 'openContacts',
+                call: (it) => it.openContacts(),
+              ),
+              _button(
+                title: 'getAuthToken',
+                call: (it) => it.getAuthToken(
+                  appId: _flutterSampleVkMiniAppId,
+                  scope: 'status',
+                ),
+              ),
+              const Text('Community events'),
+              _button(
+                title: 'getGroupInfo',
+                call: (it) => it.getGroupInfo(_vkMiniAppGroupId),
+              ),
+              _button(
+                title: 'joinGroup',
+                call: (it) => it.joinGroup(_vkMiniAppGroupId),
+              ),
+              _button(
+                title: 'leaveGroup',
+                call: (it) => it.leaveGroup(_vkMiniAppGroupId),
+              ),
+              _button(
+                title: 'allowMessagesFromGroup',
+                call: (it) => it.allowMessagesFromGroup(
+                  groupId: _vkMiniAppGroupId,
+                  key: 'dBuBKe1kFemB',
+                ),
+              ),
+              _button(
+                  title: 'getCommunityToken',
+                  call: (it) => it.getCommunityToken(
+                        appId: _flutterSampleVkMiniAppId,
+                        groupId: _vkMiniAppGroupId,
+                        scope: 'docs',
+                      )),
+              _button(
+                title: 'addToCommunity',
+                call: (it) => it.addToCommunity(),
+              ),
+              _button(
+                title: 'showCommunityWidgetPreviewBox',
+                call: (it) => it.showCommunityWidgetPreviewBox(
+                    groupId: _vkMiniAppGroupId, type: 'text', code: '''
+                "return {
+    \"title\": \"Цитата\",
+    \"text\": \"Текст цитаты\"
+};"
+'''),
+              ),
+              const Text('Flashlight events'),
+              _button(title: 'flashGetInfo', call: (it) => it.flashGetInfo()),
+              _button(
+                title: 'flashSetLevel',
+                call: (it) => it.flashSetLevel(1),
+              ),
               // Text("Interface and navigation events"),
               // _button(
               //   title: "resizeWindow",
@@ -349,19 +343,4 @@ class _ExamplesPageState extends State<ExamplesPage> {
       ),
     );
   }
-//
-//   Widget _showCommunityWidgetPreviewBoxButton() {
-//     return _button(
-//       title: "showCommunityWidgetPreviewBox",
-//       onPressed: () => VKBridge.showCommunityWidgetPreviewBox(
-//           groupId: _vkMiniAppGroupId, type: "text", code: """
-//                 "return {
-//     \"title\": \"Цитата\",
-//     \"text\": \"Текст цитаты\"
-// };"
-// """)
-//           .then(showResultDialog)
-//           .catchError(showErrorDialog),
-//     );
-//   }
 }

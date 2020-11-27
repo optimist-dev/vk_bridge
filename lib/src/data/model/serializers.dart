@@ -6,13 +6,22 @@ import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
+import 'package:vk_bridge/src/data/model/options/flash_set_level_options/flash_set_level_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/get_auth_token_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_community_token_options/get_community_token_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_friends_options/get_friends_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_group_info_options/get_group_info_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_personal_card_options/get_personal_card_options.dart';
+import 'package:vk_bridge/src/data/model/options/join_group_options/join_group_options.dart';
+import 'package:vk_bridge/src/data/model/options/leave_group_options/leave_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/open_app_options/open_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_app.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_link.dart';
@@ -30,9 +39,16 @@ import 'package:vk_bridge/src/data/model/results/common/city.dart';
 import 'package:vk_bridge/src/data/model/results/common/country.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/user.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_group_info_result/vk_web_app_get_group_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/address.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
@@ -89,6 +105,22 @@ part 'serializers.g.dart';
   VKWebAppStorageGetResult,
   VKWebAppStorageGetKeysResult,
   KeyValuePair,
+  GetFriendsOptions,
+  VKWebAppGetFriendsResult,
+  User,
+  VKWebAppContactsDone,
+  GetAuthTokenOptions,
+  VKWebAppGetAuthTokenResult,
+  GetGroupInfoOptions,
+  VKWebAppGetGroupInfoResult,
+  JoinGroupOptions,
+  LeaveGroupOptions,
+  AllowMessagesFromGroupOptions,
+  GetCommunityTokenOptions,
+  VKWebAppCommunityAccessTokenResult,
+  ShowCommunityWidgetPreviewBoxOptions,
+  VKWebAppFlashGetInfoResult,
+  FlashSetLevelOptions,
 ])
 
 /// Serializers

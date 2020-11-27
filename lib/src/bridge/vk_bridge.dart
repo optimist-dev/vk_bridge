@@ -3,11 +3,18 @@ import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_group_info_result/vk_web_app_get_group_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
@@ -237,7 +244,7 @@ abstract class VKBridge {
   /// [VKWebAppStorageGet] returns the values of the variables,
   /// the names of which were passed in the keys parameter.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [keys] - the names of the keys, [a-zA-Z _ \ - 0-9],
   /// passed in an array of strings.
@@ -246,7 +253,7 @@ abstract class VKBridge {
   /// The [VKWebAppStorageSet] call stores the value of the variable
   /// whose name is passed in the key parameter.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [key] - key name, [a-zA-Z _ \ - 0-9]. The maximum length is 100 characters.
   /// [value] - variable value, only the first 4096 bytes are saved.
@@ -257,7 +264,7 @@ abstract class VKBridge {
 
   /// Call [VKWebAppStorageGetKeys] returns the names of all variables.
   ///
-  /// iOS, Android, Web, Mobile Web
+  /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [count] - the number of variable names to get information about.
   /// [offset] - the offset required to sample a specific subset of variable names.
@@ -265,4 +272,169 @@ abstract class VKBridge {
     int count,
     int offset,
   });
+
+  /// [VKWebAppGetFriends] brings up a selection window from the friends list.
+  ///
+  /// Platforms: iOS, Android, Web
+  ///
+  /// [multi] -
+  /// false: selection of one friend from the list.
+  /// true: selection of several friends from the list.
+  /// The default is false.
+  Future<VKWebAppGetFriendsResult> getFriends([bool multi = false]);
+
+  /// [VKWebAppOpenContacts] opens a window for selecting contacts
+  /// from the phone book on the user's device.
+  ///
+  /// Platforms: iOS, Android
+  Future<VKWebAppContactsDone> openContacts();
+
+  /// [VKWebAppGetAuthToken] allows you to request access rights from the user
+  /// and get a key to work with the API. At the same time,
+  /// you do not need to request a token to identify a user in the service.
+  /// Use the signature of the launch parameters for this
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [app_id] - application ID.
+  /// [scope] - list of access rights, separated by commas.
+  /// To get a token without additional rights,
+  /// pass an empty string in the parameter. Available Values:
+  /// friends - access to the user's friends list,
+  /// photos - access to photos,
+  /// video - access to videos,
+  /// stories - access to stories,
+  /// pages - access to wiki pages,
+  /// status - access to user status,
+  /// notes - access to user notes,
+  /// wall - to methods of working with a wall,
+  /// docs - access to documents,
+  /// groups - access to user communities,
+  /// stats - access to statistics of groups and applications of the user, of which he is the administrator,
+  /// market - access to goods.
+  ///
+  // TODO: Set<Scope> scopes
+  Future<VKWebAppGetAuthTokenResult> getAuthToken({
+    @required int appId,
+    @required String scope,
+  });
+
+  /// [VKWebAppGetGroupInfo] allows you to get information about the group.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [groupId] - group ID.
+  Future<VKWebAppGetGroupInfoResult> getGroupInfo(int groupId);
+
+  /// [VKWebAppJoinGroup] allows the user to join the community.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [groupId] - group ID.
+  Future<VKWebAppBoolResult> joinGroup(int groupId);
+
+  /// [VKWebAppLeaveGroup] allows the user to log out of the community.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [groupId] - group ID.
+  Future<VKWebAppBoolResult> leaveGroup(int groupId);
+
+  /// [VKWebAppAllowMessagesFromGroup] allows you to request permission
+  /// from the user to send messages on behalf of the community.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [groupId] - group ID.
+  /// [key] - arbitrary string.
+  /// This parameter can be used to authenticate the user.
+  /// Its value will be returned in the message_allow event of the Callback API.
+  Future<VKWebAppBoolResult> allowMessagesFromGroup({
+    @required int groupId,
+    String key,
+  });
+
+  /// [VKWebAppGetCommunityToken] allows you to request access rights
+  /// and get a key to work with the API on behalf of the community.
+  /// Only the community administrator can obtain a community access token.
+  ///
+  /// For further work, get the access key of the user
+  /// with scope = groups rights and make a request to the groups.get method
+  /// with the filter = admin parameter to get a list of the IDs
+  /// of the administered groups.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  ///
+  /// [appId] - app ID.
+  /// [groupId] - group ID.
+  /// [scope] - list of access rights, separated by commas.
+  /// Available Values:
+  /// stories - access to stories.
+  /// photos - access to photos.
+  /// app_widget - Access to community widgets.
+  /// messages - access to community messages.
+  /// docs - access to documents.
+  /// manage - access to community administration.
+  Future<VKWebAppCommunityAccessTokenResult> getCommunityToken({
+    @required int appId,
+    @required int groupId,
+    @required String scope,
+  });
+
+  /// [VKWebAppAddToCommunity] calls the community selection window
+  /// for installing the service.
+  ///
+  /// Please note: to call in the application management
+  /// https://vk.com/editapp?id={app_id} the checkbox next
+  /// to "Allow installation in communities" must be set.
+  /// The app must be enabled and accessible to everyone.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppAddToCommunityResult> addToCommunity();
+
+  /// Raising the [VKWebAppShowCommunityWidgetPreviewBox] event
+  /// brings up the community widget preview screen.
+  /// Community app widgets have a separate guide.
+  /// ( https://vk.com/dev/apps_widgets )
+  ///
+  /// Please note: to call in the application management
+  /// https://vk.com/editapp?id={app_id} the checkbox next
+  /// to "Allow installation in communities" must be set.
+  /// The app must be enabled and accessible to everyone.
+  ///
+  /// [groupId] - group ID.
+  /// [type] - Widget type. Can take values:
+  /// text,
+  /// list,
+  /// table,
+  /// tiles,
+  /// compact_list,
+  /// cover_list,
+  /// match,
+  /// matches,
+  /// donation.
+  /// [code] - Widget code.
+  /// Analogue of the code parameter in the execute method.
+  /// The parameters of all supported widget types
+  /// are described in detail on this page.
+  /// ( https://vk.com/dev/objects/appWidget )
+  ///
+  /// Platforms: iOS, Android, Web
+  Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
+    @required int groupId,
+    @required String type,
+    @required String code,
+  });
+
+  /// [VKWebAppFlashGetInfo] asks for information about the flashlight.
+  ///
+  /// Platforms: iOS, Android
+  Future<VKWebAppFlashGetInfoResult> flashGetInfo();
+
+  /// [VKWebAppFlashSetLevel] sets the brightness level of the flashlight.
+  ///
+  /// [level] - flashlight brightness level from 0 to 1.
+  ///
+  /// Platforms: iOS, Android
+  Future<VKWebAppBoolResult> flashSetLevel(int level);
 }
