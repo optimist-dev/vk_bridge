@@ -4,7 +4,7 @@ import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'vk_web_app_add_to_home_screen_info_result.g.dart';
 
-/// Result of [VKBridge.appClose]
+/// Result of [VKBridge.addToHomeScreenInfo]
 abstract class VKWebAppAddToHomeScreenInfoResult
     implements
         Built<VKWebAppAddToHomeScreenInfoResult,
