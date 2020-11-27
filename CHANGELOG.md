@@ -1,3 +1,32 @@
+## 1.2.0
+
+- Improve internal error handling
+
+- Add new methods:
+    - getFriends
+    - openContacts
+    - getAuthToken
+    - getGroupInfo
+    - joinGroup
+    - leaveGroup
+    - allowMessagesFromGroup
+    - getCommunityToken
+    - addToCommunity
+    - showCommunityWidgetPreviewBox
+    - flashGetInfo
+    - flashSetLevel
+    - locationChangedStream
+    - viewHideStream
+    - resizeWindow
+    - scroll
+    - setLocation
+    - setViewSettings
+    - setSwipeSettings
+    - tapticNotificationOccurred
+    - tapticSelectionChanged
+    - tapticImpactOccurred
+    - subscribeStoryApp
+
 ## 1.1.1
 
 - Fix internal error handling
