@@ -23,6 +23,5 @@ abstract class StorageGetKeysOptions
   int get count;
 
   /// The offset required to sample a specific subset of variable names.
-  @nullable
   int get offset;
 }

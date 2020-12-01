@@ -288,9 +288,10 @@ abstract class VKBridge {
   ///
   /// [count] - the number of variable names to get information about.
   /// [offset] - the offset required to sample a specific subset of variable names.
+  /// Default is 0;
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
     int count,
-    int offset,
+    int offset = 0,
   });
 
   /// [VKWebAppGetFriends] brings up a selection window from the friends list.

@@ -34,12 +34,6 @@ class _$VKWebAppUpdateConfigSerializer
         ..add(serializers.serialize(object.app,
             specifiedType: const FullType(String)));
     }
-    if (object.appId != null) {
-      result
-        ..add('app_id')
-        ..add(serializers.serialize(object.appId,
-            specifiedType: const FullType(String)));
-    }
     if (object.appearance != null) {
       result
         ..add('appearance')
@@ -101,10 +95,6 @@ class _$VKWebAppUpdateConfigSerializer
           result.app = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'app_id':
-          result.appId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'appearance':
           result.appearance = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -148,8 +138,6 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
   final String app;
   @override
-  final String appId;
-  @override
   final String appearance;
   @override
   final Insets insets;
@@ -172,7 +160,6 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
 
   _$VKWebAppUpdateConfig._(
       {this.app,
-      this.appId,
       this.appearance,
       this.insets,
       this.scheme,
@@ -201,7 +188,6 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
     if (identical(other, this)) return true;
     return other is VKWebAppUpdateConfig &&
         app == other.app &&
-        appId == other.appId &&
         appearance == other.appearance &&
         insets == other.insets &&
         scheme == other.scheme &&
@@ -220,9 +206,7 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
                 $jc(
                     $jc(
                         $jc(
-                            $jc(
-                                $jc($jc($jc(0, app.hashCode), appId.hashCode),
-                                    appearance.hashCode),
+                            $jc($jc($jc(0, app.hashCode), appearance.hashCode),
                                 insets.hashCode),
                             scheme.hashCode),
                         startTime.hashCode),
@@ -236,7 +220,6 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppUpdateConfig')
           ..add('app', app)
-          ..add('appId', appId)
           ..add('appearance', appearance)
           ..add('insets', insets)
           ..add('scheme', scheme)
@@ -256,10 +239,6 @@ class VKWebAppUpdateConfigBuilder
   String _app;
   String get app => _$this._app;
   set app(String app) => _$this._app = app;
-
-  String _appId;
-  String get appId => _$this._appId;
-  set appId(String appId) => _$this._appId = appId;
 
   String _appearance;
   String get appearance => _$this._appearance;
@@ -299,7 +278,6 @@ class VKWebAppUpdateConfigBuilder
   VKWebAppUpdateConfigBuilder get _$this {
     if (_$v != null) {
       _app = _$v.app;
-      _appId = _$v.appId;
       _appearance = _$v.appearance;
       _insets = _$v.insets?.toBuilder();
       _scheme = _$v.scheme;
@@ -333,7 +311,6 @@ class VKWebAppUpdateConfigBuilder
       _$result = _$v ??
           new _$VKWebAppUpdateConfig._(
               app: app,
-              appId: appId,
               appearance: appearance,
               insets: _insets?.build(),
               scheme: scheme,

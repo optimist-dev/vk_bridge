@@ -23,17 +23,14 @@ class _$StorageGetKeysOptionsSerializer
   Iterable<Object> serialize(
       Serializers serializers, StorageGetKeysOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      'offset',
+      serializers.serialize(object.offset, specifiedType: const FullType(int)),
+    ];
     if (object.count != null) {
       result
         ..add('count')
         ..add(serializers.serialize(object.count,
-            specifiedType: const FullType(int)));
-    }
-    if (object.offset != null) {
-      result
-        ..add('offset')
-        ..add(serializers.serialize(object.offset,
             specifiedType: const FullType(int)));
     }
     return result;
@@ -76,7 +73,11 @@ class _$StorageGetKeysOptions extends StorageGetKeysOptions {
           [void Function(StorageGetKeysOptionsBuilder) updates]) =>
       (new StorageGetKeysOptionsBuilder()..update(updates)).build();
 
-  _$StorageGetKeysOptions._({this.count, this.offset}) : super._();
+  _$StorageGetKeysOptions._({this.count, this.offset}) : super._() {
+    if (offset == null) {
+      throw new BuiltValueNullFieldError('StorageGetKeysOptions', 'offset');
+    }
+  }
 
   @override
   StorageGetKeysOptions rebuild(

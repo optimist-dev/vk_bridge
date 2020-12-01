@@ -27,12 +27,13 @@ abstract class VKWebAppUpdateConfig
   @nullable
   String get app;
 
-  /// Mini App's ID
-  ///
-  /// Platforms: iOS, Android
-  @BuiltValueField(wireName: 'app_id')
-  @nullable
-  String get appId;
+  // TODO: iOS return string, Android return int :(
+  // /// Mini App's ID
+  // ///
+  // /// Platforms: iOS, Android
+  // @BuiltValueField(wireName: 'app_id')
+  // @nullable
+  // int get appId;
 
   // TODO(sanekyy): enum
   /// Possible values:
