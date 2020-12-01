@@ -155,7 +155,7 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
     int count,
-    int offset,
+    int offset = 0,
   }) =>
       throw _unsupportedError;
 
