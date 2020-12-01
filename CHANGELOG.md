@@ -1,3 +1,8 @@
+## 1.2.1
+
+- remove app_id from update config event due difference type on iOS and Android ( String / int )
+- set default value for offset ( 0 ) in StorageGetKeys because it requires on iOS
+
 ## 1.2.0
 
 - Improve internal error handling
