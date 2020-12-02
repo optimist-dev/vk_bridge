@@ -43,6 +43,7 @@ abstract class VKWebAppGetUserInfoResult
   /// Date of Birth. Returned in the format D.M.YYYY or D.M (if the year of
   /// birth is hidden). If the date of birth is hidden entirely, the field is
   /// missing in the response
+  @nullable
   String get bdate;
 
   /// Information about the user's city

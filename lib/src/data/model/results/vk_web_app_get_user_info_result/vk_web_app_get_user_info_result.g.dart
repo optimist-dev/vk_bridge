@@ -34,9 +34,6 @@ class _$VKWebAppGetUserInfoResultSerializer
           specifiedType: const FullType(String)),
       'sex',
       serializers.serialize(object.sex, specifiedType: const FullType(int)),
-      'bdate',
-      serializers.serialize(object.bdate,
-          specifiedType: const FullType(String)),
       'city',
       serializers.serialize(object.city, specifiedType: const FullType(City)),
       'country',
@@ -55,7 +52,12 @@ class _$VKWebAppGetUserInfoResultSerializer
       serializers.serialize(object.timezone,
           specifiedType: const FullType(int)),
     ];
-
+    if (object.bdate != null) {
+      result
+        ..add('bdate')
+        ..add(serializers.serialize(object.bdate,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -176,9 +178,6 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
     }
     if (sex == null) {
       throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'sex');
-    }
-    if (bdate == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'bdate');
     }
     if (city == null) {
       throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'city');
