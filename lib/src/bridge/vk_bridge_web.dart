@@ -70,6 +70,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_scroll_result/vk_web
 import 'package:vk_bridge/src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_show_wall_post_box_result/vk_web_app_show_wall_post_box_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_result/vk_web_app_storage_get_keys_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/key_value_pair.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_result/vk_web_app_subscribe_story_app_result.dart';
 import 'package:vk_bridge/src/data/model/serializers.dart';
@@ -400,7 +401,22 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppStorageGetResult> storageGet(List<String> keys) {
+  Future<VKWebAppStorageGetResult> storageGet(List<String> keys) async {
+    // If we call [VKWebAppStorageGet] with empty list of keys, on some devices in throw
+    // VKWebAppError {
+    //   errorType=client_error,
+    //   errorData=ErrorData {
+    //     errorCode=1,
+    //     errorReason=Unknown error,
+    //   },
+    // }
+    // so return empty [VKWebAppStorageGetResult] to fix it
+    if (keys.isEmpty) {
+      return VKWebAppStorageGetResult(
+        (b) => b.keys = ListBuilder<KeyValuePair>(),
+      );
+    }
+
     final options =
         StorageGetOptions((b) => b.keys = ListBuilder<String>(keys));
     return _sendInternalWithOptions('VKWebAppStorageGet', options);
