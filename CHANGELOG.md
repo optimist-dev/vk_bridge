@@ -1,3 +1,7 @@
+## 1.2.3
+
+- Fix: mark bdate in VKWebAppGetUserInfoResult as nullable
+
 ## 1.2.2
 
 - Don't call VKWebAppStorageGet if list of keys is empty and return empty result.
