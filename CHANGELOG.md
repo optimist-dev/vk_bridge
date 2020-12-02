@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Don't call VKWebAppStorageGet if list of keys is empty and return empty result.
+
 ## 1.2.1+2
 
 - Remove unused imports
