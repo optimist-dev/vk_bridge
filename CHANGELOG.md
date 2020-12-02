@@ -1,3 +1,7 @@
+## 1.2.1+2
+
+- Remove unused imports
+
 ## 1.2.1+1
 
 - Remove unused imports
