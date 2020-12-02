@@ -4,7 +4,7 @@ homepage: https://github.com/optimist-dev/vk_bridge
 version: 1.2.2
 
 environment:
-  sdk: '>=2.10.0-0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 
 dependencies:
   js: ^0.6.2
