@@ -1,6 +1,5 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:vk_bridge/src/bridge/vk_bridge.dart';
 
 part 'size.g.dart';
 
