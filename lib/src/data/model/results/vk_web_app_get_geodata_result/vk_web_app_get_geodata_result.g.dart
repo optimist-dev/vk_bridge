@@ -6,67 +6,6 @@ part of 'vk_web_app_get_geodata_result.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<VKWebAppGetGeodataResult> _$vKWebAppGetGeodataResultSerializer =
-    new _$VKWebAppGetGeodataResultSerializer();
-
-class _$VKWebAppGetGeodataResultSerializer
-    implements StructuredSerializer<VKWebAppGetGeodataResult> {
-  @override
-  final Iterable<Type> types = const [
-    VKWebAppGetGeodataResult,
-    _$VKWebAppGetGeodataResult
-  ];
-  @override
-  final String wireName = 'VKWebAppGetGeodataResult';
-
-  @override
-  Iterable<Object> serialize(
-      Serializers serializers, VKWebAppGetGeodataResult object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'available',
-      serializers.serialize(object.available,
-          specifiedType: const FullType(bool)),
-      'lat',
-      serializers.serialize(object.lat, specifiedType: const FullType(double)),
-      'long',
-      serializers.serialize(object.long, specifiedType: const FullType(double)),
-    ];
-
-    return result;
-  }
-
-  @override
-  VKWebAppGetGeodataResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = new VKWebAppGetGeodataResultBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final dynamic value = iterator.current;
-      switch (key) {
-        case 'available':
-          result.available = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
-        case 'lat':
-          result.lat = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
-          break;
-        case 'long':
-          result.long = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
-          break;
-      }
-    }
-
-    return result.build();
-  }
-}
-
 class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
   @override
   final bool available;

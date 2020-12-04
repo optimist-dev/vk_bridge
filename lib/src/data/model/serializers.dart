@@ -164,7 +164,7 @@ BuiltList<T> deserializeListOf<T>(dynamic value) => BuiltList<T>.from(value
     .map<T>((dynamic value) => deserialize<T>(value))
     .toList(growable: false) as List<T>);
 
-/// Serialize list of [value]
+/// Serialize [value]
 dynamic serialize<T>(T value) => serializers.serializeWith(
     serializers.serializerForType(T) as Serializer<T>, value);
 
