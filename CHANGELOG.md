@@ -1,3 +1,7 @@
+## 1.2.4
+
+- Improve VKWebAppGetGeodataResult parsing
+
 ## 1.2.3
 
 - Fix: mark bdate in VKWebAppGetUserInfoResult as nullable
