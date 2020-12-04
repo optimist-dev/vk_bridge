@@ -35,7 +35,7 @@ void main() {
 
   test('VKWebAppGetGeodataResult serialize test', () {
     final result = VKWebAppGetGeodataResult(
-          (VKWebAppGetGeodataResultBuilder b) => b
+      (VKWebAppGetGeodataResultBuilder b) => b
         ..available = true
         ..lat = 10
         ..long = 10,
