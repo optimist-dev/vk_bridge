@@ -13,10 +13,6 @@ dependencies:
   rxdart: ^0.24.1
   meta: ^1.2.4
 
-dependency_overrides:
-  # Temp fix for build_runner
-  analyzer: ^0.41.0
-
 dev_dependencies:
   test: '>=1.15.0 <2.0.0'
   build_runner: ^1.10.2
