@@ -1,3 +1,7 @@
+## 1.2.5
+
+- Fix isLayer type in VKWebAppUpdateConfig
+
 ## 1.2.4
 
 - Improve VKWebAppGetGeodataResult parsing
