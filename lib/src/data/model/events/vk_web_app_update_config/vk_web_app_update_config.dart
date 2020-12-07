@@ -91,5 +91,5 @@ abstract class VKWebAppUpdateConfig
   /// Platforms: Web
   @BuiltValueField(wireName: 'is_layer')
   @nullable
-  String get isLayer;
+  bool get isLayer;
 }

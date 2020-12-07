@@ -74,7 +74,7 @@ class _$VKWebAppUpdateConfigSerializer
       result
         ..add('is_layer')
         ..add(serializers.serialize(object.isLayer,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -125,7 +125,7 @@ class _$VKWebAppUpdateConfigSerializer
           break;
         case 'is_layer':
           result.isLayer = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(bool)) as bool;
           break;
       }
     }
@@ -152,7 +152,7 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
   final String apiHost;
   @override
-  final String isLayer;
+  final bool isLayer;
 
   factory _$VKWebAppUpdateConfig(
           [void Function(VKWebAppUpdateConfigBuilder) updates]) =>
@@ -269,9 +269,9 @@ class VKWebAppUpdateConfigBuilder
   String get apiHost => _$this._apiHost;
   set apiHost(String apiHost) => _$this._apiHost = apiHost;
 
-  String _isLayer;
-  String get isLayer => _$this._isLayer;
-  set isLayer(String isLayer) => _$this._isLayer = isLayer;
+  bool _isLayer;
+  bool get isLayer => _$this._isLayer;
+  set isLayer(bool isLayer) => _$this._isLayer = isLayer;
 
   VKWebAppUpdateConfigBuilder();
 
