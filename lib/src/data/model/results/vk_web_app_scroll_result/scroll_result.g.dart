@@ -37,7 +37,7 @@ class _$ScrollResultSerializer implements StructuredSerializer<ScrollResult> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'top':
           result.top = serializers.deserialize(value,
@@ -64,12 +64,8 @@ class _$ScrollResult extends ScrollResult {
       (new ScrollResultBuilder()..update(updates)).build();
 
   _$ScrollResult._({this.top, this.height}) : super._() {
-    if (top == null) {
-      throw new BuiltValueNullFieldError('ScrollResult', 'top');
-    }
-    if (height == null) {
-      throw new BuiltValueNullFieldError('ScrollResult', 'height');
-    }
+    BuiltValueNullFieldError.checkNotNull(top, 'ScrollResult', 'top');
+    BuiltValueNullFieldError.checkNotNull(height, 'ScrollResult', 'height');
   }
 
   @override
@@ -114,9 +110,10 @@ class ScrollResultBuilder
   ScrollResultBuilder();
 
   ScrollResultBuilder get _$this {
-    if (_$v != null) {
-      _top = _$v.top;
-      _height = _$v.height;
+    final $v = _$v;
+    if ($v != null) {
+      _top = $v.top;
+      _height = $v.height;
       _$v = null;
     }
     return this;
@@ -124,9 +121,7 @@ class ScrollResultBuilder
 
   @override
   void replace(ScrollResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ScrollResult;
   }
 
@@ -137,7 +132,12 @@ class ScrollResultBuilder
 
   @override
   _$ScrollResult build() {
-    final _$result = _$v ?? new _$ScrollResult._(top: top, height: height);
+    final _$result = _$v ??
+        new _$ScrollResult._(
+            top: BuiltValueNullFieldError.checkNotNull(
+                top, 'ScrollResult', 'top'),
+            height: BuiltValueNullFieldError.checkNotNull(
+                height, 'ScrollResult', 'height'));
     replace(_$result);
     return _$result;
   }

@@ -70,9 +70,7 @@ class VKWebAppViewHideBuilder
 
   @override
   void replace(VKWebAppViewHide other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppViewHide;
   }
 

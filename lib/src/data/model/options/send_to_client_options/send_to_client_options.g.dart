@@ -24,10 +24,12 @@ class _$SendToClientOptionsSerializer
       Serializers serializers, SendToClientOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.fragment != null) {
+    Object value;
+    value = object.fragment;
+    if (value != null) {
       result
         ..add('fragment')
-        ..add(serializers.serialize(object.fragment,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -43,7 +45,7 @@ class _$SendToClientOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'fragment':
           result.fragment = serializers.deserialize(value,
@@ -105,8 +107,9 @@ class SendToClientOptionsBuilder
   SendToClientOptionsBuilder();
 
   SendToClientOptionsBuilder get _$this {
-    if (_$v != null) {
-      _fragment = _$v.fragment;
+    final $v = _$v;
+    if ($v != null) {
+      _fragment = $v.fragment;
       _$v = null;
     }
     return this;
@@ -114,9 +117,7 @@ class SendToClientOptionsBuilder
 
   @override
   void replace(SendToClientOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SendToClientOptions;
   }
 

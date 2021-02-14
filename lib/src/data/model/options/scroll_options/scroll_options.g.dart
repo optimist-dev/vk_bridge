@@ -22,11 +22,12 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
       'top',
       serializers.serialize(object.top, specifiedType: const FullType(int)),
     ];
-    if (object.speed != null) {
+    Object value;
+    value = object.speed;
+    if (value != null) {
       result
         ..add('speed')
-        ..add(serializers.serialize(object.speed,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -41,7 +42,7 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'top':
           result.top = serializers.deserialize(value,
@@ -68,9 +69,7 @@ class _$ScrollOptions extends ScrollOptions {
       (new ScrollOptionsBuilder()..update(updates)).build();
 
   _$ScrollOptions._({this.top, this.speed}) : super._() {
-    if (top == null) {
-      throw new BuiltValueNullFieldError('ScrollOptions', 'top');
-    }
+    BuiltValueNullFieldError.checkNotNull(top, 'ScrollOptions', 'top');
   }
 
   @override
@@ -115,9 +114,10 @@ class ScrollOptionsBuilder
   ScrollOptionsBuilder();
 
   ScrollOptionsBuilder get _$this {
-    if (_$v != null) {
-      _top = _$v.top;
-      _speed = _$v.speed;
+    final $v = _$v;
+    if ($v != null) {
+      _top = $v.top;
+      _speed = $v.speed;
       _$v = null;
     }
     return this;
@@ -125,9 +125,7 @@ class ScrollOptionsBuilder
 
   @override
   void replace(ScrollOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ScrollOptions;
   }
 
@@ -138,7 +136,11 @@ class ScrollOptionsBuilder
 
   @override
   _$ScrollOptions build() {
-    final _$result = _$v ?? new _$ScrollOptions._(top: top, speed: speed);
+    final _$result = _$v ??
+        new _$ScrollOptions._(
+            top: BuiltValueNullFieldError.checkNotNull(
+                top, 'ScrollOptions', 'top'),
+            speed: speed);
     replace(_$result);
     return _$result;
   }

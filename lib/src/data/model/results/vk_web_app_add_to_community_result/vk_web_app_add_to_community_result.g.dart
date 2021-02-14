@@ -42,7 +42,7 @@ class _$VKWebAppAddToCommunityResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -64,10 +64,8 @@ class _$VKWebAppAddToCommunityResult extends VKWebAppAddToCommunityResult {
       (new VKWebAppAddToCommunityResultBuilder()..update(updates)).build();
 
   _$VKWebAppAddToCommunityResult._({this.groupId}) : super._() {
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppAddToCommunityResult', 'groupId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'VKWebAppAddToCommunityResult', 'groupId');
   }
 
   @override
@@ -111,8 +109,9 @@ class VKWebAppAddToCommunityResultBuilder
   VKWebAppAddToCommunityResultBuilder();
 
   VKWebAppAddToCommunityResultBuilder get _$this {
-    if (_$v != null) {
-      _groupId = _$v.groupId;
+    final $v = _$v;
+    if ($v != null) {
+      _groupId = $v.groupId;
       _$v = null;
     }
     return this;
@@ -120,9 +119,7 @@ class VKWebAppAddToCommunityResultBuilder
 
   @override
   void replace(VKWebAppAddToCommunityResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppAddToCommunityResult;
   }
 
@@ -133,8 +130,10 @@ class VKWebAppAddToCommunityResultBuilder
 
   @override
   _$VKWebAppAddToCommunityResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppAddToCommunityResult._(groupId: groupId);
+    final _$result = _$v ??
+        new _$VKWebAppAddToCommunityResult._(
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'VKWebAppAddToCommunityResult', 'groupId'));
     replace(_$result);
     return _$result;
   }

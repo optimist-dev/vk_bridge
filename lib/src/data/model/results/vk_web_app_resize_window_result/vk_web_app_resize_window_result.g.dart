@@ -41,7 +41,7 @@ class _$VKWebAppResizeWindowResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'result':
           result.size.replace(serializers.deserialize(value,
@@ -63,9 +63,8 @@ class _$VKWebAppResizeWindowResult extends VKWebAppResizeWindowResult {
       (new VKWebAppResizeWindowResultBuilder()..update(updates)).build();
 
   _$VKWebAppResizeWindowResult._({this.size}) : super._() {
-    if (size == null) {
-      throw new BuiltValueNullFieldError('VKWebAppResizeWindowResult', 'size');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        size, 'VKWebAppResizeWindowResult', 'size');
   }
 
   @override
@@ -108,8 +107,9 @@ class VKWebAppResizeWindowResultBuilder
   VKWebAppResizeWindowResultBuilder();
 
   VKWebAppResizeWindowResultBuilder get _$this {
-    if (_$v != null) {
-      _size = _$v.size?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _size = $v.size.toBuilder();
       _$v = null;
     }
     return this;
@@ -117,9 +117,7 @@ class VKWebAppResizeWindowResultBuilder
 
   @override
   void replace(VKWebAppResizeWindowResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppResizeWindowResult;
   }
 

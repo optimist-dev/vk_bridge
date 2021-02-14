@@ -28,10 +28,12 @@ class _$VKWebAppFlashGetInfoResultSerializer
       serializers.serialize(object.isAvailable,
           specifiedType: const FullType(bool)),
     ];
-    if (object.level != null) {
+    Object value;
+    value = object.level;
+    if (value != null) {
       result
         ..add('level')
-        ..add(serializers.serialize(object.level,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
     return result;
@@ -47,7 +49,7 @@ class _$VKWebAppFlashGetInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'is_available':
           result.isAvailable = serializers.deserialize(value,
@@ -75,10 +77,8 @@ class _$VKWebAppFlashGetInfoResult extends VKWebAppFlashGetInfoResult {
       (new VKWebAppFlashGetInfoResultBuilder()..update(updates)).build();
 
   _$VKWebAppFlashGetInfoResult._({this.isAvailable, this.level}) : super._() {
-    if (isAvailable == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppFlashGetInfoResult', 'isAvailable');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        isAvailable, 'VKWebAppFlashGetInfoResult', 'isAvailable');
   }
 
   @override
@@ -128,9 +128,10 @@ class VKWebAppFlashGetInfoResultBuilder
   VKWebAppFlashGetInfoResultBuilder();
 
   VKWebAppFlashGetInfoResultBuilder get _$this {
-    if (_$v != null) {
-      _isAvailable = _$v.isAvailable;
-      _level = _$v.level;
+    final $v = _$v;
+    if ($v != null) {
+      _isAvailable = $v.isAvailable;
+      _level = $v.level;
       _$v = null;
     }
     return this;
@@ -138,9 +139,7 @@ class VKWebAppFlashGetInfoResultBuilder
 
   @override
   void replace(VKWebAppFlashGetInfoResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppFlashGetInfoResult;
   }
 
@@ -153,7 +152,9 @@ class VKWebAppFlashGetInfoResultBuilder
   _$VKWebAppFlashGetInfoResult build() {
     final _$result = _$v ??
         new _$VKWebAppFlashGetInfoResult._(
-            isAvailable: isAvailable, level: level);
+            isAvailable: BuiltValueNullFieldError.checkNotNull(
+                isAvailable, 'VKWebAppFlashGetInfoResult', 'isAvailable'),
+            level: level);
     replace(_$result);
     return _$result;
   }

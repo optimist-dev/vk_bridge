@@ -48,7 +48,7 @@ class _$SetViewSettingsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'status_bar_style':
           result.statusBarStyle = serializers.deserialize(value,
@@ -84,18 +84,12 @@ class _$SetViewSettingsOptions extends SetViewSettingsOptions {
   _$SetViewSettingsOptions._(
       {this.statusBarStyle, this.actionBarColor, this.navigationBarColor})
       : super._() {
-    if (statusBarStyle == null) {
-      throw new BuiltValueNullFieldError(
-          'SetViewSettingsOptions', 'statusBarStyle');
-    }
-    if (actionBarColor == null) {
-      throw new BuiltValueNullFieldError(
-          'SetViewSettingsOptions', 'actionBarColor');
-    }
-    if (navigationBarColor == null) {
-      throw new BuiltValueNullFieldError(
-          'SetViewSettingsOptions', 'navigationBarColor');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        statusBarStyle, 'SetViewSettingsOptions', 'statusBarStyle');
+    BuiltValueNullFieldError.checkNotNull(
+        actionBarColor, 'SetViewSettingsOptions', 'actionBarColor');
+    BuiltValueNullFieldError.checkNotNull(
+        navigationBarColor, 'SetViewSettingsOptions', 'navigationBarColor');
   }
 
   @override
@@ -155,10 +149,11 @@ class SetViewSettingsOptionsBuilder
   SetViewSettingsOptionsBuilder();
 
   SetViewSettingsOptionsBuilder get _$this {
-    if (_$v != null) {
-      _statusBarStyle = _$v.statusBarStyle;
-      _actionBarColor = _$v.actionBarColor;
-      _navigationBarColor = _$v.navigationBarColor;
+    final $v = _$v;
+    if ($v != null) {
+      _statusBarStyle = $v.statusBarStyle;
+      _actionBarColor = $v.actionBarColor;
+      _navigationBarColor = $v.navigationBarColor;
       _$v = null;
     }
     return this;
@@ -166,9 +161,7 @@ class SetViewSettingsOptionsBuilder
 
   @override
   void replace(SetViewSettingsOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SetViewSettingsOptions;
   }
 
@@ -181,9 +174,14 @@ class SetViewSettingsOptionsBuilder
   _$SetViewSettingsOptions build() {
     final _$result = _$v ??
         new _$SetViewSettingsOptions._(
-            statusBarStyle: statusBarStyle,
-            actionBarColor: actionBarColor,
-            navigationBarColor: navigationBarColor);
+            statusBarStyle: BuiltValueNullFieldError.checkNotNull(
+                statusBarStyle, 'SetViewSettingsOptions', 'statusBarStyle'),
+            actionBarColor: BuiltValueNullFieldError.checkNotNull(
+                actionBarColor, 'SetViewSettingsOptions', 'actionBarColor'),
+            navigationBarColor: BuiltValueNullFieldError.checkNotNull(
+                navigationBarColor,
+                'SetViewSettingsOptions',
+                'navigationBarColor'));
     replace(_$result);
     return _$result;
   }

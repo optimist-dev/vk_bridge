@@ -43,7 +43,7 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'country':
           result.country.replace(serializers.deserialize(value,
@@ -83,18 +83,11 @@ class _$Address extends Address {
 
   _$Address._({this.country, this.city, this.specifiedAddress, this.postalCode})
       : super._() {
-    if (country == null) {
-      throw new BuiltValueNullFieldError('Address', 'country');
-    }
-    if (city == null) {
-      throw new BuiltValueNullFieldError('Address', 'city');
-    }
-    if (specifiedAddress == null) {
-      throw new BuiltValueNullFieldError('Address', 'specifiedAddress');
-    }
-    if (postalCode == null) {
-      throw new BuiltValueNullFieldError('Address', 'postalCode');
-    }
+    BuiltValueNullFieldError.checkNotNull(country, 'Address', 'country');
+    BuiltValueNullFieldError.checkNotNull(city, 'Address', 'city');
+    BuiltValueNullFieldError.checkNotNull(
+        specifiedAddress, 'Address', 'specifiedAddress');
+    BuiltValueNullFieldError.checkNotNull(postalCode, 'Address', 'postalCode');
   }
 
   @override
@@ -156,11 +149,12 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   AddressBuilder();
 
   AddressBuilder get _$this {
-    if (_$v != null) {
-      _country = _$v.country?.toBuilder();
-      _city = _$v.city?.toBuilder();
-      _specifiedAddress = _$v.specifiedAddress;
-      _postalCode = _$v.postalCode;
+    final $v = _$v;
+    if ($v != null) {
+      _country = $v.country.toBuilder();
+      _city = $v.city.toBuilder();
+      _specifiedAddress = $v.specifiedAddress;
+      _postalCode = $v.postalCode;
       _$v = null;
     }
     return this;
@@ -168,9 +162,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
 
   @override
   void replace(Address other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Address;
   }
 
@@ -187,8 +179,10 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
           new _$Address._(
               country: country.build(),
               city: city.build(),
-              specifiedAddress: specifiedAddress,
-              postalCode: postalCode);
+              specifiedAddress: BuiltValueNullFieldError.checkNotNull(
+                  specifiedAddress, 'Address', 'specifiedAddress'),
+              postalCode: BuiltValueNullFieldError.checkNotNull(
+                  postalCode, 'Address', 'postalCode'));
     } catch (_) {
       String _$failedField;
       try {

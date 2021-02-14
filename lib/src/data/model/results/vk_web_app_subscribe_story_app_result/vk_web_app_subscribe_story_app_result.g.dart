@@ -43,7 +43,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'access_key':
           result.access_key = serializers.deserialize(value,
@@ -66,10 +66,8 @@ class _$VKWebAppSubscribeStoryAppResult
       (new VKWebAppSubscribeStoryAppResultBuilder()..update(updates)).build();
 
   _$VKWebAppSubscribeStoryAppResult._({this.access_key}) : super._() {
-    if (access_key == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppSubscribeStoryAppResult', 'access_key');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        access_key, 'VKWebAppSubscribeStoryAppResult', 'access_key');
   }
 
   @override
@@ -114,8 +112,9 @@ class VKWebAppSubscribeStoryAppResultBuilder
   VKWebAppSubscribeStoryAppResultBuilder();
 
   VKWebAppSubscribeStoryAppResultBuilder get _$this {
-    if (_$v != null) {
-      _access_key = _$v.access_key;
+    final $v = _$v;
+    if ($v != null) {
+      _access_key = $v.access_key;
       _$v = null;
     }
     return this;
@@ -123,9 +122,7 @@ class VKWebAppSubscribeStoryAppResultBuilder
 
   @override
   void replace(VKWebAppSubscribeStoryAppResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppSubscribeStoryAppResult;
   }
 
@@ -136,8 +133,10 @@ class VKWebAppSubscribeStoryAppResultBuilder
 
   @override
   _$VKWebAppSubscribeStoryAppResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppSubscribeStoryAppResult._(access_key: access_key);
+    final _$result = _$v ??
+        new _$VKWebAppSubscribeStoryAppResult._(
+            access_key: BuiltValueNullFieldError.checkNotNull(
+                access_key, 'VKWebAppSubscribeStoryAppResult', 'access_key'));
     replace(_$result);
     return _$result;
   }

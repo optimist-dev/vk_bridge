@@ -38,7 +38,7 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'error_code':
           result.errorCode = serializers.deserialize(value,
@@ -65,12 +65,9 @@ class _$ErrorData extends ErrorData {
       (new ErrorDataBuilder()..update(updates)).build();
 
   _$ErrorData._({this.errorCode, this.errorReason}) : super._() {
-    if (errorCode == null) {
-      throw new BuiltValueNullFieldError('ErrorData', 'errorCode');
-    }
-    if (errorReason == null) {
-      throw new BuiltValueNullFieldError('ErrorData', 'errorReason');
-    }
+    BuiltValueNullFieldError.checkNotNull(errorCode, 'ErrorData', 'errorCode');
+    BuiltValueNullFieldError.checkNotNull(
+        errorReason, 'ErrorData', 'errorReason');
   }
 
   @override
@@ -116,9 +113,10 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
   ErrorDataBuilder();
 
   ErrorDataBuilder get _$this {
-    if (_$v != null) {
-      _errorCode = _$v.errorCode;
-      _errorReason = _$v.errorReason;
+    final $v = _$v;
+    if ($v != null) {
+      _errorCode = $v.errorCode;
+      _errorReason = $v.errorReason;
       _$v = null;
     }
     return this;
@@ -126,9 +124,7 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
 
   @override
   void replace(ErrorData other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ErrorData;
   }
 
@@ -140,7 +136,11 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
   @override
   _$ErrorData build() {
     final _$result = _$v ??
-        new _$ErrorData._(errorCode: errorCode, errorReason: errorReason);
+        new _$ErrorData._(
+            errorCode: BuiltValueNullFieldError.checkNotNull(
+                errorCode, 'ErrorData', 'errorCode'),
+            errorReason: BuiltValueNullFieldError.checkNotNull(
+                errorReason, 'ErrorData', 'errorReason'));
     replace(_$result);
     return _$result;
   }

@@ -40,7 +40,7 @@ class _$OpenAppOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -67,12 +67,9 @@ class _$OpenAppOptions extends OpenAppOptions {
       (new OpenAppOptionsBuilder()..update(updates)).build();
 
   _$OpenAppOptions._({this.appId, this.location}) : super._() {
-    if (appId == null) {
-      throw new BuiltValueNullFieldError('OpenAppOptions', 'appId');
-    }
-    if (location == null) {
-      throw new BuiltValueNullFieldError('OpenAppOptions', 'location');
-    }
+    BuiltValueNullFieldError.checkNotNull(appId, 'OpenAppOptions', 'appId');
+    BuiltValueNullFieldError.checkNotNull(
+        location, 'OpenAppOptions', 'location');
   }
 
   @override
@@ -120,9 +117,10 @@ class OpenAppOptionsBuilder
   OpenAppOptionsBuilder();
 
   OpenAppOptionsBuilder get _$this {
-    if (_$v != null) {
-      _appId = _$v.appId;
-      _location = _$v.location;
+    final $v = _$v;
+    if ($v != null) {
+      _appId = $v.appId;
+      _location = $v.location;
       _$v = null;
     }
     return this;
@@ -130,9 +128,7 @@ class OpenAppOptionsBuilder
 
   @override
   void replace(OpenAppOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OpenAppOptions;
   }
 
@@ -143,8 +139,12 @@ class OpenAppOptionsBuilder
 
   @override
   _$OpenAppOptions build() {
-    final _$result =
-        _$v ?? new _$OpenAppOptions._(appId: appId, location: location);
+    final _$result = _$v ??
+        new _$OpenAppOptions._(
+            appId: BuiltValueNullFieldError.checkNotNull(
+                appId, 'OpenAppOptions', 'appId'),
+            location: BuiltValueNullFieldError.checkNotNull(
+                location, 'OpenAppOptions', 'location'));
     replace(_$result);
     return _$result;
   }

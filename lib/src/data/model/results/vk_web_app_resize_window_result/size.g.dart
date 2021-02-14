@@ -36,7 +36,7 @@ class _$SizeSerializer implements StructuredSerializer<Size> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'width':
           result.width = serializers.deserialize(value,
@@ -63,12 +63,8 @@ class _$Size extends Size {
       (new SizeBuilder()..update(updates)).build();
 
   _$Size._({this.width, this.height}) : super._() {
-    if (width == null) {
-      throw new BuiltValueNullFieldError('Size', 'width');
-    }
-    if (height == null) {
-      throw new BuiltValueNullFieldError('Size', 'height');
-    }
+    BuiltValueNullFieldError.checkNotNull(width, 'Size', 'width');
+    BuiltValueNullFieldError.checkNotNull(height, 'Size', 'height');
   }
 
   @override
@@ -112,9 +108,10 @@ class SizeBuilder implements Builder<Size, SizeBuilder> {
   SizeBuilder();
 
   SizeBuilder get _$this {
-    if (_$v != null) {
-      _width = _$v.width;
-      _height = _$v.height;
+    final $v = _$v;
+    if ($v != null) {
+      _width = $v.width;
+      _height = $v.height;
       _$v = null;
     }
     return this;
@@ -122,9 +119,7 @@ class SizeBuilder implements Builder<Size, SizeBuilder> {
 
   @override
   void replace(Size other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Size;
   }
 
@@ -135,7 +130,12 @@ class SizeBuilder implements Builder<Size, SizeBuilder> {
 
   @override
   _$Size build() {
-    final _$result = _$v ?? new _$Size._(width: width, height: height);
+    final _$result = _$v ??
+        new _$Size._(
+            width:
+                BuiltValueNullFieldError.checkNotNull(width, 'Size', 'width'),
+            height: BuiltValueNullFieldError.checkNotNull(
+                height, 'Size', 'height'));
     replace(_$result);
     return _$result;
   }

@@ -45,7 +45,7 @@ class _$VKWebAppGetPhoneNumberResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'sign':
           result.sign = serializers.deserialize(value,
@@ -73,14 +73,10 @@ class _$VKWebAppGetPhoneNumberResult extends VKWebAppGetPhoneNumberResult {
       (new VKWebAppGetPhoneNumberResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetPhoneNumberResult._({this.sign, this.phoneNumber}) : super._() {
-    if (sign == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetPhoneNumberResult', 'sign');
-    }
-    if (phoneNumber == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetPhoneNumberResult', 'phoneNumber');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        sign, 'VKWebAppGetPhoneNumberResult', 'sign');
+    BuiltValueNullFieldError.checkNotNull(
+        phoneNumber, 'VKWebAppGetPhoneNumberResult', 'phoneNumber');
   }
 
   @override
@@ -131,9 +127,10 @@ class VKWebAppGetPhoneNumberResultBuilder
   VKWebAppGetPhoneNumberResultBuilder();
 
   VKWebAppGetPhoneNumberResultBuilder get _$this {
-    if (_$v != null) {
-      _sign = _$v.sign;
-      _phoneNumber = _$v.phoneNumber;
+    final $v = _$v;
+    if ($v != null) {
+      _sign = $v.sign;
+      _phoneNumber = $v.phoneNumber;
       _$v = null;
     }
     return this;
@@ -141,9 +138,7 @@ class VKWebAppGetPhoneNumberResultBuilder
 
   @override
   void replace(VKWebAppGetPhoneNumberResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetPhoneNumberResult;
   }
 
@@ -156,7 +151,10 @@ class VKWebAppGetPhoneNumberResultBuilder
   _$VKWebAppGetPhoneNumberResult build() {
     final _$result = _$v ??
         new _$VKWebAppGetPhoneNumberResult._(
-            sign: sign, phoneNumber: phoneNumber);
+            sign: BuiltValueNullFieldError.checkNotNull(
+                sign, 'VKWebAppGetPhoneNumberResult', 'sign'),
+            phoneNumber: BuiltValueNullFieldError.checkNotNull(
+                phoneNumber, 'VKWebAppGetPhoneNumberResult', 'phoneNumber'));
     replace(_$result);
     return _$result;
   }

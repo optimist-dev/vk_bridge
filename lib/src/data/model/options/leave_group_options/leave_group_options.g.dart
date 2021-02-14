@@ -37,7 +37,7 @@ class _$LeaveGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -59,9 +59,8 @@ class _$LeaveGroupOptions extends LeaveGroupOptions {
       (new LeaveGroupOptionsBuilder()..update(updates)).build();
 
   _$LeaveGroupOptions._({this.groupId}) : super._() {
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError('LeaveGroupOptions', 'groupId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'LeaveGroupOptions', 'groupId');
   }
 
   @override
@@ -102,8 +101,9 @@ class LeaveGroupOptionsBuilder
   LeaveGroupOptionsBuilder();
 
   LeaveGroupOptionsBuilder get _$this {
-    if (_$v != null) {
-      _groupId = _$v.groupId;
+    final $v = _$v;
+    if ($v != null) {
+      _groupId = $v.groupId;
       _$v = null;
     }
     return this;
@@ -111,9 +111,7 @@ class LeaveGroupOptionsBuilder
 
   @override
   void replace(LeaveGroupOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LeaveGroupOptions;
   }
 
@@ -124,7 +122,10 @@ class LeaveGroupOptionsBuilder
 
   @override
   _$LeaveGroupOptions build() {
-    final _$result = _$v ?? new _$LeaveGroupOptions._(groupId: groupId);
+    final _$result = _$v ??
+        new _$LeaveGroupOptions._(
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'LeaveGroupOptions', 'groupId'));
     replace(_$result);
     return _$result;
   }

@@ -42,7 +42,7 @@ class _$VKWebAppLocationChangedSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'location':
           result.location = serializers.deserialize(value,
@@ -64,9 +64,8 @@ class _$VKWebAppLocationChanged extends VKWebAppLocationChanged {
       (new VKWebAppLocationChangedBuilder()..update(updates)).build();
 
   _$VKWebAppLocationChanged._({this.location}) : super._() {
-    if (location == null) {
-      throw new BuiltValueNullFieldError('VKWebAppLocationChanged', 'location');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        location, 'VKWebAppLocationChanged', 'location');
   }
 
   @override
@@ -109,8 +108,9 @@ class VKWebAppLocationChangedBuilder
   VKWebAppLocationChangedBuilder();
 
   VKWebAppLocationChangedBuilder get _$this {
-    if (_$v != null) {
-      _location = _$v.location;
+    final $v = _$v;
+    if ($v != null) {
+      _location = $v.location;
       _$v = null;
     }
     return this;
@@ -118,9 +118,7 @@ class VKWebAppLocationChangedBuilder
 
   @override
   void replace(VKWebAppLocationChanged other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppLocationChanged;
   }
 
@@ -131,7 +129,10 @@ class VKWebAppLocationChangedBuilder
 
   @override
   _$VKWebAppLocationChanged build() {
-    final _$result = _$v ?? new _$VKWebAppLocationChanged._(location: location);
+    final _$result = _$v ??
+        new _$VKWebAppLocationChanged._(
+            location: BuiltValueNullFieldError.checkNotNull(
+                location, 'VKWebAppLocationChanged', 'location'));
     replace(_$result);
     return _$result;
   }

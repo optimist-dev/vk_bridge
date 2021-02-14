@@ -45,7 +45,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -91,21 +91,11 @@ class _$User extends User {
 
   _$User._({this.id, this.firstName, this.lastName, this.sex, this.photo200})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('User', 'id');
-    }
-    if (firstName == null) {
-      throw new BuiltValueNullFieldError('User', 'firstName');
-    }
-    if (lastName == null) {
-      throw new BuiltValueNullFieldError('User', 'lastName');
-    }
-    if (sex == null) {
-      throw new BuiltValueNullFieldError('User', 'sex');
-    }
-    if (photo200 == null) {
-      throw new BuiltValueNullFieldError('User', 'photo200');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'User', 'id');
+    BuiltValueNullFieldError.checkNotNull(firstName, 'User', 'firstName');
+    BuiltValueNullFieldError.checkNotNull(lastName, 'User', 'lastName');
+    BuiltValueNullFieldError.checkNotNull(sex, 'User', 'sex');
+    BuiltValueNullFieldError.checkNotNull(photo200, 'User', 'photo200');
   }
 
   @override
@@ -174,12 +164,13 @@ class UserBuilder implements Builder<User, UserBuilder> {
   UserBuilder();
 
   UserBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _firstName = _$v.firstName;
-      _lastName = _$v.lastName;
-      _sex = _$v.sex;
-      _photo200 = _$v.photo200;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _sex = $v.sex;
+      _photo200 = $v.photo200;
       _$v = null;
     }
     return this;
@@ -187,9 +178,7 @@ class UserBuilder implements Builder<User, UserBuilder> {
 
   @override
   void replace(User other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$User;
   }
 
@@ -202,11 +191,14 @@ class UserBuilder implements Builder<User, UserBuilder> {
   _$User build() {
     final _$result = _$v ??
         new _$User._(
-            id: id,
-            firstName: firstName,
-            lastName: lastName,
-            sex: sex,
-            photo200: photo200);
+            id: BuiltValueNullFieldError.checkNotNull(id, 'User', 'id'),
+            firstName: BuiltValueNullFieldError.checkNotNull(
+                firstName, 'User', 'firstName'),
+            lastName: BuiltValueNullFieldError.checkNotNull(
+                lastName, 'User', 'lastName'),
+            sex: BuiltValueNullFieldError.checkNotNull(sex, 'User', 'sex'),
+            photo200: BuiltValueNullFieldError.checkNotNull(
+                photo200, 'User', 'photo200'));
     replace(_$result);
     return _$result;
   }

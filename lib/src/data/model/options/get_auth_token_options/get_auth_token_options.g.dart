@@ -44,7 +44,7 @@ class _$GetAuthTokenOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -72,12 +72,10 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
       (new GetAuthTokenOptionsBuilder()..update(updates)).build();
 
   _$GetAuthTokenOptions._({this.appId, this.scope}) : super._() {
-    if (appId == null) {
-      throw new BuiltValueNullFieldError('GetAuthTokenOptions', 'appId');
-    }
-    if (scope == null) {
-      throw new BuiltValueNullFieldError('GetAuthTokenOptions', 'scope');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        appId, 'GetAuthTokenOptions', 'appId');
+    BuiltValueNullFieldError.checkNotNull(
+        scope, 'GetAuthTokenOptions', 'scope');
   }
 
   @override
@@ -126,9 +124,10 @@ class GetAuthTokenOptionsBuilder
   GetAuthTokenOptionsBuilder();
 
   GetAuthTokenOptionsBuilder get _$this {
-    if (_$v != null) {
-      _appId = _$v.appId;
-      _scope = _$v.scope;
+    final $v = _$v;
+    if ($v != null) {
+      _appId = $v.appId;
+      _scope = $v.scope;
       _$v = null;
     }
     return this;
@@ -136,9 +135,7 @@ class GetAuthTokenOptionsBuilder
 
   @override
   void replace(GetAuthTokenOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetAuthTokenOptions;
   }
 
@@ -149,8 +146,12 @@ class GetAuthTokenOptionsBuilder
 
   @override
   _$GetAuthTokenOptions build() {
-    final _$result =
-        _$v ?? new _$GetAuthTokenOptions._(appId: appId, scope: scope);
+    final _$result = _$v ??
+        new _$GetAuthTokenOptions._(
+            appId: BuiltValueNullFieldError.checkNotNull(
+                appId, 'GetAuthTokenOptions', 'appId'),
+            scope: BuiltValueNullFieldError.checkNotNull(
+                scope, 'GetAuthTokenOptions', 'scope'));
     replace(_$result);
     return _$result;
   }

@@ -42,7 +42,7 @@ class _$VKWebAppScrollResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'result':
           result.result.replace(serializers.deserialize(value,
@@ -64,9 +64,8 @@ class _$VKWebAppScrollResult extends VKWebAppScrollResult {
       (new VKWebAppScrollResultBuilder()..update(updates)).build();
 
   _$VKWebAppScrollResult._({this.result}) : super._() {
-    if (result == null) {
-      throw new BuiltValueNullFieldError('VKWebAppScrollResult', 'result');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        result, 'VKWebAppScrollResult', 'result');
   }
 
   @override
@@ -109,8 +108,9 @@ class VKWebAppScrollResultBuilder
   VKWebAppScrollResultBuilder();
 
   VKWebAppScrollResultBuilder get _$this {
-    if (_$v != null) {
-      _result = _$v.result?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _result = $v.result.toBuilder();
       _$v = null;
     }
     return this;
@@ -118,9 +118,7 @@ class VKWebAppScrollResultBuilder
 
   @override
   void replace(VKWebAppScrollResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppScrollResult;
   }
 

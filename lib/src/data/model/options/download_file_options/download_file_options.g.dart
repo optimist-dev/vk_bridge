@@ -44,7 +44,7 @@ class _$DownloadFileOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -72,12 +72,9 @@ class _$DownloadFileOptions extends DownloadFileOptions {
       (new DownloadFileOptionsBuilder()..update(updates)).build();
 
   _$DownloadFileOptions._({this.url, this.filename}) : super._() {
-    if (url == null) {
-      throw new BuiltValueNullFieldError('DownloadFileOptions', 'url');
-    }
-    if (filename == null) {
-      throw new BuiltValueNullFieldError('DownloadFileOptions', 'filename');
-    }
+    BuiltValueNullFieldError.checkNotNull(url, 'DownloadFileOptions', 'url');
+    BuiltValueNullFieldError.checkNotNull(
+        filename, 'DownloadFileOptions', 'filename');
   }
 
   @override
@@ -126,9 +123,10 @@ class DownloadFileOptionsBuilder
   DownloadFileOptionsBuilder();
 
   DownloadFileOptionsBuilder get _$this {
-    if (_$v != null) {
-      _url = _$v.url;
-      _filename = _$v.filename;
+    final $v = _$v;
+    if ($v != null) {
+      _url = $v.url;
+      _filename = $v.filename;
       _$v = null;
     }
     return this;
@@ -136,9 +134,7 @@ class DownloadFileOptionsBuilder
 
   @override
   void replace(DownloadFileOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DownloadFileOptions;
   }
 
@@ -149,8 +145,12 @@ class DownloadFileOptionsBuilder
 
   @override
   _$DownloadFileOptions build() {
-    final _$result =
-        _$v ?? new _$DownloadFileOptions._(url: url, filename: filename);
+    final _$result = _$v ??
+        new _$DownloadFileOptions._(
+            url: BuiltValueNullFieldError.checkNotNull(
+                url, 'DownloadFileOptions', 'url'),
+            filename: BuiltValueNullFieldError.checkNotNull(
+                filename, 'DownloadFileOptions', 'filename'));
     replace(_$result);
     return _$result;
   }

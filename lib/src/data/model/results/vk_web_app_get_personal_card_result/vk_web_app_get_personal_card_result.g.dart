@@ -49,7 +49,7 @@ class _$VKWebAppGetPersonalCardResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,
@@ -84,18 +84,12 @@ class _$VKWebAppGetPersonalCardResult extends VKWebAppGetPersonalCardResult {
 
   _$VKWebAppGetPersonalCardResult._({this.phone, this.email, this.address})
       : super._() {
-    if (phone == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetPersonalCardResult', 'phone');
-    }
-    if (email == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetPersonalCardResult', 'email');
-    }
-    if (address == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetPersonalCardResult', 'address');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        phone, 'VKWebAppGetPersonalCardResult', 'phone');
+    BuiltValueNullFieldError.checkNotNull(
+        email, 'VKWebAppGetPersonalCardResult', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        address, 'VKWebAppGetPersonalCardResult', 'address');
   }
 
   @override
@@ -153,10 +147,11 @@ class VKWebAppGetPersonalCardResultBuilder
   VKWebAppGetPersonalCardResultBuilder();
 
   VKWebAppGetPersonalCardResultBuilder get _$this {
-    if (_$v != null) {
-      _phone = _$v.phone;
-      _email = _$v.email;
-      _address = _$v.address?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _phone = $v.phone;
+      _email = $v.email;
+      _address = $v.address.toBuilder();
       _$v = null;
     }
     return this;
@@ -164,9 +159,7 @@ class VKWebAppGetPersonalCardResultBuilder
 
   @override
   void replace(VKWebAppGetPersonalCardResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetPersonalCardResult;
   }
 
@@ -181,7 +174,11 @@ class VKWebAppGetPersonalCardResultBuilder
     try {
       _$result = _$v ??
           new _$VKWebAppGetPersonalCardResult._(
-              phone: phone, email: email, address: address.build());
+              phone: BuiltValueNullFieldError.checkNotNull(
+                  phone, 'VKWebAppGetPersonalCardResult', 'phone'),
+              email: BuiltValueNullFieldError.checkNotNull(
+                  email, 'VKWebAppGetPersonalCardResult', 'email'),
+              address: address.build());
     } catch (_) {
       String _$failedField;
       try {

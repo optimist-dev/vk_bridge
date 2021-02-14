@@ -28,10 +28,12 @@ class _$VKWebAppGetAuthTokenResultSerializer
       serializers.serialize(object.accessToken,
           specifiedType: const FullType(String)),
     ];
-    if (object.scope != null) {
+    Object value;
+    value = object.scope;
+    if (value != null) {
       result
         ..add('scope')
-        ..add(serializers.serialize(object.scope,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -47,7 +49,7 @@ class _$VKWebAppGetAuthTokenResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'access_token':
           result.accessToken = serializers.deserialize(value,
@@ -75,10 +77,8 @@ class _$VKWebAppGetAuthTokenResult extends VKWebAppGetAuthTokenResult {
       (new VKWebAppGetAuthTokenResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetAuthTokenResult._({this.accessToken, this.scope}) : super._() {
-    if (accessToken == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetAuthTokenResult', 'accessToken');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        accessToken, 'VKWebAppGetAuthTokenResult', 'accessToken');
   }
 
   @override
@@ -128,9 +128,10 @@ class VKWebAppGetAuthTokenResultBuilder
   VKWebAppGetAuthTokenResultBuilder();
 
   VKWebAppGetAuthTokenResultBuilder get _$this {
-    if (_$v != null) {
-      _accessToken = _$v.accessToken;
-      _scope = _$v.scope;
+    final $v = _$v;
+    if ($v != null) {
+      _accessToken = $v.accessToken;
+      _scope = $v.scope;
       _$v = null;
     }
     return this;
@@ -138,9 +139,7 @@ class VKWebAppGetAuthTokenResultBuilder
 
   @override
   void replace(VKWebAppGetAuthTokenResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetAuthTokenResult;
   }
 
@@ -153,7 +152,9 @@ class VKWebAppGetAuthTokenResultBuilder
   _$VKWebAppGetAuthTokenResult build() {
     final _$result = _$v ??
         new _$VKWebAppGetAuthTokenResult._(
-            accessToken: accessToken, scope: scope);
+            accessToken: BuiltValueNullFieldError.checkNotNull(
+                accessToken, 'VKWebAppGetAuthTokenResult', 'accessToken'),
+            scope: scope);
     replace(_$result);
     return _$result;
   }

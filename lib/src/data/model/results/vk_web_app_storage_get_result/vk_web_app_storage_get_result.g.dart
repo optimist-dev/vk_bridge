@@ -43,7 +43,7 @@ class _$VKWebAppStorageGetResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'keys':
           result.keys.replace(serializers.deserialize(value,
@@ -67,9 +67,8 @@ class _$VKWebAppStorageGetResult extends VKWebAppStorageGetResult {
       (new VKWebAppStorageGetResultBuilder()..update(updates)).build();
 
   _$VKWebAppStorageGetResult._({this.keys}) : super._() {
-    if (keys == null) {
-      throw new BuiltValueNullFieldError('VKWebAppStorageGetResult', 'keys');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        keys, 'VKWebAppStorageGetResult', 'keys');
   }
 
   @override
@@ -113,8 +112,9 @@ class VKWebAppStorageGetResultBuilder
   VKWebAppStorageGetResultBuilder();
 
   VKWebAppStorageGetResultBuilder get _$this {
-    if (_$v != null) {
-      _keys = _$v.keys?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _keys = $v.keys.toBuilder();
       _$v = null;
     }
     return this;
@@ -122,9 +122,7 @@ class VKWebAppStorageGetResultBuilder
 
   @override
   void replace(VKWebAppStorageGetResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppStorageGetResult;
   }
 

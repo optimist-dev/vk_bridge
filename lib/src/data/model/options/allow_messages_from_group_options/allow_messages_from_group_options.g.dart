@@ -28,10 +28,12 @@ class _$AllowMessagesFromGroupOptionsSerializer
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
-    if (object.key != null) {
+    Object value;
+    value = object.key;
+    if (value != null) {
       result
         ..add('key')
-        ..add(serializers.serialize(object.key,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -47,7 +49,7 @@ class _$AllowMessagesFromGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -75,10 +77,8 @@ class _$AllowMessagesFromGroupOptions extends AllowMessagesFromGroupOptions {
       (new AllowMessagesFromGroupOptionsBuilder()..update(updates)).build();
 
   _$AllowMessagesFromGroupOptions._({this.groupId, this.key}) : super._() {
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError(
-          'AllowMessagesFromGroupOptions', 'groupId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'AllowMessagesFromGroupOptions', 'groupId');
   }
 
   @override
@@ -129,9 +129,10 @@ class AllowMessagesFromGroupOptionsBuilder
   AllowMessagesFromGroupOptionsBuilder();
 
   AllowMessagesFromGroupOptionsBuilder get _$this {
-    if (_$v != null) {
-      _groupId = _$v.groupId;
-      _key = _$v.key;
+    final $v = _$v;
+    if ($v != null) {
+      _groupId = $v.groupId;
+      _key = $v.key;
       _$v = null;
     }
     return this;
@@ -139,9 +140,7 @@ class AllowMessagesFromGroupOptionsBuilder
 
   @override
   void replace(AllowMessagesFromGroupOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AllowMessagesFromGroupOptions;
   }
 
@@ -153,7 +152,10 @@ class AllowMessagesFromGroupOptionsBuilder
   @override
   _$AllowMessagesFromGroupOptions build() {
     final _$result = _$v ??
-        new _$AllowMessagesFromGroupOptions._(groupId: groupId, key: key);
+        new _$AllowMessagesFromGroupOptions._(
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'AllowMessagesFromGroupOptions', 'groupId'),
+            key: key);
     replace(_$result);
     return _$result;
   }

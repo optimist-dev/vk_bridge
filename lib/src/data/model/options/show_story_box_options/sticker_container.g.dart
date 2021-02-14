@@ -41,7 +41,7 @@ class _$StickerContainerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'sticker_type':
           result.stickerType = serializers.deserialize(value,
@@ -70,12 +70,10 @@ class _$StickerContainer extends StickerContainer {
       (new StickerContainerBuilder()..update(updates)).build();
 
   _$StickerContainer._({this.stickerType, this.sticker}) : super._() {
-    if (stickerType == null) {
-      throw new BuiltValueNullFieldError('StickerContainer', 'stickerType');
-    }
-    if (sticker == null) {
-      throw new BuiltValueNullFieldError('StickerContainer', 'sticker');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        stickerType, 'StickerContainer', 'stickerType');
+    BuiltValueNullFieldError.checkNotNull(
+        sticker, 'StickerContainer', 'sticker');
   }
 
   @override
@@ -124,9 +122,10 @@ class StickerContainerBuilder
   StickerContainerBuilder();
 
   StickerContainerBuilder get _$this {
-    if (_$v != null) {
-      _stickerType = _$v.stickerType;
-      _sticker = _$v.sticker?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _stickerType = $v.stickerType;
+      _sticker = $v.sticker.toBuilder();
       _$v = null;
     }
     return this;
@@ -134,9 +133,7 @@ class StickerContainerBuilder
 
   @override
   void replace(StickerContainer other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StickerContainer;
   }
 
@@ -151,7 +148,9 @@ class StickerContainerBuilder
     try {
       _$result = _$v ??
           new _$StickerContainer._(
-              stickerType: stickerType, sticker: sticker.build());
+              stickerType: BuiltValueNullFieldError.checkNotNull(
+                  stickerType, 'StickerContainer', 'stickerType'),
+              sticker: sticker.build());
     } catch (_) {
       String _$failedField;
       try {

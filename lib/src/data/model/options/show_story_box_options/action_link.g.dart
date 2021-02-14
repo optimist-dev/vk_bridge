@@ -37,7 +37,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,
@@ -64,12 +64,9 @@ class _$ActionLink extends ActionLink {
       (new ActionLinkBuilder()..update(updates)).build();
 
   _$ActionLink._({this.link, this.tooltipTextKey}) : super._() {
-    if (link == null) {
-      throw new BuiltValueNullFieldError('ActionLink', 'link');
-    }
-    if (tooltipTextKey == null) {
-      throw new BuiltValueNullFieldError('ActionLink', 'tooltipTextKey');
-    }
+    BuiltValueNullFieldError.checkNotNull(link, 'ActionLink', 'link');
+    BuiltValueNullFieldError.checkNotNull(
+        tooltipTextKey, 'ActionLink', 'tooltipTextKey');
   }
 
   @override
@@ -116,9 +113,10 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
   ActionLinkBuilder();
 
   ActionLinkBuilder get _$this {
-    if (_$v != null) {
-      _link = _$v.link;
-      _tooltipTextKey = _$v.tooltipTextKey;
+    final $v = _$v;
+    if ($v != null) {
+      _link = $v.link;
+      _tooltipTextKey = $v.tooltipTextKey;
       _$v = null;
     }
     return this;
@@ -126,9 +124,7 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
 
   @override
   void replace(ActionLink other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ActionLink;
   }
 
@@ -139,8 +135,12 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
 
   @override
   _$ActionLink build() {
-    final _$result =
-        _$v ?? new _$ActionLink._(link: link, tooltipTextKey: tooltipTextKey);
+    final _$result = _$v ??
+        new _$ActionLink._(
+            link: BuiltValueNullFieldError.checkNotNull(
+                link, 'ActionLink', 'link'),
+            tooltipTextKey: BuiltValueNullFieldError.checkNotNull(
+                tooltipTextKey, 'ActionLink', 'tooltipTextKey'));
     replace(_$result);
     return _$result;
   }

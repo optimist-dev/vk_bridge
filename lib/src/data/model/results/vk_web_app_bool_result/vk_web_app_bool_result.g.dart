@@ -37,7 +37,7 @@ class _$VKWebAppBoolResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'result':
           result.result = serializers.deserialize(value,
@@ -59,9 +59,8 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
       (new VKWebAppBoolResultBuilder()..update(updates)).build();
 
   _$VKWebAppBoolResult._({this.result}) : super._() {
-    if (result == null) {
-      throw new BuiltValueNullFieldError('VKWebAppBoolResult', 'result');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        result, 'VKWebAppBoolResult', 'result');
   }
 
   @override
@@ -103,8 +102,9 @@ class VKWebAppBoolResultBuilder
   VKWebAppBoolResultBuilder();
 
   VKWebAppBoolResultBuilder get _$this {
-    if (_$v != null) {
-      _result = _$v.result;
+    final $v = _$v;
+    if ($v != null) {
+      _result = $v.result;
       _$v = null;
     }
     return this;
@@ -112,9 +112,7 @@ class VKWebAppBoolResultBuilder
 
   @override
   void replace(VKWebAppBoolResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppBoolResult;
   }
 
@@ -125,7 +123,10 @@ class VKWebAppBoolResultBuilder
 
   @override
   _$VKWebAppBoolResult build() {
-    final _$result = _$v ?? new _$VKWebAppBoolResult._(result: result);
+    final _$result = _$v ??
+        new _$VKWebAppBoolResult._(
+            result: BuiltValueNullFieldError.checkNotNull(
+                result, 'VKWebAppBoolResult', 'result'));
     replace(_$result);
     return _$result;
   }

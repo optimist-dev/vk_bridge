@@ -37,7 +37,7 @@ class _$CountrySerializer implements StructuredSerializer<Country> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -64,12 +64,8 @@ class _$Country extends Country {
       (new CountryBuilder()..update(updates)).build();
 
   _$Country._({this.id, this.title}) : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('Country', 'id');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('Country', 'title');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'Country', 'id');
+    BuiltValueNullFieldError.checkNotNull(title, 'Country', 'title');
   }
 
   @override
@@ -113,9 +109,10 @@ class CountryBuilder implements Builder<Country, CountryBuilder> {
   CountryBuilder();
 
   CountryBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _title = _$v.title;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -123,9 +120,7 @@ class CountryBuilder implements Builder<Country, CountryBuilder> {
 
   @override
   void replace(Country other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Country;
   }
 
@@ -136,7 +131,11 @@ class CountryBuilder implements Builder<Country, CountryBuilder> {
 
   @override
   _$Country build() {
-    final _$result = _$v ?? new _$Country._(id: id, title: title);
+    final _$result = _$v ??
+        new _$Country._(
+            id: BuiltValueNullFieldError.checkNotNull(id, 'Country', 'id'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, 'Country', 'title'));
     replace(_$result);
     return _$result;
   }

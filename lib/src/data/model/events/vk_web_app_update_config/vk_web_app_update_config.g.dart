@@ -28,53 +28,59 @@ class _$VKWebAppUpdateConfigSerializer
       serializers.serialize(object.scheme,
           specifiedType: const FullType(String)),
     ];
-    if (object.app != null) {
+    Object value;
+    value = object.app;
+    if (value != null) {
       result
         ..add('app')
-        ..add(serializers.serialize(object.app,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.appearance != null) {
+    value = object.appearance;
+    if (value != null) {
       result
         ..add('appearance')
-        ..add(serializers.serialize(object.appearance,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.insets != null) {
+    value = object.insets;
+    if (value != null) {
       result
         ..add('insets')
-        ..add(serializers.serialize(object.insets,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(Insets)));
     }
-    if (object.startTime != null) {
+    value = object.startTime;
+    if (value != null) {
       result
         ..add('start_time')
-        ..add(serializers.serialize(object.startTime,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.viewportHeight != null) {
+    value = object.viewportHeight;
+    if (value != null) {
       result
         ..add('viewport_height')
-        ..add(serializers.serialize(object.viewportHeight,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.viewportWidth != null) {
+    value = object.viewportWidth;
+    if (value != null) {
       result
         ..add('viewport_width')
-        ..add(serializers.serialize(object.viewportWidth,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.apiHost != null) {
+    value = object.apiHost;
+    if (value != null) {
       result
         ..add('api_host')
-        ..add(serializers.serialize(object.apiHost,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.isLayer != null) {
+    value = object.isLayer;
+    if (value != null) {
       result
         ..add('is_layer')
-        ..add(serializers.serialize(object.isLayer,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -89,7 +95,7 @@ class _$VKWebAppUpdateConfigSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'app':
           result.app = serializers.deserialize(value,
@@ -169,9 +175,8 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
       this.apiHost,
       this.isLayer})
       : super._() {
-    if (scheme == null) {
-      throw new BuiltValueNullFieldError('VKWebAppUpdateConfig', 'scheme');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        scheme, 'VKWebAppUpdateConfig', 'scheme');
   }
 
   @override
@@ -276,16 +281,17 @@ class VKWebAppUpdateConfigBuilder
   VKWebAppUpdateConfigBuilder();
 
   VKWebAppUpdateConfigBuilder get _$this {
-    if (_$v != null) {
-      _app = _$v.app;
-      _appearance = _$v.appearance;
-      _insets = _$v.insets?.toBuilder();
-      _scheme = _$v.scheme;
-      _startTime = _$v.startTime;
-      _viewportHeight = _$v.viewportHeight;
-      _viewportWidth = _$v.viewportWidth;
-      _apiHost = _$v.apiHost;
-      _isLayer = _$v.isLayer;
+    final $v = _$v;
+    if ($v != null) {
+      _app = $v.app;
+      _appearance = $v.appearance;
+      _insets = $v.insets?.toBuilder();
+      _scheme = $v.scheme;
+      _startTime = $v.startTime;
+      _viewportHeight = $v.viewportHeight;
+      _viewportWidth = $v.viewportWidth;
+      _apiHost = $v.apiHost;
+      _isLayer = $v.isLayer;
       _$v = null;
     }
     return this;
@@ -293,9 +299,7 @@ class VKWebAppUpdateConfigBuilder
 
   @override
   void replace(VKWebAppUpdateConfig other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppUpdateConfig;
   }
 
@@ -313,7 +317,8 @@ class VKWebAppUpdateConfigBuilder
               app: app,
               appearance: appearance,
               insets: _insets?.build(),
-              scheme: scheme,
+              scheme: BuiltValueNullFieldError.checkNotNull(
+                  scheme, 'VKWebAppUpdateConfig', 'scheme'),
               startTime: startTime,
               viewportHeight: viewportHeight,
               viewportWidth: viewportWidth,

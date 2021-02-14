@@ -30,16 +30,19 @@ class _$ShowStoryBoxOptionsSerializer
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
     ];
-    if (object.attachment != null) {
+    Object value;
+    value = object.attachment;
+    if (value != null) {
       result
         ..add('attachment')
-        ..add(serializers.serialize(object.attachment,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(Attachment)));
     }
-    if (object.stickers != null) {
+    value = object.stickers;
+    if (value != null) {
       result
         ..add('stickers')
-        ..add(serializers.serialize(object.stickers,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(
                 BuiltList, const [const FullType(StickerContainer)])));
     }
@@ -56,7 +59,7 @@ class _$ShowStoryBoxOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'background_type':
           result.backgroundType = serializers.deserialize(value,
@@ -100,13 +103,9 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
   _$ShowStoryBoxOptions._(
       {this.backgroundType, this.url, this.attachment, this.stickers})
       : super._() {
-    if (backgroundType == null) {
-      throw new BuiltValueNullFieldError(
-          'ShowStoryBoxOptions', 'backgroundType');
-    }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('ShowStoryBoxOptions', 'url');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        backgroundType, 'ShowStoryBoxOptions', 'backgroundType');
+    BuiltValueNullFieldError.checkNotNull(url, 'ShowStoryBoxOptions', 'url');
   }
 
   @override
@@ -175,11 +174,12 @@ class ShowStoryBoxOptionsBuilder
   ShowStoryBoxOptionsBuilder();
 
   ShowStoryBoxOptionsBuilder get _$this {
-    if (_$v != null) {
-      _backgroundType = _$v.backgroundType;
-      _url = _$v.url;
-      _attachment = _$v.attachment?.toBuilder();
-      _stickers = _$v.stickers?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _backgroundType = $v.backgroundType;
+      _url = $v.url;
+      _attachment = $v.attachment?.toBuilder();
+      _stickers = $v.stickers?.toBuilder();
       _$v = null;
     }
     return this;
@@ -187,9 +187,7 @@ class ShowStoryBoxOptionsBuilder
 
   @override
   void replace(ShowStoryBoxOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShowStoryBoxOptions;
   }
 
@@ -204,8 +202,10 @@ class ShowStoryBoxOptionsBuilder
     try {
       _$result = _$v ??
           new _$ShowStoryBoxOptions._(
-              backgroundType: backgroundType,
-              url: url,
+              backgroundType: BuiltValueNullFieldError.checkNotNull(
+                  backgroundType, 'ShowStoryBoxOptions', 'backgroundType'),
+              url: BuiltValueNullFieldError.checkNotNull(
+                  url, 'ShowStoryBoxOptions', 'url'),
               attachment: _attachment?.build(),
               stickers: _stickers?.build());
     } catch (_) {

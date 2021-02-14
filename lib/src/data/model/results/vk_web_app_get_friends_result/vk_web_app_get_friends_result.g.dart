@@ -43,7 +43,7 @@ class _$VKWebAppGetFriendsResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'users':
           result.users.replace(serializers.deserialize(value,
@@ -67,9 +67,8 @@ class _$VKWebAppGetFriendsResult extends VKWebAppGetFriendsResult {
       (new VKWebAppGetFriendsResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetFriendsResult._({this.users}) : super._() {
-    if (users == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetFriendsResult', 'users');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        users, 'VKWebAppGetFriendsResult', 'users');
   }
 
   @override
@@ -112,8 +111,9 @@ class VKWebAppGetFriendsResultBuilder
   VKWebAppGetFriendsResultBuilder();
 
   VKWebAppGetFriendsResultBuilder get _$this {
-    if (_$v != null) {
-      _users = _$v.users?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _users = $v.users.toBuilder();
       _$v = null;
     }
     return this;
@@ -121,9 +121,7 @@ class VKWebAppGetFriendsResultBuilder
 
   @override
   void replace(VKWebAppGetFriendsResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetFriendsResult;
   }
 

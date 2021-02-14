@@ -43,7 +43,7 @@ class _$TapticImpactOccurredOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'style':
           result.style = serializers.deserialize(value,
@@ -65,10 +65,8 @@ class _$TapticImpactOccurredOptions extends TapticImpactOccurredOptions {
       (new TapticImpactOccurredOptionsBuilder()..update(updates)).build();
 
   _$TapticImpactOccurredOptions._({this.style}) : super._() {
-    if (style == null) {
-      throw new BuiltValueNullFieldError(
-          'TapticImpactOccurredOptions', 'style');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        style, 'TapticImpactOccurredOptions', 'style');
   }
 
   @override
@@ -112,8 +110,9 @@ class TapticImpactOccurredOptionsBuilder
   TapticImpactOccurredOptionsBuilder();
 
   TapticImpactOccurredOptionsBuilder get _$this {
-    if (_$v != null) {
-      _style = _$v.style;
+    final $v = _$v;
+    if ($v != null) {
+      _style = $v.style;
       _$v = null;
     }
     return this;
@@ -121,9 +120,7 @@ class TapticImpactOccurredOptionsBuilder
 
   @override
   void replace(TapticImpactOccurredOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TapticImpactOccurredOptions;
   }
 
@@ -134,7 +131,10 @@ class TapticImpactOccurredOptionsBuilder
 
   @override
   _$TapticImpactOccurredOptions build() {
-    final _$result = _$v ?? new _$TapticImpactOccurredOptions._(style: style);
+    final _$result = _$v ??
+        new _$TapticImpactOccurredOptions._(
+            style: BuiltValueNullFieldError.checkNotNull(
+                style, 'TapticImpactOccurredOptions', 'style'));
     replace(_$result);
     return _$result;
   }

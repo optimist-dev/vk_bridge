@@ -33,10 +33,12 @@ class _$SubscribeStoryAppOptionsSerializer
       serializers.serialize(object.stickerId,
           specifiedType: const FullType(int)),
     ];
-    if (object.accessKey != null) {
+    Object value;
+    value = object.accessKey;
+    if (value != null) {
       result
         ..add('access_key')
-        ..add(serializers.serialize(object.accessKey,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -52,7 +54,7 @@ class _$SubscribeStoryAppOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'story_owner_id':
           result.storyOwnerId = serializers.deserialize(value,
@@ -94,17 +96,12 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
   _$SubscribeStoryAppOptions._(
       {this.storyOwnerId, this.storyId, this.stickerId, this.accessKey})
       : super._() {
-    if (storyOwnerId == null) {
-      throw new BuiltValueNullFieldError(
-          'SubscribeStoryAppOptions', 'storyOwnerId');
-    }
-    if (storyId == null) {
-      throw new BuiltValueNullFieldError('SubscribeStoryAppOptions', 'storyId');
-    }
-    if (stickerId == null) {
-      throw new BuiltValueNullFieldError(
-          'SubscribeStoryAppOptions', 'stickerId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        storyOwnerId, 'SubscribeStoryAppOptions', 'storyOwnerId');
+    BuiltValueNullFieldError.checkNotNull(
+        storyId, 'SubscribeStoryAppOptions', 'storyId');
+    BuiltValueNullFieldError.checkNotNull(
+        stickerId, 'SubscribeStoryAppOptions', 'stickerId');
   }
 
   @override
@@ -169,11 +166,12 @@ class SubscribeStoryAppOptionsBuilder
   SubscribeStoryAppOptionsBuilder();
 
   SubscribeStoryAppOptionsBuilder get _$this {
-    if (_$v != null) {
-      _storyOwnerId = _$v.storyOwnerId;
-      _storyId = _$v.storyId;
-      _stickerId = _$v.stickerId;
-      _accessKey = _$v.accessKey;
+    final $v = _$v;
+    if ($v != null) {
+      _storyOwnerId = $v.storyOwnerId;
+      _storyId = $v.storyId;
+      _stickerId = $v.stickerId;
+      _accessKey = $v.accessKey;
       _$v = null;
     }
     return this;
@@ -181,9 +179,7 @@ class SubscribeStoryAppOptionsBuilder
 
   @override
   void replace(SubscribeStoryAppOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SubscribeStoryAppOptions;
   }
 
@@ -196,9 +192,12 @@ class SubscribeStoryAppOptionsBuilder
   _$SubscribeStoryAppOptions build() {
     final _$result = _$v ??
         new _$SubscribeStoryAppOptions._(
-            storyOwnerId: storyOwnerId,
-            storyId: storyId,
-            stickerId: stickerId,
+            storyOwnerId: BuiltValueNullFieldError.checkNotNull(
+                storyOwnerId, 'SubscribeStoryAppOptions', 'storyOwnerId'),
+            storyId: BuiltValueNullFieldError.checkNotNull(
+                storyId, 'SubscribeStoryAppOptions', 'storyId'),
+            stickerId: BuiltValueNullFieldError.checkNotNull(
+                stickerId, 'SubscribeStoryAppOptions', 'stickerId'),
             accessKey: accessKey);
     replace(_$result);
     return _$result;

@@ -43,7 +43,7 @@ class _$ResizeWindowOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'width':
           result.width = serializers.deserialize(value,
@@ -71,12 +71,10 @@ class _$ResizeWindowOptions extends ResizeWindowOptions {
       (new ResizeWindowOptionsBuilder()..update(updates)).build();
 
   _$ResizeWindowOptions._({this.width, this.height}) : super._() {
-    if (width == null) {
-      throw new BuiltValueNullFieldError('ResizeWindowOptions', 'width');
-    }
-    if (height == null) {
-      throw new BuiltValueNullFieldError('ResizeWindowOptions', 'height');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        width, 'ResizeWindowOptions', 'width');
+    BuiltValueNullFieldError.checkNotNull(
+        height, 'ResizeWindowOptions', 'height');
   }
 
   @override
@@ -125,9 +123,10 @@ class ResizeWindowOptionsBuilder
   ResizeWindowOptionsBuilder();
 
   ResizeWindowOptionsBuilder get _$this {
-    if (_$v != null) {
-      _width = _$v.width;
-      _height = _$v.height;
+    final $v = _$v;
+    if ($v != null) {
+      _width = $v.width;
+      _height = $v.height;
       _$v = null;
     }
     return this;
@@ -135,9 +134,7 @@ class ResizeWindowOptionsBuilder
 
   @override
   void replace(ResizeWindowOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ResizeWindowOptions;
   }
 
@@ -148,8 +145,12 @@ class ResizeWindowOptionsBuilder
 
   @override
   _$ResizeWindowOptions build() {
-    final _$result =
-        _$v ?? new _$ResizeWindowOptions._(width: width, height: height);
+    final _$result = _$v ??
+        new _$ResizeWindowOptions._(
+            width: BuiltValueNullFieldError.checkNotNull(
+                width, 'ResizeWindowOptions', 'width'),
+            height: BuiltValueNullFieldError.checkNotNull(
+                height, 'ResizeWindowOptions', 'height'));
     replace(_$result);
     return _$result;
   }

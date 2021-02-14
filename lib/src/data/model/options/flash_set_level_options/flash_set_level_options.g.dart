@@ -41,7 +41,7 @@ class _$FlashSetLevelOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'level':
           result.level = serializers.deserialize(value,
@@ -63,9 +63,8 @@ class _$FlashSetLevelOptions extends FlashSetLevelOptions {
       (new FlashSetLevelOptionsBuilder()..update(updates)).build();
 
   _$FlashSetLevelOptions._({this.level}) : super._() {
-    if (level == null) {
-      throw new BuiltValueNullFieldError('FlashSetLevelOptions', 'level');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        level, 'FlashSetLevelOptions', 'level');
   }
 
   @override
@@ -107,8 +106,9 @@ class FlashSetLevelOptionsBuilder
   FlashSetLevelOptionsBuilder();
 
   FlashSetLevelOptionsBuilder get _$this {
-    if (_$v != null) {
-      _level = _$v.level;
+    final $v = _$v;
+    if ($v != null) {
+      _level = $v.level;
       _$v = null;
     }
     return this;
@@ -116,9 +116,7 @@ class FlashSetLevelOptionsBuilder
 
   @override
   void replace(FlashSetLevelOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FlashSetLevelOptions;
   }
 
@@ -129,7 +127,10 @@ class FlashSetLevelOptionsBuilder
 
   @override
   _$FlashSetLevelOptions build() {
-    final _$result = _$v ?? new _$FlashSetLevelOptions._(level: level);
+    final _$result = _$v ??
+        new _$FlashSetLevelOptions._(
+            level: BuiltValueNullFieldError.checkNotNull(
+                level, 'FlashSetLevelOptions', 'level'));
     replace(_$result);
     return _$result;
   }

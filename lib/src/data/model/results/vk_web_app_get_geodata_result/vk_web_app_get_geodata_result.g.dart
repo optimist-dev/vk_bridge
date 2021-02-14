@@ -20,16 +20,12 @@ class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
 
   _$VKWebAppGetGeodataResult._({this.available, this.lat, this.long})
       : super._() {
-    if (available == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGeodataResult', 'available');
-    }
-    if (lat == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetGeodataResult', 'lat');
-    }
-    if (long == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetGeodataResult', 'long');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        available, 'VKWebAppGetGeodataResult', 'available');
+    BuiltValueNullFieldError.checkNotNull(
+        lat, 'VKWebAppGetGeodataResult', 'lat');
+    BuiltValueNullFieldError.checkNotNull(
+        long, 'VKWebAppGetGeodataResult', 'long');
   }
 
   @override
@@ -86,10 +82,11 @@ class VKWebAppGetGeodataResultBuilder
   VKWebAppGetGeodataResultBuilder();
 
   VKWebAppGetGeodataResultBuilder get _$this {
-    if (_$v != null) {
-      _available = _$v.available;
-      _lat = _$v.lat;
-      _long = _$v.long;
+    final $v = _$v;
+    if ($v != null) {
+      _available = $v.available;
+      _lat = $v.lat;
+      _long = $v.long;
       _$v = null;
     }
     return this;
@@ -97,9 +94,7 @@ class VKWebAppGetGeodataResultBuilder
 
   @override
   void replace(VKWebAppGetGeodataResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetGeodataResult;
   }
 
@@ -112,7 +107,12 @@ class VKWebAppGetGeodataResultBuilder
   _$VKWebAppGetGeodataResult build() {
     final _$result = _$v ??
         new _$VKWebAppGetGeodataResult._(
-            available: available, lat: lat, long: long);
+            available: BuiltValueNullFieldError.checkNotNull(
+                available, 'VKWebAppGetGeodataResult', 'available'),
+            lat: BuiltValueNullFieldError.checkNotNull(
+                lat, 'VKWebAppGetGeodataResult', 'lat'),
+            long: BuiltValueNullFieldError.checkNotNull(
+                long, 'VKWebAppGetGeodataResult', 'long'));
     replace(_$result);
     return _$result;
   }

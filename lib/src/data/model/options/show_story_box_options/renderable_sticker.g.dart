@@ -31,16 +31,19 @@ class _$RenderableStickerSerializer
       serializers.serialize(object.canDelete,
           specifiedType: const FullType(bool)),
     ];
-    if (object.url != null) {
+    Object value;
+    value = object.url;
+    if (value != null) {
       result
         ..add('url')
-        ..add(serializers.serialize(object.url,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.transform != null) {
+    value = object.transform;
+    if (value != null) {
       result
         ..add('transform')
-        ..add(serializers.serialize(object.transform,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(Transform)));
     }
     return result;
@@ -56,7 +59,7 @@ class _$RenderableStickerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'content_type':
           result.contentType = serializers.deserialize(value,
@@ -110,15 +113,12 @@ class _$RenderableSticker extends RenderableSticker {
       this.clickableZones,
       this.canDelete})
       : super._() {
-    if (contentType == null) {
-      throw new BuiltValueNullFieldError('RenderableSticker', 'contentType');
-    }
-    if (clickableZones == null) {
-      throw new BuiltValueNullFieldError('RenderableSticker', 'clickableZones');
-    }
-    if (canDelete == null) {
-      throw new BuiltValueNullFieldError('RenderableSticker', 'canDelete');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        contentType, 'RenderableSticker', 'contentType');
+    BuiltValueNullFieldError.checkNotNull(
+        clickableZones, 'RenderableSticker', 'clickableZones');
+    BuiltValueNullFieldError.checkNotNull(
+        canDelete, 'RenderableSticker', 'canDelete');
   }
 
   @override
@@ -192,12 +192,13 @@ class RenderableStickerBuilder
   RenderableStickerBuilder();
 
   RenderableStickerBuilder get _$this {
-    if (_$v != null) {
-      _contentType = _$v.contentType;
-      _url = _$v.url;
-      _transform = _$v.transform?.toBuilder();
-      _clickableZones = _$v.clickableZones?.toBuilder();
-      _canDelete = _$v.canDelete;
+    final $v = _$v;
+    if ($v != null) {
+      _contentType = $v.contentType;
+      _url = $v.url;
+      _transform = $v.transform?.toBuilder();
+      _clickableZones = $v.clickableZones.toBuilder();
+      _canDelete = $v.canDelete;
       _$v = null;
     }
     return this;
@@ -205,9 +206,7 @@ class RenderableStickerBuilder
 
   @override
   void replace(RenderableSticker other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RenderableSticker;
   }
 
@@ -222,11 +221,13 @@ class RenderableStickerBuilder
     try {
       _$result = _$v ??
           new _$RenderableSticker._(
-              contentType: contentType,
+              contentType: BuiltValueNullFieldError.checkNotNull(
+                  contentType, 'RenderableSticker', 'contentType'),
               url: url,
               transform: _transform?.build(),
               clickableZones: clickableZones.build(),
-              canDelete: canDelete);
+              canDelete: BuiltValueNullFieldError.checkNotNull(
+                  canDelete, 'RenderableSticker', 'canDelete'));
     } catch (_) {
       String _$failedField;
       try {

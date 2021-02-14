@@ -39,7 +39,7 @@ class _$StorageGetOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'keys':
           result.keys.replace(serializers.deserialize(value,
@@ -63,9 +63,7 @@ class _$StorageGetOptions extends StorageGetOptions {
       (new StorageGetOptionsBuilder()..update(updates)).build();
 
   _$StorageGetOptions._({this.keys}) : super._() {
-    if (keys == null) {
-      throw new BuiltValueNullFieldError('StorageGetOptions', 'keys');
-    }
+    BuiltValueNullFieldError.checkNotNull(keys, 'StorageGetOptions', 'keys');
   }
 
   @override
@@ -105,8 +103,9 @@ class StorageGetOptionsBuilder
   StorageGetOptionsBuilder();
 
   StorageGetOptionsBuilder get _$this {
-    if (_$v != null) {
-      _keys = _$v.keys?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _keys = $v.keys.toBuilder();
       _$v = null;
     }
     return this;
@@ -114,9 +113,7 @@ class StorageGetOptionsBuilder
 
   @override
   void replace(StorageGetOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StorageGetOptions;
   }
 

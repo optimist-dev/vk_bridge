@@ -46,7 +46,7 @@ class _$GetCommunityTokenOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -81,15 +81,12 @@ class _$GetCommunityTokenOptions extends GetCommunityTokenOptions {
 
   _$GetCommunityTokenOptions._({this.appId, this.groupId, this.scope})
       : super._() {
-    if (appId == null) {
-      throw new BuiltValueNullFieldError('GetCommunityTokenOptions', 'appId');
-    }
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError('GetCommunityTokenOptions', 'groupId');
-    }
-    if (scope == null) {
-      throw new BuiltValueNullFieldError('GetCommunityTokenOptions', 'scope');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        appId, 'GetCommunityTokenOptions', 'appId');
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'GetCommunityTokenOptions', 'groupId');
+    BuiltValueNullFieldError.checkNotNull(
+        scope, 'GetCommunityTokenOptions', 'scope');
   }
 
   @override
@@ -146,10 +143,11 @@ class GetCommunityTokenOptionsBuilder
   GetCommunityTokenOptionsBuilder();
 
   GetCommunityTokenOptionsBuilder get _$this {
-    if (_$v != null) {
-      _appId = _$v.appId;
-      _groupId = _$v.groupId;
-      _scope = _$v.scope;
+    final $v = _$v;
+    if ($v != null) {
+      _appId = $v.appId;
+      _groupId = $v.groupId;
+      _scope = $v.scope;
       _$v = null;
     }
     return this;
@@ -157,9 +155,7 @@ class GetCommunityTokenOptionsBuilder
 
   @override
   void replace(GetCommunityTokenOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetCommunityTokenOptions;
   }
 
@@ -172,7 +168,12 @@ class GetCommunityTokenOptionsBuilder
   _$GetCommunityTokenOptions build() {
     final _$result = _$v ??
         new _$GetCommunityTokenOptions._(
-            appId: appId, groupId: groupId, scope: scope);
+            appId: BuiltValueNullFieldError.checkNotNull(
+                appId, 'GetCommunityTokenOptions', 'appId'),
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'GetCommunityTokenOptions', 'groupId'),
+            scope: BuiltValueNullFieldError.checkNotNull(
+                scope, 'GetCommunityTokenOptions', 'scope'));
     replace(_$result);
     return _$result;
   }

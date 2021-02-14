@@ -25,11 +25,12 @@ class _$ShowImagesOptionsSerializer
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
     ];
-    if (object.startIndex != null) {
+    Object value;
+    value = object.startIndex;
+    if (value != null) {
       result
         ..add('start_index')
-        ..add(serializers.serialize(object.startIndex,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -44,7 +45,7 @@ class _$ShowImagesOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'images':
           result.images.replace(serializers.deserialize(value,
@@ -74,9 +75,8 @@ class _$ShowImagesOptions extends ShowImagesOptions {
       (new ShowImagesOptionsBuilder()..update(updates)).build();
 
   _$ShowImagesOptions._({this.images, this.startIndex}) : super._() {
-    if (images == null) {
-      throw new BuiltValueNullFieldError('ShowImagesOptions', 'images');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        images, 'ShowImagesOptions', 'images');
   }
 
   @override
@@ -125,9 +125,10 @@ class ShowImagesOptionsBuilder
   ShowImagesOptionsBuilder();
 
   ShowImagesOptionsBuilder get _$this {
-    if (_$v != null) {
-      _images = _$v.images?.toBuilder();
-      _startIndex = _$v.startIndex;
+    final $v = _$v;
+    if ($v != null) {
+      _images = $v.images.toBuilder();
+      _startIndex = $v.startIndex;
       _$v = null;
     }
     return this;
@@ -135,9 +136,7 @@ class ShowImagesOptionsBuilder
 
   @override
   void replace(ShowImagesOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShowImagesOptions;
   }
 

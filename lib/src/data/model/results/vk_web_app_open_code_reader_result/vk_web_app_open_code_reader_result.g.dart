@@ -43,7 +43,7 @@ class _$VKWebAppOpenCodeReaderResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'code_data':
           result.codeData = serializers.deserialize(value,
@@ -65,10 +65,8 @@ class _$VKWebAppOpenCodeReaderResult extends VKWebAppOpenCodeReaderResult {
       (new VKWebAppOpenCodeReaderResultBuilder()..update(updates)).build();
 
   _$VKWebAppOpenCodeReaderResult._({this.codeData}) : super._() {
-    if (codeData == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppOpenCodeReaderResult', 'codeData');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        codeData, 'VKWebAppOpenCodeReaderResult', 'codeData');
   }
 
   @override
@@ -112,8 +110,9 @@ class VKWebAppOpenCodeReaderResultBuilder
   VKWebAppOpenCodeReaderResultBuilder();
 
   VKWebAppOpenCodeReaderResultBuilder get _$this {
-    if (_$v != null) {
-      _codeData = _$v.codeData;
+    final $v = _$v;
+    if ($v != null) {
+      _codeData = $v.codeData;
       _$v = null;
     }
     return this;
@@ -121,9 +120,7 @@ class VKWebAppOpenCodeReaderResultBuilder
 
   @override
   void replace(VKWebAppOpenCodeReaderResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppOpenCodeReaderResult;
   }
 
@@ -134,8 +131,10 @@ class VKWebAppOpenCodeReaderResultBuilder
 
   @override
   _$VKWebAppOpenCodeReaderResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppOpenCodeReaderResult._(codeData: codeData);
+    final _$result = _$v ??
+        new _$VKWebAppOpenCodeReaderResult._(
+            codeData: BuiltValueNullFieldError.checkNotNull(
+                codeData, 'VKWebAppOpenCodeReaderResult', 'codeData'));
     replace(_$result);
     return _$result;
   }

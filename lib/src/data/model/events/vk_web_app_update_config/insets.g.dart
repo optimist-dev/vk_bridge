@@ -42,7 +42,7 @@ class _$InsetsSerializer implements StructuredSerializer<Insets> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'right':
           result.right = serializers.deserialize(value,
@@ -81,18 +81,10 @@ class _$Insets extends Insets {
       (new InsetsBuilder()..update(updates)).build();
 
   _$Insets._({this.right, this.top, this.left, this.bottom}) : super._() {
-    if (right == null) {
-      throw new BuiltValueNullFieldError('Insets', 'right');
-    }
-    if (top == null) {
-      throw new BuiltValueNullFieldError('Insets', 'top');
-    }
-    if (left == null) {
-      throw new BuiltValueNullFieldError('Insets', 'left');
-    }
-    if (bottom == null) {
-      throw new BuiltValueNullFieldError('Insets', 'bottom');
-    }
+    BuiltValueNullFieldError.checkNotNull(right, 'Insets', 'right');
+    BuiltValueNullFieldError.checkNotNull(top, 'Insets', 'top');
+    BuiltValueNullFieldError.checkNotNull(left, 'Insets', 'left');
+    BuiltValueNullFieldError.checkNotNull(bottom, 'Insets', 'bottom');
   }
 
   @override
@@ -152,11 +144,12 @@ class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
   InsetsBuilder();
 
   InsetsBuilder get _$this {
-    if (_$v != null) {
-      _right = _$v.right;
-      _top = _$v.top;
-      _left = _$v.left;
-      _bottom = _$v.bottom;
+    final $v = _$v;
+    if ($v != null) {
+      _right = $v.right;
+      _top = $v.top;
+      _left = $v.left;
+      _bottom = $v.bottom;
       _$v = null;
     }
     return this;
@@ -164,9 +157,7 @@ class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
 
   @override
   void replace(Insets other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Insets;
   }
 
@@ -178,7 +169,13 @@ class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
   @override
   _$Insets build() {
     final _$result = _$v ??
-        new _$Insets._(right: right, top: top, left: left, bottom: bottom);
+        new _$Insets._(
+            right:
+                BuiltValueNullFieldError.checkNotNull(right, 'Insets', 'right'),
+            top: BuiltValueNullFieldError.checkNotNull(top, 'Insets', 'top'),
+            left: BuiltValueNullFieldError.checkNotNull(left, 'Insets', 'left'),
+            bottom: BuiltValueNullFieldError.checkNotNull(
+                bottom, 'Insets', 'bottom'));
     replace(_$result);
     return _$result;
   }

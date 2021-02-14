@@ -21,10 +21,12 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
     ];
-    if (object.appContext != null) {
+    Object value;
+    value = object.appContext;
+    if (value != null) {
       result
         ..add('app_context')
-        ..add(serializers.serialize(object.appContext,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -39,7 +41,7 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -66,9 +68,7 @@ class _$ActionApp extends ActionApp {
       (new ActionAppBuilder()..update(updates)).build();
 
   _$ActionApp._({this.appId, this.appContext}) : super._() {
-    if (appId == null) {
-      throw new BuiltValueNullFieldError('ActionApp', 'appId');
-    }
+    BuiltValueNullFieldError.checkNotNull(appId, 'ActionApp', 'appId');
   }
 
   @override
@@ -114,9 +114,10 @@ class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
   ActionAppBuilder();
 
   ActionAppBuilder get _$this {
-    if (_$v != null) {
-      _appId = _$v.appId;
-      _appContext = _$v.appContext;
+    final $v = _$v;
+    if ($v != null) {
+      _appId = $v.appId;
+      _appContext = $v.appContext;
       _$v = null;
     }
     return this;
@@ -124,9 +125,7 @@ class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
 
   @override
   void replace(ActionApp other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ActionApp;
   }
 
@@ -137,8 +136,11 @@ class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
 
   @override
   _$ActionApp build() {
-    final _$result =
-        _$v ?? new _$ActionApp._(appId: appId, appContext: appContext);
+    final _$result = _$v ??
+        new _$ActionApp._(
+            appId: BuiltValueNullFieldError.checkNotNull(
+                appId, 'ActionApp', 'appId'),
+            appContext: appContext);
     replace(_$result);
     return _$result;
   }

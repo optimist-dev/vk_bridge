@@ -38,7 +38,7 @@ class _$KeyValuePairSerializer implements StructuredSerializer<KeyValuePair> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'key':
           result.key = serializers.deserialize(value,
@@ -65,12 +65,8 @@ class _$KeyValuePair extends KeyValuePair {
       (new KeyValuePairBuilder()..update(updates)).build();
 
   _$KeyValuePair._({this.key, this.value}) : super._() {
-    if (key == null) {
-      throw new BuiltValueNullFieldError('KeyValuePair', 'key');
-    }
-    if (value == null) {
-      throw new BuiltValueNullFieldError('KeyValuePair', 'value');
-    }
+    BuiltValueNullFieldError.checkNotNull(key, 'KeyValuePair', 'key');
+    BuiltValueNullFieldError.checkNotNull(value, 'KeyValuePair', 'value');
   }
 
   @override
@@ -115,9 +111,10 @@ class KeyValuePairBuilder
   KeyValuePairBuilder();
 
   KeyValuePairBuilder get _$this {
-    if (_$v != null) {
-      _key = _$v.key;
-      _value = _$v.value;
+    final $v = _$v;
+    if ($v != null) {
+      _key = $v.key;
+      _value = $v.value;
       _$v = null;
     }
     return this;
@@ -125,9 +122,7 @@ class KeyValuePairBuilder
 
   @override
   void replace(KeyValuePair other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$KeyValuePair;
   }
 
@@ -138,7 +133,12 @@ class KeyValuePairBuilder
 
   @override
   _$KeyValuePair build() {
-    final _$result = _$v ?? new _$KeyValuePair._(key: key, value: value);
+    final _$result = _$v ??
+        new _$KeyValuePair._(
+            key: BuiltValueNullFieldError.checkNotNull(
+                key, 'KeyValuePair', 'key'),
+            value: BuiltValueNullFieldError.checkNotNull(
+                value, 'KeyValuePair', 'value'));
     replace(_$result);
     return _$result;
   }

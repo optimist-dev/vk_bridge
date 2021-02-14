@@ -23,10 +23,12 @@ class _$AttachmentSerializer implements StructuredSerializer<Attachment> {
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
-    if (object.url != null) {
+    Object value;
+    value = object.url;
+    if (value != null) {
       result
         ..add('url')
-        ..add(serializers.serialize(object.url,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -41,7 +43,7 @@ class _$AttachmentSerializer implements StructuredSerializer<Attachment> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'text':
           result.text = serializers.deserialize(value,
@@ -74,12 +76,8 @@ class _$Attachment extends Attachment {
       (new AttachmentBuilder()..update(updates)).build();
 
   _$Attachment._({this.text, this.type, this.url}) : super._() {
-    if (text == null) {
-      throw new BuiltValueNullFieldError('Attachment', 'text');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError('Attachment', 'type');
-    }
+    BuiltValueNullFieldError.checkNotNull(text, 'Attachment', 'text');
+    BuiltValueNullFieldError.checkNotNull(type, 'Attachment', 'type');
   }
 
   @override
@@ -131,10 +129,11 @@ class AttachmentBuilder implements Builder<Attachment, AttachmentBuilder> {
   AttachmentBuilder();
 
   AttachmentBuilder get _$this {
-    if (_$v != null) {
-      _text = _$v.text;
-      _type = _$v.type;
-      _url = _$v.url;
+    final $v = _$v;
+    if ($v != null) {
+      _text = $v.text;
+      _type = $v.type;
+      _url = $v.url;
       _$v = null;
     }
     return this;
@@ -142,9 +141,7 @@ class AttachmentBuilder implements Builder<Attachment, AttachmentBuilder> {
 
   @override
   void replace(Attachment other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Attachment;
   }
 
@@ -155,8 +152,13 @@ class AttachmentBuilder implements Builder<Attachment, AttachmentBuilder> {
 
   @override
   _$Attachment build() {
-    final _$result =
-        _$v ?? new _$Attachment._(text: text, type: type, url: url);
+    final _$result = _$v ??
+        new _$Attachment._(
+            text: BuiltValueNullFieldError.checkNotNull(
+                text, 'Attachment', 'text'),
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, 'Attachment', 'type'),
+            url: url);
     replace(_$result);
     return _$result;
   }

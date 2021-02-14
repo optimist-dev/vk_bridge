@@ -37,7 +37,7 @@ class _$CopyTextOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'text':
           result.text = serializers.deserialize(value,
@@ -58,9 +58,7 @@ class _$CopyTextOptions extends CopyTextOptions {
       (new CopyTextOptionsBuilder()..update(updates)).build();
 
   _$CopyTextOptions._({this.text}) : super._() {
-    if (text == null) {
-      throw new BuiltValueNullFieldError('CopyTextOptions', 'text');
-    }
+    BuiltValueNullFieldError.checkNotNull(text, 'CopyTextOptions', 'text');
   }
 
   @override
@@ -100,8 +98,9 @@ class CopyTextOptionsBuilder
   CopyTextOptionsBuilder();
 
   CopyTextOptionsBuilder get _$this {
-    if (_$v != null) {
-      _text = _$v.text;
+    final $v = _$v;
+    if ($v != null) {
+      _text = $v.text;
       _$v = null;
     }
     return this;
@@ -109,9 +108,7 @@ class CopyTextOptionsBuilder
 
   @override
   void replace(CopyTextOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CopyTextOptions;
   }
 
@@ -122,7 +119,10 @@ class CopyTextOptionsBuilder
 
   @override
   _$CopyTextOptions build() {
-    final _$result = _$v ?? new _$CopyTextOptions._(text: text);
+    final _$result = _$v ??
+        new _$CopyTextOptions._(
+            text: BuiltValueNullFieldError.checkNotNull(
+                text, 'CopyTextOptions', 'text'));
     replace(_$result);
     return _$result;
   }

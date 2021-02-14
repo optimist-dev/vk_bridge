@@ -46,7 +46,7 @@ class _$VKWebAppGetClientVersionResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'platform':
           result.platform = serializers.deserialize(value,
@@ -75,14 +75,10 @@ class _$VKWebAppGetClientVersionResult extends VKWebAppGetClientVersionResult {
 
   _$VKWebAppGetClientVersionResult._({this.platform, this.version})
       : super._() {
-    if (platform == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetClientVersionResult', 'platform');
-    }
-    if (version == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetClientVersionResult', 'version');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        platform, 'VKWebAppGetClientVersionResult', 'platform');
+    BuiltValueNullFieldError.checkNotNull(
+        version, 'VKWebAppGetClientVersionResult', 'version');
   }
 
   @override
@@ -133,9 +129,10 @@ class VKWebAppGetClientVersionResultBuilder
   VKWebAppGetClientVersionResultBuilder();
 
   VKWebAppGetClientVersionResultBuilder get _$this {
-    if (_$v != null) {
-      _platform = _$v.platform;
-      _version = _$v.version;
+    final $v = _$v;
+    if ($v != null) {
+      _platform = $v.platform;
+      _version = $v.version;
       _$v = null;
     }
     return this;
@@ -143,9 +140,7 @@ class VKWebAppGetClientVersionResultBuilder
 
   @override
   void replace(VKWebAppGetClientVersionResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetClientVersionResult;
   }
 
@@ -158,7 +153,10 @@ class VKWebAppGetClientVersionResultBuilder
   _$VKWebAppGetClientVersionResult build() {
     final _$result = _$v ??
         new _$VKWebAppGetClientVersionResult._(
-            platform: platform, version: version);
+            platform: BuiltValueNullFieldError.checkNotNull(
+                platform, 'VKWebAppGetClientVersionResult', 'platform'),
+            version: BuiltValueNullFieldError.checkNotNull(
+                version, 'VKWebAppGetClientVersionResult', 'version'));
     replace(_$result);
     return _$result;
   }

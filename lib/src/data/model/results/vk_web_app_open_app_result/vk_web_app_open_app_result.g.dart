@@ -28,10 +28,12 @@ class _$VKWebAppOpenAppResultSerializer
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
     ];
-    if (object.payload != null) {
+    Object value;
+    value = object.payload;
+    if (value != null) {
       result
         ..add('payload')
-        ..add(serializers.serialize(object.payload,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(Object)));
     }
     return result;
@@ -47,7 +49,7 @@ class _$VKWebAppOpenAppResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'status':
           result.status = serializers.deserialize(value,
@@ -75,9 +77,8 @@ class _$VKWebAppOpenAppResult extends VKWebAppOpenAppResult {
       (new VKWebAppOpenAppResultBuilder()..update(updates)).build();
 
   _$VKWebAppOpenAppResult._({this.status, this.payload}) : super._() {
-    if (status == null) {
-      throw new BuiltValueNullFieldError('VKWebAppOpenAppResult', 'status');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        status, 'VKWebAppOpenAppResult', 'status');
   }
 
   @override
@@ -126,9 +127,10 @@ class VKWebAppOpenAppResultBuilder
   VKWebAppOpenAppResultBuilder();
 
   VKWebAppOpenAppResultBuilder get _$this {
-    if (_$v != null) {
-      _status = _$v.status;
-      _payload = _$v.payload;
+    final $v = _$v;
+    if ($v != null) {
+      _status = $v.status;
+      _payload = $v.payload;
       _$v = null;
     }
     return this;
@@ -136,9 +138,7 @@ class VKWebAppOpenAppResultBuilder
 
   @override
   void replace(VKWebAppOpenAppResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppOpenAppResult;
   }
 
@@ -149,8 +149,11 @@ class VKWebAppOpenAppResultBuilder
 
   @override
   _$VKWebAppOpenAppResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppOpenAppResult._(status: status, payload: payload);
+    final _$result = _$v ??
+        new _$VKWebAppOpenAppResult._(
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, 'VKWebAppOpenAppResult', 'status'),
+            payload: payload);
     replace(_$result);
     return _$result;
   }

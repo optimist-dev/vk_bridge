@@ -46,7 +46,7 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'is_feature_supported':
           result.isFeatureSupported = serializers.deserialize(value,
@@ -77,14 +77,10 @@ class _$VKWebAppAddToHomeScreenInfoResult
   _$VKWebAppAddToHomeScreenInfoResult._(
       {this.isFeatureSupported, this.isAddedToHomeScreen})
       : super._() {
-    if (isFeatureSupported == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppAddToHomeScreenInfoResult', 'isFeatureSupported');
-    }
-    if (isAddedToHomeScreen == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppAddToHomeScreenInfoResult', 'isAddedToHomeScreen');
-    }
+    BuiltValueNullFieldError.checkNotNull(isFeatureSupported,
+        'VKWebAppAddToHomeScreenInfoResult', 'isFeatureSupported');
+    BuiltValueNullFieldError.checkNotNull(isAddedToHomeScreen,
+        'VKWebAppAddToHomeScreenInfoResult', 'isAddedToHomeScreen');
   }
 
   @override
@@ -138,9 +134,10 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
   VKWebAppAddToHomeScreenInfoResultBuilder();
 
   VKWebAppAddToHomeScreenInfoResultBuilder get _$this {
-    if (_$v != null) {
-      _isFeatureSupported = _$v.isFeatureSupported;
-      _isAddedToHomeScreen = _$v.isAddedToHomeScreen;
+    final $v = _$v;
+    if ($v != null) {
+      _isFeatureSupported = $v.isFeatureSupported;
+      _isAddedToHomeScreen = $v.isAddedToHomeScreen;
       _$v = null;
     }
     return this;
@@ -148,9 +145,7 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
 
   @override
   void replace(VKWebAppAddToHomeScreenInfoResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppAddToHomeScreenInfoResult;
   }
 
@@ -163,8 +158,14 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
   _$VKWebAppAddToHomeScreenInfoResult build() {
     final _$result = _$v ??
         new _$VKWebAppAddToHomeScreenInfoResult._(
-            isFeatureSupported: isFeatureSupported,
-            isAddedToHomeScreen: isAddedToHomeScreen);
+            isFeatureSupported: BuiltValueNullFieldError.checkNotNull(
+                isFeatureSupported,
+                'VKWebAppAddToHomeScreenInfoResult',
+                'isFeatureSupported'),
+            isAddedToHomeScreen: BuiltValueNullFieldError.checkNotNull(
+                isAddedToHomeScreen,
+                'VKWebAppAddToHomeScreenInfoResult',
+                'isAddedToHomeScreen'));
     replace(_$result);
     return _$result;
   }

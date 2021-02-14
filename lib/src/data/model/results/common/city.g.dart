@@ -37,7 +37,7 @@ class _$CitySerializer implements StructuredSerializer<City> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -64,12 +64,8 @@ class _$City extends City {
       (new CityBuilder()..update(updates)).build();
 
   _$City._({this.id, this.title}) : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('City', 'id');
-    }
-    if (title == null) {
-      throw new BuiltValueNullFieldError('City', 'title');
-    }
+    BuiltValueNullFieldError.checkNotNull(id, 'City', 'id');
+    BuiltValueNullFieldError.checkNotNull(title, 'City', 'title');
   }
 
   @override
@@ -113,9 +109,10 @@ class CityBuilder implements Builder<City, CityBuilder> {
   CityBuilder();
 
   CityBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _title = _$v.title;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _title = $v.title;
       _$v = null;
     }
     return this;
@@ -123,9 +120,7 @@ class CityBuilder implements Builder<City, CityBuilder> {
 
   @override
   void replace(City other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$City;
   }
 
@@ -136,7 +131,11 @@ class CityBuilder implements Builder<City, CityBuilder> {
 
   @override
   _$City build() {
-    final _$result = _$v ?? new _$City._(id: id, title: title);
+    final _$result = _$v ??
+        new _$City._(
+            id: BuiltValueNullFieldError.checkNotNull(id, 'City', 'id'),
+            title:
+                BuiltValueNullFieldError.checkNotNull(title, 'City', 'title'));
     replace(_$result);
     return _$result;
   }

@@ -27,11 +27,12 @@ class _$VKWebAppShareResultSerializer
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
-    if (object.postId != null) {
+    Object value;
+    value = object.postId;
+    if (value != null) {
       result
         ..add('post_id')
-        ..add(serializers.serialize(object.postId,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -46,7 +47,7 @@ class _$VKWebAppShareResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'post_id':
           result.postId = serializers.deserialize(value,
@@ -74,9 +75,7 @@ class _$VKWebAppShareResult extends VKWebAppShareResult {
       (new VKWebAppShareResultBuilder()..update(updates)).build();
 
   _$VKWebAppShareResult._({this.postId, this.type}) : super._() {
-    if (type == null) {
-      throw new BuiltValueNullFieldError('VKWebAppShareResult', 'type');
-    }
+    BuiltValueNullFieldError.checkNotNull(type, 'VKWebAppShareResult', 'type');
   }
 
   @override
@@ -125,9 +124,10 @@ class VKWebAppShareResultBuilder
   VKWebAppShareResultBuilder();
 
   VKWebAppShareResultBuilder get _$this {
-    if (_$v != null) {
-      _postId = _$v.postId;
-      _type = _$v.type;
+    final $v = _$v;
+    if ($v != null) {
+      _postId = $v.postId;
+      _type = $v.type;
       _$v = null;
     }
     return this;
@@ -135,9 +135,7 @@ class VKWebAppShareResultBuilder
 
   @override
   void replace(VKWebAppShareResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppShareResult;
   }
 
@@ -148,8 +146,11 @@ class VKWebAppShareResultBuilder
 
   @override
   _$VKWebAppShareResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppShareResult._(postId: postId, type: type);
+    final _$result = _$v ??
+        new _$VKWebAppShareResult._(
+            postId: postId,
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, 'VKWebAppShareResult', 'type'));
     replace(_$result);
     return _$result;
   }

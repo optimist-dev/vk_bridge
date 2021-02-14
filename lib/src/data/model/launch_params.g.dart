@@ -51,16 +51,18 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
       'sign',
       serializers.serialize(object.sign, specifiedType: const FullType(String)),
     ];
-    if (object.groupId != null) {
+    Object value;
+    value = object.groupId;
+    if (value != null) {
       result
         ..add('vk_group_id')
-        ..add(serializers.serialize(object.groupId,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.viewerGroupRole != null) {
+    value = object.viewerGroupRole;
+    if (value != null) {
       result
         ..add('vk_viewer_group_role')
-        ..add(serializers.serialize(object.viewerGroupRole,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -75,7 +77,7 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'rawLaunchParams':
           result.rawLaunchParams = serializers.deserialize(value,
@@ -189,43 +191,23 @@ class _$LaunchParams extends LaunchParams {
       this.ts,
       this.sign})
       : super._() {
-    if (rawLaunchParams == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'rawLaunchParams');
-    }
-    if (userId == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'userId');
-    }
-    if (appId == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'appId');
-    }
-    if (isAppUser == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'isAppUser');
-    }
-    if (areNotificationsEnabled == null) {
-      throw new BuiltValueNullFieldError(
-          'LaunchParams', 'areNotificationsEnabled');
-    }
-    if (language == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'language');
-    }
-    if (ref == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'ref');
-    }
-    if (accessTokenSettings == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'accessTokenSettings');
-    }
-    if (platform == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'platform');
-    }
-    if (isFavorite == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'isFavorite');
-    }
-    if (ts == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'ts');
-    }
-    if (sign == null) {
-      throw new BuiltValueNullFieldError('LaunchParams', 'sign');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        rawLaunchParams, 'LaunchParams', 'rawLaunchParams');
+    BuiltValueNullFieldError.checkNotNull(userId, 'LaunchParams', 'userId');
+    BuiltValueNullFieldError.checkNotNull(appId, 'LaunchParams', 'appId');
+    BuiltValueNullFieldError.checkNotNull(
+        isAppUser, 'LaunchParams', 'isAppUser');
+    BuiltValueNullFieldError.checkNotNull(
+        areNotificationsEnabled, 'LaunchParams', 'areNotificationsEnabled');
+    BuiltValueNullFieldError.checkNotNull(language, 'LaunchParams', 'language');
+    BuiltValueNullFieldError.checkNotNull(ref, 'LaunchParams', 'ref');
+    BuiltValueNullFieldError.checkNotNull(
+        accessTokenSettings, 'LaunchParams', 'accessTokenSettings');
+    BuiltValueNullFieldError.checkNotNull(platform, 'LaunchParams', 'platform');
+    BuiltValueNullFieldError.checkNotNull(
+        isFavorite, 'LaunchParams', 'isFavorite');
+    BuiltValueNullFieldError.checkNotNull(ts, 'LaunchParams', 'ts');
+    BuiltValueNullFieldError.checkNotNull(sign, 'LaunchParams', 'sign');
   }
 
   @override
@@ -377,21 +359,22 @@ class LaunchParamsBuilder
   LaunchParamsBuilder();
 
   LaunchParamsBuilder get _$this {
-    if (_$v != null) {
-      _rawLaunchParams = _$v.rawLaunchParams;
-      _userId = _$v.userId;
-      _appId = _$v.appId;
-      _isAppUser = _$v.isAppUser;
-      _areNotificationsEnabled = _$v.areNotificationsEnabled;
-      _language = _$v.language;
-      _ref = _$v.ref;
-      _accessTokenSettings = _$v.accessTokenSettings;
-      _groupId = _$v.groupId;
-      _viewerGroupRole = _$v.viewerGroupRole;
-      _platform = _$v.platform;
-      _isFavorite = _$v.isFavorite;
-      _ts = _$v.ts;
-      _sign = _$v.sign;
+    final $v = _$v;
+    if ($v != null) {
+      _rawLaunchParams = $v.rawLaunchParams;
+      _userId = $v.userId;
+      _appId = $v.appId;
+      _isAppUser = $v.isAppUser;
+      _areNotificationsEnabled = $v.areNotificationsEnabled;
+      _language = $v.language;
+      _ref = $v.ref;
+      _accessTokenSettings = $v.accessTokenSettings;
+      _groupId = $v.groupId;
+      _viewerGroupRole = $v.viewerGroupRole;
+      _platform = $v.platform;
+      _isFavorite = $v.isFavorite;
+      _ts = $v.ts;
+      _sign = $v.sign;
       _$v = null;
     }
     return this;
@@ -399,9 +382,7 @@ class LaunchParamsBuilder
 
   @override
   void replace(LaunchParams other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LaunchParams;
   }
 
@@ -414,20 +395,29 @@ class LaunchParamsBuilder
   _$LaunchParams build() {
     final _$result = _$v ??
         new _$LaunchParams._(
-            rawLaunchParams: rawLaunchParams,
-            userId: userId,
-            appId: appId,
-            isAppUser: isAppUser,
-            areNotificationsEnabled: areNotificationsEnabled,
-            language: language,
-            ref: ref,
-            accessTokenSettings: accessTokenSettings,
+            rawLaunchParams: BuiltValueNullFieldError.checkNotNull(
+                rawLaunchParams, 'LaunchParams', 'rawLaunchParams'),
+            userId: BuiltValueNullFieldError.checkNotNull(
+                userId, 'LaunchParams', 'userId'),
+            appId: BuiltValueNullFieldError.checkNotNull(
+                appId, 'LaunchParams', 'appId'),
+            isAppUser: BuiltValueNullFieldError.checkNotNull(
+                isAppUser, 'LaunchParams', 'isAppUser'),
+            areNotificationsEnabled: BuiltValueNullFieldError.checkNotNull(
+                areNotificationsEnabled, 'LaunchParams', 'areNotificationsEnabled'),
+            language: BuiltValueNullFieldError.checkNotNull(
+                language, 'LaunchParams', 'language'),
+            ref: BuiltValueNullFieldError.checkNotNull(
+                ref, 'LaunchParams', 'ref'),
+            accessTokenSettings: BuiltValueNullFieldError.checkNotNull(
+                accessTokenSettings, 'LaunchParams', 'accessTokenSettings'),
             groupId: groupId,
             viewerGroupRole: viewerGroupRole,
-            platform: platform,
-            isFavorite: isFavorite,
-            ts: ts,
-            sign: sign);
+            platform:
+                BuiltValueNullFieldError.checkNotNull(platform, 'LaunchParams', 'platform'),
+            isFavorite: BuiltValueNullFieldError.checkNotNull(isFavorite, 'LaunchParams', 'isFavorite'),
+            ts: BuiltValueNullFieldError.checkNotNull(ts, 'LaunchParams', 'ts'),
+            sign: BuiltValueNullFieldError.checkNotNull(sign, 'LaunchParams', 'sign'));
     replace(_$result);
     return _$result;
   }

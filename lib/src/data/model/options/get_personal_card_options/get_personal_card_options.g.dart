@@ -43,7 +43,7 @@ class _$GetPersonalCardOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'type':
           result.type.replace(serializers.deserialize(value,
@@ -67,9 +67,8 @@ class _$GetPersonalCardOptions extends GetPersonalCardOptions {
       (new GetPersonalCardOptionsBuilder()..update(updates)).build();
 
   _$GetPersonalCardOptions._({this.type}) : super._() {
-    if (type == null) {
-      throw new BuiltValueNullFieldError('GetPersonalCardOptions', 'type');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        type, 'GetPersonalCardOptions', 'type');
   }
 
   @override
@@ -111,8 +110,9 @@ class GetPersonalCardOptionsBuilder
   GetPersonalCardOptionsBuilder();
 
   GetPersonalCardOptionsBuilder get _$this {
-    if (_$v != null) {
-      _type = _$v.type?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _type = $v.type.toBuilder();
       _$v = null;
     }
     return this;
@@ -120,9 +120,7 @@ class GetPersonalCardOptionsBuilder
 
   @override
   void replace(GetPersonalCardOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetPersonalCardOptions;
   }
 

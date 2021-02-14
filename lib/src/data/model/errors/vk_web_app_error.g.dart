@@ -40,7 +40,7 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'error_type':
           result.errorType = serializers.deserialize(value,
@@ -67,12 +67,10 @@ class _$VKWebAppError extends VKWebAppError {
       (new VKWebAppErrorBuilder()..update(updates)).build();
 
   _$VKWebAppError._({this.errorType, this.errorData}) : super._() {
-    if (errorType == null) {
-      throw new BuiltValueNullFieldError('VKWebAppError', 'errorType');
-    }
-    if (errorData == null) {
-      throw new BuiltValueNullFieldError('VKWebAppError', 'errorData');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        errorType, 'VKWebAppError', 'errorType');
+    BuiltValueNullFieldError.checkNotNull(
+        errorData, 'VKWebAppError', 'errorData');
   }
 
   @override
@@ -120,9 +118,10 @@ class VKWebAppErrorBuilder
   VKWebAppErrorBuilder();
 
   VKWebAppErrorBuilder get _$this {
-    if (_$v != null) {
-      _errorType = _$v.errorType;
-      _errorData = _$v.errorData?.toBuilder();
+    final $v = _$v;
+    if ($v != null) {
+      _errorType = $v.errorType;
+      _errorData = $v.errorData.toBuilder();
       _$v = null;
     }
     return this;
@@ -130,9 +129,7 @@ class VKWebAppErrorBuilder
 
   @override
   void replace(VKWebAppError other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppError;
   }
 
@@ -147,7 +144,9 @@ class VKWebAppErrorBuilder
     try {
       _$result = _$v ??
           new _$VKWebAppError._(
-              errorType: errorType, errorData: errorData.build());
+              errorType: BuiltValueNullFieldError.checkNotNull(
+                  errorType, 'VKWebAppError', 'errorType'),
+              errorData: errorData.build());
     } catch (_) {
       String _$failedField;
       try {

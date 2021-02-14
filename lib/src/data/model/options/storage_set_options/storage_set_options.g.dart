@@ -23,10 +23,12 @@ class _$StorageSetOptionsSerializer
       'key',
       serializers.serialize(object.key, specifiedType: const FullType(String)),
     ];
-    if (object.value != null) {
+    Object value;
+    value = object.value;
+    if (value != null) {
       result
         ..add('value')
-        ..add(serializers.serialize(object.value,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -42,7 +44,7 @@ class _$StorageSetOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'key':
           result.key = serializers.deserialize(value,
@@ -70,9 +72,7 @@ class _$StorageSetOptions extends StorageSetOptions {
       (new StorageSetOptionsBuilder()..update(updates)).build();
 
   _$StorageSetOptions._({this.key, this.value}) : super._() {
-    if (key == null) {
-      throw new BuiltValueNullFieldError('StorageSetOptions', 'key');
-    }
+    BuiltValueNullFieldError.checkNotNull(key, 'StorageSetOptions', 'key');
   }
 
   @override
@@ -120,9 +120,10 @@ class StorageSetOptionsBuilder
   StorageSetOptionsBuilder();
 
   StorageSetOptionsBuilder get _$this {
-    if (_$v != null) {
-      _key = _$v.key;
-      _value = _$v.value;
+    final $v = _$v;
+    if ($v != null) {
+      _key = $v.key;
+      _value = $v.value;
       _$v = null;
     }
     return this;
@@ -130,9 +131,7 @@ class StorageSetOptionsBuilder
 
   @override
   void replace(StorageSetOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StorageSetOptions;
   }
 
@@ -143,7 +142,11 @@ class StorageSetOptionsBuilder
 
   @override
   _$StorageSetOptions build() {
-    final _$result = _$v ?? new _$StorageSetOptions._(key: key, value: value);
+    final _$result = _$v ??
+        new _$StorageSetOptions._(
+            key: BuiltValueNullFieldError.checkNotNull(
+                key, 'StorageSetOptions', 'key'),
+            value: value);
     replace(_$result);
     return _$result;
   }

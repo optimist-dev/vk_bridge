@@ -44,46 +44,48 @@ class _$VKWebAppGetGroupInfoResultSerializer
       serializers.serialize(object.photo200,
           specifiedType: const FullType(String)),
     ];
-    if (object.deactivated != null) {
+    Object value;
+    value = object.deactivated;
+    if (value != null) {
       result
         ..add('deactivated')
-        ..add(serializers.serialize(object.deactivated,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.isAdmin != null) {
+    value = object.isAdmin;
+    if (value != null) {
       result
         ..add('is_admin')
-        ..add(serializers.serialize(object.isAdmin,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.adminLevel != null) {
+    value = object.adminLevel;
+    if (value != null) {
       result
         ..add('admin_level')
-        ..add(serializers.serialize(object.adminLevel,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.isMember != null) {
+    value = object.isMember;
+    if (value != null) {
       result
         ..add('is_member')
-        ..add(serializers.serialize(object.isMember,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.isAdvertiser != null) {
+    value = object.isAdvertiser;
+    if (value != null) {
       result
         ..add('is_advertiser')
-        ..add(serializers.serialize(object.isAdvertiser,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.invitedBy != null) {
+    value = object.invitedBy;
+    if (value != null) {
       result
         ..add('invited_by')
-        ..add(serializers.serialize(object.invitedBy,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.type != null) {
+    value = object.type;
+    if (value != null) {
       result
         ..add('type')
-        ..add(serializers.serialize(object.type,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -99,7 +101,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -214,32 +216,20 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
       this.photo100,
       this.photo200})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetGroupInfoResult', 'id');
-    }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetGroupInfoResult', 'name');
-    }
-    if (screenName == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGroupInfoResult', 'screenName');
-    }
-    if (isClosed == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGroupInfoResult', 'isClosed');
-    }
-    if (photo50 == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGroupInfoResult', 'photo50');
-    }
-    if (photo100 == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGroupInfoResult', 'photo100');
-    }
-    if (photo200 == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetGroupInfoResult', 'photo200');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        id, 'VKWebAppGetGroupInfoResult', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, 'VKWebAppGetGroupInfoResult', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        screenName, 'VKWebAppGetGroupInfoResult', 'screenName');
+    BuiltValueNullFieldError.checkNotNull(
+        isClosed, 'VKWebAppGetGroupInfoResult', 'isClosed');
+    BuiltValueNullFieldError.checkNotNull(
+        photo50, 'VKWebAppGetGroupInfoResult', 'photo50');
+    BuiltValueNullFieldError.checkNotNull(
+        photo100, 'VKWebAppGetGroupInfoResult', 'photo100');
+    BuiltValueNullFieldError.checkNotNull(
+        photo200, 'VKWebAppGetGroupInfoResult', 'photo200');
   }
 
   @override
@@ -386,21 +376,22 @@ class VKWebAppGetGroupInfoResultBuilder
   VKWebAppGetGroupInfoResultBuilder();
 
   VKWebAppGetGroupInfoResultBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
-      _screenName = _$v.screenName;
-      _isClosed = _$v.isClosed;
-      _deactivated = _$v.deactivated;
-      _isAdmin = _$v.isAdmin;
-      _adminLevel = _$v.adminLevel;
-      _isMember = _$v.isMember;
-      _isAdvertiser = _$v.isAdvertiser;
-      _invitedBy = _$v.invitedBy;
-      _type = _$v.type;
-      _photo50 = _$v.photo50;
-      _photo100 = _$v.photo100;
-      _photo200 = _$v.photo200;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _name = $v.name;
+      _screenName = $v.screenName;
+      _isClosed = $v.isClosed;
+      _deactivated = $v.deactivated;
+      _isAdmin = $v.isAdmin;
+      _adminLevel = $v.adminLevel;
+      _isMember = $v.isMember;
+      _isAdvertiser = $v.isAdvertiser;
+      _invitedBy = $v.invitedBy;
+      _type = $v.type;
+      _photo50 = $v.photo50;
+      _photo100 = $v.photo100;
+      _photo200 = $v.photo200;
       _$v = null;
     }
     return this;
@@ -408,9 +399,7 @@ class VKWebAppGetGroupInfoResultBuilder
 
   @override
   void replace(VKWebAppGetGroupInfoResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetGroupInfoResult;
   }
 
@@ -423,10 +412,14 @@ class VKWebAppGetGroupInfoResultBuilder
   _$VKWebAppGetGroupInfoResult build() {
     final _$result = _$v ??
         new _$VKWebAppGetGroupInfoResult._(
-            id: id,
-            name: name,
-            screenName: screenName,
-            isClosed: isClosed,
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'VKWebAppGetGroupInfoResult', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, 'VKWebAppGetGroupInfoResult', 'name'),
+            screenName: BuiltValueNullFieldError.checkNotNull(
+                screenName, 'VKWebAppGetGroupInfoResult', 'screenName'),
+            isClosed: BuiltValueNullFieldError.checkNotNull(
+                isClosed, 'VKWebAppGetGroupInfoResult', 'isClosed'),
             deactivated: deactivated,
             isAdmin: isAdmin,
             adminLevel: adminLevel,
@@ -434,9 +427,12 @@ class VKWebAppGetGroupInfoResultBuilder
             isAdvertiser: isAdvertiser,
             invitedBy: invitedBy,
             type: type,
-            photo50: photo50,
-            photo100: photo100,
-            photo200: photo200);
+            photo50: BuiltValueNullFieldError.checkNotNull(
+                photo50, 'VKWebAppGetGroupInfoResult', 'photo50'),
+            photo100: BuiltValueNullFieldError.checkNotNull(
+                photo100, 'VKWebAppGetGroupInfoResult', 'photo100'),
+            photo200: BuiltValueNullFieldError.checkNotNull(
+                photo200, 'VKWebAppGetGroupInfoResult', 'photo200'));
     replace(_$result);
     return _$result;
   }

@@ -48,7 +48,7 @@ class _$VKWebAppContactsDoneSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,
@@ -83,15 +83,12 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
 
   _$VKWebAppContactsDone._({this.phone, this.firstName, this.lastName})
       : super._() {
-    if (phone == null) {
-      throw new BuiltValueNullFieldError('VKWebAppContactsDone', 'phone');
-    }
-    if (firstName == null) {
-      throw new BuiltValueNullFieldError('VKWebAppContactsDone', 'firstName');
-    }
-    if (lastName == null) {
-      throw new BuiltValueNullFieldError('VKWebAppContactsDone', 'lastName');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        phone, 'VKWebAppContactsDone', 'phone');
+    BuiltValueNullFieldError.checkNotNull(
+        firstName, 'VKWebAppContactsDone', 'firstName');
+    BuiltValueNullFieldError.checkNotNull(
+        lastName, 'VKWebAppContactsDone', 'lastName');
   }
 
   @override
@@ -147,10 +144,11 @@ class VKWebAppContactsDoneBuilder
   VKWebAppContactsDoneBuilder();
 
   VKWebAppContactsDoneBuilder get _$this {
-    if (_$v != null) {
-      _phone = _$v.phone;
-      _firstName = _$v.firstName;
-      _lastName = _$v.lastName;
+    final $v = _$v;
+    if ($v != null) {
+      _phone = $v.phone;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
       _$v = null;
     }
     return this;
@@ -158,9 +156,7 @@ class VKWebAppContactsDoneBuilder
 
   @override
   void replace(VKWebAppContactsDone other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppContactsDone;
   }
 
@@ -173,7 +169,12 @@ class VKWebAppContactsDoneBuilder
   _$VKWebAppContactsDone build() {
     final _$result = _$v ??
         new _$VKWebAppContactsDone._(
-            phone: phone, firstName: firstName, lastName: lastName);
+            phone: BuiltValueNullFieldError.checkNotNull(
+                phone, 'VKWebAppContactsDone', 'phone'),
+            firstName: BuiltValueNullFieldError.checkNotNull(
+                firstName, 'VKWebAppContactsDone', 'firstName'),
+            lastName: BuiltValueNullFieldError.checkNotNull(
+                lastName, 'VKWebAppContactsDone', 'lastName'));
     replace(_$result);
     return _$result;
   }

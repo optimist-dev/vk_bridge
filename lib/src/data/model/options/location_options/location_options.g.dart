@@ -38,7 +38,7 @@ class _$LocationOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'location':
           result.location = serializers.deserialize(value,
@@ -59,9 +59,8 @@ class _$LocationOptions extends LocationOptions {
       (new LocationOptionsBuilder()..update(updates)).build();
 
   _$LocationOptions._({this.location}) : super._() {
-    if (location == null) {
-      throw new BuiltValueNullFieldError('LocationOptions', 'location');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        location, 'LocationOptions', 'location');
   }
 
   @override
@@ -102,8 +101,9 @@ class LocationOptionsBuilder
   LocationOptionsBuilder();
 
   LocationOptionsBuilder get _$this {
-    if (_$v != null) {
-      _location = _$v.location;
+    final $v = _$v;
+    if ($v != null) {
+      _location = $v.location;
       _$v = null;
     }
     return this;
@@ -111,9 +111,7 @@ class LocationOptionsBuilder
 
   @override
   void replace(LocationOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LocationOptions;
   }
 
@@ -124,7 +122,10 @@ class LocationOptionsBuilder
 
   @override
   _$LocationOptions build() {
-    final _$result = _$v ?? new _$LocationOptions._(location: location);
+    final _$result = _$v ??
+        new _$LocationOptions._(
+            location: BuiltValueNullFieldError.checkNotNull(
+                location, 'LocationOptions', 'location'));
     replace(_$result);
     return _$result;
   }

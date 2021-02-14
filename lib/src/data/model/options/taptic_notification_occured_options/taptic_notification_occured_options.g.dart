@@ -42,7 +42,7 @@ class _$TapticNotificationOccurredOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
@@ -65,10 +65,8 @@ class _$TapticNotificationOccurredOptions
       (new TapticNotificationOccurredOptionsBuilder()..update(updates)).build();
 
   _$TapticNotificationOccurredOptions._({this.type}) : super._() {
-    if (type == null) {
-      throw new BuiltValueNullFieldError(
-          'TapticNotificationOccurredOptions', 'type');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        type, 'TapticNotificationOccurredOptions', 'type');
   }
 
   @override
@@ -112,8 +110,9 @@ class TapticNotificationOccurredOptionsBuilder
   TapticNotificationOccurredOptionsBuilder();
 
   TapticNotificationOccurredOptionsBuilder get _$this {
-    if (_$v != null) {
-      _type = _$v.type;
+    final $v = _$v;
+    if ($v != null) {
+      _type = $v.type;
       _$v = null;
     }
     return this;
@@ -121,9 +120,7 @@ class TapticNotificationOccurredOptionsBuilder
 
   @override
   void replace(TapticNotificationOccurredOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TapticNotificationOccurredOptions;
   }
 
@@ -134,8 +131,10 @@ class TapticNotificationOccurredOptionsBuilder
 
   @override
   _$TapticNotificationOccurredOptions build() {
-    final _$result =
-        _$v ?? new _$TapticNotificationOccurredOptions._(type: type);
+    final _$result = _$v ??
+        new _$TapticNotificationOccurredOptions._(
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, 'TapticNotificationOccurredOptions', 'type'));
     replace(_$result);
     return _$result;
   }

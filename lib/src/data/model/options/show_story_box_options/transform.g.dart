@@ -18,34 +18,39 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
   Iterable<Object> serialize(Serializers serializers, Transform object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.rotation != null) {
+    Object value;
+    value = object.rotation;
+    if (value != null) {
       result
         ..add('rotation')
-        ..add(serializers.serialize(object.rotation,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    if (object.relationWidth != null) {
+    value = object.relationWidth;
+    if (value != null) {
       result
         ..add('relation_width')
-        ..add(serializers.serialize(object.relationWidth,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.translationX != null) {
+    value = object.translationX;
+    if (value != null) {
       result
         ..add('translation_x')
-        ..add(serializers.serialize(object.translationX,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.translationY != null) {
+    value = object.translationY;
+    if (value != null) {
       result
         ..add('translation_y')
-        ..add(serializers.serialize(object.translationY,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    if (object.gravity != null) {
+    value = object.gravity;
+    if (value != null) {
       result
         ..add('gravity')
-        ..add(serializers.serialize(object.gravity,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -60,7 +65,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'rotation':
           result.rotation = serializers.deserialize(value,
@@ -179,12 +184,13 @@ class TransformBuilder implements Builder<Transform, TransformBuilder> {
   TransformBuilder();
 
   TransformBuilder get _$this {
-    if (_$v != null) {
-      _rotation = _$v.rotation;
-      _relationWidth = _$v.relationWidth;
-      _translationX = _$v.translationX;
-      _translationY = _$v.translationY;
-      _gravity = _$v.gravity;
+    final $v = _$v;
+    if ($v != null) {
+      _rotation = $v.rotation;
+      _relationWidth = $v.relationWidth;
+      _translationX = $v.translationX;
+      _translationY = $v.translationY;
+      _gravity = $v.gravity;
       _$v = null;
     }
     return this;
@@ -192,9 +198,7 @@ class TransformBuilder implements Builder<Transform, TransformBuilder> {
 
   @override
   void replace(Transform other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Transform;
   }
 

@@ -27,11 +27,12 @@ class _$StorageGetKeysOptionsSerializer
       'offset',
       serializers.serialize(object.offset, specifiedType: const FullType(int)),
     ];
-    if (object.count != null) {
+    Object value;
+    value = object.count;
+    if (value != null) {
       result
         ..add('count')
-        ..add(serializers.serialize(object.count,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     return result;
   }
@@ -46,7 +47,7 @@ class _$StorageGetKeysOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'count':
           result.count = serializers.deserialize(value,
@@ -74,9 +75,8 @@ class _$StorageGetKeysOptions extends StorageGetKeysOptions {
       (new StorageGetKeysOptionsBuilder()..update(updates)).build();
 
   _$StorageGetKeysOptions._({this.count, this.offset}) : super._() {
-    if (offset == null) {
-      throw new BuiltValueNullFieldError('StorageGetKeysOptions', 'offset');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        offset, 'StorageGetKeysOptions', 'offset');
   }
 
   @override
@@ -125,9 +125,10 @@ class StorageGetKeysOptionsBuilder
   StorageGetKeysOptionsBuilder();
 
   StorageGetKeysOptionsBuilder get _$this {
-    if (_$v != null) {
-      _count = _$v.count;
-      _offset = _$v.offset;
+    final $v = _$v;
+    if ($v != null) {
+      _count = $v.count;
+      _offset = $v.offset;
       _$v = null;
     }
     return this;
@@ -135,9 +136,7 @@ class StorageGetKeysOptionsBuilder
 
   @override
   void replace(StorageGetKeysOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StorageGetKeysOptions;
   }
 
@@ -148,8 +147,11 @@ class StorageGetKeysOptionsBuilder
 
   @override
   _$StorageGetKeysOptions build() {
-    final _$result =
-        _$v ?? new _$StorageGetKeysOptions._(count: count, offset: offset);
+    final _$result = _$v ??
+        new _$StorageGetKeysOptions._(
+            count: count,
+            offset: BuiltValueNullFieldError.checkNotNull(
+                offset, 'StorageGetKeysOptions', 'offset'));
     replace(_$result);
     return _$result;
   }

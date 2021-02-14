@@ -42,7 +42,7 @@ class _$VKWebAppShowWallPostBoxResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'post_id':
           result.postId = serializers.deserialize(value,
@@ -64,10 +64,8 @@ class _$VKWebAppShowWallPostBoxResult extends VKWebAppShowWallPostBoxResult {
       (new VKWebAppShowWallPostBoxResultBuilder()..update(updates)).build();
 
   _$VKWebAppShowWallPostBoxResult._({this.postId}) : super._() {
-    if (postId == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppShowWallPostBoxResult', 'postId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        postId, 'VKWebAppShowWallPostBoxResult', 'postId');
   }
 
   @override
@@ -111,8 +109,9 @@ class VKWebAppShowWallPostBoxResultBuilder
   VKWebAppShowWallPostBoxResultBuilder();
 
   VKWebAppShowWallPostBoxResultBuilder get _$this {
-    if (_$v != null) {
-      _postId = _$v.postId;
+    final $v = _$v;
+    if ($v != null) {
+      _postId = $v.postId;
       _$v = null;
     }
     return this;
@@ -120,9 +119,7 @@ class VKWebAppShowWallPostBoxResultBuilder
 
   @override
   void replace(VKWebAppShowWallPostBoxResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppShowWallPostBoxResult;
   }
 
@@ -133,8 +130,10 @@ class VKWebAppShowWallPostBoxResultBuilder
 
   @override
   _$VKWebAppShowWallPostBoxResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppShowWallPostBoxResult._(postId: postId);
+    final _$result = _$v ??
+        new _$VKWebAppShowWallPostBoxResult._(
+            postId: BuiltValueNullFieldError.checkNotNull(
+                postId, 'VKWebAppShowWallPostBoxResult', 'postId'));
     replace(_$result);
     return _$result;
   }

@@ -46,7 +46,7 @@ class _$ShowCommunityWidgetPreviewBoxOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -84,18 +84,12 @@ class _$ShowCommunityWidgetPreviewBoxOptions
 
   _$ShowCommunityWidgetPreviewBoxOptions._({this.groupId, this.type, this.code})
       : super._() {
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError(
-          'ShowCommunityWidgetPreviewBoxOptions', 'groupId');
-    }
-    if (type == null) {
-      throw new BuiltValueNullFieldError(
-          'ShowCommunityWidgetPreviewBoxOptions', 'type');
-    }
-    if (code == null) {
-      throw new BuiltValueNullFieldError(
-          'ShowCommunityWidgetPreviewBoxOptions', 'code');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'ShowCommunityWidgetPreviewBoxOptions', 'groupId');
+    BuiltValueNullFieldError.checkNotNull(
+        type, 'ShowCommunityWidgetPreviewBoxOptions', 'type');
+    BuiltValueNullFieldError.checkNotNull(
+        code, 'ShowCommunityWidgetPreviewBoxOptions', 'code');
   }
 
   @override
@@ -153,10 +147,11 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
   ShowCommunityWidgetPreviewBoxOptionsBuilder();
 
   ShowCommunityWidgetPreviewBoxOptionsBuilder get _$this {
-    if (_$v != null) {
-      _groupId = _$v.groupId;
-      _type = _$v.type;
-      _code = _$v.code;
+    final $v = _$v;
+    if ($v != null) {
+      _groupId = $v.groupId;
+      _type = $v.type;
+      _code = $v.code;
       _$v = null;
     }
     return this;
@@ -164,9 +159,7 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
 
   @override
   void replace(ShowCommunityWidgetPreviewBoxOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShowCommunityWidgetPreviewBoxOptions;
   }
 
@@ -180,7 +173,12 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
   _$ShowCommunityWidgetPreviewBoxOptions build() {
     final _$result = _$v ??
         new _$ShowCommunityWidgetPreviewBoxOptions._(
-            groupId: groupId, type: type, code: code);
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'ShowCommunityWidgetPreviewBoxOptions', 'groupId'),
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, 'ShowCommunityWidgetPreviewBoxOptions', 'type'),
+            code: BuiltValueNullFieldError.checkNotNull(
+                code, 'ShowCommunityWidgetPreviewBoxOptions', 'code'));
     replace(_$result);
     return _$result;
   }

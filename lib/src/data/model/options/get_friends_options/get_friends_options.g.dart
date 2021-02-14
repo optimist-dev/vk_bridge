@@ -20,11 +20,13 @@ class _$GetFriendsOptionsSerializer
   Iterable<Object> serialize(Serializers serializers, GetFriendsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.multi != null) {
+    Object value;
+    value = object.multi;
+    if (value != null) {
       result
         ..add('multi')
-        ..add(serializers.serialize(object.multi,
-            specifiedType: const FullType(bool)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
     }
     return result;
   }
@@ -39,7 +41,7 @@ class _$GetFriendsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'multi':
           result.multi = serializers.deserialize(value,
@@ -100,8 +102,9 @@ class GetFriendsOptionsBuilder
   GetFriendsOptionsBuilder();
 
   GetFriendsOptionsBuilder get _$this {
-    if (_$v != null) {
-      _multi = _$v.multi;
+    final $v = _$v;
+    if ($v != null) {
+      _multi = $v.multi;
       _$v = null;
     }
     return this;
@@ -109,9 +112,7 @@ class GetFriendsOptionsBuilder
 
   @override
   void replace(GetFriendsOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetFriendsOptions;
   }
 

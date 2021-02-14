@@ -44,7 +44,7 @@ class _$VKWebAppGetEmailResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'email':
           result.email = serializers.deserialize(value,
@@ -72,12 +72,10 @@ class _$VKWebAppGetEmailResult extends VKWebAppGetEmailResult {
       (new VKWebAppGetEmailResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetEmailResult._({this.email, this.sign}) : super._() {
-    if (email == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetEmailResult', 'email');
-    }
-    if (sign == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetEmailResult', 'sign');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        email, 'VKWebAppGetEmailResult', 'email');
+    BuiltValueNullFieldError.checkNotNull(
+        sign, 'VKWebAppGetEmailResult', 'sign');
   }
 
   @override
@@ -126,9 +124,10 @@ class VKWebAppGetEmailResultBuilder
   VKWebAppGetEmailResultBuilder();
 
   VKWebAppGetEmailResultBuilder get _$this {
-    if (_$v != null) {
-      _email = _$v.email;
-      _sign = _$v.sign;
+    final $v = _$v;
+    if ($v != null) {
+      _email = $v.email;
+      _sign = $v.sign;
       _$v = null;
     }
     return this;
@@ -136,9 +135,7 @@ class VKWebAppGetEmailResultBuilder
 
   @override
   void replace(VKWebAppGetEmailResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetEmailResult;
   }
 
@@ -149,8 +146,12 @@ class VKWebAppGetEmailResultBuilder
 
   @override
   _$VKWebAppGetEmailResult build() {
-    final _$result =
-        _$v ?? new _$VKWebAppGetEmailResult._(email: email, sign: sign);
+    final _$result = _$v ??
+        new _$VKWebAppGetEmailResult._(
+            email: BuiltValueNullFieldError.checkNotNull(
+                email, 'VKWebAppGetEmailResult', 'email'),
+            sign: BuiltValueNullFieldError.checkNotNull(
+                sign, 'VKWebAppGetEmailResult', 'sign'));
     replace(_$result);
     return _$result;
   }

@@ -41,7 +41,7 @@ class _$GetGroupInfoOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -63,9 +63,8 @@ class _$GetGroupInfoOptions extends GetGroupInfoOptions {
       (new GetGroupInfoOptionsBuilder()..update(updates)).build();
 
   _$GetGroupInfoOptions._({this.groupId}) : super._() {
-    if (groupId == null) {
-      throw new BuiltValueNullFieldError('GetGroupInfoOptions', 'groupId');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        groupId, 'GetGroupInfoOptions', 'groupId');
   }
 
   @override
@@ -107,8 +106,9 @@ class GetGroupInfoOptionsBuilder
   GetGroupInfoOptionsBuilder();
 
   GetGroupInfoOptionsBuilder get _$this {
-    if (_$v != null) {
-      _groupId = _$v.groupId;
+    final $v = _$v;
+    if ($v != null) {
+      _groupId = $v.groupId;
       _$v = null;
     }
     return this;
@@ -116,9 +116,7 @@ class GetGroupInfoOptionsBuilder
 
   @override
   void replace(GetGroupInfoOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetGroupInfoOptions;
   }
 
@@ -129,7 +127,10 @@ class GetGroupInfoOptionsBuilder
 
   @override
   _$GetGroupInfoOptions build() {
-    final _$result = _$v ?? new _$GetGroupInfoOptions._(groupId: groupId);
+    final _$result = _$v ??
+        new _$GetGroupInfoOptions._(
+            groupId: BuiltValueNullFieldError.checkNotNull(
+                groupId, 'GetGroupInfoOptions', 'groupId'));
     replace(_$result);
     return _$result;
   }

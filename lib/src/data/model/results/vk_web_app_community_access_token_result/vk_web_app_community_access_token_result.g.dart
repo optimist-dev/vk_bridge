@@ -43,7 +43,7 @@ class _$VKWebAppCommunityAccessTokenResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'access_token':
           result.accessToken = serializers.deserialize(value,
@@ -67,10 +67,8 @@ class _$VKWebAppCommunityAccessTokenResult
           .build();
 
   _$VKWebAppCommunityAccessTokenResult._({this.accessToken}) : super._() {
-    if (accessToken == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppCommunityAccessTokenResult', 'accessToken');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        accessToken, 'VKWebAppCommunityAccessTokenResult', 'accessToken');
   }
 
   @override
@@ -115,8 +113,9 @@ class VKWebAppCommunityAccessTokenResultBuilder
   VKWebAppCommunityAccessTokenResultBuilder();
 
   VKWebAppCommunityAccessTokenResultBuilder get _$this {
-    if (_$v != null) {
-      _accessToken = _$v.accessToken;
+    final $v = _$v;
+    if ($v != null) {
+      _accessToken = $v.accessToken;
       _$v = null;
     }
     return this;
@@ -124,9 +123,7 @@ class VKWebAppCommunityAccessTokenResultBuilder
 
   @override
   void replace(VKWebAppCommunityAccessTokenResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppCommunityAccessTokenResult;
   }
 
@@ -139,7 +136,9 @@ class VKWebAppCommunityAccessTokenResultBuilder
   @override
   _$VKWebAppCommunityAccessTokenResult build() {
     final _$result = _$v ??
-        new _$VKWebAppCommunityAccessTokenResult._(accessToken: accessToken);
+        new _$VKWebAppCommunityAccessTokenResult._(
+            accessToken: BuiltValueNullFieldError.checkNotNull(accessToken,
+                'VKWebAppCommunityAccessTokenResult', 'accessToken'));
     replace(_$result);
     return _$result;
   }

@@ -42,7 +42,7 @@ class _$SetSwipeSettingsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'history':
           result.history = serializers.deserialize(value,
@@ -64,9 +64,8 @@ class _$SetSwipeSettingsOptions extends SetSwipeSettingsOptions {
       (new SetSwipeSettingsOptionsBuilder()..update(updates)).build();
 
   _$SetSwipeSettingsOptions._({this.history}) : super._() {
-    if (history == null) {
-      throw new BuiltValueNullFieldError('SetSwipeSettingsOptions', 'history');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        history, 'SetSwipeSettingsOptions', 'history');
   }
 
   @override
@@ -109,8 +108,9 @@ class SetSwipeSettingsOptionsBuilder
   SetSwipeSettingsOptionsBuilder();
 
   SetSwipeSettingsOptionsBuilder get _$this {
-    if (_$v != null) {
-      _history = _$v.history;
+    final $v = _$v;
+    if ($v != null) {
+      _history = $v.history;
       _$v = null;
     }
     return this;
@@ -118,9 +118,7 @@ class SetSwipeSettingsOptionsBuilder
 
   @override
   void replace(SetSwipeSettingsOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SetSwipeSettingsOptions;
   }
 
@@ -131,7 +129,10 @@ class SetSwipeSettingsOptionsBuilder
 
   @override
   _$SetSwipeSettingsOptions build() {
-    final _$result = _$v ?? new _$SetSwipeSettingsOptions._(history: history);
+    final _$result = _$v ??
+        new _$SetSwipeSettingsOptions._(
+            history: BuiltValueNullFieldError.checkNotNull(
+                history, 'SetSwipeSettingsOptions', 'history'));
     replace(_$result);
     return _$result;
   }

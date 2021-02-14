@@ -40,7 +40,7 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'action_type':
           result.actionType = serializers.deserialize(value,
@@ -67,12 +67,9 @@ class _$ClickableZone extends ClickableZone {
       (new ClickableZoneBuilder()..update(updates)).build();
 
   _$ClickableZone._({this.actionType, this.action}) : super._() {
-    if (actionType == null) {
-      throw new BuiltValueNullFieldError('ClickableZone', 'actionType');
-    }
-    if (action == null) {
-      throw new BuiltValueNullFieldError('ClickableZone', 'action');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        actionType, 'ClickableZone', 'actionType');
+    BuiltValueNullFieldError.checkNotNull(action, 'ClickableZone', 'action');
   }
 
   @override
@@ -119,9 +116,10 @@ class ClickableZoneBuilder
   ClickableZoneBuilder();
 
   ClickableZoneBuilder get _$this {
-    if (_$v != null) {
-      _actionType = _$v.actionType;
-      _action = _$v.action;
+    final $v = _$v;
+    if ($v != null) {
+      _actionType = $v.actionType;
+      _action = $v.action;
       _$v = null;
     }
     return this;
@@ -129,9 +127,7 @@ class ClickableZoneBuilder
 
   @override
   void replace(ClickableZone other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ClickableZone;
   }
 
@@ -142,8 +138,12 @@ class ClickableZoneBuilder
 
   @override
   _$ClickableZone build() {
-    final _$result =
-        _$v ?? new _$ClickableZone._(actionType: actionType, action: action);
+    final _$result = _$v ??
+        new _$ClickableZone._(
+            actionType: BuiltValueNullFieldError.checkNotNull(
+                actionType, 'ClickableZone', 'actionType'),
+            action: BuiltValueNullFieldError.checkNotNull(
+                action, 'ClickableZone', 'action'));
     replace(_$result);
     return _$result;
   }

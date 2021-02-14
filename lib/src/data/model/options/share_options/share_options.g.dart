@@ -19,10 +19,12 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   Iterable<Object> serialize(Serializers serializers, ShareOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.link != null) {
+    Object value;
+    value = object.link;
+    if (value != null) {
       result
         ..add('link')
-        ..add(serializers.serialize(object.link,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -37,7 +39,7 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,
@@ -95,8 +97,9 @@ class ShareOptionsBuilder
   ShareOptionsBuilder();
 
   ShareOptionsBuilder get _$this {
-    if (_$v != null) {
-      _link = _$v.link;
+    final $v = _$v;
+    if ($v != null) {
+      _link = $v.link;
       _$v = null;
     }
     return this;
@@ -104,9 +107,7 @@ class ShareOptionsBuilder
 
   @override
   void replace(ShareOptions other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ShareOptions;
   }
 
