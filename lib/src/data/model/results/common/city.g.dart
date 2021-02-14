@@ -17,14 +17,21 @@ class _$CitySerializer implements StructuredSerializer<City> {
   @override
   Iterable<Object> serialize(Serializers serializers, City object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
-    ];
-
+    final result = <Object>[];
+    Object value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.title;
+    if (value != null) {
+      result
+        ..add('title')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -63,10 +70,7 @@ class _$City extends City {
   factory _$City([void Function(CityBuilder) updates]) =>
       (new CityBuilder()..update(updates)).build();
 
-  _$City._({this.id, this.title}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'City', 'id');
-    BuiltValueNullFieldError.checkNotNull(title, 'City', 'title');
-  }
+  _$City._({this.id, this.title}) : super._();
 
   @override
   City rebuild(void Function(CityBuilder) updates) =>
@@ -131,11 +135,7 @@ class CityBuilder implements Builder<City, CityBuilder> {
 
   @override
   _$City build() {
-    final _$result = _$v ??
-        new _$City._(
-            id: BuiltValueNullFieldError.checkNotNull(id, 'City', 'id'),
-            title:
-                BuiltValueNullFieldError.checkNotNull(title, 'City', 'title'));
+    final _$result = _$v ?? new _$City._(id: id, title: title);
     replace(_$result);
     return _$result;
   }

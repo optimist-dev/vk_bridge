@@ -14,8 +14,10 @@ abstract class City implements Built<City, CityBuilder> {
   static Serializer<City> get serializer => _$citySerializer;
 
   /// City identifier
+  @nullable
   int get id;
 
   /// City name
+  @nullable
   String get title;
 }
