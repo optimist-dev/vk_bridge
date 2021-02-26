@@ -1,3 +1,7 @@
+## 1.2.6
+
+- Country and city for VKWebAppGetUserInfoResult are marked as optional
+
 ## 1.2.5+1
 
 - Update rxdart version from 0.24.1 to 0.25.0

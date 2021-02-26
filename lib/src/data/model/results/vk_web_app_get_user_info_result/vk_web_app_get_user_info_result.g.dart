@@ -34,11 +34,6 @@ class _$VKWebAppGetUserInfoResultSerializer
           specifiedType: const FullType(String)),
       'sex',
       serializers.serialize(object.sex, specifiedType: const FullType(int)),
-      'city',
-      serializers.serialize(object.city, specifiedType: const FullType(City)),
-      'country',
-      serializers.serialize(object.country,
-          specifiedType: const FullType(Country)),
       'photo_100',
       serializers.serialize(object.photo100,
           specifiedType: const FullType(String)),
@@ -57,6 +52,18 @@ class _$VKWebAppGetUserInfoResultSerializer
         ..add('bdate')
         ..add(serializers.serialize(object.bdate,
             specifiedType: const FullType(String)));
+    }
+    if (object.city != null) {
+      result
+        ..add('city')
+        ..add(serializers.serialize(object.city,
+            specifiedType: const FullType(City)));
+    }
+    if (object.country != null) {
+      result
+        ..add('country')
+        ..add(serializers.serialize(object.country,
+            specifiedType: const FullType(Country)));
     }
     return result;
   }
@@ -178,13 +185,6 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
     }
     if (sex == null) {
       throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'sex');
-    }
-    if (city == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'city');
-    }
-    if (country == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'country');
     }
     if (photo100 == null) {
       throw new BuiltValueNullFieldError(
@@ -365,8 +365,8 @@ class VKWebAppGetUserInfoResultBuilder
               lastName: lastName,
               sex: sex,
               bdate: bdate,
-              city: city.build(),
-              country: country.build(),
+              city: _city?.build(),
+              country: _country?.build(),
               photo100: photo100,
               photo200: photo200,
               photoMaxOrig: photoMaxOrig,
@@ -375,9 +375,9 @@ class VKWebAppGetUserInfoResultBuilder
       String _$failedField;
       try {
         _$failedField = 'city';
-        city.build();
+        _city?.build();
         _$failedField = 'country';
-        country.build();
+        _country?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'VKWebAppGetUserInfoResult', _$failedField, e.toString());

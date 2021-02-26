@@ -47,9 +47,11 @@ abstract class VKWebAppGetUserInfoResult
   String get bdate;
 
   /// Information about the user's city
+  @nullable
   City get city;
 
   /// Information about the user's country
+  @nullable
   Country get country;
 
   /// Url of a square user photo with a width of 100 pixels. If the user does
