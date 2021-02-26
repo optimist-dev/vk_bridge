@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -24,11 +25,12 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>example</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   <!-- This script installs service_worker.js to provide PWA functionality to
@@ -37,9 +39,9 @@
 
   <script>
     vkBridge.subscribe((event) => {
-        if(window.vkBridgeDartListener != null){
-            window.vkBridgeDartListener(event.detail);
-        }
+      if (window.vkBridgeDartListener != null) {
+        window.vkBridgeDartListener(event.detail);
+      }
     });
   </script>
 
@@ -52,4 +54,5 @@
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
+
 </html>
