@@ -1,3 +1,7 @@
+## 1.2.7
+
+- Added method for dshow ads
+
 ## 1.2.6
 
 - Country and city for VKWebAppGetUserInfoResult are marked as optional

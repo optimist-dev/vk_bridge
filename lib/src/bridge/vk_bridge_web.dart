@@ -48,6 +48,7 @@ import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set
 import 'package:vk_bridge/src/data/model/options/subscribe_story_app_options/subscribe_story_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_impact_occured_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_notification_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -632,6 +633,12 @@ class VKBridge implements vk_bridge.VKBridge {
         ..stickerId = stickerId,
     );
     return _sendInternalWithOptions('VKWebAppSubscribeStoryApp', options);
+  }
+
+  @override
+  Future<VKWebAppBoolResult> showNativeAds(String adFormat) {
+    final options = ShowNativeAdsOptions((b) => b..adFormat = adFormat);
+    return _sendInternalWithOptions('VKWebAppShowNativeAds', options);
   }
 }
 

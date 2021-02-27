@@ -44,6 +44,7 @@ import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set
 import 'package:vk_bridge/src/data/model/options/subscribe_story_app_options/subscribe_story_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_impact_occured_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_notification_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 import 'package:vk_bridge/src/data/model/results/common/city.dart';
 import 'package:vk_bridge/src/data/model/results/common/country.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
@@ -149,6 +150,7 @@ part 'serializers.g.dart';
   TapticImpactOccurredOptions,
   SubscribeStoryAppOptions,
   VKWebAppSubscribeStoryAppResult,
+  ShowNativeAdsOptions,
 ])
 
 /// Serializers
