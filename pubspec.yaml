@@ -1,19 +1,19 @@
 name: vk_bridge
 description: A dart package for working with VK Mini Apps via VK Bridge. Works web, mobile-web
 homepage: https://github.com/optimist-dev/vk_bridge
-version: 1.2.7
+version: 1.3.0
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
   js: ^0.6.3
   built_value: ^8.0.0
   built_collection: ^5.0.0
-  rxdart: ^0.25.0
+  rxdart: ^0.26.0
   meta: ^1.3.0
 
 dev_dependencies:
   test: '>=1.15.0 <2.0.0'
-  build_runner: ^1.11.1
-  built_value_generator: ^8.0.0
+  build_runner: ^1.11.5
+  #built_value_generator: ^8.0.0
