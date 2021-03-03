@@ -589,6 +589,7 @@ abstract class VKBridge {
     String accessKey,
   });
 
+  // TODO: change string (adFormat) to enum
   /// [VKWebAppShowNativeAds] Shows ads to the user. The method is available on Android and iOS platforms.
   ///
   /// [adFormat] - advertising format.

@@ -1,6 +1,6 @@
-## 1.2.7
+## 1.3.0
 
-- Added method for dshow ads
+- Added method for show ads
 
 ## 1.2.6
 
