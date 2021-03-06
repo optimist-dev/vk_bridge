@@ -77,12 +77,13 @@ class _$ShowCommunityWidgetPreviewBoxOptions
   final String code;
 
   factory _$ShowCommunityWidgetPreviewBoxOptions(
-          [void Function(ShowCommunityWidgetPreviewBoxOptionsBuilder)
+          [void Function(ShowCommunityWidgetPreviewBoxOptionsBuilder)?
               updates]) =>
       (new ShowCommunityWidgetPreviewBoxOptionsBuilder()..update(updates))
           .build();
 
-  _$ShowCommunityWidgetPreviewBoxOptions._({this.groupId, this.type, this.code})
+  _$ShowCommunityWidgetPreviewBoxOptions._(
+      {required this.groupId, required this.type, required this.code})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'ShowCommunityWidgetPreviewBoxOptions', 'groupId');
@@ -130,19 +131,19 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
     implements
         Builder<ShowCommunityWidgetPreviewBoxOptions,
             ShowCommunityWidgetPreviewBoxOptionsBuilder> {
-  _$ShowCommunityWidgetPreviewBoxOptions _$v;
+  _$ShowCommunityWidgetPreviewBoxOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _code;
-  String get code => _$this._code;
-  set code(String code) => _$this._code = code;
+  String? _code;
+  String? get code => _$this._code;
+  set code(String? code) => _$this._code = code;
 
   ShowCommunityWidgetPreviewBoxOptionsBuilder();
 
@@ -165,7 +166,7 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
 
   @override
   void update(
-      void Function(ShowCommunityWidgetPreviewBoxOptionsBuilder) updates) {
+      void Function(ShowCommunityWidgetPreviewBoxOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -61,10 +61,10 @@ class _$VKWebAppShowWallPostBoxOptions extends VKWebAppShowWallPostBoxOptions {
   final String message;
 
   factory _$VKWebAppShowWallPostBoxOptions(
-          [void Function(VKWebAppShowWallPostBoxOptionsBuilder) updates]) =>
+          [void Function(VKWebAppShowWallPostBoxOptionsBuilder)? updates]) =>
       (new VKWebAppShowWallPostBoxOptionsBuilder()..update(updates)).build();
 
-  _$VKWebAppShowWallPostBoxOptions._({this.message}) : super._() {
+  _$VKWebAppShowWallPostBoxOptions._({required this.message}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         message, 'VKWebAppShowWallPostBoxOptions', 'message');
   }
@@ -101,11 +101,11 @@ class VKWebAppShowWallPostBoxOptionsBuilder
     implements
         Builder<VKWebAppShowWallPostBoxOptions,
             VKWebAppShowWallPostBoxOptionsBuilder> {
-  _$VKWebAppShowWallPostBoxOptions _$v;
+  _$VKWebAppShowWallPostBoxOptions? _$v;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   VKWebAppShowWallPostBoxOptionsBuilder();
 
@@ -125,7 +125,7 @@ class VKWebAppShowWallPostBoxOptionsBuilder
   }
 
   @override
-  void update(void Function(VKWebAppShowWallPostBoxOptionsBuilder) updates) {
+  void update(void Function(VKWebAppShowWallPostBoxOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

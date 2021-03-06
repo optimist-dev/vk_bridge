@@ -22,7 +22,7 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
       'top',
       serializers.serialize(object.top, specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.speed;
     if (value != null) {
       result
@@ -63,12 +63,12 @@ class _$ScrollOptions extends ScrollOptions {
   @override
   final int top;
   @override
-  final int speed;
+  final int? speed;
 
-  factory _$ScrollOptions([void Function(ScrollOptionsBuilder) updates]) =>
+  factory _$ScrollOptions([void Function(ScrollOptionsBuilder)? updates]) =>
       (new ScrollOptionsBuilder()..update(updates)).build();
 
-  _$ScrollOptions._({this.top, this.speed}) : super._() {
+  _$ScrollOptions._({required this.top, this.speed}) : super._() {
     BuiltValueNullFieldError.checkNotNull(top, 'ScrollOptions', 'top');
   }
 
@@ -101,15 +101,15 @@ class _$ScrollOptions extends ScrollOptions {
 
 class ScrollOptionsBuilder
     implements Builder<ScrollOptions, ScrollOptionsBuilder> {
-  _$ScrollOptions _$v;
+  _$ScrollOptions? _$v;
 
-  int _top;
-  int get top => _$this._top;
-  set top(int top) => _$this._top = top;
+  int? _top;
+  int? get top => _$this._top;
+  set top(int? top) => _$this._top = top;
 
-  int _speed;
-  int get speed => _$this._speed;
-  set speed(int speed) => _$this._speed = speed;
+  int? _speed;
+  int? get speed => _$this._speed;
+  set speed(int? speed) => _$this._speed = speed;
 
   ScrollOptionsBuilder();
 
@@ -130,7 +130,7 @@ class ScrollOptionsBuilder
   }
 
   @override
-  void update(void Function(ScrollOptionsBuilder) updates) {
+  void update(void Function(ScrollOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

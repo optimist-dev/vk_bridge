@@ -51,7 +51,7 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
       'sign',
       serializers.serialize(object.sign, specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.groupId;
     if (value != null) {
       result
@@ -160,9 +160,9 @@ class _$LaunchParams extends LaunchParams {
   @override
   final String accessTokenSettings;
   @override
-  final int groupId;
+  final int? groupId;
   @override
-  final String viewerGroupRole;
+  final String? viewerGroupRole;
   @override
   final String platform;
   @override
@@ -172,24 +172,24 @@ class _$LaunchParams extends LaunchParams {
   @override
   final String sign;
 
-  factory _$LaunchParams([void Function(LaunchParamsBuilder) updates]) =>
+  factory _$LaunchParams([void Function(LaunchParamsBuilder)? updates]) =>
       (new LaunchParamsBuilder()..update(updates)).build();
 
   _$LaunchParams._(
-      {this.rawLaunchParams,
-      this.userId,
-      this.appId,
-      this.isAppUser,
-      this.areNotificationsEnabled,
-      this.language,
-      this.ref,
-      this.accessTokenSettings,
+      {required this.rawLaunchParams,
+      required this.userId,
+      required this.appId,
+      required this.isAppUser,
+      required this.areNotificationsEnabled,
+      required this.language,
+      required this.ref,
+      required this.accessTokenSettings,
       this.groupId,
       this.viewerGroupRole,
-      this.platform,
-      this.isFavorite,
-      this.ts,
-      this.sign})
+      required this.platform,
+      required this.isFavorite,
+      required this.ts,
+      required this.sign})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         rawLaunchParams, 'LaunchParams', 'rawLaunchParams');
@@ -294,67 +294,67 @@ class _$LaunchParams extends LaunchParams {
 
 class LaunchParamsBuilder
     implements Builder<LaunchParams, LaunchParamsBuilder> {
-  _$LaunchParams _$v;
+  _$LaunchParams? _$v;
 
-  String _rawLaunchParams;
-  String get rawLaunchParams => _$this._rawLaunchParams;
-  set rawLaunchParams(String rawLaunchParams) =>
+  String? _rawLaunchParams;
+  String? get rawLaunchParams => _$this._rawLaunchParams;
+  set rawLaunchParams(String? rawLaunchParams) =>
       _$this._rawLaunchParams = rawLaunchParams;
 
-  int _userId;
-  int get userId => _$this._userId;
-  set userId(int userId) => _$this._userId = userId;
+  int? _userId;
+  int? get userId => _$this._userId;
+  set userId(int? userId) => _$this._userId = userId;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  bool _isAppUser;
-  bool get isAppUser => _$this._isAppUser;
-  set isAppUser(bool isAppUser) => _$this._isAppUser = isAppUser;
+  bool? _isAppUser;
+  bool? get isAppUser => _$this._isAppUser;
+  set isAppUser(bool? isAppUser) => _$this._isAppUser = isAppUser;
 
-  bool _areNotificationsEnabled;
-  bool get areNotificationsEnabled => _$this._areNotificationsEnabled;
-  set areNotificationsEnabled(bool areNotificationsEnabled) =>
+  bool? _areNotificationsEnabled;
+  bool? get areNotificationsEnabled => _$this._areNotificationsEnabled;
+  set areNotificationsEnabled(bool? areNotificationsEnabled) =>
       _$this._areNotificationsEnabled = areNotificationsEnabled;
 
-  String _language;
-  String get language => _$this._language;
-  set language(String language) => _$this._language = language;
+  String? _language;
+  String? get language => _$this._language;
+  set language(String? language) => _$this._language = language;
 
-  String _ref;
-  String get ref => _$this._ref;
-  set ref(String ref) => _$this._ref = ref;
+  String? _ref;
+  String? get ref => _$this._ref;
+  set ref(String? ref) => _$this._ref = ref;
 
-  String _accessTokenSettings;
-  String get accessTokenSettings => _$this._accessTokenSettings;
-  set accessTokenSettings(String accessTokenSettings) =>
+  String? _accessTokenSettings;
+  String? get accessTokenSettings => _$this._accessTokenSettings;
+  set accessTokenSettings(String? accessTokenSettings) =>
       _$this._accessTokenSettings = accessTokenSettings;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
-  String _viewerGroupRole;
-  String get viewerGroupRole => _$this._viewerGroupRole;
-  set viewerGroupRole(String viewerGroupRole) =>
+  String? _viewerGroupRole;
+  String? get viewerGroupRole => _$this._viewerGroupRole;
+  set viewerGroupRole(String? viewerGroupRole) =>
       _$this._viewerGroupRole = viewerGroupRole;
 
-  String _platform;
-  String get platform => _$this._platform;
-  set platform(String platform) => _$this._platform = platform;
+  String? _platform;
+  String? get platform => _$this._platform;
+  set platform(String? platform) => _$this._platform = platform;
 
-  bool _isFavorite;
-  bool get isFavorite => _$this._isFavorite;
-  set isFavorite(bool isFavorite) => _$this._isFavorite = isFavorite;
+  bool? _isFavorite;
+  bool? get isFavorite => _$this._isFavorite;
+  set isFavorite(bool? isFavorite) => _$this._isFavorite = isFavorite;
 
-  int _ts;
-  int get ts => _$this._ts;
-  set ts(int ts) => _$this._ts = ts;
+  int? _ts;
+  int? get ts => _$this._ts;
+  set ts(int? ts) => _$this._ts = ts;
 
-  String _sign;
-  String get sign => _$this._sign;
-  set sign(String sign) => _$this._sign = sign;
+  String? _sign;
+  String? get sign => _$this._sign;
+  set sign(String? sign) => _$this._sign = sign;
 
   LaunchParamsBuilder();
 
@@ -387,7 +387,7 @@ class LaunchParamsBuilder
   }
 
   @override
-  void update(void Function(LaunchParamsBuilder) updates) {
+  void update(void Function(LaunchParamsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -60,10 +60,10 @@ class _$VKWebAppShowWallPostBoxResult extends VKWebAppShowWallPostBoxResult {
   final int postId;
 
   factory _$VKWebAppShowWallPostBoxResult(
-          [void Function(VKWebAppShowWallPostBoxResultBuilder) updates]) =>
+          [void Function(VKWebAppShowWallPostBoxResultBuilder)? updates]) =>
       (new VKWebAppShowWallPostBoxResultBuilder()..update(updates)).build();
 
-  _$VKWebAppShowWallPostBoxResult._({this.postId}) : super._() {
+  _$VKWebAppShowWallPostBoxResult._({required this.postId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         postId, 'VKWebAppShowWallPostBoxResult', 'postId');
   }
@@ -100,11 +100,11 @@ class VKWebAppShowWallPostBoxResultBuilder
     implements
         Builder<VKWebAppShowWallPostBoxResult,
             VKWebAppShowWallPostBoxResultBuilder> {
-  _$VKWebAppShowWallPostBoxResult _$v;
+  _$VKWebAppShowWallPostBoxResult? _$v;
 
-  int _postId;
-  int get postId => _$this._postId;
-  set postId(int postId) => _$this._postId = postId;
+  int? _postId;
+  int? get postId => _$this._postId;
+  set postId(int? postId) => _$this._postId = postId;
 
   VKWebAppShowWallPostBoxResultBuilder();
 
@@ -124,7 +124,7 @@ class VKWebAppShowWallPostBoxResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppShowWallPostBoxResultBuilder) updates) {
+  void update(void Function(VKWebAppShowWallPostBoxResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

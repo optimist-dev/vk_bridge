@@ -59,10 +59,10 @@ class _$Size extends Size {
   @override
   final int height;
 
-  factory _$Size([void Function(SizeBuilder) updates]) =>
+  factory _$Size([void Function(SizeBuilder)? updates]) =>
       (new SizeBuilder()..update(updates)).build();
 
-  _$Size._({this.width, this.height}) : super._() {
+  _$Size._({required this.width, required this.height}) : super._() {
     BuiltValueNullFieldError.checkNotNull(width, 'Size', 'width');
     BuiltValueNullFieldError.checkNotNull(height, 'Size', 'height');
   }
@@ -95,15 +95,15 @@ class _$Size extends Size {
 }
 
 class SizeBuilder implements Builder<Size, SizeBuilder> {
-  _$Size _$v;
+  _$Size? _$v;
 
-  int _width;
-  int get width => _$this._width;
-  set width(int width) => _$this._width = width;
+  int? _width;
+  int? get width => _$this._width;
+  set width(int? width) => _$this._width = width;
 
-  int _height;
-  int get height => _$this._height;
-  set height(int height) => _$this._height = height;
+  int? _height;
+  int? get height => _$this._height;
+  set height(int? height) => _$this._height = height;
 
   SizeBuilder();
 
@@ -124,7 +124,7 @@ class SizeBuilder implements Builder<Size, SizeBuilder> {
   }
 
   @override
-  void update(void Function(SizeBuilder) updates) {
+  void update(void Function(SizeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

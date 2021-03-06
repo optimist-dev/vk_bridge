@@ -63,10 +63,11 @@ class _$ClickableZone extends ClickableZone {
   @override
   final Action action;
 
-  factory _$ClickableZone([void Function(ClickableZoneBuilder) updates]) =>
+  factory _$ClickableZone([void Function(ClickableZoneBuilder)? updates]) =>
       (new ClickableZoneBuilder()..update(updates)).build();
 
-  _$ClickableZone._({this.actionType, this.action}) : super._() {
+  _$ClickableZone._({required this.actionType, required this.action})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         actionType, 'ClickableZone', 'actionType');
     BuiltValueNullFieldError.checkNotNull(action, 'ClickableZone', 'action');
@@ -103,15 +104,15 @@ class _$ClickableZone extends ClickableZone {
 
 class ClickableZoneBuilder
     implements Builder<ClickableZone, ClickableZoneBuilder> {
-  _$ClickableZone _$v;
+  _$ClickableZone? _$v;
 
-  String _actionType;
-  String get actionType => _$this._actionType;
-  set actionType(String actionType) => _$this._actionType = actionType;
+  String? _actionType;
+  String? get actionType => _$this._actionType;
+  set actionType(String? actionType) => _$this._actionType = actionType;
 
-  Action _action;
-  Action get action => _$this._action;
-  set action(Action action) => _$this._action = action;
+  Action? _action;
+  Action? get action => _$this._action;
+  set action(Action? action) => _$this._action = action;
 
   ClickableZoneBuilder();
 
@@ -132,7 +133,7 @@ class ClickableZoneBuilder
   }
 
   @override
-  void update(void Function(ClickableZoneBuilder) updates) {
+  void update(void Function(ClickableZoneBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

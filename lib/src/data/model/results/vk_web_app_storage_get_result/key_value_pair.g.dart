@@ -61,10 +61,10 @@ class _$KeyValuePair extends KeyValuePair {
   @override
   final String value;
 
-  factory _$KeyValuePair([void Function(KeyValuePairBuilder) updates]) =>
+  factory _$KeyValuePair([void Function(KeyValuePairBuilder)? updates]) =>
       (new KeyValuePairBuilder()..update(updates)).build();
 
-  _$KeyValuePair._({this.key, this.value}) : super._() {
+  _$KeyValuePair._({required this.key, required this.value}) : super._() {
     BuiltValueNullFieldError.checkNotNull(key, 'KeyValuePair', 'key');
     BuiltValueNullFieldError.checkNotNull(value, 'KeyValuePair', 'value');
   }
@@ -98,15 +98,15 @@ class _$KeyValuePair extends KeyValuePair {
 
 class KeyValuePairBuilder
     implements Builder<KeyValuePair, KeyValuePairBuilder> {
-  _$KeyValuePair _$v;
+  _$KeyValuePair? _$v;
 
-  String _key;
-  String get key => _$this._key;
-  set key(String key) => _$this._key = key;
+  String? _key;
+  String? get key => _$this._key;
+  set key(String? key) => _$this._key = key;
 
-  String _value;
-  String get value => _$this._value;
-  set value(String value) => _$this._value = value;
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
 
   KeyValuePairBuilder();
 
@@ -127,7 +127,7 @@ class KeyValuePairBuilder
   }
 
   @override
-  void update(void Function(KeyValuePairBuilder) updates) {
+  void update(void Function(KeyValuePairBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

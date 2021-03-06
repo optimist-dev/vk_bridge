@@ -59,10 +59,10 @@ class _$FlashSetLevelOptions extends FlashSetLevelOptions {
   final int level;
 
   factory _$FlashSetLevelOptions(
-          [void Function(FlashSetLevelOptionsBuilder) updates]) =>
+          [void Function(FlashSetLevelOptionsBuilder)? updates]) =>
       (new FlashSetLevelOptionsBuilder()..update(updates)).build();
 
-  _$FlashSetLevelOptions._({this.level}) : super._() {
+  _$FlashSetLevelOptions._({required this.level}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         level, 'FlashSetLevelOptions', 'level');
   }
@@ -97,11 +97,11 @@ class _$FlashSetLevelOptions extends FlashSetLevelOptions {
 
 class FlashSetLevelOptionsBuilder
     implements Builder<FlashSetLevelOptions, FlashSetLevelOptionsBuilder> {
-  _$FlashSetLevelOptions _$v;
+  _$FlashSetLevelOptions? _$v;
 
-  int _level;
-  int get level => _$this._level;
-  set level(int level) => _$this._level = level;
+  int? _level;
+  int? get level => _$this._level;
+  set level(int? level) => _$this._level = level;
 
   FlashSetLevelOptionsBuilder();
 
@@ -121,7 +121,7 @@ class FlashSetLevelOptionsBuilder
   }
 
   @override
-  void update(void Function(FlashSetLevelOptionsBuilder) updates) {
+  void update(void Function(FlashSetLevelOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

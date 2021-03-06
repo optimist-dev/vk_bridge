@@ -79,10 +79,11 @@ class _$VKWebAppGetPersonalCardResult extends VKWebAppGetPersonalCardResult {
   final Address address;
 
   factory _$VKWebAppGetPersonalCardResult(
-          [void Function(VKWebAppGetPersonalCardResultBuilder) updates]) =>
+          [void Function(VKWebAppGetPersonalCardResultBuilder)? updates]) =>
       (new VKWebAppGetPersonalCardResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetPersonalCardResult._({this.phone, this.email, this.address})
+  _$VKWebAppGetPersonalCardResult._(
+      {required this.phone, required this.email, required this.address})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         phone, 'VKWebAppGetPersonalCardResult', 'phone');
@@ -130,19 +131,19 @@ class VKWebAppGetPersonalCardResultBuilder
     implements
         Builder<VKWebAppGetPersonalCardResult,
             VKWebAppGetPersonalCardResultBuilder> {
-  _$VKWebAppGetPersonalCardResult _$v;
+  _$VKWebAppGetPersonalCardResult? _$v;
 
-  String _phone;
-  String get phone => _$this._phone;
-  set phone(String phone) => _$this._phone = phone;
+  String? _phone;
+  String? get phone => _$this._phone;
+  set phone(String? phone) => _$this._phone = phone;
 
-  String _email;
-  String get email => _$this._email;
-  set email(String email) => _$this._email = email;
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
 
-  AddressBuilder _address;
+  AddressBuilder? _address;
   AddressBuilder get address => _$this._address ??= new AddressBuilder();
-  set address(AddressBuilder address) => _$this._address = address;
+  set address(AddressBuilder? address) => _$this._address = address;
 
   VKWebAppGetPersonalCardResultBuilder();
 
@@ -164,7 +165,7 @@ class VKWebAppGetPersonalCardResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetPersonalCardResultBuilder) updates) {
+  void update(void Function(VKWebAppGetPersonalCardResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -180,7 +181,7 @@ class VKWebAppGetPersonalCardResultBuilder
                   email, 'VKWebAppGetPersonalCardResult', 'email'),
               address: address.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'address';
         address.build();

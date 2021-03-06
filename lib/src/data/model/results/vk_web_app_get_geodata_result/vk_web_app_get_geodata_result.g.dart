@@ -15,10 +15,11 @@ class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
   final double long;
 
   factory _$VKWebAppGetGeodataResult(
-          [void Function(VKWebAppGetGeodataResultBuilder) updates]) =>
+          [void Function(VKWebAppGetGeodataResultBuilder)? updates]) =>
       (new VKWebAppGetGeodataResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetGeodataResult._({this.available, this.lat, this.long})
+  _$VKWebAppGetGeodataResult._(
+      {required this.available, required this.lat, required this.long})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         available, 'VKWebAppGetGeodataResult', 'available');
@@ -65,19 +66,19 @@ class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
 class VKWebAppGetGeodataResultBuilder
     implements
         Builder<VKWebAppGetGeodataResult, VKWebAppGetGeodataResultBuilder> {
-  _$VKWebAppGetGeodataResult _$v;
+  _$VKWebAppGetGeodataResult? _$v;
 
-  bool _available;
-  bool get available => _$this._available;
-  set available(bool available) => _$this._available = available;
+  bool? _available;
+  bool? get available => _$this._available;
+  set available(bool? available) => _$this._available = available;
 
-  double _lat;
-  double get lat => _$this._lat;
-  set lat(double lat) => _$this._lat = lat;
+  double? _lat;
+  double? get lat => _$this._lat;
+  set lat(double? lat) => _$this._lat = lat;
 
-  double _long;
-  double get long => _$this._long;
-  set long(double long) => _$this._long = long;
+  double? _long;
+  double? get long => _$this._long;
+  set long(double? long) => _$this._long = long;
 
   VKWebAppGetGeodataResultBuilder();
 
@@ -99,7 +100,7 @@ class VKWebAppGetGeodataResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetGeodataResultBuilder) updates) {
+  void update(void Function(VKWebAppGetGeodataResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

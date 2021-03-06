@@ -55,10 +55,10 @@ class _$LocationOptions extends LocationOptions {
   @override
   final String location;
 
-  factory _$LocationOptions([void Function(LocationOptionsBuilder) updates]) =>
+  factory _$LocationOptions([void Function(LocationOptionsBuilder)? updates]) =>
       (new LocationOptionsBuilder()..update(updates)).build();
 
-  _$LocationOptions._({this.location}) : super._() {
+  _$LocationOptions._({required this.location}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         location, 'LocationOptions', 'location');
   }
@@ -92,11 +92,11 @@ class _$LocationOptions extends LocationOptions {
 
 class LocationOptionsBuilder
     implements Builder<LocationOptions, LocationOptionsBuilder> {
-  _$LocationOptions _$v;
+  _$LocationOptions? _$v;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
   LocationOptionsBuilder();
 
@@ -116,7 +116,7 @@ class LocationOptionsBuilder
   }
 
   @override
-  void update(void Function(LocationOptionsBuilder) updates) {
+  void update(void Function(LocationOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

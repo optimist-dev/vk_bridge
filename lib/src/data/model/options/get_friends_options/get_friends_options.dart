@@ -19,6 +19,5 @@ abstract class GetFriendsOptions
   /// false: selection of one friend from the list.
   /// true: selection of several friends from the list.
   /// The default is false.
-  @nullable
-  bool get multi;
+  bool? get multi;
 }

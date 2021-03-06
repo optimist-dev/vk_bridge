@@ -14,25 +14,21 @@ abstract class Transform implements Built<Transform, TransformBuilder> {
   static Serializer<Transform> get serializer => _$transformSerializer;
 
   /// Degrees. From 0 to 359. Counterclockwise rotation
-  @nullable
-  int get rotation;
+  int? get rotation;
 
   /// The desired width of the sticker relative to the screen is (0, 1), the
   /// height will be calculated taking into account the preservation of the
   /// aspect ratio of the content
-  @nullable
   @BuiltValueField(wireName: 'relation_width')
-  double get relationWidth;
+  double? get relationWidth;
 
   /// -1 to 1. From the width of the screen
-  @nullable
   @BuiltValueField(wireName: 'translation_x')
-  double get translationX;
+  double? get translationX;
 
   /// -1 to 1. From the height of the screen
-  @nullable
   @BuiltValueField(wireName: 'translation_y')
-  double get translationY;
+  double? get translationY;
 
   // TODO(sanekyy): enum
   /// Gravity. Default: center. Possible values:
@@ -45,6 +41,5 @@ abstract class Transform implements Built<Transform, TransformBuilder> {
   /// - right_top
   /// - right_center
   /// - right_bottom
-  @nullable
-  String get gravity;
+  String? get gravity;
 }

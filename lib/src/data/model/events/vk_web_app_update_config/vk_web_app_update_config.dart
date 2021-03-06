@@ -24,16 +24,15 @@ abstract class VKWebAppUpdateConfig
   /// vkme
   ///
   /// Platforms: iOS, Android
-  @nullable
-  String get app;
+  String? get app;
 
   // TODO: iOS return string, Android return int :(
   // /// Mini App's ID
   // ///
   // /// Platforms: iOS, Android
   // @BuiltValueField(wireName: 'app_id')
-  // @nullable
-  // int get appId;
+
+  // int? get appId;
 
   // TODO(sanekyy): enum
   /// Possible values:
@@ -41,16 +40,14 @@ abstract class VKWebAppUpdateConfig
   /// - dark
   ///
   /// Platforms: iOS, Android
-  @nullable
-  String get appearance;
+  String? get appearance;
 
   /// The current insets that need to be maintained from the edge of the screen
   /// to the content (there is a keyboard display, its height will be at the
   /// bottom).
   ///
   /// Platforms: iOS
-  @nullable
-  Insets get insets;
+  Insets? get insets;
 
   /// Application color scheme.
   ///
@@ -61,35 +58,30 @@ abstract class VKWebAppUpdateConfig
   /// only passed when opening a modal screen.
   ///
   /// Platforms: iOS, Android
-  @nullable
   @BuiltValueField(wireName: 'start_time')
-  int get startTime;
+  int? get startTime;
 
   /// The height of the application's parent window.
   ///
   /// Platforms: Web
-  @nullable
   @BuiltValueField(wireName: 'viewport_height')
-  int get viewportHeight;
+  int? get viewportHeight;
 
   /// The width of the application's parent window.
   ///
   /// Platforms: Web
-  @nullable
   @BuiltValueField(wireName: 'viewport_width')
-  int get viewportWidth;
+  int? get viewportWidth;
 
   /// Server API host for direct requests.
   ///
   /// Platforms: Web
   @BuiltValueField(wireName: 'api_host')
-  @nullable
-  String get apiHost;
+  String? get apiHost;
 
   /// The parameter comes in if the application is open in the layer.
   ///
   /// Platforms: Web
   @BuiltValueField(wireName: 'is_layer')
-  @nullable
-  bool get isLayer;
+  bool? get isLayer;
 }

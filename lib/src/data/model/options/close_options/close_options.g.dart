@@ -23,7 +23,7 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.payload;
     if (value != null) {
       result
@@ -64,12 +64,12 @@ class _$CloseOptions extends CloseOptions {
   @override
   final String status;
   @override
-  final Object payload;
+  final Object? payload;
 
-  factory _$CloseOptions([void Function(CloseOptionsBuilder) updates]) =>
+  factory _$CloseOptions([void Function(CloseOptionsBuilder)? updates]) =>
       (new CloseOptionsBuilder()..update(updates)).build();
 
-  _$CloseOptions._({this.status, this.payload}) : super._() {
+  _$CloseOptions._({required this.status, this.payload}) : super._() {
     BuiltValueNullFieldError.checkNotNull(status, 'CloseOptions', 'status');
   }
 
@@ -104,15 +104,15 @@ class _$CloseOptions extends CloseOptions {
 
 class CloseOptionsBuilder
     implements Builder<CloseOptions, CloseOptionsBuilder> {
-  _$CloseOptions _$v;
+  _$CloseOptions? _$v;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  Object _payload;
-  Object get payload => _$this._payload;
-  set payload(Object payload) => _$this._payload = payload;
+  Object? _payload;
+  Object? get payload => _$this._payload;
+  set payload(Object? payload) => _$this._payload = payload;
 
   CloseOptionsBuilder();
 
@@ -133,7 +133,7 @@ class CloseOptionsBuilder
   }
 
   @override
-  void update(void Function(CloseOptionsBuilder) updates) {
+  void update(void Function(CloseOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -67,10 +67,11 @@ class _$ResizeWindowOptions extends ResizeWindowOptions {
   final int height;
 
   factory _$ResizeWindowOptions(
-          [void Function(ResizeWindowOptionsBuilder) updates]) =>
+          [void Function(ResizeWindowOptionsBuilder)? updates]) =>
       (new ResizeWindowOptionsBuilder()..update(updates)).build();
 
-  _$ResizeWindowOptions._({this.width, this.height}) : super._() {
+  _$ResizeWindowOptions._({required this.width, required this.height})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         width, 'ResizeWindowOptions', 'width');
     BuiltValueNullFieldError.checkNotNull(
@@ -110,15 +111,15 @@ class _$ResizeWindowOptions extends ResizeWindowOptions {
 
 class ResizeWindowOptionsBuilder
     implements Builder<ResizeWindowOptions, ResizeWindowOptionsBuilder> {
-  _$ResizeWindowOptions _$v;
+  _$ResizeWindowOptions? _$v;
 
-  int _width;
-  int get width => _$this._width;
-  set width(int width) => _$this._width = width;
+  int? _width;
+  int? get width => _$this._width;
+  set width(int? width) => _$this._width = width;
 
-  int _height;
-  int get height => _$this._height;
-  set height(int height) => _$this._height = height;
+  int? _height;
+  int? get height => _$this._height;
+  set height(int? height) => _$this._height = height;
 
   ResizeWindowOptionsBuilder();
 
@@ -139,7 +140,7 @@ class ResizeWindowOptionsBuilder
   }
 
   @override
-  void update(void Function(ResizeWindowOptionsBuilder) updates) {
+  void update(void Function(ResizeWindowOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

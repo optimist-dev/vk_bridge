@@ -60,10 +60,10 @@ class _$Country extends Country {
   @override
   final String title;
 
-  factory _$Country([void Function(CountryBuilder) updates]) =>
+  factory _$Country([void Function(CountryBuilder)? updates]) =>
       (new CountryBuilder()..update(updates)).build();
 
-  _$Country._({this.id, this.title}) : super._() {
+  _$Country._({required this.id, required this.title}) : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'Country', 'id');
     BuiltValueNullFieldError.checkNotNull(title, 'Country', 'title');
   }
@@ -96,15 +96,15 @@ class _$Country extends Country {
 }
 
 class CountryBuilder implements Builder<Country, CountryBuilder> {
-  _$Country _$v;
+  _$Country? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
   CountryBuilder();
 
@@ -125,7 +125,7 @@ class CountryBuilder implements Builder<Country, CountryBuilder> {
   }
 
   @override
-  void update(void Function(CountryBuilder) updates) {
+  void update(void Function(CountryBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

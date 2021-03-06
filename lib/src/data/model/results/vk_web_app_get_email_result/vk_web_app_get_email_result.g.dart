@@ -68,10 +68,11 @@ class _$VKWebAppGetEmailResult extends VKWebAppGetEmailResult {
   final String sign;
 
   factory _$VKWebAppGetEmailResult(
-          [void Function(VKWebAppGetEmailResultBuilder) updates]) =>
+          [void Function(VKWebAppGetEmailResultBuilder)? updates]) =>
       (new VKWebAppGetEmailResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetEmailResult._({this.email, this.sign}) : super._() {
+  _$VKWebAppGetEmailResult._({required this.email, required this.sign})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         email, 'VKWebAppGetEmailResult', 'email');
     BuiltValueNullFieldError.checkNotNull(
@@ -111,15 +112,15 @@ class _$VKWebAppGetEmailResult extends VKWebAppGetEmailResult {
 
 class VKWebAppGetEmailResultBuilder
     implements Builder<VKWebAppGetEmailResult, VKWebAppGetEmailResultBuilder> {
-  _$VKWebAppGetEmailResult _$v;
+  _$VKWebAppGetEmailResult? _$v;
 
-  String _email;
-  String get email => _$this._email;
-  set email(String email) => _$this._email = email;
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
 
-  String _sign;
-  String get sign => _$this._sign;
-  set sign(String sign) => _$this._sign = sign;
+  String? _sign;
+  String? get sign => _$this._sign;
+  set sign(String? sign) => _$this._sign = sign;
 
   VKWebAppGetEmailResultBuilder();
 
@@ -140,7 +141,7 @@ class VKWebAppGetEmailResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetEmailResultBuilder) updates) {
+  void update(void Function(VKWebAppGetEmailResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

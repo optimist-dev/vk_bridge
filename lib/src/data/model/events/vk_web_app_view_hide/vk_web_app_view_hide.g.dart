@@ -32,7 +32,7 @@ class _$VKWebAppViewHideSerializer
 
 class _$VKWebAppViewHide extends VKWebAppViewHide {
   factory _$VKWebAppViewHide(
-          [void Function(VKWebAppViewHideBuilder) updates]) =>
+          [void Function(VKWebAppViewHideBuilder)? updates]) =>
       (new VKWebAppViewHideBuilder()..update(updates)).build();
 
   _$VKWebAppViewHide._() : super._();
@@ -64,7 +64,7 @@ class _$VKWebAppViewHide extends VKWebAppViewHide {
 
 class VKWebAppViewHideBuilder
     implements Builder<VKWebAppViewHide, VKWebAppViewHideBuilder> {
-  _$VKWebAppViewHide _$v;
+  _$VKWebAppViewHide? _$v;
 
   VKWebAppViewHideBuilder();
 
@@ -75,7 +75,7 @@ class VKWebAppViewHideBuilder
   }
 
   @override
-  void update(void Function(VKWebAppViewHideBuilder) updates) {
+  void update(void Function(VKWebAppViewHideBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

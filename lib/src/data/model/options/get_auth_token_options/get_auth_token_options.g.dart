@@ -68,10 +68,11 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
   final String scope;
 
   factory _$GetAuthTokenOptions(
-          [void Function(GetAuthTokenOptionsBuilder) updates]) =>
+          [void Function(GetAuthTokenOptionsBuilder)? updates]) =>
       (new GetAuthTokenOptionsBuilder()..update(updates)).build();
 
-  _$GetAuthTokenOptions._({this.appId, this.scope}) : super._() {
+  _$GetAuthTokenOptions._({required this.appId, required this.scope})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         appId, 'GetAuthTokenOptions', 'appId');
     BuiltValueNullFieldError.checkNotNull(
@@ -111,15 +112,15 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
 
 class GetAuthTokenOptionsBuilder
     implements Builder<GetAuthTokenOptions, GetAuthTokenOptionsBuilder> {
-  _$GetAuthTokenOptions _$v;
+  _$GetAuthTokenOptions? _$v;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  String _scope;
-  String get scope => _$this._scope;
-  set scope(String scope) => _$this._scope = scope;
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
 
   GetAuthTokenOptionsBuilder();
 
@@ -140,7 +141,7 @@ class GetAuthTokenOptionsBuilder
   }
 
   @override
-  void update(void Function(GetAuthTokenOptionsBuilder) updates) {
+  void update(void Function(GetAuthTokenOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

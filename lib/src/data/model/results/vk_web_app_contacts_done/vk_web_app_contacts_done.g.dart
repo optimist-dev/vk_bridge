@@ -78,10 +78,11 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
   final String lastName;
 
   factory _$VKWebAppContactsDone(
-          [void Function(VKWebAppContactsDoneBuilder) updates]) =>
+          [void Function(VKWebAppContactsDoneBuilder)? updates]) =>
       (new VKWebAppContactsDoneBuilder()..update(updates)).build();
 
-  _$VKWebAppContactsDone._({this.phone, this.firstName, this.lastName})
+  _$VKWebAppContactsDone._(
+      {required this.phone, required this.firstName, required this.lastName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         phone, 'VKWebAppContactsDone', 'phone');
@@ -127,19 +128,19 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
 
 class VKWebAppContactsDoneBuilder
     implements Builder<VKWebAppContactsDone, VKWebAppContactsDoneBuilder> {
-  _$VKWebAppContactsDone _$v;
+  _$VKWebAppContactsDone? _$v;
 
-  String _phone;
-  String get phone => _$this._phone;
-  set phone(String phone) => _$this._phone = phone;
+  String? _phone;
+  String? get phone => _$this._phone;
+  set phone(String? phone) => _$this._phone = phone;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
   VKWebAppContactsDoneBuilder();
 
@@ -161,7 +162,7 @@ class VKWebAppContactsDoneBuilder
   }
 
   @override
-  void update(void Function(VKWebAppContactsDoneBuilder) updates) {
+  void update(void Function(VKWebAppContactsDoneBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

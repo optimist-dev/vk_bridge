@@ -60,10 +60,10 @@ class _$SetSwipeSettingsOptions extends SetSwipeSettingsOptions {
   final bool history;
 
   factory _$SetSwipeSettingsOptions(
-          [void Function(SetSwipeSettingsOptionsBuilder) updates]) =>
+          [void Function(SetSwipeSettingsOptionsBuilder)? updates]) =>
       (new SetSwipeSettingsOptionsBuilder()..update(updates)).build();
 
-  _$SetSwipeSettingsOptions._({this.history}) : super._() {
+  _$SetSwipeSettingsOptions._({required this.history}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         history, 'SetSwipeSettingsOptions', 'history');
   }
@@ -99,11 +99,11 @@ class _$SetSwipeSettingsOptions extends SetSwipeSettingsOptions {
 class SetSwipeSettingsOptionsBuilder
     implements
         Builder<SetSwipeSettingsOptions, SetSwipeSettingsOptionsBuilder> {
-  _$SetSwipeSettingsOptions _$v;
+  _$SetSwipeSettingsOptions? _$v;
 
-  bool _history;
-  bool get history => _$this._history;
-  set history(bool history) => _$this._history = history;
+  bool? _history;
+  bool? get history => _$this._history;
+  set history(bool? history) => _$this._history = history;
 
   SetSwipeSettingsOptionsBuilder();
 
@@ -123,7 +123,7 @@ class SetSwipeSettingsOptionsBuilder
   }
 
   @override
-  void update(void Function(SetSwipeSettingsOptionsBuilder) updates) {
+  void update(void Function(SetSwipeSettingsOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

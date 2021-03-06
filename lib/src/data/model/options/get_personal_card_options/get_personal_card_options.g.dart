@@ -63,10 +63,10 @@ class _$GetPersonalCardOptions extends GetPersonalCardOptions {
   final BuiltList<String> type;
 
   factory _$GetPersonalCardOptions(
-          [void Function(GetPersonalCardOptionsBuilder) updates]) =>
+          [void Function(GetPersonalCardOptionsBuilder)? updates]) =>
       (new GetPersonalCardOptionsBuilder()..update(updates)).build();
 
-  _$GetPersonalCardOptions._({this.type}) : super._() {
+  _$GetPersonalCardOptions._({required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, 'GetPersonalCardOptions', 'type');
   }
@@ -101,11 +101,11 @@ class _$GetPersonalCardOptions extends GetPersonalCardOptions {
 
 class GetPersonalCardOptionsBuilder
     implements Builder<GetPersonalCardOptions, GetPersonalCardOptionsBuilder> {
-  _$GetPersonalCardOptions _$v;
+  _$GetPersonalCardOptions? _$v;
 
-  ListBuilder<String> _type;
+  ListBuilder<String>? _type;
   ListBuilder<String> get type => _$this._type ??= new ListBuilder<String>();
-  set type(ListBuilder<String> type) => _$this._type = type;
+  set type(ListBuilder<String>? type) => _$this._type = type;
 
   GetPersonalCardOptionsBuilder();
 
@@ -125,7 +125,7 @@ class GetPersonalCardOptionsBuilder
   }
 
   @override
-  void update(void Function(GetPersonalCardOptionsBuilder) updates) {
+  void update(void Function(GetPersonalCardOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -135,7 +135,7 @@ class GetPersonalCardOptionsBuilder
     try {
       _$result = _$v ?? new _$GetPersonalCardOptions._(type: type.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'type';
         type.build();

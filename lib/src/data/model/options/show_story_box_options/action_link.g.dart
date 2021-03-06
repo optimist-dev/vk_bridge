@@ -60,10 +60,11 @@ class _$ActionLink extends ActionLink {
   @override
   final String tooltipTextKey;
 
-  factory _$ActionLink([void Function(ActionLinkBuilder) updates]) =>
+  factory _$ActionLink([void Function(ActionLinkBuilder)? updates]) =>
       (new ActionLinkBuilder()..update(updates)).build();
 
-  _$ActionLink._({this.link, this.tooltipTextKey}) : super._() {
+  _$ActionLink._({required this.link, required this.tooltipTextKey})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(link, 'ActionLink', 'link');
     BuiltValueNullFieldError.checkNotNull(
         tooltipTextKey, 'ActionLink', 'tooltipTextKey');
@@ -99,15 +100,15 @@ class _$ActionLink extends ActionLink {
 }
 
 class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
-  _$ActionLink _$v;
+  _$ActionLink? _$v;
 
-  String _link;
-  String get link => _$this._link;
-  set link(String link) => _$this._link = link;
+  String? _link;
+  String? get link => _$this._link;
+  set link(String? link) => _$this._link = link;
 
-  String _tooltipTextKey;
-  String get tooltipTextKey => _$this._tooltipTextKey;
-  set tooltipTextKey(String tooltipTextKey) =>
+  String? _tooltipTextKey;
+  String? get tooltipTextKey => _$this._tooltipTextKey;
+  set tooltipTextKey(String? tooltipTextKey) =>
       _$this._tooltipTextKey = tooltipTextKey;
 
   ActionLinkBuilder();
@@ -129,7 +130,7 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
   }
 
   @override
-  void update(void Function(ActionLinkBuilder) updates) {
+  void update(void Function(ActionLinkBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

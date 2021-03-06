@@ -17,20 +17,20 @@ abstract class LaunchParams
     return LaunchParams(
       (b) => b
         ..rawLaunchParams = launchParams
-        ..userId = int.parse(paramsMap['vk_user_id'])
-        ..appId = int.parse(paramsMap['vk_app_id'])
-        ..isAppUser = int.parse(paramsMap['vk_is_app_user']) == 1
+        ..userId = int.parse(paramsMap['vk_user_id']!)
+        ..appId = int.parse(paramsMap['vk_app_id']!)
+        ..isAppUser = int.parse(paramsMap['vk_is_app_user']!) == 1
         ..areNotificationsEnabled =
-            int.parse(paramsMap['vk_are_notifications_enabled']) == 1
-        ..language = paramsMap['vk_language']
-        ..ref = paramsMap['vk_ref']
-        ..accessTokenSettings = paramsMap['vk_access_token_settings']
-        ..groupId = int.tryParse(paramsMap['vk_group_id'] ?? '')
-        ..viewerGroupRole = paramsMap['vk_viewer_group_role']
-        ..platform = paramsMap['vk_platform']
-        ..isFavorite = int.parse(paramsMap['vk_is_favorite']) == 1
-        ..ts = int.parse(paramsMap['vk_ts'])
-        ..sign = paramsMap['sign'],
+            int.parse(paramsMap['vk_are_notifications_enabled']!) == 1
+        ..language = paramsMap['vk_language']!
+        ..ref = paramsMap['vk_ref']!
+        ..accessTokenSettings = paramsMap['vk_access_token_settings']!
+        ..groupId = int.tryParse(paramsMap['vk_group_id'] ?? '')!
+        ..viewerGroupRole = paramsMap['vk_viewer_group_role']!
+        ..platform = paramsMap['vk_platform']!
+        ..isFavorite = int.parse(paramsMap['vk_is_favorite']!) == 1
+        ..ts = int.parse(paramsMap['vk_ts']!)
+        ..sign = paramsMap['sign']!,
     );
   }
 
@@ -156,9 +156,9 @@ abstract class LaunchParams
   /// using buttons in the community, from the block of community applications,
   /// or the original link to the application looked like
   /// https://vk.com/app12345_-12345
-  @nullable
+
   @BuiltValueField(wireName: 'vk_group_id')
-  int get groupId;
+  int? get groupId;
 
   // TODO(sanekyy): enum
   /// User's role in the community from which the application is launched:
@@ -170,9 +170,9 @@ abstract class LaunchParams
   /// Information about the group is returned only if the application was
   /// launched using buttons in the community or the original link to the
   /// application looked like https://vk.com/app6909581_-166562603.
-  @nullable
+
   @BuiltValueField(wireName: 'vk_viewer_group_role')
-  String get viewerGroupRole;
+  String? get viewerGroupRole;
 
   // TODO(sanekyy): enum
   /// Platform from which the service is launched:

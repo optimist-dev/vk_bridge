@@ -63,10 +63,10 @@ class _$VKWebAppGetFriendsResult extends VKWebAppGetFriendsResult {
   final BuiltList<User> users;
 
   factory _$VKWebAppGetFriendsResult(
-          [void Function(VKWebAppGetFriendsResultBuilder) updates]) =>
+          [void Function(VKWebAppGetFriendsResultBuilder)? updates]) =>
       (new VKWebAppGetFriendsResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetFriendsResult._({this.users}) : super._() {
+  _$VKWebAppGetFriendsResult._({required this.users}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         users, 'VKWebAppGetFriendsResult', 'users');
   }
@@ -102,11 +102,11 @@ class _$VKWebAppGetFriendsResult extends VKWebAppGetFriendsResult {
 class VKWebAppGetFriendsResultBuilder
     implements
         Builder<VKWebAppGetFriendsResult, VKWebAppGetFriendsResultBuilder> {
-  _$VKWebAppGetFriendsResult _$v;
+  _$VKWebAppGetFriendsResult? _$v;
 
-  ListBuilder<User> _users;
+  ListBuilder<User>? _users;
   ListBuilder<User> get users => _$this._users ??= new ListBuilder<User>();
-  set users(ListBuilder<User> users) => _$this._users = users;
+  set users(ListBuilder<User>? users) => _$this._users = users;
 
   VKWebAppGetFriendsResultBuilder();
 
@@ -126,7 +126,7 @@ class VKWebAppGetFriendsResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetFriendsResultBuilder) updates) {
+  void update(void Function(VKWebAppGetFriendsResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -136,7 +136,7 @@ class VKWebAppGetFriendsResultBuilder
     try {
       _$result = _$v ?? new _$VKWebAppGetFriendsResult._(users: users.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'users';
         users.build();

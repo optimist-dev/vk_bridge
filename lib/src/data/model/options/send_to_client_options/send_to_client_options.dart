@@ -19,6 +19,5 @@ abstract class SendToClientOptions
       _$sendToClientOptionsSerializer;
 
   /// hash in the notification. (https://vk.com/appXXXX#fragment)
-  @nullable
-  String get fragment;
+  String? get fragment;
 }

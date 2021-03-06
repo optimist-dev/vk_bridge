@@ -55,10 +55,10 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
   final bool result;
 
   factory _$VKWebAppBoolResult(
-          [void Function(VKWebAppBoolResultBuilder) updates]) =>
+          [void Function(VKWebAppBoolResultBuilder)? updates]) =>
       (new VKWebAppBoolResultBuilder()..update(updates)).build();
 
-  _$VKWebAppBoolResult._({this.result}) : super._() {
+  _$VKWebAppBoolResult._({required this.result}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         result, 'VKWebAppBoolResult', 'result');
   }
@@ -93,11 +93,11 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
 
 class VKWebAppBoolResultBuilder
     implements Builder<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
-  _$VKWebAppBoolResult _$v;
+  _$VKWebAppBoolResult? _$v;
 
-  bool _result;
-  bool get result => _$this._result;
-  set result(bool result) => _$this._result = result;
+  bool? _result;
+  bool? get result => _$this._result;
+  set result(bool? result) => _$this._result = result;
 
   VKWebAppBoolResultBuilder();
 
@@ -117,7 +117,7 @@ class VKWebAppBoolResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppBoolResultBuilder) updates) {
+  void update(void Function(VKWebAppBoolResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
