@@ -194,7 +194,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
     _logger.d('_eventHandler: $jsonEvent');
 
-    final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, Object>;
+    final decodedJsonEvent =
+        Map<String, Object>.from(jsonDecode(jsonEvent) as Map);
 
     final type = decodedJsonEvent['type'] as String;
     final data = decodedJsonEvent['data'];
