@@ -59,10 +59,10 @@ class _$StorageGetOptions extends StorageGetOptions {
   final BuiltList<String> keys;
 
   factory _$StorageGetOptions(
-          [void Function(StorageGetOptionsBuilder) updates]) =>
+          [void Function(StorageGetOptionsBuilder)? updates]) =>
       (new StorageGetOptionsBuilder()..update(updates)).build();
 
-  _$StorageGetOptions._({this.keys}) : super._() {
+  _$StorageGetOptions._({required this.keys}) : super._() {
     BuiltValueNullFieldError.checkNotNull(keys, 'StorageGetOptions', 'keys');
   }
 
@@ -94,11 +94,11 @@ class _$StorageGetOptions extends StorageGetOptions {
 
 class StorageGetOptionsBuilder
     implements Builder<StorageGetOptions, StorageGetOptionsBuilder> {
-  _$StorageGetOptions _$v;
+  _$StorageGetOptions? _$v;
 
-  ListBuilder<String> _keys;
+  ListBuilder<String>? _keys;
   ListBuilder<String> get keys => _$this._keys ??= new ListBuilder<String>();
-  set keys(ListBuilder<String> keys) => _$this._keys = keys;
+  set keys(ListBuilder<String>? keys) => _$this._keys = keys;
 
   StorageGetOptionsBuilder();
 
@@ -118,7 +118,7 @@ class StorageGetOptionsBuilder
   }
 
   @override
-  void update(void Function(StorageGetOptionsBuilder) updates) {
+  void update(void Function(StorageGetOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -128,7 +128,7 @@ class StorageGetOptionsBuilder
     try {
       _$result = _$v ?? new _$StorageGetOptions._(keys: keys.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'keys';
         keys.build();

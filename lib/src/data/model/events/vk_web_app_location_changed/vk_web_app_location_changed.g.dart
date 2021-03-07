@@ -60,10 +60,10 @@ class _$VKWebAppLocationChanged extends VKWebAppLocationChanged {
   final String location;
 
   factory _$VKWebAppLocationChanged(
-          [void Function(VKWebAppLocationChangedBuilder) updates]) =>
+          [void Function(VKWebAppLocationChangedBuilder)? updates]) =>
       (new VKWebAppLocationChangedBuilder()..update(updates)).build();
 
-  _$VKWebAppLocationChanged._({this.location}) : super._() {
+  _$VKWebAppLocationChanged._({required this.location}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         location, 'VKWebAppLocationChanged', 'location');
   }
@@ -99,11 +99,11 @@ class _$VKWebAppLocationChanged extends VKWebAppLocationChanged {
 class VKWebAppLocationChangedBuilder
     implements
         Builder<VKWebAppLocationChanged, VKWebAppLocationChangedBuilder> {
-  _$VKWebAppLocationChanged _$v;
+  _$VKWebAppLocationChanged? _$v;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
   VKWebAppLocationChangedBuilder();
 
@@ -123,7 +123,7 @@ class VKWebAppLocationChangedBuilder
   }
 
   @override
-  void update(void Function(VKWebAppLocationChangedBuilder) updates) {
+  void update(void Function(VKWebAppLocationChangedBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

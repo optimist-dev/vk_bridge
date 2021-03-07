@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
@@ -69,19 +68,19 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppShareResult> share([String link]) => throw _unsupportedError;
+  Future<VKWebAppShareResult> share([String? link]) => throw _unsupportedError;
 
   @override
   Future<VKWebAppBoolResult> showImages(
     List<String> images, {
-    int startIndex,
+    int? startIndex,
   }) =>
       throw _unsupportedError;
 
   @override
   Future<VKWebAppBoolResult> downloadFile({
-    @required String url,
-    @required String filename,
+    required String url,
+    required String filename,
   }) =>
       throw _unsupportedError;
 
@@ -113,13 +112,13 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> openApp({
-    @required int appId,
-    String location,
+    required int appId,
+    String? location,
   }) =>
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppOpenAppResult> close({String status, Object payload}) =>
+  Future<VKWebAppOpenAppResult> close({String? status, Object? payload}) =>
       throw _unsupportedError;
 
   @override
@@ -130,7 +129,7 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> addToHomeScreen() => throw _unsupportedError;
 
   @override
-  Future<VKWebAppBoolResult> sendToClient([String fragment]) =>
+  Future<VKWebAppBoolResult> sendToClient([String? fragment]) =>
       throw _unsupportedError;
 
   @override
@@ -147,14 +146,14 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> storageSet({
-    @required String key,
-    String value,
+    required String key,
+    String? value,
   }) =>
       throw _unsupportedError;
 
   @override
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
-    int count,
+    int? count,
     int offset = 0,
   }) =>
       throw _unsupportedError;
@@ -168,8 +167,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
-    @required int appId,
-    @required String scope,
+    required int appId,
+    required String scope,
   }) =>
       throw _unsupportedError;
 
@@ -185,16 +184,16 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> allowMessagesFromGroup({
-    @required int groupId,
-    String key,
+    required int groupId,
+    String? key,
   }) =>
       throw _unsupportedError;
 
   @override
   Future<VKWebAppCommunityAccessTokenResult> getCommunityToken({
-    @required int appId,
-    @required int groupId,
-    @required String scope,
+    required int appId,
+    required int groupId,
+    required String scope,
   }) =>
       throw _unsupportedError;
 
@@ -204,9 +203,9 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
-    @required int groupId,
-    @required String type,
-    @required String code,
+    required int groupId,
+    required String type,
+    required String code,
   }) =>
       throw _unsupportedError;
 
@@ -219,13 +218,13 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppResizeWindowResult> resizeWindow({
-    @required int width,
-    @required int height,
+    required int width,
+    required int height,
   }) =>
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppScrollResult> scroll({@required int top, int speed = 0}) =>
+  Future<VKWebAppScrollResult> scroll({required int top, int speed = 0}) =>
       throw _unsupportedError;
 
   @override
@@ -234,9 +233,9 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> setViewSettings({
-    @required String statusBarStyle,
-    String actionBarColor,
-    String navigationBarColor,
+    required String statusBarStyle,
+    String? actionBarColor,
+    String? navigationBarColor,
   }) =>
       throw _unsupportedError;
 
@@ -258,10 +257,10 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
-    @required int storyOwnerId,
-    @required int storyId,
-    @required int stickerId,
-    String accessKey,
+    required int storyOwnerId,
+    required int storyId,
+    required int stickerId,
+    String? accessKey,
   }) =>
       throw _unsupportedError;
 }

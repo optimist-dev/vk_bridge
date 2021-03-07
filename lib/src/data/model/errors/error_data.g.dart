@@ -61,10 +61,11 @@ class _$ErrorData extends ErrorData {
   @override
   final String errorReason;
 
-  factory _$ErrorData([void Function(ErrorDataBuilder) updates]) =>
+  factory _$ErrorData([void Function(ErrorDataBuilder)? updates]) =>
       (new ErrorDataBuilder()..update(updates)).build();
 
-  _$ErrorData._({this.errorCode, this.errorReason}) : super._() {
+  _$ErrorData._({required this.errorCode, required this.errorReason})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(errorCode, 'ErrorData', 'errorCode');
     BuiltValueNullFieldError.checkNotNull(
         errorReason, 'ErrorData', 'errorReason');
@@ -100,15 +101,15 @@ class _$ErrorData extends ErrorData {
 }
 
 class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
-  _$ErrorData _$v;
+  _$ErrorData? _$v;
 
-  int _errorCode;
-  int get errorCode => _$this._errorCode;
-  set errorCode(int errorCode) => _$this._errorCode = errorCode;
+  int? _errorCode;
+  int? get errorCode => _$this._errorCode;
+  set errorCode(int? errorCode) => _$this._errorCode = errorCode;
 
-  String _errorReason;
-  String get errorReason => _$this._errorReason;
-  set errorReason(String errorReason) => _$this._errorReason = errorReason;
+  String? _errorReason;
+  String? get errorReason => _$this._errorReason;
+  set errorReason(String? errorReason) => _$this._errorReason = errorReason;
 
   ErrorDataBuilder();
 
@@ -129,7 +130,7 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
   }
 
   @override
-  void update(void Function(ErrorDataBuilder) updates) {
+  void update(void Function(ErrorDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

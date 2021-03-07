@@ -55,10 +55,10 @@ class _$LeaveGroupOptions extends LeaveGroupOptions {
   final int groupId;
 
   factory _$LeaveGroupOptions(
-          [void Function(LeaveGroupOptionsBuilder) updates]) =>
+          [void Function(LeaveGroupOptionsBuilder)? updates]) =>
       (new LeaveGroupOptionsBuilder()..update(updates)).build();
 
-  _$LeaveGroupOptions._({this.groupId}) : super._() {
+  _$LeaveGroupOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'LeaveGroupOptions', 'groupId');
   }
@@ -92,11 +92,11 @@ class _$LeaveGroupOptions extends LeaveGroupOptions {
 
 class LeaveGroupOptionsBuilder
     implements Builder<LeaveGroupOptions, LeaveGroupOptionsBuilder> {
-  _$LeaveGroupOptions _$v;
+  _$LeaveGroupOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   LeaveGroupOptionsBuilder();
 
@@ -116,7 +116,7 @@ class LeaveGroupOptionsBuilder
   }
 
   @override
-  void update(void Function(LeaveGroupOptionsBuilder) updates) {
+  void update(void Function(LeaveGroupOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -63,10 +63,10 @@ class _$VKWebAppStorageGetResult extends VKWebAppStorageGetResult {
   final BuiltList<KeyValuePair> keys;
 
   factory _$VKWebAppStorageGetResult(
-          [void Function(VKWebAppStorageGetResultBuilder) updates]) =>
+          [void Function(VKWebAppStorageGetResultBuilder)? updates]) =>
       (new VKWebAppStorageGetResultBuilder()..update(updates)).build();
 
-  _$VKWebAppStorageGetResult._({this.keys}) : super._() {
+  _$VKWebAppStorageGetResult._({required this.keys}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         keys, 'VKWebAppStorageGetResult', 'keys');
   }
@@ -102,12 +102,12 @@ class _$VKWebAppStorageGetResult extends VKWebAppStorageGetResult {
 class VKWebAppStorageGetResultBuilder
     implements
         Builder<VKWebAppStorageGetResult, VKWebAppStorageGetResultBuilder> {
-  _$VKWebAppStorageGetResult _$v;
+  _$VKWebAppStorageGetResult? _$v;
 
-  ListBuilder<KeyValuePair> _keys;
+  ListBuilder<KeyValuePair>? _keys;
   ListBuilder<KeyValuePair> get keys =>
       _$this._keys ??= new ListBuilder<KeyValuePair>();
-  set keys(ListBuilder<KeyValuePair> keys) => _$this._keys = keys;
+  set keys(ListBuilder<KeyValuePair>? keys) => _$this._keys = keys;
 
   VKWebAppStorageGetResultBuilder();
 
@@ -127,7 +127,7 @@ class VKWebAppStorageGetResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppStorageGetResultBuilder) updates) {
+  void update(void Function(VKWebAppStorageGetResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -137,7 +137,7 @@ class VKWebAppStorageGetResultBuilder
     try {
       _$result = _$v ?? new _$VKWebAppStorageGetResult._(keys: keys.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'keys';
         keys.build();

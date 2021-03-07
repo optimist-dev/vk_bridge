@@ -77,10 +77,15 @@ class _$Insets extends Insets {
   @override
   final double bottom;
 
-  factory _$Insets([void Function(InsetsBuilder) updates]) =>
+  factory _$Insets([void Function(InsetsBuilder)? updates]) =>
       (new InsetsBuilder()..update(updates)).build();
 
-  _$Insets._({this.right, this.top, this.left, this.bottom}) : super._() {
+  _$Insets._(
+      {required this.right,
+      required this.top,
+      required this.left,
+      required this.bottom})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(right, 'Insets', 'right');
     BuiltValueNullFieldError.checkNotNull(top, 'Insets', 'top');
     BuiltValueNullFieldError.checkNotNull(left, 'Insets', 'left');
@@ -123,23 +128,23 @@ class _$Insets extends Insets {
 }
 
 class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
-  _$Insets _$v;
+  _$Insets? _$v;
 
-  double _right;
-  double get right => _$this._right;
-  set right(double right) => _$this._right = right;
+  double? _right;
+  double? get right => _$this._right;
+  set right(double? right) => _$this._right = right;
 
-  double _top;
-  double get top => _$this._top;
-  set top(double top) => _$this._top = top;
+  double? _top;
+  double? get top => _$this._top;
+  set top(double? top) => _$this._top = top;
 
-  double _left;
-  double get left => _$this._left;
-  set left(double left) => _$this._left = left;
+  double? _left;
+  double? get left => _$this._left;
+  set left(double? left) => _$this._left = left;
 
-  double _bottom;
-  double get bottom => _$this._bottom;
-  set bottom(double bottom) => _$this._bottom = bottom;
+  double? _bottom;
+  double? get bottom => _$this._bottom;
+  set bottom(double? bottom) => _$this._bottom = bottom;
 
   InsetsBuilder();
 
@@ -162,7 +167,7 @@ class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
   }
 
   @override
-  void update(void Function(InsetsBuilder) updates) {
+  void update(void Function(InsetsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

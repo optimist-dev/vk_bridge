@@ -61,10 +61,10 @@ class _$TapticImpactOccurredOptions extends TapticImpactOccurredOptions {
   final String style;
 
   factory _$TapticImpactOccurredOptions(
-          [void Function(TapticImpactOccurredOptionsBuilder) updates]) =>
+          [void Function(TapticImpactOccurredOptionsBuilder)? updates]) =>
       (new TapticImpactOccurredOptionsBuilder()..update(updates)).build();
 
-  _$TapticImpactOccurredOptions._({this.style}) : super._() {
+  _$TapticImpactOccurredOptions._({required this.style}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         style, 'TapticImpactOccurredOptions', 'style');
   }
@@ -101,11 +101,11 @@ class TapticImpactOccurredOptionsBuilder
     implements
         Builder<TapticImpactOccurredOptions,
             TapticImpactOccurredOptionsBuilder> {
-  _$TapticImpactOccurredOptions _$v;
+  _$TapticImpactOccurredOptions? _$v;
 
-  String _style;
-  String get style => _$this._style;
-  set style(String style) => _$this._style = style;
+  String? _style;
+  String? get style => _$this._style;
+  set style(String? style) => _$this._style = style;
 
   TapticImpactOccurredOptionsBuilder();
 
@@ -125,7 +125,7 @@ class TapticImpactOccurredOptionsBuilder
   }
 
   @override
-  void update(void Function(TapticImpactOccurredOptionsBuilder) updates) {
+  void update(void Function(TapticImpactOccurredOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

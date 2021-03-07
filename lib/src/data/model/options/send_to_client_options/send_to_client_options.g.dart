@@ -24,7 +24,7 @@ class _$SendToClientOptionsSerializer
       Serializers serializers, SendToClientOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    Object value;
+    Object? value;
     value = object.fragment;
     if (value != null) {
       result
@@ -60,10 +60,10 @@ class _$SendToClientOptionsSerializer
 
 class _$SendToClientOptions extends SendToClientOptions {
   @override
-  final String fragment;
+  final String? fragment;
 
   factory _$SendToClientOptions(
-          [void Function(SendToClientOptionsBuilder) updates]) =>
+          [void Function(SendToClientOptionsBuilder)? updates]) =>
       (new SendToClientOptionsBuilder()..update(updates)).build();
 
   _$SendToClientOptions._({this.fragment}) : super._();
@@ -98,11 +98,11 @@ class _$SendToClientOptions extends SendToClientOptions {
 
 class SendToClientOptionsBuilder
     implements Builder<SendToClientOptions, SendToClientOptionsBuilder> {
-  _$SendToClientOptions _$v;
+  _$SendToClientOptions? _$v;
 
-  String _fragment;
-  String get fragment => _$this._fragment;
-  set fragment(String fragment) => _$this._fragment = fragment;
+  String? _fragment;
+  String? get fragment => _$this._fragment;
+  set fragment(String? fragment) => _$this._fragment = fragment;
 
   SendToClientOptionsBuilder();
 
@@ -122,7 +122,7 @@ class SendToClientOptionsBuilder
   }
 
   @override
-  void update(void Function(SendToClientOptionsBuilder) updates) {
+  void update(void Function(SendToClientOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

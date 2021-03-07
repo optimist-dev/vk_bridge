@@ -59,10 +59,10 @@ class _$VKWebAppResizeWindowResult extends VKWebAppResizeWindowResult {
   final Size size;
 
   factory _$VKWebAppResizeWindowResult(
-          [void Function(VKWebAppResizeWindowResultBuilder) updates]) =>
+          [void Function(VKWebAppResizeWindowResultBuilder)? updates]) =>
       (new VKWebAppResizeWindowResultBuilder()..update(updates)).build();
 
-  _$VKWebAppResizeWindowResult._({this.size}) : super._() {
+  _$VKWebAppResizeWindowResult._({required this.size}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         size, 'VKWebAppResizeWindowResult', 'size');
   }
@@ -98,11 +98,11 @@ class _$VKWebAppResizeWindowResult extends VKWebAppResizeWindowResult {
 class VKWebAppResizeWindowResultBuilder
     implements
         Builder<VKWebAppResizeWindowResult, VKWebAppResizeWindowResultBuilder> {
-  _$VKWebAppResizeWindowResult _$v;
+  _$VKWebAppResizeWindowResult? _$v;
 
-  SizeBuilder _size;
+  SizeBuilder? _size;
   SizeBuilder get size => _$this._size ??= new SizeBuilder();
-  set size(SizeBuilder size) => _$this._size = size;
+  set size(SizeBuilder? size) => _$this._size = size;
 
   VKWebAppResizeWindowResultBuilder();
 
@@ -122,7 +122,7 @@ class VKWebAppResizeWindowResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppResizeWindowResultBuilder) updates) {
+  void update(void Function(VKWebAppResizeWindowResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -132,7 +132,7 @@ class VKWebAppResizeWindowResultBuilder
     try {
       _$result = _$v ?? new _$VKWebAppResizeWindowResult._(size: size.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'size';
         size.build();

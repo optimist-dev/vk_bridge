@@ -59,10 +59,10 @@ class _$GetGroupInfoOptions extends GetGroupInfoOptions {
   final int groupId;
 
   factory _$GetGroupInfoOptions(
-          [void Function(GetGroupInfoOptionsBuilder) updates]) =>
+          [void Function(GetGroupInfoOptionsBuilder)? updates]) =>
       (new GetGroupInfoOptionsBuilder()..update(updates)).build();
 
-  _$GetGroupInfoOptions._({this.groupId}) : super._() {
+  _$GetGroupInfoOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'GetGroupInfoOptions', 'groupId');
   }
@@ -97,11 +97,11 @@ class _$GetGroupInfoOptions extends GetGroupInfoOptions {
 
 class GetGroupInfoOptionsBuilder
     implements Builder<GetGroupInfoOptions, GetGroupInfoOptionsBuilder> {
-  _$GetGroupInfoOptions _$v;
+  _$GetGroupInfoOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   GetGroupInfoOptionsBuilder();
 
@@ -121,7 +121,7 @@ class GetGroupInfoOptionsBuilder
   }
 
   @override
-  void update(void Function(GetGroupInfoOptionsBuilder) updates) {
+  void update(void Function(GetGroupInfoOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

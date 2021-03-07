@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
@@ -46,11 +45,11 @@ abstract class VKBridge {
   /// When the service is started, additional parameters are passed to the URL
   /// specified in the application control, containing data about the user and
   /// the source of launch
-  LaunchParams get launchParams;
+  LaunchParams? get launchParams;
 
   /// When starting the service, an additional hash parameter can be passed to
   /// the URL specified in the application control
-  String get launchHash;
+  String? get launchHash;
 
   /// Stream with VKWebAppUpdateConfig events:
   /// The client dispatches a [VKWebAppUpdateConfig] event to the application
@@ -107,7 +106,7 @@ abstract class VKBridge {
   ///
   /// [link] - the link to share
   /// (by default - the current link in the form of https://vk.com/app123#hash)
-  Future<VKWebAppShareResult> share([String link]);
+  Future<VKWebAppShareResult> share([String? link]);
 
   /// [VKWebAppShowImages] opens the native screen for viewing images.
   ///
@@ -118,7 +117,7 @@ abstract class VKBridge {
   /// from 0.
   Future<VKWebAppBoolResult> showImages(
     List<String> images, {
-    int startIndex,
+    int? startIndex,
   });
 
   /// Raising the [VKWebAppDownloadFile] event allows you to download a file to
@@ -129,8 +128,8 @@ abstract class VKBridge {
   /// [url] - link to the file to download.
   /// [filename] - file name.
   Future<VKWebAppBoolResult> downloadFile({
-    @required String url,
-    @required String filename,
+    required String url,
+    required String filename,
   });
 
   /// Raising the [VKWebAppCopyText] event allows you to copy text to the
@@ -193,7 +192,7 @@ abstract class VKBridge {
   /// [location] - hash, the line after the # in a URL,
   /// like https://vk.com/app123456#.
   Future<VKWebAppBoolResult> openApp({
-    @required int appId,
+    required int appId,
     String location,
   });
 
@@ -207,8 +206,8 @@ abstract class VKBridge {
   /// Possible values: Possible values: failed, success
   /// [payload] - data passed to the parent application.
   Future<VKWebAppOpenAppResult> close({
-    String status,
-    Object payload,
+    String? status,
+    Object? payload,
   });
 
   /// Calling the [VKWebAppAddToHomeScreenInfo] event
@@ -229,7 +228,7 @@ abstract class VKBridge {
   /// Platforms: Web, Mobile Web
   ///
   /// [fragment] - hash in the notification. (https://vk.com/appXXXX#fragment)
-  Future<VKWebAppBoolResult> sendToClient([String fragment]);
+  Future<VKWebAppBoolResult> sendToClient([String? fragment]);
 
   /// "Contact card" is the place where the user indicates contact information
   /// (phone number, address, e-mail),
@@ -278,8 +277,8 @@ abstract class VKBridge {
   /// [key] - key name, [a-zA-Z _ \ - 0-9]. The maximum length is 100 characters.
   /// [value] - variable value, only the first 4096 bytes are saved.
   Future<VKWebAppBoolResult> storageSet({
-    @required String key,
-    String value,
+    required String key,
+    String? value,
   });
 
   /// Call [VKWebAppStorageGetKeys] returns the names of all variables.
@@ -290,7 +289,7 @@ abstract class VKBridge {
   /// [offset] - the offset required to sample a specific subset of variable names.
   /// Default is 0;
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
-    int count,
+    int? count,
     int offset = 0,
   });
 
@@ -336,8 +335,8 @@ abstract class VKBridge {
   ///
   // TODO: Set<Scope> scopes
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
-    @required int appId,
-    @required String scope,
+    required int appId,
+    required String scope,
   });
 
   /// [VKWebAppGetGroupInfo] allows you to get information about the group.
@@ -371,8 +370,8 @@ abstract class VKBridge {
   /// This parameter can be used to authenticate the user.
   /// Its value will be returned in the message_allow event of the Callback API.
   Future<VKWebAppBoolResult> allowMessagesFromGroup({
-    @required int groupId,
-    String key,
+    required int groupId,
+    String? key,
   });
 
   /// [VKWebAppGetCommunityToken] allows you to request access rights
@@ -397,9 +396,9 @@ abstract class VKBridge {
   /// docs - access to documents.
   /// manage - access to community administration.
   Future<VKWebAppCommunityAccessTokenResult> getCommunityToken({
-    @required int appId,
-    @required int groupId,
-    @required String scope,
+    required int appId,
+    required int groupId,
+    required String scope,
   });
 
   /// [VKWebAppAddToCommunity] calls the community selection window
@@ -442,9 +441,9 @@ abstract class VKBridge {
   /// are described in detail on this page.
   /// ( https://vk.com/dev/objects/appWidget )
   Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
-    @required int groupId,
-    @required String type,
-    @required String code,
+    required int groupId,
+    required String type,
+    required String code,
   });
 
   /// [VKWebAppFlashGetInfo] asks for information about the flashlight.
@@ -467,8 +466,8 @@ abstract class VKBridge {
   /// [width] - window width. It can take values from 630px to 1000px.
   /// [height] - window height. It can take values from 500px to 4050px.
   Future<VKWebAppResizeWindowResult> resizeWindow({
-    @required int width,
-    @required int height,
+    required int width,
+    required int height,
   });
 
   /// [VKWebAppScroll] initiates vertical scrolling of the browser window.
@@ -480,7 +479,7 @@ abstract class VKBridge {
   /// you must pass the value 0.
   /// [speed] - animation speed in milliseconds. The default is 0.
   Future<VKWebAppScrollResult> scroll({
-    @required int top,
+    required int top,
     int speed = 0,
   });
 
@@ -510,9 +509,9 @@ abstract class VKBridge {
   /// on the statusBarStyle parameter and the color of the status bar based
   /// on the actionBarColor parameter.
   Future<VKWebAppBoolResult> setViewSettings({
-    @required String statusBarStyle,
-    String actionBarColor,
-    String navigationBarColor,
+    required String statusBarStyle,
+    String? actionBarColor,
+    String? navigationBarColor,
   });
 
   /// [VKWebAppSetSwipeSettings] enables the standard browser swipe behavior
@@ -583,9 +582,9 @@ abstract class VKBridge {
   /// [stickerId] - the ID of the clickable sticker.
   /// [accessKey] - access key for private stories.
   Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
-    @required int storyOwnerId,
-    @required int storyId,
-    @required int stickerId,
-    String accessKey,
+    required int storyOwnerId,
+    required int storyId,
+    required int stickerId,
+    String? accessKey,
   });
 }

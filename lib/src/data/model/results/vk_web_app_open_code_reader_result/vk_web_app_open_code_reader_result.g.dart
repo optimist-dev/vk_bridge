@@ -61,10 +61,10 @@ class _$VKWebAppOpenCodeReaderResult extends VKWebAppOpenCodeReaderResult {
   final String codeData;
 
   factory _$VKWebAppOpenCodeReaderResult(
-          [void Function(VKWebAppOpenCodeReaderResultBuilder) updates]) =>
+          [void Function(VKWebAppOpenCodeReaderResultBuilder)? updates]) =>
       (new VKWebAppOpenCodeReaderResultBuilder()..update(updates)).build();
 
-  _$VKWebAppOpenCodeReaderResult._({this.codeData}) : super._() {
+  _$VKWebAppOpenCodeReaderResult._({required this.codeData}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         codeData, 'VKWebAppOpenCodeReaderResult', 'codeData');
   }
@@ -101,11 +101,11 @@ class VKWebAppOpenCodeReaderResultBuilder
     implements
         Builder<VKWebAppOpenCodeReaderResult,
             VKWebAppOpenCodeReaderResultBuilder> {
-  _$VKWebAppOpenCodeReaderResult _$v;
+  _$VKWebAppOpenCodeReaderResult? _$v;
 
-  String _codeData;
-  String get codeData => _$this._codeData;
-  set codeData(String codeData) => _$this._codeData = codeData;
+  String? _codeData;
+  String? get codeData => _$this._codeData;
+  set codeData(String? codeData) => _$this._codeData = codeData;
 
   VKWebAppOpenCodeReaderResultBuilder();
 
@@ -125,7 +125,7 @@ class VKWebAppOpenCodeReaderResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppOpenCodeReaderResultBuilder) updates) {
+  void update(void Function(VKWebAppOpenCodeReaderResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

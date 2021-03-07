@@ -23,7 +23,7 @@ class _$AttachmentSerializer implements StructuredSerializer<Attachment> {
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.url;
     if (value != null) {
       result
@@ -70,12 +70,13 @@ class _$Attachment extends Attachment {
   @override
   final String type;
   @override
-  final String url;
+  final String? url;
 
-  factory _$Attachment([void Function(AttachmentBuilder) updates]) =>
+  factory _$Attachment([void Function(AttachmentBuilder)? updates]) =>
       (new AttachmentBuilder()..update(updates)).build();
 
-  _$Attachment._({this.text, this.type, this.url}) : super._() {
+  _$Attachment._({required this.text, required this.type, this.url})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(text, 'Attachment', 'text');
     BuiltValueNullFieldError.checkNotNull(type, 'Attachment', 'type');
   }
@@ -112,19 +113,19 @@ class _$Attachment extends Attachment {
 }
 
 class AttachmentBuilder implements Builder<Attachment, AttachmentBuilder> {
-  _$Attachment _$v;
+  _$Attachment? _$v;
 
-  String _text;
-  String get text => _$this._text;
-  set text(String text) => _$this._text = text;
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
   AttachmentBuilder();
 
@@ -146,7 +147,7 @@ class AttachmentBuilder implements Builder<Attachment, AttachmentBuilder> {
   }
 
   @override
-  void update(void Function(AttachmentBuilder) updates) {
+  void update(void Function(AttachmentBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

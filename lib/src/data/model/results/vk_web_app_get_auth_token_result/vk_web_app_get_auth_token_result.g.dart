@@ -28,7 +28,7 @@ class _$VKWebAppGetAuthTokenResultSerializer
       serializers.serialize(object.accessToken,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.scope;
     if (value != null) {
       result
@@ -70,13 +70,14 @@ class _$VKWebAppGetAuthTokenResult extends VKWebAppGetAuthTokenResult {
   @override
   final String accessToken;
   @override
-  final String scope;
+  final String? scope;
 
   factory _$VKWebAppGetAuthTokenResult(
-          [void Function(VKWebAppGetAuthTokenResultBuilder) updates]) =>
+          [void Function(VKWebAppGetAuthTokenResultBuilder)? updates]) =>
       (new VKWebAppGetAuthTokenResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetAuthTokenResult._({this.accessToken, this.scope}) : super._() {
+  _$VKWebAppGetAuthTokenResult._({required this.accessToken, this.scope})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accessToken, 'VKWebAppGetAuthTokenResult', 'accessToken');
   }
@@ -115,15 +116,15 @@ class _$VKWebAppGetAuthTokenResult extends VKWebAppGetAuthTokenResult {
 class VKWebAppGetAuthTokenResultBuilder
     implements
         Builder<VKWebAppGetAuthTokenResult, VKWebAppGetAuthTokenResultBuilder> {
-  _$VKWebAppGetAuthTokenResult _$v;
+  _$VKWebAppGetAuthTokenResult? _$v;
 
-  String _accessToken;
-  String get accessToken => _$this._accessToken;
-  set accessToken(String accessToken) => _$this._accessToken = accessToken;
+  String? _accessToken;
+  String? get accessToken => _$this._accessToken;
+  set accessToken(String? accessToken) => _$this._accessToken = accessToken;
 
-  String _scope;
-  String get scope => _$this._scope;
-  set scope(String scope) => _$this._scope = scope;
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
 
   VKWebAppGetAuthTokenResultBuilder();
 
@@ -144,7 +145,7 @@ class VKWebAppGetAuthTokenResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetAuthTokenResultBuilder) updates) {
+  void update(void Function(VKWebAppGetAuthTokenResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

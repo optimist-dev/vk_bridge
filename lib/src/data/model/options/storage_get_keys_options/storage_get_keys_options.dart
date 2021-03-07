@@ -19,8 +19,7 @@ abstract class StorageGetKeysOptions
       _$storageGetKeysOptionsSerializer;
 
   /// The number of variable names to get information about.
-  @nullable
-  int get count;
+  int? get count;
 
   /// The offset required to sample a specific subset of variable names.
   int get offset;

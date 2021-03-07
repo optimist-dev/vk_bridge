@@ -22,6 +22,5 @@ abstract class ScrollOptions
   int get top;
 
   /// Animation speed in milliseconds. The default is 0.
-  @nullable
-  int get speed;
+  int? get speed;
 }

@@ -70,10 +70,11 @@ class _$VKWebAppGetClientVersionResult extends VKWebAppGetClientVersionResult {
   final String version;
 
   factory _$VKWebAppGetClientVersionResult(
-          [void Function(VKWebAppGetClientVersionResultBuilder) updates]) =>
+          [void Function(VKWebAppGetClientVersionResultBuilder)? updates]) =>
       (new VKWebAppGetClientVersionResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetClientVersionResult._({this.platform, this.version})
+  _$VKWebAppGetClientVersionResult._(
+      {required this.platform, required this.version})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         platform, 'VKWebAppGetClientVersionResult', 'platform');
@@ -116,15 +117,15 @@ class VKWebAppGetClientVersionResultBuilder
     implements
         Builder<VKWebAppGetClientVersionResult,
             VKWebAppGetClientVersionResultBuilder> {
-  _$VKWebAppGetClientVersionResult _$v;
+  _$VKWebAppGetClientVersionResult? _$v;
 
-  String _platform;
-  String get platform => _$this._platform;
-  set platform(String platform) => _$this._platform = platform;
+  String? _platform;
+  String? get platform => _$this._platform;
+  set platform(String? platform) => _$this._platform = platform;
 
-  String _version;
-  String get version => _$this._version;
-  set version(String version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   VKWebAppGetClientVersionResultBuilder();
 
@@ -145,7 +146,7 @@ class VKWebAppGetClientVersionResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetClientVersionResultBuilder) updates) {
+  void update(void Function(VKWebAppGetClientVersionResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

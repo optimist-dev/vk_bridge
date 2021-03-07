@@ -33,7 +33,7 @@ class _$SubscribeStoryAppOptionsSerializer
       serializers.serialize(object.stickerId,
           specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.accessKey;
     if (value != null) {
       result
@@ -87,14 +87,17 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
   @override
   final int stickerId;
   @override
-  final String accessKey;
+  final String? accessKey;
 
   factory _$SubscribeStoryAppOptions(
-          [void Function(SubscribeStoryAppOptionsBuilder) updates]) =>
+          [void Function(SubscribeStoryAppOptionsBuilder)? updates]) =>
       (new SubscribeStoryAppOptionsBuilder()..update(updates)).build();
 
   _$SubscribeStoryAppOptions._(
-      {this.storyOwnerId, this.storyId, this.stickerId, this.accessKey})
+      {required this.storyOwnerId,
+      required this.storyId,
+      required this.stickerId,
+      this.accessKey})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         storyOwnerId, 'SubscribeStoryAppOptions', 'storyOwnerId');
@@ -145,23 +148,23 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
 class SubscribeStoryAppOptionsBuilder
     implements
         Builder<SubscribeStoryAppOptions, SubscribeStoryAppOptionsBuilder> {
-  _$SubscribeStoryAppOptions _$v;
+  _$SubscribeStoryAppOptions? _$v;
 
-  int _storyOwnerId;
-  int get storyOwnerId => _$this._storyOwnerId;
-  set storyOwnerId(int storyOwnerId) => _$this._storyOwnerId = storyOwnerId;
+  int? _storyOwnerId;
+  int? get storyOwnerId => _$this._storyOwnerId;
+  set storyOwnerId(int? storyOwnerId) => _$this._storyOwnerId = storyOwnerId;
 
-  int _storyId;
-  int get storyId => _$this._storyId;
-  set storyId(int storyId) => _$this._storyId = storyId;
+  int? _storyId;
+  int? get storyId => _$this._storyId;
+  set storyId(int? storyId) => _$this._storyId = storyId;
 
-  int _stickerId;
-  int get stickerId => _$this._stickerId;
-  set stickerId(int stickerId) => _$this._stickerId = stickerId;
+  int? _stickerId;
+  int? get stickerId => _$this._stickerId;
+  set stickerId(int? stickerId) => _$this._stickerId = stickerId;
 
-  String _accessKey;
-  String get accessKey => _$this._accessKey;
-  set accessKey(String accessKey) => _$this._accessKey = accessKey;
+  String? _accessKey;
+  String? get accessKey => _$this._accessKey;
+  set accessKey(String? accessKey) => _$this._accessKey = accessKey;
 
   SubscribeStoryAppOptionsBuilder();
 
@@ -184,7 +187,7 @@ class SubscribeStoryAppOptionsBuilder
   }
 
   @override
-  void update(void Function(SubscribeStoryAppOptionsBuilder) updates) {
+  void update(void Function(SubscribeStoryAppOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

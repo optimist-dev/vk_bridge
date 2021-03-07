@@ -17,6 +17,5 @@ abstract class ShareOptions
 
   /// Link for sharing
   /// (by default - the current link in the form of https://vk.com/app123#hash)
-  @nullable
-  String get link;
+  String? get link;
 }

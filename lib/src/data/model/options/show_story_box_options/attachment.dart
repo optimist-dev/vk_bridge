@@ -48,6 +48,5 @@ abstract class Attachment implements Built<Attachment, AttachmentBuilder> {
   String get type;
 
   /// Link to content
-  @nullable
-  String get url;
+  String? get url;
 }

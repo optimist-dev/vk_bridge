@@ -30,7 +30,7 @@ class _$ShowStoryBoxOptionsSerializer
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.attachment;
     if (value != null) {
       result
@@ -92,16 +92,19 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
   @override
   final String url;
   @override
-  final Attachment attachment;
+  final Attachment? attachment;
   @override
-  final BuiltList<StickerContainer> stickers;
+  final BuiltList<StickerContainer>? stickers;
 
   factory _$ShowStoryBoxOptions(
-          [void Function(ShowStoryBoxOptionsBuilder) updates]) =>
+          [void Function(ShowStoryBoxOptionsBuilder)? updates]) =>
       (new ShowStoryBoxOptionsBuilder()..update(updates)).build();
 
   _$ShowStoryBoxOptions._(
-      {this.backgroundType, this.url, this.attachment, this.stickers})
+      {required this.backgroundType,
+      required this.url,
+      this.attachment,
+      this.stickers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         backgroundType, 'ShowStoryBoxOptions', 'backgroundType');
@@ -148,27 +151,27 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
 
 class ShowStoryBoxOptionsBuilder
     implements Builder<ShowStoryBoxOptions, ShowStoryBoxOptionsBuilder> {
-  _$ShowStoryBoxOptions _$v;
+  _$ShowStoryBoxOptions? _$v;
 
-  String _backgroundType;
-  String get backgroundType => _$this._backgroundType;
-  set backgroundType(String backgroundType) =>
+  String? _backgroundType;
+  String? get backgroundType => _$this._backgroundType;
+  set backgroundType(String? backgroundType) =>
       _$this._backgroundType = backgroundType;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  AttachmentBuilder _attachment;
+  AttachmentBuilder? _attachment;
   AttachmentBuilder get attachment =>
       _$this._attachment ??= new AttachmentBuilder();
-  set attachment(AttachmentBuilder attachment) =>
+  set attachment(AttachmentBuilder? attachment) =>
       _$this._attachment = attachment;
 
-  ListBuilder<StickerContainer> _stickers;
+  ListBuilder<StickerContainer>? _stickers;
   ListBuilder<StickerContainer> get stickers =>
       _$this._stickers ??= new ListBuilder<StickerContainer>();
-  set stickers(ListBuilder<StickerContainer> stickers) =>
+  set stickers(ListBuilder<StickerContainer>? stickers) =>
       _$this._stickers = stickers;
 
   ShowStoryBoxOptionsBuilder();
@@ -192,7 +195,7 @@ class ShowStoryBoxOptionsBuilder
   }
 
   @override
-  void update(void Function(ShowStoryBoxOptionsBuilder) updates) {
+  void update(void Function(ShowStoryBoxOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -209,7 +212,7 @@ class ShowStoryBoxOptionsBuilder
               attachment: _attachment?.build(),
               stickers: _stickers?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'attachment';
         _attachment?.build();

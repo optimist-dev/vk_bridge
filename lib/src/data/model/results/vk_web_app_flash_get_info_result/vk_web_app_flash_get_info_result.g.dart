@@ -28,7 +28,7 @@ class _$VKWebAppFlashGetInfoResultSerializer
       serializers.serialize(object.isAvailable,
           specifiedType: const FullType(bool)),
     ];
-    Object value;
+    Object? value;
     value = object.level;
     if (value != null) {
       result
@@ -70,13 +70,14 @@ class _$VKWebAppFlashGetInfoResult extends VKWebAppFlashGetInfoResult {
   @override
   final bool isAvailable;
   @override
-  final double level;
+  final double? level;
 
   factory _$VKWebAppFlashGetInfoResult(
-          [void Function(VKWebAppFlashGetInfoResultBuilder) updates]) =>
+          [void Function(VKWebAppFlashGetInfoResultBuilder)? updates]) =>
       (new VKWebAppFlashGetInfoResultBuilder()..update(updates)).build();
 
-  _$VKWebAppFlashGetInfoResult._({this.isAvailable, this.level}) : super._() {
+  _$VKWebAppFlashGetInfoResult._({required this.isAvailable, this.level})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         isAvailable, 'VKWebAppFlashGetInfoResult', 'isAvailable');
   }
@@ -115,15 +116,15 @@ class _$VKWebAppFlashGetInfoResult extends VKWebAppFlashGetInfoResult {
 class VKWebAppFlashGetInfoResultBuilder
     implements
         Builder<VKWebAppFlashGetInfoResult, VKWebAppFlashGetInfoResultBuilder> {
-  _$VKWebAppFlashGetInfoResult _$v;
+  _$VKWebAppFlashGetInfoResult? _$v;
 
-  bool _isAvailable;
-  bool get isAvailable => _$this._isAvailable;
-  set isAvailable(bool isAvailable) => _$this._isAvailable = isAvailable;
+  bool? _isAvailable;
+  bool? get isAvailable => _$this._isAvailable;
+  set isAvailable(bool? isAvailable) => _$this._isAvailable = isAvailable;
 
-  double _level;
-  double get level => _$this._level;
-  set level(double level) => _$this._level = level;
+  double? _level;
+  double? get level => _$this._level;
+  set level(double? level) => _$this._level = level;
 
   VKWebAppFlashGetInfoResultBuilder();
 
@@ -144,7 +145,7 @@ class VKWebAppFlashGetInfoResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppFlashGetInfoResultBuilder) updates) {
+  void update(void Function(VKWebAppFlashGetInfoResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

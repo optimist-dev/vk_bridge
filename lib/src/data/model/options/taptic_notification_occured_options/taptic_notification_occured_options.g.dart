@@ -61,10 +61,10 @@ class _$TapticNotificationOccurredOptions
   final String type;
 
   factory _$TapticNotificationOccurredOptions(
-          [void Function(TapticNotificationOccurredOptionsBuilder) updates]) =>
+          [void Function(TapticNotificationOccurredOptionsBuilder)? updates]) =>
       (new TapticNotificationOccurredOptionsBuilder()..update(updates)).build();
 
-  _$TapticNotificationOccurredOptions._({this.type}) : super._() {
+  _$TapticNotificationOccurredOptions._({required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, 'TapticNotificationOccurredOptions', 'type');
   }
@@ -101,11 +101,11 @@ class TapticNotificationOccurredOptionsBuilder
     implements
         Builder<TapticNotificationOccurredOptions,
             TapticNotificationOccurredOptionsBuilder> {
-  _$TapticNotificationOccurredOptions _$v;
+  _$TapticNotificationOccurredOptions? _$v;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   TapticNotificationOccurredOptionsBuilder();
 
@@ -125,7 +125,8 @@ class TapticNotificationOccurredOptionsBuilder
   }
 
   @override
-  void update(void Function(TapticNotificationOccurredOptionsBuilder) updates) {
+  void update(
+      void Function(TapticNotificationOccurredOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

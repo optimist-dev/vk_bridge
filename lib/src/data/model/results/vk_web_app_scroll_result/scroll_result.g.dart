@@ -60,10 +60,10 @@ class _$ScrollResult extends ScrollResult {
   @override
   final int height;
 
-  factory _$ScrollResult([void Function(ScrollResultBuilder) updates]) =>
+  factory _$ScrollResult([void Function(ScrollResultBuilder)? updates]) =>
       (new ScrollResultBuilder()..update(updates)).build();
 
-  _$ScrollResult._({this.top, this.height}) : super._() {
+  _$ScrollResult._({required this.top, required this.height}) : super._() {
     BuiltValueNullFieldError.checkNotNull(top, 'ScrollResult', 'top');
     BuiltValueNullFieldError.checkNotNull(height, 'ScrollResult', 'height');
   }
@@ -97,15 +97,15 @@ class _$ScrollResult extends ScrollResult {
 
 class ScrollResultBuilder
     implements Builder<ScrollResult, ScrollResultBuilder> {
-  _$ScrollResult _$v;
+  _$ScrollResult? _$v;
 
-  int _top;
-  int get top => _$this._top;
-  set top(int top) => _$this._top = top;
+  int? _top;
+  int? get top => _$this._top;
+  set top(int? top) => _$this._top = top;
 
-  int _height;
-  int get height => _$this._height;
-  set height(int height) => _$this._height = height;
+  int? _height;
+  int? get height => _$this._height;
+  set height(int? height) => _$this._height = height;
 
   ScrollResultBuilder();
 
@@ -126,7 +126,7 @@ class ScrollResultBuilder
   }
 
   @override
-  void update(void Function(ScrollResultBuilder) updates) {
+  void update(void Function(ScrollResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

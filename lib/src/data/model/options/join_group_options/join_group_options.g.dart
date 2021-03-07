@@ -55,10 +55,10 @@ class _$JoinGroupOptions extends JoinGroupOptions {
   final int groupId;
 
   factory _$JoinGroupOptions(
-          [void Function(JoinGroupOptionsBuilder) updates]) =>
+          [void Function(JoinGroupOptionsBuilder)? updates]) =>
       (new JoinGroupOptionsBuilder()..update(updates)).build();
 
-  _$JoinGroupOptions._({this.groupId}) : super._() {
+  _$JoinGroupOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'JoinGroupOptions', 'groupId');
   }
@@ -92,11 +92,11 @@ class _$JoinGroupOptions extends JoinGroupOptions {
 
 class JoinGroupOptionsBuilder
     implements Builder<JoinGroupOptions, JoinGroupOptionsBuilder> {
-  _$JoinGroupOptions _$v;
+  _$JoinGroupOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   JoinGroupOptionsBuilder();
 
@@ -116,7 +116,7 @@ class JoinGroupOptionsBuilder
   }
 
   @override
-  void update(void Function(JoinGroupOptionsBuilder) updates) {
+  void update(void Function(JoinGroupOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

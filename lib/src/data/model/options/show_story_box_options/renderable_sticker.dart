@@ -26,12 +26,10 @@ abstract class RenderableSticker
   String get contentType;
 
   /// Link to content. Required if [blob] field is not specified
-  @nullable
-  String get url;
+  String? get url;
 
   /// Transformation of the object
-  @nullable
-  Transform get transform;
+  Transform? get transform;
 
   /// An array of content areas, clicking on which can trigger some kind of
   /// action

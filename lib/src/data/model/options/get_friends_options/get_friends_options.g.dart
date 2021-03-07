@@ -20,7 +20,7 @@ class _$GetFriendsOptionsSerializer
   Iterable<Object> serialize(Serializers serializers, GetFriendsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    Object value;
+    Object? value;
     value = object.multi;
     if (value != null) {
       result
@@ -56,10 +56,10 @@ class _$GetFriendsOptionsSerializer
 
 class _$GetFriendsOptions extends GetFriendsOptions {
   @override
-  final bool multi;
+  final bool? multi;
 
   factory _$GetFriendsOptions(
-          [void Function(GetFriendsOptionsBuilder) updates]) =>
+          [void Function(GetFriendsOptionsBuilder)? updates]) =>
       (new GetFriendsOptionsBuilder()..update(updates)).build();
 
   _$GetFriendsOptions._({this.multi}) : super._();
@@ -93,11 +93,11 @@ class _$GetFriendsOptions extends GetFriendsOptions {
 
 class GetFriendsOptionsBuilder
     implements Builder<GetFriendsOptions, GetFriendsOptionsBuilder> {
-  _$GetFriendsOptions _$v;
+  _$GetFriendsOptions? _$v;
 
-  bool _multi;
-  bool get multi => _$this._multi;
-  set multi(bool multi) => _$this._multi = multi;
+  bool? _multi;
+  bool? get multi => _$this._multi;
+  set multi(bool? multi) => _$this._multi = multi;
 
   GetFriendsOptionsBuilder();
 
@@ -117,7 +117,7 @@ class GetFriendsOptionsBuilder
   }
 
   @override
-  void update(void Function(GetFriendsOptionsBuilder) updates) {
+  void update(void Function(GetFriendsOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

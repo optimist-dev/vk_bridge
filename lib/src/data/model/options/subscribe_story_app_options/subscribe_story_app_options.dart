@@ -34,6 +34,5 @@ abstract class SubscribeStoryAppOptions
 
   /// Access key for private stories.
   @BuiltValueField(wireName: 'access_key')
-  @nullable
-  String get accessKey;
+  String? get accessKey;
 }

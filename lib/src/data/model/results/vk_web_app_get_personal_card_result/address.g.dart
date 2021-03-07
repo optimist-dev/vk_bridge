@@ -78,10 +78,14 @@ class _$Address extends Address {
   @override
   final String postalCode;
 
-  factory _$Address([void Function(AddressBuilder) updates]) =>
+  factory _$Address([void Function(AddressBuilder)? updates]) =>
       (new AddressBuilder()..update(updates)).build();
 
-  _$Address._({this.country, this.city, this.specifiedAddress, this.postalCode})
+  _$Address._(
+      {required this.country,
+      required this.city,
+      required this.specifiedAddress,
+      required this.postalCode})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(country, 'Address', 'country');
     BuiltValueNullFieldError.checkNotNull(city, 'Address', 'city');
@@ -127,24 +131,24 @@ class _$Address extends Address {
 }
 
 class AddressBuilder implements Builder<Address, AddressBuilder> {
-  _$Address _$v;
+  _$Address? _$v;
 
-  CountryBuilder _country;
+  CountryBuilder? _country;
   CountryBuilder get country => _$this._country ??= new CountryBuilder();
-  set country(CountryBuilder country) => _$this._country = country;
+  set country(CountryBuilder? country) => _$this._country = country;
 
-  CityBuilder _city;
+  CityBuilder? _city;
   CityBuilder get city => _$this._city ??= new CityBuilder();
-  set city(CityBuilder city) => _$this._city = city;
+  set city(CityBuilder? city) => _$this._city = city;
 
-  String _specifiedAddress;
-  String get specifiedAddress => _$this._specifiedAddress;
-  set specifiedAddress(String specifiedAddress) =>
+  String? _specifiedAddress;
+  String? get specifiedAddress => _$this._specifiedAddress;
+  set specifiedAddress(String? specifiedAddress) =>
       _$this._specifiedAddress = specifiedAddress;
 
-  String _postalCode;
-  String get postalCode => _$this._postalCode;
-  set postalCode(String postalCode) => _$this._postalCode = postalCode;
+  String? _postalCode;
+  String? get postalCode => _$this._postalCode;
+  set postalCode(String? postalCode) => _$this._postalCode = postalCode;
 
   AddressBuilder();
 
@@ -167,7 +171,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   }
 
   @override
-  void update(void Function(AddressBuilder) updates) {
+  void update(void Function(AddressBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -184,7 +188,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
               postalCode: BuiltValueNullFieldError.checkNotNull(
                   postalCode, 'Address', 'postalCode'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'country';
         country.build();

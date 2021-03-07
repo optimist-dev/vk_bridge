@@ -26,6 +26,5 @@ abstract class VKWebAppGetAuthTokenResult
   /// The list of rights granted by the user
   /// (it may differ from the scope that the service itself transferred,
   /// this situation must be handled separately).
-  @nullable
-  String get scope;
+  String? get scope;
 }

@@ -14,7 +14,7 @@ void main() {
    "lat":10.0,
    "long":20.0
 }
-''');
+''') as Object;
     final result = deserialize<VKWebAppGetGeodataResult>(json);
     expect(result.available, true);
     expect(result.lat, 10);
@@ -28,7 +28,7 @@ void main() {
    "lat":10.0,
    "long":20.0
 }
-''');
+''') as Object;
     final result = deserialize<VKWebAppGetGeodataResult>(json);
     expect(result.available, true);
     expect(result.lat, 10);
@@ -56,7 +56,7 @@ void main() {
   "viewport_width":1792,
   "viewport_height":1009
 }
-''');
+''') as Object;
     deserialize<VKWebAppUpdateConfig>(json);
   });
 }

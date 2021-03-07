@@ -63,10 +63,11 @@ class _$VKWebAppError extends VKWebAppError {
   @override
   final ErrorData errorData;
 
-  factory _$VKWebAppError([void Function(VKWebAppErrorBuilder) updates]) =>
+  factory _$VKWebAppError([void Function(VKWebAppErrorBuilder)? updates]) =>
       (new VKWebAppErrorBuilder()..update(updates)).build();
 
-  _$VKWebAppError._({this.errorType, this.errorData}) : super._() {
+  _$VKWebAppError._({required this.errorType, required this.errorData})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         errorType, 'VKWebAppError', 'errorType');
     BuiltValueNullFieldError.checkNotNull(
@@ -104,16 +105,16 @@ class _$VKWebAppError extends VKWebAppError {
 
 class VKWebAppErrorBuilder
     implements Builder<VKWebAppError, VKWebAppErrorBuilder> {
-  _$VKWebAppError _$v;
+  _$VKWebAppError? _$v;
 
-  String _errorType;
-  String get errorType => _$this._errorType;
-  set errorType(String errorType) => _$this._errorType = errorType;
+  String? _errorType;
+  String? get errorType => _$this._errorType;
+  set errorType(String? errorType) => _$this._errorType = errorType;
 
-  ErrorDataBuilder _errorData;
+  ErrorDataBuilder? _errorData;
   ErrorDataBuilder get errorData =>
       _$this._errorData ??= new ErrorDataBuilder();
-  set errorData(ErrorDataBuilder errorData) => _$this._errorData = errorData;
+  set errorData(ErrorDataBuilder? errorData) => _$this._errorData = errorData;
 
   VKWebAppErrorBuilder();
 
@@ -134,7 +135,7 @@ class VKWebAppErrorBuilder
   }
 
   @override
-  void update(void Function(VKWebAppErrorBuilder) updates) {
+  void update(void Function(VKWebAppErrorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -148,7 +149,7 @@ class VKWebAppErrorBuilder
                   errorType, 'VKWebAppError', 'errorType'),
               errorData: errorData.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'errorData';
         errorData.build();

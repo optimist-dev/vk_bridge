@@ -49,7 +49,7 @@ class VKWebAppGetGeodataResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current as Object;
       switch (key) {
         case 'available':
           if (value is bool) {
@@ -78,7 +78,8 @@ class VKWebAppGetGeodataResultSerializer
   }
 
   @override
-  Iterable serialize(Serializers serializers, VKWebAppGetGeodataResult object,
+  Iterable<Object> serialize(
+      Serializers serializers, VKWebAppGetGeodataResult object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'available',

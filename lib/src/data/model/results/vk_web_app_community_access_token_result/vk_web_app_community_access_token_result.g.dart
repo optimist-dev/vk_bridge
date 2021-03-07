@@ -62,11 +62,13 @@ class _$VKWebAppCommunityAccessTokenResult
   final String accessToken;
 
   factory _$VKWebAppCommunityAccessTokenResult(
-          [void Function(VKWebAppCommunityAccessTokenResultBuilder) updates]) =>
+          [void Function(VKWebAppCommunityAccessTokenResultBuilder)?
+              updates]) =>
       (new VKWebAppCommunityAccessTokenResultBuilder()..update(updates))
           .build();
 
-  _$VKWebAppCommunityAccessTokenResult._({this.accessToken}) : super._() {
+  _$VKWebAppCommunityAccessTokenResult._({required this.accessToken})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accessToken, 'VKWebAppCommunityAccessTokenResult', 'accessToken');
   }
@@ -104,11 +106,11 @@ class VKWebAppCommunityAccessTokenResultBuilder
     implements
         Builder<VKWebAppCommunityAccessTokenResult,
             VKWebAppCommunityAccessTokenResultBuilder> {
-  _$VKWebAppCommunityAccessTokenResult _$v;
+  _$VKWebAppCommunityAccessTokenResult? _$v;
 
-  String _accessToken;
-  String get accessToken => _$this._accessToken;
-  set accessToken(String accessToken) => _$this._accessToken = accessToken;
+  String? _accessToken;
+  String? get accessToken => _$this._accessToken;
+  set accessToken(String? accessToken) => _$this._accessToken = accessToken;
 
   VKWebAppCommunityAccessTokenResultBuilder();
 
@@ -129,7 +131,7 @@ class VKWebAppCommunityAccessTokenResultBuilder
 
   @override
   void update(
-      void Function(VKWebAppCommunityAccessTokenResultBuilder) updates) {
+      void Function(VKWebAppCommunityAccessTokenResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -21,6 +21,5 @@ abstract class StorageSetOptions
   String get key;
 
   /// Variable value, only the first 4096 bytes are saved.
-  @nullable
-  String get value;
+  String? get value;
 }
