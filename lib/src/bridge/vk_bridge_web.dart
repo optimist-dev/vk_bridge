@@ -196,21 +196,21 @@ class VKBridge implements vk_bridge.VKBridge {
     final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, Object>;
 
     final type = decodedJsonEvent['type']! as String;
-    final data = decodedJsonEvent['data']!;
+    final data = decodedJsonEvent['data'];
 
     switch (type) {
       case 'VKWebAppUpdateConfig':
-        final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
+        final updateConfig = deserialize<VKWebAppUpdateConfig>(data!);
         _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
         break;
       case 'VKWebAppLocationChanged':
-        final locationChanged = deserialize<VKWebAppLocationChanged>(data);
+        final locationChanged = deserialize<VKWebAppLocationChanged>(data!);
         _logger.d(locationChanged);
         _locationChangedSubject.add(locationChanged);
         break;
       case 'VKWebAppViewHide':
-        final viewHide = deserialize<VKWebAppViewHide>(data);
+        final viewHide = deserialize<VKWebAppViewHide>(data!);
         _logger.d(viewHide);
         _viewHideSubject.add(viewHide);
         break;
