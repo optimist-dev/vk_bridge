@@ -21,10 +21,10 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
   final String wireName = 'VKWebAppSubscribeStoryAppResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppSubscribeStoryAppResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'access_key',
       serializers.serialize(object.access_key,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
 
   @override
   VKWebAppSubscribeStoryAppResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppSubscribeStoryAppResultBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'access_key':
           result.access_key = serializers.deserialize(value,

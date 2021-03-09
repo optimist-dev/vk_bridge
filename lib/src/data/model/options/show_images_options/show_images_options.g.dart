@@ -17,9 +17,9 @@ class _$ShowImagesOptionsSerializer
   final String wireName = 'ShowImagesOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ShowImagesOptions object,
+  Iterable<Object?> serialize(Serializers serializers, ShowImagesOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'images',
       serializers.serialize(object.images,
           specifiedType:
@@ -37,7 +37,7 @@ class _$ShowImagesOptionsSerializer
 
   @override
   ShowImagesOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ShowImagesOptionsBuilder();
 
@@ -45,12 +45,12 @@ class _$ShowImagesOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'images':
           result.images.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object>);
           break;
         case 'start_index':

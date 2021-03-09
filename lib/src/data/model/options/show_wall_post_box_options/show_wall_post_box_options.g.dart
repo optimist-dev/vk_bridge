@@ -21,10 +21,10 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
   final String wireName = 'VKWebAppShowWallPostBoxOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppShowWallPostBoxOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'message',
       serializers.serialize(object.message,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
 
   @override
   VKWebAppShowWallPostBoxOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppShowWallPostBoxOptionsBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'message':
           result.message = serializers.deserialize(value,

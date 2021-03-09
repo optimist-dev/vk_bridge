@@ -15,9 +15,9 @@ class _$CitySerializer implements StructuredSerializer<City> {
   final String wireName = 'City';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, City object,
+  Iterable<Object?> serialize(Serializers serializers, City object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     Object? value;
     value = object.id;
     if (value != null) {
@@ -36,7 +36,7 @@ class _$CitySerializer implements StructuredSerializer<City> {
   }
 
   @override
-  City deserialize(Serializers serializers, Iterable<Object> serialized,
+  City deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CityBuilder();
 
@@ -44,7 +44,7 @@ class _$CitySerializer implements StructuredSerializer<City> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,

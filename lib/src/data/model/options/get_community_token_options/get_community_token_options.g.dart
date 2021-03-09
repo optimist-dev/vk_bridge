@@ -20,10 +20,10 @@ class _$GetCommunityTokenOptionsSerializer
   final String wireName = 'GetCommunityTokenOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GetCommunityTokenOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
       'group_id',
@@ -38,7 +38,7 @@ class _$GetCommunityTokenOptionsSerializer
 
   @override
   GetCommunityTokenOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GetCommunityTokenOptionsBuilder();
 
@@ -46,7 +46,7 @@ class _$GetCommunityTokenOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,

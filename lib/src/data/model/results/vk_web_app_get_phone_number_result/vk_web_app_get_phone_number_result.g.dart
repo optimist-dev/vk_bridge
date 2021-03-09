@@ -21,10 +21,10 @@ class _$VKWebAppGetPhoneNumberResultSerializer
   final String wireName = 'VKWebAppGetPhoneNumberResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetPhoneNumberResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'sign',
       serializers.serialize(object.sign, specifiedType: const FullType(String)),
       'phone_number',
@@ -37,7 +37,7 @@ class _$VKWebAppGetPhoneNumberResultSerializer
 
   @override
   VKWebAppGetPhoneNumberResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetPhoneNumberResultBuilder();
 
@@ -45,7 +45,7 @@ class _$VKWebAppGetPhoneNumberResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'sign':
           result.sign = serializers.deserialize(value,

@@ -16,9 +16,9 @@ class _$KeyValuePairSerializer implements StructuredSerializer<KeyValuePair> {
   final String wireName = 'KeyValuePair';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, KeyValuePair object,
+  Iterable<Object?> serialize(Serializers serializers, KeyValuePair object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'key',
       serializers.serialize(object.key, specifiedType: const FullType(String)),
       'value',
@@ -30,7 +30,8 @@ class _$KeyValuePairSerializer implements StructuredSerializer<KeyValuePair> {
   }
 
   @override
-  KeyValuePair deserialize(Serializers serializers, Iterable<Object> serialized,
+  KeyValuePair deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new KeyValuePairBuilder();
 
@@ -38,7 +39,7 @@ class _$KeyValuePairSerializer implements StructuredSerializer<KeyValuePair> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'key':
           result.key = serializers.deserialize(value,

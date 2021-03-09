@@ -15,9 +15,9 @@ class _$CountrySerializer implements StructuredSerializer<Country> {
   final String wireName = 'Country';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Country object,
+  Iterable<Object?> serialize(Serializers serializers, Country object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'title',
@@ -29,7 +29,7 @@ class _$CountrySerializer implements StructuredSerializer<Country> {
   }
 
   @override
-  Country deserialize(Serializers serializers, Iterable<Object> serialized,
+  Country deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CountryBuilder();
 
@@ -37,7 +37,7 @@ class _$CountrySerializer implements StructuredSerializer<Country> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,

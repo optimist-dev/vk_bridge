@@ -16,9 +16,9 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
   final String wireName = 'LaunchParams';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LaunchParams object,
+  Iterable<Object?> serialize(Serializers serializers, LaunchParams object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'rawLaunchParams',
       serializers.serialize(object.rawLaunchParams,
           specifiedType: const FullType(String)),
@@ -69,7 +69,8 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
   }
 
   @override
-  LaunchParams deserialize(Serializers serializers, Iterable<Object> serialized,
+  LaunchParams deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LaunchParamsBuilder();
 
@@ -77,7 +78,7 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'rawLaunchParams':
           result.rawLaunchParams = serializers.deserialize(value,

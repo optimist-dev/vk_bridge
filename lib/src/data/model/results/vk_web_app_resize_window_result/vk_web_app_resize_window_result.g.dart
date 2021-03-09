@@ -20,10 +20,10 @@ class _$VKWebAppResizeWindowResultSerializer
   final String wireName = 'VKWebAppResizeWindowResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppResizeWindowResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'result',
       serializers.serialize(object.size, specifiedType: const FullType(Size)),
     ];
@@ -33,7 +33,7 @@ class _$VKWebAppResizeWindowResultSerializer
 
   @override
   VKWebAppResizeWindowResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppResizeWindowResultBuilder();
 
@@ -41,11 +41,11 @@ class _$VKWebAppResizeWindowResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'result':
           result.size.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Size)) as Size);
+              specifiedType: const FullType(Size))! as Size);
           break;
       }
     }

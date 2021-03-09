@@ -21,10 +21,10 @@ class _$VKWebAppGetClientVersionResultSerializer
   final String wireName = 'VKWebAppGetClientVersionResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetClientVersionResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'platform',
       serializers.serialize(object.platform,
           specifiedType: const FullType(String)),
@@ -38,7 +38,7 @@ class _$VKWebAppGetClientVersionResultSerializer
 
   @override
   VKWebAppGetClientVersionResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetClientVersionResultBuilder();
 
@@ -46,7 +46,7 @@ class _$VKWebAppGetClientVersionResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'platform':
           result.platform = serializers.deserialize(value,

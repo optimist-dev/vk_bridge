@@ -162,13 +162,13 @@ Serializer<T> _findSerializerForType<T>() {
 }
 
 /// Deserialize [value]
-T deserialize<T>(Object value) =>
+T? deserialize<T>(Object? value) =>
     serializers.deserializeWith<T>(_findSerializerForType<T>(), value);
 
 /// Deserialize list of [value]
-BuiltList<T> deserializeListOf<T>(Iterable<Object> value) =>
-    BuiltList<T>.from(value
-        .map<T>((Object value) => deserialize<T>(value))
+BuiltList<T?> deserializeListOf<T>(Iterable<Object> value) =>
+    BuiltList<T?>.from(value
+        .map<T?>((Object value) => deserialize<T?>(value))
         .toList(growable: false));
 
 /// Serialize [value]

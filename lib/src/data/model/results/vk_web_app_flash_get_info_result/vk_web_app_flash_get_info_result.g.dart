@@ -20,10 +20,10 @@ class _$VKWebAppFlashGetInfoResultSerializer
   final String wireName = 'VKWebAppFlashGetInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppFlashGetInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'is_available',
       serializers.serialize(object.isAvailable,
           specifiedType: const FullType(bool)),
@@ -41,7 +41,7 @@ class _$VKWebAppFlashGetInfoResultSerializer
 
   @override
   VKWebAppFlashGetInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppFlashGetInfoResultBuilder();
 
@@ -49,7 +49,7 @@ class _$VKWebAppFlashGetInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'is_available':
           result.isAvailable = serializers.deserialize(value,

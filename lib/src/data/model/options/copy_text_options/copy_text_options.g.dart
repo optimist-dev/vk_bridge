@@ -17,9 +17,9 @@ class _$CopyTextOptionsSerializer
   final String wireName = 'CopyTextOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CopyTextOptions object,
+  Iterable<Object?> serialize(Serializers serializers, CopyTextOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'text',
       serializers.serialize(object.text, specifiedType: const FullType(String)),
     ];
@@ -29,7 +29,7 @@ class _$CopyTextOptionsSerializer
 
   @override
   CopyTextOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CopyTextOptionsBuilder();
 
@@ -37,7 +37,7 @@ class _$CopyTextOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'text':
           result.text = serializers.deserialize(value,

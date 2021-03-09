@@ -20,10 +20,10 @@ class _$FlashSetLevelOptionsSerializer
   final String wireName = 'FlashSetLevelOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, FlashSetLevelOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'level',
       serializers.serialize(object.level, specifiedType: const FullType(int)),
     ];
@@ -33,7 +33,7 @@ class _$FlashSetLevelOptionsSerializer
 
   @override
   FlashSetLevelOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FlashSetLevelOptionsBuilder();
 
@@ -41,7 +41,7 @@ class _$FlashSetLevelOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'level':
           result.level = serializers.deserialize(value,

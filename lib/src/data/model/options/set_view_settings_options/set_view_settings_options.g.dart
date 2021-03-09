@@ -20,10 +20,10 @@ class _$SetViewSettingsOptionsSerializer
   final String wireName = 'SetViewSettingsOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SetViewSettingsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'status_bar_style',
       serializers.serialize(object.statusBarStyle,
           specifiedType: const FullType(String)),
@@ -40,7 +40,7 @@ class _$SetViewSettingsOptionsSerializer
 
   @override
   SetViewSettingsOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SetViewSettingsOptionsBuilder();
 
@@ -48,7 +48,7 @@ class _$SetViewSettingsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status_bar_style':
           result.statusBarStyle = serializers.deserialize(value,

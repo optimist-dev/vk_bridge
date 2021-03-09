@@ -20,10 +20,10 @@ class _$SubscribeStoryAppOptionsSerializer
   final String wireName = 'SubscribeStoryAppOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SubscribeStoryAppOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'story_owner_id',
       serializers.serialize(object.storyOwnerId,
           specifiedType: const FullType(int)),
@@ -46,7 +46,7 @@ class _$SubscribeStoryAppOptionsSerializer
 
   @override
   SubscribeStoryAppOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SubscribeStoryAppOptionsBuilder();
 
@@ -54,7 +54,7 @@ class _$SubscribeStoryAppOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'story_owner_id':
           result.storyOwnerId = serializers.deserialize(value,

@@ -20,10 +20,10 @@ class _$VKWebAppContactsDoneSerializer
   final String wireName = 'VKWebAppContactsDone';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppContactsDone object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'phone',
       serializers.serialize(object.phone,
           specifiedType: const FullType(String)),
@@ -40,7 +40,7 @@ class _$VKWebAppContactsDoneSerializer
 
   @override
   VKWebAppContactsDone deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppContactsDoneBuilder();
 
@@ -48,7 +48,7 @@ class _$VKWebAppContactsDoneSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,

@@ -20,10 +20,10 @@ class _$VKWebAppGetFriendsResultSerializer
   final String wireName = 'VKWebAppGetFriendsResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetFriendsResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'users',
       serializers.serialize(object.users,
           specifiedType:
@@ -35,7 +35,7 @@ class _$VKWebAppGetFriendsResultSerializer
 
   @override
   VKWebAppGetFriendsResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetFriendsResultBuilder();
 
@@ -43,12 +43,12 @@ class _$VKWebAppGetFriendsResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'users':
           result.users.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(User)]))
+                      const FullType(BuiltList, const [const FullType(User)]))!
               as BuiltList<Object>);
           break;
       }

@@ -15,9 +15,9 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
   final String wireName = 'Transform';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Transform object,
+  Iterable<Object?> serialize(Serializers serializers, Transform object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     Object? value;
     value = object.rotation;
     if (value != null) {
@@ -57,7 +57,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
   }
 
   @override
-  Transform deserialize(Serializers serializers, Iterable<Object> serialized,
+  Transform deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TransformBuilder();
 
@@ -65,7 +65,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'rotation':
           result.rotation = serializers.deserialize(value,

@@ -16,9 +16,9 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
   final String wireName = 'VKWebAppError';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VKWebAppError object,
+  Iterable<Object?> serialize(Serializers serializers, VKWebAppError object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'error_type',
       serializers.serialize(object.errorType,
           specifiedType: const FullType(String)),
@@ -32,7 +32,7 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
 
   @override
   VKWebAppError deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppErrorBuilder();
 
@@ -40,7 +40,7 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'error_type':
           result.errorType = serializers.deserialize(value,
@@ -48,7 +48,7 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
           break;
         case 'error_data':
           result.errorData.replace(serializers.deserialize(value,
-              specifiedType: const FullType(ErrorData)) as ErrorData);
+              specifiedType: const FullType(ErrorData))! as ErrorData);
           break;
       }
     }

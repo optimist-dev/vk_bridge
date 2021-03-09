@@ -17,9 +17,9 @@ class _$JoinGroupOptionsSerializer
   final String wireName = 'JoinGroupOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, JoinGroupOptions object,
+  Iterable<Object?> serialize(Serializers serializers, JoinGroupOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
@@ -29,7 +29,7 @@ class _$JoinGroupOptionsSerializer
 
   @override
   JoinGroupOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new JoinGroupOptionsBuilder();
 
@@ -37,7 +37,7 @@ class _$JoinGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,

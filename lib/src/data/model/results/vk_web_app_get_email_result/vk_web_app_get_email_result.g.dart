@@ -20,10 +20,10 @@ class _$VKWebAppGetEmailResultSerializer
   final String wireName = 'VKWebAppGetEmailResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetEmailResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'email',
       serializers.serialize(object.email,
           specifiedType: const FullType(String)),
@@ -36,7 +36,7 @@ class _$VKWebAppGetEmailResultSerializer
 
   @override
   VKWebAppGetEmailResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetEmailResultBuilder();
 
@@ -44,7 +44,7 @@ class _$VKWebAppGetEmailResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'email':
           result.email = serializers.deserialize(value,

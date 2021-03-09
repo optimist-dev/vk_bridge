@@ -16,9 +16,9 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
   final String wireName = 'CloseOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CloseOptions object,
+  Iterable<Object?> serialize(Serializers serializers, CloseOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
@@ -35,7 +35,8 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
   }
 
   @override
-  CloseOptions deserialize(Serializers serializers, Iterable<Object> serialized,
+  CloseOptions deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CloseOptionsBuilder();
 
@@ -43,7 +44,7 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status':
           result.status = serializers.deserialize(value,

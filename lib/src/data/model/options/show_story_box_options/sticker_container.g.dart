@@ -17,9 +17,9 @@ class _$StickerContainerSerializer
   final String wireName = 'StickerContainer';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, StickerContainer object,
+  Iterable<Object?> serialize(Serializers serializers, StickerContainer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'sticker_type',
       serializers.serialize(object.stickerType,
           specifiedType: const FullType(String)),
@@ -33,7 +33,7 @@ class _$StickerContainerSerializer
 
   @override
   StickerContainer deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StickerContainerBuilder();
 
@@ -41,7 +41,7 @@ class _$StickerContainerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'sticker_type':
           result.stickerType = serializers.deserialize(value,
@@ -49,7 +49,7 @@ class _$StickerContainerSerializer
           break;
         case 'sticker':
           result.sticker.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(RenderableSticker))
+                  specifiedType: const FullType(RenderableSticker))!
               as RenderableSticker);
           break;
       }

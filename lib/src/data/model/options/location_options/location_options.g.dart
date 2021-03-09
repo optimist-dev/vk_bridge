@@ -17,9 +17,9 @@ class _$LocationOptionsSerializer
   final String wireName = 'LocationOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LocationOptions object,
+  Iterable<Object?> serialize(Serializers serializers, LocationOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'location',
       serializers.serialize(object.location,
           specifiedType: const FullType(String)),
@@ -30,7 +30,7 @@ class _$LocationOptionsSerializer
 
   @override
   LocationOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LocationOptionsBuilder();
 
@@ -38,7 +38,7 @@ class _$LocationOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'location':
           result.location = serializers.deserialize(value,

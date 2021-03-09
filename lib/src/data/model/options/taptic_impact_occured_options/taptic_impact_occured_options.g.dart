@@ -21,10 +21,10 @@ class _$TapticImpactOccurredOptionsSerializer
   final String wireName = 'TapticImpactOccurredOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, TapticImpactOccurredOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'style',
       serializers.serialize(object.style,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$TapticImpactOccurredOptionsSerializer
 
   @override
   TapticImpactOccurredOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TapticImpactOccurredOptionsBuilder();
 
@@ -43,7 +43,7 @@ class _$TapticImpactOccurredOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'style':
           result.style = serializers.deserialize(value,

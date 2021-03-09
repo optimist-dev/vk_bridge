@@ -17,9 +17,9 @@ class _$GetFriendsOptionsSerializer
   final String wireName = 'GetFriendsOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GetFriendsOptions object,
+  Iterable<Object?> serialize(Serializers serializers, GetFriendsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     Object? value;
     value = object.multi;
     if (value != null) {
@@ -33,7 +33,7 @@ class _$GetFriendsOptionsSerializer
 
   @override
   GetFriendsOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GetFriendsOptionsBuilder();
 
@@ -41,7 +41,7 @@ class _$GetFriendsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'multi':
           result.multi = serializers.deserialize(value,

@@ -15,9 +15,9 @@ class _$InsetsSerializer implements StructuredSerializer<Insets> {
   final String wireName = 'Insets';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Insets object,
+  Iterable<Object?> serialize(Serializers serializers, Insets object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'right',
       serializers.serialize(object.right,
           specifiedType: const FullType(double)),
@@ -34,7 +34,7 @@ class _$InsetsSerializer implements StructuredSerializer<Insets> {
   }
 
   @override
-  Insets deserialize(Serializers serializers, Iterable<Object> serialized,
+  Insets deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new InsetsBuilder();
 
@@ -42,7 +42,7 @@ class _$InsetsSerializer implements StructuredSerializer<Insets> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'right':
           result.right = serializers.deserialize(value,

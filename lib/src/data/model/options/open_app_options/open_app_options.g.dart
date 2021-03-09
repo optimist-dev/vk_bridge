@@ -17,9 +17,9 @@ class _$OpenAppOptionsSerializer
   final String wireName = 'OpenAppOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, OpenAppOptions object,
+  Iterable<Object?> serialize(Serializers serializers, OpenAppOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
       'location',
@@ -32,7 +32,7 @@ class _$OpenAppOptionsSerializer
 
   @override
   OpenAppOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new OpenAppOptionsBuilder();
 
@@ -40,7 +40,7 @@ class _$OpenAppOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,

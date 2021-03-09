@@ -20,10 +20,10 @@ class _$VKWebAppGetAuthTokenResultSerializer
   final String wireName = 'VKWebAppGetAuthTokenResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetAuthTokenResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'access_token',
       serializers.serialize(object.accessToken,
           specifiedType: const FullType(String)),
@@ -41,7 +41,7 @@ class _$VKWebAppGetAuthTokenResultSerializer
 
   @override
   VKWebAppGetAuthTokenResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetAuthTokenResultBuilder();
 
@@ -49,7 +49,7 @@ class _$VKWebAppGetAuthTokenResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'access_token':
           result.accessToken = serializers.deserialize(value,

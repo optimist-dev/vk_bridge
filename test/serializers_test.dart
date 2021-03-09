@@ -16,9 +16,10 @@ void main() {
 }
 ''') as Object;
     final result = deserialize<VKWebAppGetGeodataResult>(json);
-    expect(result.available, true);
-    expect(result.lat, 10);
-    expect(result.long, 20);
+    expect(result != null, true);
+    expect(result!.available, true);
+    expect(result!.lat, 10);
+    expect(result!.long, 20);
   });
 
   test('VKWebAppGetGeodataResult deserialize test. Available is int', () {
@@ -30,9 +31,10 @@ void main() {
 }
 ''') as Object;
     final result = deserialize<VKWebAppGetGeodataResult>(json);
-    expect(result.available, true);
-    expect(result.lat, 10);
-    expect(result.long, 20);
+    expect(result != null, true);
+    expect(result!.available, true);
+    expect(result!.lat, 10);
+    expect(result!.long, 20);
   });
 
   test('VKWebAppGetGeodataResult serialize test', () {

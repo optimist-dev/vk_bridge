@@ -20,10 +20,10 @@ class _$VKWebAppGetGroupInfoResultSerializer
   final String wireName = 'VKWebAppGetGroupInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetGroupInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'name',
@@ -93,7 +93,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
 
   @override
   VKWebAppGetGroupInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetGroupInfoResultBuilder();
 
@@ -101,7 +101,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
