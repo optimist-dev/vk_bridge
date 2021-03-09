@@ -178,9 +178,9 @@ class VKBridge implements vk_bridge.VKBridge {
       final jsonError = stringify(jsObjectError);
       final Object decodedJson = jsonDecode(jsonError) as Object;
 
-      VKWebAppError? error;
+      VKWebAppError error;
       try {
-        error = deserialize<VKWebAppError>(decodedJson);
+        error = deserialize<VKWebAppError>(decodedJson)!;
       } catch (e) {
         _logger.e('send($method) jsonError: $jsonError');
         _logger.e("can't deserialize error: $decodedJson");
@@ -188,9 +188,6 @@ class VKBridge implements vk_bridge.VKBridge {
       }
 
       _logger.e('send($method) error: $error');
-      if (error == null) {
-        rethrow;
-      }
       throw error;
     }
   }
