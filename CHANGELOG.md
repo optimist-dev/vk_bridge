@@ -2,6 +2,10 @@
 
 - Fix deserialization in event handler
 
+## 1.2.6+1
+
+- Update dependencies
+
 ## 1.2.6
 
 - Country and city for VKWebAppGetUserInfoResult are marked as optional
