@@ -15,9 +15,9 @@ class _$SizeSerializer implements StructuredSerializer<Size> {
   final String wireName = 'Size';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Size object,
+  Iterable<Object?> serialize(Serializers serializers, Size object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'width',
       serializers.serialize(object.width, specifiedType: const FullType(int)),
       'height',
@@ -28,7 +28,7 @@ class _$SizeSerializer implements StructuredSerializer<Size> {
   }
 
   @override
-  Size deserialize(Serializers serializers, Iterable<Object> serialized,
+  Size deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SizeBuilder();
 
@@ -36,7 +36,7 @@ class _$SizeSerializer implements StructuredSerializer<Size> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'width':
           result.width = serializers.deserialize(value,

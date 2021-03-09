@@ -20,10 +20,10 @@ class _$SetSwipeSettingsOptionsSerializer
   final String wireName = 'SetSwipeSettingsOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SetSwipeSettingsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'history',
       serializers.serialize(object.history,
           specifiedType: const FullType(bool)),
@@ -34,7 +34,7 @@ class _$SetSwipeSettingsOptionsSerializer
 
   @override
   SetSwipeSettingsOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SetSwipeSettingsOptionsBuilder();
 
@@ -42,7 +42,7 @@ class _$SetSwipeSettingsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'history':
           result.history = serializers.deserialize(value,

@@ -16,9 +16,9 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
   final String wireName = 'ClickableZone';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ClickableZone object,
+  Iterable<Object?> serialize(Serializers serializers, ClickableZone object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'action_type',
       serializers.serialize(object.actionType,
           specifiedType: const FullType(String)),
@@ -32,7 +32,7 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
 
   @override
   ClickableZone deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ClickableZoneBuilder();
 
@@ -40,7 +40,7 @@ class _$ClickableZoneSerializer implements StructuredSerializer<ClickableZone> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'action_type':
           result.actionType = serializers.deserialize(value,

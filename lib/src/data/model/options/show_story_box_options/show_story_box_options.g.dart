@@ -20,10 +20,10 @@ class _$ShowStoryBoxOptionsSerializer
   final String wireName = 'ShowStoryBoxOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ShowStoryBoxOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'background_type',
       serializers.serialize(object.backgroundType,
           specifiedType: const FullType(String)),
@@ -51,7 +51,7 @@ class _$ShowStoryBoxOptionsSerializer
 
   @override
   ShowStoryBoxOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ShowStoryBoxOptionsBuilder();
 
@@ -59,7 +59,7 @@ class _$ShowStoryBoxOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'background_type':
           result.backgroundType = serializers.deserialize(value,
@@ -71,12 +71,12 @@ class _$ShowStoryBoxOptionsSerializer
           break;
         case 'attachment':
           result.attachment.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Attachment)) as Attachment);
+              specifiedType: const FullType(Attachment))! as Attachment);
           break;
         case 'stickers':
           result.stickers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(StickerContainer)]))
+                      BuiltList, const [const FullType(StickerContainer)]))!
               as BuiltList<Object>);
           break;
       }

@@ -20,10 +20,10 @@ class _$VKWebAppLocationChangedSerializer
   final String wireName = 'VKWebAppLocationChanged';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppLocationChanged object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'location',
       serializers.serialize(object.location,
           specifiedType: const FullType(String)),
@@ -34,7 +34,7 @@ class _$VKWebAppLocationChangedSerializer
 
   @override
   VKWebAppLocationChanged deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppLocationChangedBuilder();
 
@@ -42,7 +42,7 @@ class _$VKWebAppLocationChangedSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'location':
           result.location = serializers.deserialize(value,

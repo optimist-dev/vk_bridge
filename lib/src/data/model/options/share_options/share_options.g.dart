@@ -16,9 +16,9 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   final String wireName = 'ShareOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ShareOptions object,
+  Iterable<Object?> serialize(Serializers serializers, ShareOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     Object? value;
     value = object.link;
     if (value != null) {
@@ -31,7 +31,8 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   }
 
   @override
-  ShareOptions deserialize(Serializers serializers, Iterable<Object> serialized,
+  ShareOptions deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ShareOptionsBuilder();
 
@@ -39,7 +40,7 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,

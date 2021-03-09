@@ -21,10 +21,10 @@ class _$VKWebAppOpenCodeReaderResultSerializer
   final String wireName = 'VKWebAppOpenCodeReaderResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppOpenCodeReaderResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'code_data',
       serializers.serialize(object.codeData,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppOpenCodeReaderResultSerializer
 
   @override
   VKWebAppOpenCodeReaderResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppOpenCodeReaderResultBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppOpenCodeReaderResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'code_data':
           result.codeData = serializers.deserialize(value,

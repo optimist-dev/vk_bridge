@@ -15,9 +15,9 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
   final String wireName = 'Address';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Address object,
+  Iterable<Object?> serialize(Serializers serializers, Address object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'country',
       serializers.serialize(object.country,
           specifiedType: const FullType(Country)),
@@ -35,7 +35,7 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
   }
 
   @override
-  Address deserialize(Serializers serializers, Iterable<Object> serialized,
+  Address deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AddressBuilder();
 
@@ -43,15 +43,15 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'country':
           result.country.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Country)) as Country);
+              specifiedType: const FullType(Country))! as Country);
           break;
         case 'city':
           result.city.replace(serializers.deserialize(value,
-              specifiedType: const FullType(City)) as City);
+              specifiedType: const FullType(City))! as City);
           break;
         case 'specified_address':
           result.specifiedAddress = serializers.deserialize(value,

@@ -17,14 +17,14 @@ class _$VKWebAppViewHideSerializer
   final String wireName = 'VKWebAppViewHide';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VKWebAppViewHide object,
+  Iterable<Object?> serialize(Serializers serializers, VKWebAppViewHide object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    return <Object?>[];
   }
 
   @override
   VKWebAppViewHide deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new VKWebAppViewHideBuilder().build();
   }

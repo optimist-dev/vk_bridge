@@ -15,9 +15,9 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
   final String wireName = 'ActionApp';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ActionApp object,
+  Iterable<Object?> serialize(Serializers serializers, ActionApp object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
     ];
@@ -33,7 +33,7 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
   }
 
   @override
-  ActionApp deserialize(Serializers serializers, Iterable<Object> serialized,
+  ActionApp deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ActionAppBuilder();
 
@@ -41,7 +41,7 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,

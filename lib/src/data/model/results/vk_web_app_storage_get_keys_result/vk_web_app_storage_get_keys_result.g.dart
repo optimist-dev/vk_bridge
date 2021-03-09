@@ -21,10 +21,10 @@ class _$VKWebAppStorageGetKeysResultSerializer
   final String wireName = 'VKWebAppStorageGetKeysResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppStorageGetKeysResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'keys',
       serializers.serialize(object.keys,
           specifiedType:
@@ -36,7 +36,7 @@ class _$VKWebAppStorageGetKeysResultSerializer
 
   @override
   VKWebAppStorageGetKeysResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppStorageGetKeysResultBuilder();
 
@@ -44,12 +44,12 @@ class _$VKWebAppStorageGetKeysResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'keys':
           result.keys.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object>);
           break;
       }

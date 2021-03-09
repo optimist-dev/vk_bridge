@@ -15,9 +15,9 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
   final String wireName = 'ErrorData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ErrorData object,
+  Iterable<Object?> serialize(Serializers serializers, ErrorData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'error_code',
       serializers.serialize(object.errorCode,
           specifiedType: const FullType(int)),
@@ -30,7 +30,7 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
   }
 
   @override
-  ErrorData deserialize(Serializers serializers, Iterable<Object> serialized,
+  ErrorData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ErrorDataBuilder();
 
@@ -38,7 +38,7 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'error_code':
           result.errorCode = serializers.deserialize(value,

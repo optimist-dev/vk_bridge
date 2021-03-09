@@ -20,10 +20,10 @@ class _$VKWebAppUpdateConfigSerializer
   final String wireName = 'VKWebAppUpdateConfig';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppUpdateConfig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'scheme',
       serializers.serialize(object.scheme,
           specifiedType: const FullType(String)),
@@ -87,7 +87,7 @@ class _$VKWebAppUpdateConfigSerializer
 
   @override
   VKWebAppUpdateConfig deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppUpdateConfigBuilder();
 
@@ -95,7 +95,7 @@ class _$VKWebAppUpdateConfigSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app':
           result.app = serializers.deserialize(value,
@@ -107,7 +107,7 @@ class _$VKWebAppUpdateConfigSerializer
           break;
         case 'insets':
           result.insets.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Insets)) as Insets);
+              specifiedType: const FullType(Insets))! as Insets);
           break;
         case 'scheme':
           result.scheme = serializers.deserialize(value,

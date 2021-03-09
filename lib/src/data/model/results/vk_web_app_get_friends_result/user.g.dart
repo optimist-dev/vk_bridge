@@ -15,9 +15,9 @@ class _$UserSerializer implements StructuredSerializer<User> {
   final String wireName = 'User';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, User object,
+  Iterable<Object?> serialize(Serializers serializers, User object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'first_name',
@@ -37,7 +37,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
   }
 
   @override
-  User deserialize(Serializers serializers, Iterable<Object> serialized,
+  User deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserBuilder();
 
@@ -45,7 +45,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,

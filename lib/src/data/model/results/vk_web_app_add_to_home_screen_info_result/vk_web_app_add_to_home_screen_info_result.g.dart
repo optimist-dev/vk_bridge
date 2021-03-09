@@ -21,10 +21,10 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
   final String wireName = 'VKWebAppAddToHomeScreenInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppAddToHomeScreenInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'is_feature_supported',
       serializers.serialize(object.isFeatureSupported,
           specifiedType: const FullType(bool)),
@@ -38,7 +38,7 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
 
   @override
   VKWebAppAddToHomeScreenInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppAddToHomeScreenInfoResultBuilder();
 
@@ -46,7 +46,7 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'is_feature_supported':
           result.isFeatureSupported = serializers.deserialize(value,

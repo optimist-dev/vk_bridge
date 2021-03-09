@@ -17,9 +17,9 @@ class _$RenderableStickerSerializer
   final String wireName = 'RenderableSticker';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, RenderableSticker object,
+  Iterable<Object?> serialize(Serializers serializers, RenderableSticker object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'content_type',
       serializers.serialize(object.contentType,
           specifiedType: const FullType(String)),
@@ -51,7 +51,7 @@ class _$RenderableStickerSerializer
 
   @override
   RenderableSticker deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RenderableStickerBuilder();
 
@@ -59,7 +59,7 @@ class _$RenderableStickerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'content_type':
           result.contentType = serializers.deserialize(value,
@@ -71,12 +71,12 @@ class _$RenderableStickerSerializer
           break;
         case 'transform':
           result.transform.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Transform)) as Transform);
+              specifiedType: const FullType(Transform))! as Transform);
           break;
         case 'clickable_zones':
           result.clickableZones.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(ClickableZone)]))
+                      BuiltList, const [const FullType(ClickableZone)]))!
               as BuiltList<Object>);
           break;
         case 'can_delete':

@@ -20,10 +20,10 @@ class _$VKWebAppScrollResultSerializer
   final String wireName = 'VKWebAppScrollResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppScrollResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'result',
       serializers.serialize(object.result,
           specifiedType: const FullType(ScrollResult)),
@@ -34,7 +34,7 @@ class _$VKWebAppScrollResultSerializer
 
   @override
   VKWebAppScrollResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppScrollResultBuilder();
 
@@ -42,11 +42,11 @@ class _$VKWebAppScrollResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'result':
           result.result.replace(serializers.deserialize(value,
-              specifiedType: const FullType(ScrollResult)) as ScrollResult);
+              specifiedType: const FullType(ScrollResult))! as ScrollResult);
           break;
       }
     }

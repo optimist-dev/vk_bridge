@@ -21,10 +21,10 @@ class _$AllowMessagesFromGroupOptionsSerializer
   final String wireName = 'AllowMessagesFromGroupOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, AllowMessagesFromGroupOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
@@ -41,7 +41,7 @@ class _$AllowMessagesFromGroupOptionsSerializer
 
   @override
   AllowMessagesFromGroupOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AllowMessagesFromGroupOptionsBuilder();
 
@@ -49,7 +49,7 @@ class _$AllowMessagesFromGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,

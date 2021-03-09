@@ -16,9 +16,9 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
   final String wireName = 'ScrollOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ScrollOptions object,
+  Iterable<Object?> serialize(Serializers serializers, ScrollOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'top',
       serializers.serialize(object.top, specifiedType: const FullType(int)),
     ];
@@ -34,7 +34,7 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
 
   @override
   ScrollOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ScrollOptionsBuilder();
 
@@ -42,7 +42,7 @@ class _$ScrollOptionsSerializer implements StructuredSerializer<ScrollOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'top':
           result.top = serializers.deserialize(value,

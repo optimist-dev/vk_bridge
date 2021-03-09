@@ -20,10 +20,10 @@ class _$VKWebAppGetUserInfoResultSerializer
   final String wireName = 'VKWebAppGetUserInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetUserInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'first_name',
@@ -74,7 +74,7 @@ class _$VKWebAppGetUserInfoResultSerializer
 
   @override
   VKWebAppGetUserInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetUserInfoResultBuilder();
 
@@ -82,7 +82,7 @@ class _$VKWebAppGetUserInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -106,11 +106,11 @@ class _$VKWebAppGetUserInfoResultSerializer
           break;
         case 'city':
           result.city.replace(serializers.deserialize(value,
-              specifiedType: const FullType(City)) as City);
+              specifiedType: const FullType(City))! as City);
           break;
         case 'country':
           result.country.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Country)) as Country);
+              specifiedType: const FullType(Country))! as Country);
           break;
         case 'photo_100':
           result.photo100 = serializers.deserialize(value,

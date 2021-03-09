@@ -15,9 +15,9 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
   final String wireName = 'ActionLink';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ActionLink object,
+  Iterable<Object?> serialize(Serializers serializers, ActionLink object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'link',
       serializers.serialize(object.link, specifiedType: const FullType(String)),
       'tooltip_text_key',
@@ -29,7 +29,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
   }
 
   @override
-  ActionLink deserialize(Serializers serializers, Iterable<Object> serialized,
+  ActionLink deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ActionLinkBuilder();
 
@@ -37,7 +37,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,

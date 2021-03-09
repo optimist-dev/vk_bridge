@@ -20,10 +20,10 @@ class _$StorageGetKeysOptionsSerializer
   final String wireName = 'StorageGetKeysOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, StorageGetKeysOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'offset',
       serializers.serialize(object.offset, specifiedType: const FullType(int)),
     ];
@@ -39,7 +39,7 @@ class _$StorageGetKeysOptionsSerializer
 
   @override
   StorageGetKeysOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StorageGetKeysOptionsBuilder();
 
@@ -47,7 +47,7 @@ class _$StorageGetKeysOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'count':
           result.count = serializers.deserialize(value,

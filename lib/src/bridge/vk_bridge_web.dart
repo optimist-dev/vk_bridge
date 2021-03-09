@@ -158,6 +158,10 @@ class VKBridge implements vk_bridge.VKBridge {
       final Object decodedJson = jsonDecode(jsonResult) as Object;
       try {
         final result = deserialize<Result>(decodedJson);
+        if (result == null) {
+          _logger.e('send($method) result is null: $jsonResult');
+          throw Exception('Result cannot be null. send($method)');
+        }
         _logger.d('send($method) result: $result');
         return result;
       } catch (e) {
@@ -174,7 +178,7 @@ class VKBridge implements vk_bridge.VKBridge {
       final jsonError = stringify(jsObjectError);
       final Object decodedJson = jsonDecode(jsonError) as Object;
 
-      VKWebAppError error;
+      VKWebAppError? error;
       try {
         error = deserialize<VKWebAppError>(decodedJson);
       } catch (e) {
@@ -184,6 +188,9 @@ class VKBridge implements vk_bridge.VKBridge {
       }
 
       _logger.e('send($method) error: $error');
+      if (error == null) {
+        rethrow;
+      }
       throw error;
     }
   }
@@ -200,17 +207,17 @@ class VKBridge implements vk_bridge.VKBridge {
 
     switch (type) {
       case 'VKWebAppUpdateConfig':
-        final updateConfig = deserialize<VKWebAppUpdateConfig>(data!);
+        final updateConfig = deserialize<VKWebAppUpdateConfig>(data!)!;
         _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
         break;
       case 'VKWebAppLocationChanged':
-        final locationChanged = deserialize<VKWebAppLocationChanged>(data!);
+        final locationChanged = deserialize<VKWebAppLocationChanged>(data!)!;
         _logger.d(locationChanged);
         _locationChangedSubject.add(locationChanged);
         break;
       case 'VKWebAppViewHide':
-        final viewHide = deserialize<VKWebAppViewHide>(data!);
+        final viewHide = deserialize<VKWebAppViewHide>(data!)!;
         _logger.d(viewHide);
         _viewHideSubject.add(viewHide);
         break;

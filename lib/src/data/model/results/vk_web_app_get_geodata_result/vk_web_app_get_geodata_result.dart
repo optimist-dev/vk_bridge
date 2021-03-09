@@ -78,10 +78,10 @@ class VKWebAppGetGeodataResultSerializer
   }
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetGeodataResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'available',
       serializers.serialize(object.available,
           specifiedType: const FullType(bool)),
