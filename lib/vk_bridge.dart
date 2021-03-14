@@ -6,6 +6,7 @@ export 'src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.
 export 'src/data/model/launch_params.dart';
 export 'src/data/model/options/share_options/share_options.dart';
 export 'src/data/model/options/share_options/share_options.dart';
+export 'src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 export 'src/data/model/options/show_story_box_options/action.dart';
 export 'src/data/model/options/show_story_box_options/action_app.dart';
 export 'src/data/model/options/show_story_box_options/action_link.dart';
@@ -15,8 +16,8 @@ export 'src/data/model/options/show_story_box_options/renderable_sticker.dart';
 export 'src/data/model/options/show_story_box_options/show_story_box_options.dart';
 export 'src/data/model/options/show_story_box_options/sticker_container.dart';
 export 'src/data/model/options/show_story_box_options/transform.dart';
+export 'src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 export 'src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 export 'src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
 export 'src/data/model/results/vk_web_app_get_geodata_result/vk_web_app_get_geodata_result.dart';
 export 'src/data/model/results/vk_web_app_share_result/vk_web_app_share_result.dart';
-export 'src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';

@@ -588,4 +588,13 @@ abstract class VKBridge {
     @required int stickerId,
     String accessKey,
   });
+
+  // TODO: change string (adFormat) to enum
+  /// [VKWebAppShowNativeAds] Shows ads to the user. The method is available on Android and iOS platforms.
+  ///
+  /// [adFormat] - advertising format.
+  /// Possible options: ​preloader, reward, interstitial.
+  ///
+  /// Return true if an advertisement was shown to the user.
+  Future<VKWebAppBoolResult> showNativeAds(String adFormat);
 }
