@@ -136,7 +136,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
     _logger.d('vk_bridge: _sendInternal($method)');
 
-    bool rethrowed = false;
+    var rethrowed = false;
 
     try {
       String propsJson;

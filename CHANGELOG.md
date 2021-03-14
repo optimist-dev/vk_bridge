@@ -1,6 +1,10 @@
 ## 1.3.0
 
 - Added method for show ads
+=======
+## 1.2.6+1
+
+- Update dependencies
 
 ## 1.2.6
 
