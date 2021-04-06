@@ -264,4 +264,8 @@ class VKBridge implements vk_bridge.VKBridge {
     String accessKey,
   }) =>
       throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> showNativeAds(String adFormat) =>
+      throw _unsupportedError;
 }

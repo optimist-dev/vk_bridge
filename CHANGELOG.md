@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Added methods for show native ads
+
 ## 1.2.7
 
 - Fix deserialization in event handler

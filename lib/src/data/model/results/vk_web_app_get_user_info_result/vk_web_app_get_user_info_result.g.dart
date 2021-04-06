@@ -47,22 +47,26 @@ class _$VKWebAppGetUserInfoResultSerializer
       serializers.serialize(object.timezone,
           specifiedType: const FullType(int)),
     ];
-    if (object.bdate != null) {
+    Object value;
+    value = object.bdate;
+    if (value != null) {
       result
         ..add('bdate')
-        ..add(serializers.serialize(object.bdate,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    if (object.city != null) {
+    value = object.city;
+    if (value != null) {
       result
         ..add('city')
-        ..add(serializers.serialize(object.city,
-            specifiedType: const FullType(City)));
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(City)));
     }
-    if (object.country != null) {
+    value = object.country;
+    if (value != null) {
       result
         ..add('country')
-        ..add(serializers.serialize(object.country,
+        ..add(serializers.serialize(value,
             specifiedType: const FullType(Country)));
     }
     return result;
@@ -78,7 +82,7 @@ class _$VKWebAppGetUserInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -172,36 +176,22 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
       this.photoMaxOrig,
       this.timezone})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'id');
-    }
-    if (firstName == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'firstName');
-    }
-    if (lastName == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'lastName');
-    }
-    if (sex == null) {
-      throw new BuiltValueNullFieldError('VKWebAppGetUserInfoResult', 'sex');
-    }
-    if (photo100 == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'photo100');
-    }
-    if (photo200 == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'photo200');
-    }
-    if (photoMaxOrig == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'photoMaxOrig');
-    }
-    if (timezone == null) {
-      throw new BuiltValueNullFieldError(
-          'VKWebAppGetUserInfoResult', 'timezone');
-    }
+    BuiltValueNullFieldError.checkNotNull(
+        id, 'VKWebAppGetUserInfoResult', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        firstName, 'VKWebAppGetUserInfoResult', 'firstName');
+    BuiltValueNullFieldError.checkNotNull(
+        lastName, 'VKWebAppGetUserInfoResult', 'lastName');
+    BuiltValueNullFieldError.checkNotNull(
+        sex, 'VKWebAppGetUserInfoResult', 'sex');
+    BuiltValueNullFieldError.checkNotNull(
+        photo100, 'VKWebAppGetUserInfoResult', 'photo100');
+    BuiltValueNullFieldError.checkNotNull(
+        photo200, 'VKWebAppGetUserInfoResult', 'photo200');
+    BuiltValueNullFieldError.checkNotNull(
+        photoMaxOrig, 'VKWebAppGetUserInfoResult', 'photoMaxOrig');
+    BuiltValueNullFieldError.checkNotNull(
+        timezone, 'VKWebAppGetUserInfoResult', 'timezone');
   }
 
   @override
@@ -324,18 +314,19 @@ class VKWebAppGetUserInfoResultBuilder
   VKWebAppGetUserInfoResultBuilder();
 
   VKWebAppGetUserInfoResultBuilder get _$this {
-    if (_$v != null) {
-      _id = _$v.id;
-      _firstName = _$v.firstName;
-      _lastName = _$v.lastName;
-      _sex = _$v.sex;
-      _bdate = _$v.bdate;
-      _city = _$v.city?.toBuilder();
-      _country = _$v.country?.toBuilder();
-      _photo100 = _$v.photo100;
-      _photo200 = _$v.photo200;
-      _photoMaxOrig = _$v.photoMaxOrig;
-      _timezone = _$v.timezone;
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _firstName = $v.firstName;
+      _lastName = $v.lastName;
+      _sex = $v.sex;
+      _bdate = $v.bdate;
+      _city = $v.city?.toBuilder();
+      _country = $v.country?.toBuilder();
+      _photo100 = $v.photo100;
+      _photo200 = $v.photo200;
+      _photoMaxOrig = $v.photoMaxOrig;
+      _timezone = $v.timezone;
       _$v = null;
     }
     return this;
@@ -343,9 +334,7 @@ class VKWebAppGetUserInfoResultBuilder
 
   @override
   void replace(VKWebAppGetUserInfoResult other) {
-    if (other == null) {
-      throw new ArgumentError.notNull('other');
-    }
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VKWebAppGetUserInfoResult;
   }
 
@@ -360,17 +349,25 @@ class VKWebAppGetUserInfoResultBuilder
     try {
       _$result = _$v ??
           new _$VKWebAppGetUserInfoResult._(
-              id: id,
-              firstName: firstName,
-              lastName: lastName,
-              sex: sex,
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, 'VKWebAppGetUserInfoResult', 'id'),
+              firstName: BuiltValueNullFieldError.checkNotNull(
+                  firstName, 'VKWebAppGetUserInfoResult', 'firstName'),
+              lastName: BuiltValueNullFieldError.checkNotNull(
+                  lastName, 'VKWebAppGetUserInfoResult', 'lastName'),
+              sex: BuiltValueNullFieldError.checkNotNull(
+                  sex, 'VKWebAppGetUserInfoResult', 'sex'),
               bdate: bdate,
               city: _city?.build(),
               country: _country?.build(),
-              photo100: photo100,
-              photo200: photo200,
-              photoMaxOrig: photoMaxOrig,
-              timezone: timezone);
+              photo100: BuiltValueNullFieldError.checkNotNull(
+                  photo100, 'VKWebAppGetUserInfoResult', 'photo100'),
+              photo200: BuiltValueNullFieldError.checkNotNull(
+                  photo200, 'VKWebAppGetUserInfoResult', 'photo200'),
+              photoMaxOrig: BuiltValueNullFieldError.checkNotNull(
+                  photoMaxOrig, 'VKWebAppGetUserInfoResult', 'photoMaxOrig'),
+              timezone: BuiltValueNullFieldError.checkNotNull(
+                  timezone, 'VKWebAppGetUserInfoResult', 'timezone'));
     } catch (_) {
       String _$failedField;
       try {
