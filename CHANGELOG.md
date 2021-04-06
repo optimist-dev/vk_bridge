@@ -1,3 +1,7 @@
+## 1.2.7
+
+- Fix deserialization in event handler
+
 ## 1.2.6+1
 
 - Update dependencies
