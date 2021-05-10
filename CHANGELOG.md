@@ -1,3 +1,7 @@
+## 1.3.1
+
+- Update dependencies
+
 ## 1.3.0
 
 - Added methods for show native ads
