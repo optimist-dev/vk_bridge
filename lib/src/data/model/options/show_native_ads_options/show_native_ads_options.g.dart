@@ -20,10 +20,10 @@ class _$ShowNativeAdsOptionsSerializer
   final String wireName = 'ShowNativeAdsOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ShowNativeAdsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'ad_format',
       serializers.serialize(object.adFormat,
           specifiedType: const FullType(String)),
@@ -34,7 +34,7 @@ class _$ShowNativeAdsOptionsSerializer
 
   @override
   ShowNativeAdsOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ShowNativeAdsOptionsBuilder();
 
@@ -42,7 +42,7 @@ class _$ShowNativeAdsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'ad_format':
           result.adFormat = serializers.deserialize(value,
@@ -60,10 +60,10 @@ class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
   final String adFormat;
 
   factory _$ShowNativeAdsOptions(
-          [void Function(ShowNativeAdsOptionsBuilder) updates]) =>
+          [void Function(ShowNativeAdsOptionsBuilder)? updates]) =>
       (new ShowNativeAdsOptionsBuilder()..update(updates)).build();
 
-  _$ShowNativeAdsOptions._({this.adFormat}) : super._() {
+  _$ShowNativeAdsOptions._({required this.adFormat}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         adFormat, 'ShowNativeAdsOptions', 'adFormat');
   }
@@ -98,11 +98,11 @@ class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
 
 class ShowNativeAdsOptionsBuilder
     implements Builder<ShowNativeAdsOptions, ShowNativeAdsOptionsBuilder> {
-  _$ShowNativeAdsOptions _$v;
+  _$ShowNativeAdsOptions? _$v;
 
-  String _adFormat;
-  String get adFormat => _$this._adFormat;
-  set adFormat(String adFormat) => _$this._adFormat = adFormat;
+  String? _adFormat;
+  String? get adFormat => _$this._adFormat;
+  set adFormat(String? adFormat) => _$this._adFormat = adFormat;
 
   ShowNativeAdsOptionsBuilder();
 
@@ -122,7 +122,7 @@ class ShowNativeAdsOptionsBuilder
   }
 
   @override
-  void update(void Function(ShowNativeAdsOptionsBuilder) updates) {
+  void update(void Function(ShowNativeAdsOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
