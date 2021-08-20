@@ -636,6 +636,12 @@ class VKBridge implements vk_bridge.VKBridge {
     );
     return _sendInternalWithOptions('VKWebAppSubscribeStoryApp', options);
   }
+
+  @override
+  Future<VKWebAppBoolResult> showNativeAds(String adFormat) {
+    final options = ShowNativeAdsOptions((b) => b..adFormat = adFormat);
+    return _sendInternalWithOptions('VKWebAppShowNativeAds', options);
+  }
 }
 
 /// Empty logger. Do nothing

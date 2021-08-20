@@ -269,6 +269,19 @@ class _ExamplesPageState extends State<ExamplesPage> {
                   ),
                 ),
               ),
+              const Text('Ads'),
+              _button(
+                title: 'showNativeAds (preloader)',
+                call: (it) => it.showNativeAds('preloader'),
+              ),
+              _button(
+                title: 'showNativeAds (reward)',
+                call: (it) => it.showNativeAds('reward'),
+              ),
+              _button(
+                title: 'showNativeAds (interstitial)',
+                call: (it) => it.showNativeAds('interstitial'),
+              ),
             ],
           ),
         ),
