@@ -197,11 +197,10 @@ class VKBridge implements vk_bridge.VKBridge {
 
     _logger.d('_eventHandler: $jsonEvent');
 
-    final decodedJsonEvent =
-        Map<String, Object>.from(jsonDecode(jsonEvent) as Map);
+    final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, dynamic>;
 
     final type = decodedJsonEvent['type']! as String;
-    final data = decodedJsonEvent['data'];
+    final dynamic data = decodedJsonEvent['data'];
 
     switch (type) {
       case 'VKWebAppUpdateConfig':
