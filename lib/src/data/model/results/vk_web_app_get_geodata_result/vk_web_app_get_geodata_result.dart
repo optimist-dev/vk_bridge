@@ -54,10 +54,10 @@ class VKWebAppGetGeodataResultSerializer
         case 'available':
           if (value is bool) {
             result.available = serializers.deserialize(value,
-                specifiedType: const FullType(bool)) as bool;
+                specifiedType: const FullType(bool)) as bool?;
           } else if (value is int) {
-            result.available = serializers.deserialize(value,
-                    specifiedType: const FullType(int)) as int ==
+            result.available = (serializers.deserialize(value,
+                    specifiedType: const FullType(int)) as int?) ==
                 1;
           } else {
             throw StateError('Field available should be boolean');
@@ -65,11 +65,11 @@ class VKWebAppGetGeodataResultSerializer
           break;
         case 'lat':
           result.lat = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'long':
           result.long = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
       }
     }
