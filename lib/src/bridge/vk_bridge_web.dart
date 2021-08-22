@@ -92,15 +92,11 @@ class VKBridge implements vk_bridge.VKBridge {
 
   Logger _logger = _Logger();
 
-  LaunchParams? _launchParams;
+  @override
+  late final LaunchParams launchParams;
 
   @override
-  LaunchParams? get launchParams => _launchParams;
-
-  String? _launchHash;
-
-  @override
-  String? get launchHash => _launchHash;
+  late final String launchHash;
 
   final _updateConfigSubject = BehaviorSubject<VKWebAppUpdateConfig>();
 
@@ -236,16 +232,18 @@ class VKBridge implements vk_bridge.VKBridge {
     }
 
     try {
-      _launchParams = LaunchParams.parse(rawLaunchParams);
-      _logger.d(_launchParams!);
+      launchParams = LaunchParams.parse(rawLaunchParams);
+      _logger.d(launchParams);
     } catch (e) {
       _logger.e("Can't parse launch params: $rawLaunchParams");
       _logger.e(e);
     }
 
-    _launchHash = window.location.hash;
-    if (_launchHash!.startsWith('#')) {
-      _launchHash = launchHash!.substring(1);
+    final tmpLaunchHash = window.location.hash;
+    if (tmpLaunchHash.startsWith('#')) {
+      launchHash = tmpLaunchHash.substring(1);
+    } else {
+      launchHash = tmpLaunchHash;
     }
 
     return vkWebAppInitResult;
