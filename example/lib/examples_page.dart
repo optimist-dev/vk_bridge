@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vk_bridge/vk_bridge.dart';
 
+/// Main page of example app
 class ExamplesPage extends StatefulWidget {
   @override
   _ExamplesPageState createState() => _ExamplesPageState();
@@ -180,8 +181,8 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 call: (it) => it.showCommunityWidgetPreviewBox(
                     groupId: _vkMiniAppGroupId, type: 'text', code: '''
                 "return {
-    \"title\": \"Цитата\",
-    \"text\": \"Текст цитаты\"
+    "title": "Цитата",
+    "text": "Текст цитаты"
 };"
 '''),
               ),
@@ -208,9 +209,9 @@ class _ExamplesPageState extends State<ExamplesPage> {
               _button(
                 title: 'setViewSettings',
                 call: (it) => it.setViewSettings(
-                  statusBarStyle: "light",
-                  actionBarColor: "#ff00ff",
-                  navigationBarColor: "#ff0000",
+                  statusBarStyle: 'light',
+                  actionBarColor: '#ff00ff',
+                  navigationBarColor: '#ff0000',
                 ),
               ),
               _button(
@@ -234,7 +235,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
               const Text('Interacting with Taptic Engine'),
               _button(
                 title: 'tapticNotificationOccurred',
-                call: (it) => it.tapticNotificationOccurred("error"),
+                call: (it) => it.tapticNotificationOccurred('error'),
               ),
               _button(
                 title: 'tapticSelectionChanged',
@@ -290,19 +291,19 @@ class _ExamplesPageState extends State<ExamplesPage> {
   }
 
   Widget _button({
-    @required String title,
-    @required Future<Object> Function(VKBridge vkBridge) call,
+    required String title,
+    required Future<dynamic> Function(VKBridge vkBridge) call,
   }) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: RaisedButton(
+      child: ElevatedButton(
         child: Text(title),
         onPressed: () => _callVKBridge(call),
       ),
     );
   }
 
-  void _callVKBridge(Future<Object> Function(VKBridge vkBridge) call) {
+  void _callVKBridge(Future<dynamic> Function(VKBridge vkBridge) call) {
     try {
       call(VKBridge.instance).then(_showResult).catchError(_showErrorDialog);
     } catch (e) {
@@ -310,7 +311,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
     }
   }
 
-  void _showResult(Object result) {
+  void _showResult(dynamic result) {
     if (result == null) {
       return;
     }
