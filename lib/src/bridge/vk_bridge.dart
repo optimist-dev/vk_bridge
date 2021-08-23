@@ -45,11 +45,11 @@ abstract class VKBridge {
   /// When the service is started, additional parameters are passed to the URL
   /// specified in the application control, containing data about the user and
   /// the source of launch
-  LaunchParams? get launchParams;
+  LaunchParams get launchParams;
 
   /// When starting the service, an additional hash parameter can be passed to
   /// the URL specified in the application control
-  String? get launchHash;
+  String get launchHash;
 
   /// Stream with VKWebAppUpdateConfig events:
   /// The client dispatches a [VKWebAppUpdateConfig] event to the application
