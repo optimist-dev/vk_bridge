@@ -20,10 +20,10 @@ class _$SetViewSettingsOptionsSerializer
   final String wireName = 'SetViewSettingsOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SetViewSettingsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'status_bar_style',
       serializers.serialize(object.statusBarStyle,
           specifiedType: const FullType(String)),
@@ -40,7 +40,7 @@ class _$SetViewSettingsOptionsSerializer
 
   @override
   SetViewSettingsOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SetViewSettingsOptionsBuilder();
 
@@ -48,7 +48,7 @@ class _$SetViewSettingsOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status_bar_style':
           result.statusBarStyle = serializers.deserialize(value,
@@ -78,11 +78,13 @@ class _$SetViewSettingsOptions extends SetViewSettingsOptions {
   final String navigationBarColor;
 
   factory _$SetViewSettingsOptions(
-          [void Function(SetViewSettingsOptionsBuilder) updates]) =>
+          [void Function(SetViewSettingsOptionsBuilder)? updates]) =>
       (new SetViewSettingsOptionsBuilder()..update(updates)).build();
 
   _$SetViewSettingsOptions._(
-      {this.statusBarStyle, this.actionBarColor, this.navigationBarColor})
+      {required this.statusBarStyle,
+      required this.actionBarColor,
+      required this.navigationBarColor})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         statusBarStyle, 'SetViewSettingsOptions', 'statusBarStyle');
@@ -129,21 +131,21 @@ class _$SetViewSettingsOptions extends SetViewSettingsOptions {
 
 class SetViewSettingsOptionsBuilder
     implements Builder<SetViewSettingsOptions, SetViewSettingsOptionsBuilder> {
-  _$SetViewSettingsOptions _$v;
+  _$SetViewSettingsOptions? _$v;
 
-  String _statusBarStyle;
-  String get statusBarStyle => _$this._statusBarStyle;
-  set statusBarStyle(String statusBarStyle) =>
+  String? _statusBarStyle;
+  String? get statusBarStyle => _$this._statusBarStyle;
+  set statusBarStyle(String? statusBarStyle) =>
       _$this._statusBarStyle = statusBarStyle;
 
-  String _actionBarColor;
-  String get actionBarColor => _$this._actionBarColor;
-  set actionBarColor(String actionBarColor) =>
+  String? _actionBarColor;
+  String? get actionBarColor => _$this._actionBarColor;
+  set actionBarColor(String? actionBarColor) =>
       _$this._actionBarColor = actionBarColor;
 
-  String _navigationBarColor;
-  String get navigationBarColor => _$this._navigationBarColor;
-  set navigationBarColor(String navigationBarColor) =>
+  String? _navigationBarColor;
+  String? get navigationBarColor => _$this._navigationBarColor;
+  set navigationBarColor(String? navigationBarColor) =>
       _$this._navigationBarColor = navigationBarColor;
 
   SetViewSettingsOptionsBuilder();
@@ -166,7 +168,7 @@ class SetViewSettingsOptionsBuilder
   }
 
   @override
-  void update(void Function(SetViewSettingsOptionsBuilder) updates) {
+  void update(void Function(SetViewSettingsOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

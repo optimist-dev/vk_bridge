@@ -21,10 +21,10 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
   final String wireName = 'VKWebAppSubscribeStoryAppResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppSubscribeStoryAppResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'access_key',
       serializers.serialize(object.access_key,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
 
   @override
   VKWebAppSubscribeStoryAppResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppSubscribeStoryAppResultBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'access_key':
           result.access_key = serializers.deserialize(value,
@@ -62,10 +62,10 @@ class _$VKWebAppSubscribeStoryAppResult
   final String access_key;
 
   factory _$VKWebAppSubscribeStoryAppResult(
-          [void Function(VKWebAppSubscribeStoryAppResultBuilder) updates]) =>
+          [void Function(VKWebAppSubscribeStoryAppResultBuilder)? updates]) =>
       (new VKWebAppSubscribeStoryAppResultBuilder()..update(updates)).build();
 
-  _$VKWebAppSubscribeStoryAppResult._({this.access_key}) : super._() {
+  _$VKWebAppSubscribeStoryAppResult._({required this.access_key}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         access_key, 'VKWebAppSubscribeStoryAppResult', 'access_key');
   }
@@ -103,11 +103,11 @@ class VKWebAppSubscribeStoryAppResultBuilder
     implements
         Builder<VKWebAppSubscribeStoryAppResult,
             VKWebAppSubscribeStoryAppResultBuilder> {
-  _$VKWebAppSubscribeStoryAppResult _$v;
+  _$VKWebAppSubscribeStoryAppResult? _$v;
 
-  String _access_key;
-  String get access_key => _$this._access_key;
-  set access_key(String access_key) => _$this._access_key = access_key;
+  String? _access_key;
+  String? get access_key => _$this._access_key;
+  set access_key(String? access_key) => _$this._access_key = access_key;
 
   VKWebAppSubscribeStoryAppResultBuilder();
 
@@ -127,7 +127,7 @@ class VKWebAppSubscribeStoryAppResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppSubscribeStoryAppResultBuilder) updates) {
+  void update(void Function(VKWebAppSubscribeStoryAppResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

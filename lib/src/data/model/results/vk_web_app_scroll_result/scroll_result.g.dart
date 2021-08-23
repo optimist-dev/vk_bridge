@@ -16,9 +16,9 @@ class _$ScrollResultSerializer implements StructuredSerializer<ScrollResult> {
   final String wireName = 'ScrollResult';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ScrollResult object,
+  Iterable<Object?> serialize(Serializers serializers, ScrollResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'top',
       serializers.serialize(object.top, specifiedType: const FullType(int)),
       'height',
@@ -29,7 +29,8 @@ class _$ScrollResultSerializer implements StructuredSerializer<ScrollResult> {
   }
 
   @override
-  ScrollResult deserialize(Serializers serializers, Iterable<Object> serialized,
+  ScrollResult deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ScrollResultBuilder();
 
@@ -37,7 +38,7 @@ class _$ScrollResultSerializer implements StructuredSerializer<ScrollResult> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'top':
           result.top = serializers.deserialize(value,
@@ -60,10 +61,10 @@ class _$ScrollResult extends ScrollResult {
   @override
   final int height;
 
-  factory _$ScrollResult([void Function(ScrollResultBuilder) updates]) =>
+  factory _$ScrollResult([void Function(ScrollResultBuilder)? updates]) =>
       (new ScrollResultBuilder()..update(updates)).build();
 
-  _$ScrollResult._({this.top, this.height}) : super._() {
+  _$ScrollResult._({required this.top, required this.height}) : super._() {
     BuiltValueNullFieldError.checkNotNull(top, 'ScrollResult', 'top');
     BuiltValueNullFieldError.checkNotNull(height, 'ScrollResult', 'height');
   }
@@ -97,15 +98,15 @@ class _$ScrollResult extends ScrollResult {
 
 class ScrollResultBuilder
     implements Builder<ScrollResult, ScrollResultBuilder> {
-  _$ScrollResult _$v;
+  _$ScrollResult? _$v;
 
-  int _top;
-  int get top => _$this._top;
-  set top(int top) => _$this._top = top;
+  int? _top;
+  int? get top => _$this._top;
+  set top(int? top) => _$this._top = top;
 
-  int _height;
-  int get height => _$this._height;
-  set height(int height) => _$this._height = height;
+  int? _height;
+  int? get height => _$this._height;
+  set height(int? height) => _$this._height = height;
 
   ScrollResultBuilder();
 
@@ -126,7 +127,7 @@ class ScrollResultBuilder
   }
 
   @override
-  void update(void Function(ScrollResultBuilder) updates) {
+  void update(void Function(ScrollResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -27,6 +27,5 @@ abstract class VKWebAppFlashGetInfoResult
 
   /// Flashlight brightness level from 0 to 1.
   @BuiltValueField(wireName: 'level')
-  @nullable
-  double get level;
+  double? get level;
 }

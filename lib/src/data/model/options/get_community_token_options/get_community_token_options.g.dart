@@ -20,10 +20,10 @@ class _$GetCommunityTokenOptionsSerializer
   final String wireName = 'GetCommunityTokenOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GetCommunityTokenOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
       'group_id',
@@ -38,7 +38,7 @@ class _$GetCommunityTokenOptionsSerializer
 
   @override
   GetCommunityTokenOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GetCommunityTokenOptionsBuilder();
 
@@ -46,7 +46,7 @@ class _$GetCommunityTokenOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -76,10 +76,11 @@ class _$GetCommunityTokenOptions extends GetCommunityTokenOptions {
   final String scope;
 
   factory _$GetCommunityTokenOptions(
-          [void Function(GetCommunityTokenOptionsBuilder) updates]) =>
+          [void Function(GetCommunityTokenOptionsBuilder)? updates]) =>
       (new GetCommunityTokenOptionsBuilder()..update(updates)).build();
 
-  _$GetCommunityTokenOptions._({this.appId, this.groupId, this.scope})
+  _$GetCommunityTokenOptions._(
+      {required this.appId, required this.groupId, required this.scope})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         appId, 'GetCommunityTokenOptions', 'appId');
@@ -126,19 +127,19 @@ class _$GetCommunityTokenOptions extends GetCommunityTokenOptions {
 class GetCommunityTokenOptionsBuilder
     implements
         Builder<GetCommunityTokenOptions, GetCommunityTokenOptionsBuilder> {
-  _$GetCommunityTokenOptions _$v;
+  _$GetCommunityTokenOptions? _$v;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
-  String _scope;
-  String get scope => _$this._scope;
-  set scope(String scope) => _$this._scope = scope;
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
 
   GetCommunityTokenOptionsBuilder();
 
@@ -160,7 +161,7 @@ class GetCommunityTokenOptionsBuilder
   }
 
   @override
-  void update(void Function(GetCommunityTokenOptionsBuilder) updates) {
+  void update(void Function(GetCommunityTokenOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

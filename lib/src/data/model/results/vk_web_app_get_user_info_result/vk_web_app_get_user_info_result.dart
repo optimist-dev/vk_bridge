@@ -43,16 +43,13 @@ abstract class VKWebAppGetUserInfoResult
   /// Date of Birth. Returned in the format D.M.YYYY or D.M (if the year of
   /// birth is hidden). If the date of birth is hidden entirely, the field is
   /// missing in the response
-  @nullable
-  String get bdate;
+  String? get bdate;
 
   /// Information about the user's city
-  @nullable
-  City get city;
+  City? get city;
 
   /// Information about the user's country
-  @nullable
-  Country get country;
+  Country? get country;
 
   /// Url of a square user photo with a width of 100 pixels. If the user does
   /// not have a photo, https://vk.com/images/camera_100.png is returned

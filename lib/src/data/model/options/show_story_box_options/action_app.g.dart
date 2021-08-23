@@ -15,13 +15,13 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
   final String wireName = 'ActionApp';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ActionApp object,
+  Iterable<Object?> serialize(Serializers serializers, ActionApp object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.appContext;
     if (value != null) {
       result
@@ -33,7 +33,7 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
   }
 
   @override
-  ActionApp deserialize(Serializers serializers, Iterable<Object> serialized,
+  ActionApp deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ActionAppBuilder();
 
@@ -41,7 +41,7 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -62,12 +62,12 @@ class _$ActionApp extends ActionApp {
   @override
   final int appId;
   @override
-  final String appContext;
+  final String? appContext;
 
-  factory _$ActionApp([void Function(ActionAppBuilder) updates]) =>
+  factory _$ActionApp([void Function(ActionAppBuilder)? updates]) =>
       (new ActionAppBuilder()..update(updates)).build();
 
-  _$ActionApp._({this.appId, this.appContext}) : super._() {
+  _$ActionApp._({required this.appId, this.appContext}) : super._() {
     BuiltValueNullFieldError.checkNotNull(appId, 'ActionApp', 'appId');
   }
 
@@ -101,15 +101,15 @@ class _$ActionApp extends ActionApp {
 }
 
 class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
-  _$ActionApp _$v;
+  _$ActionApp? _$v;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  String _appContext;
-  String get appContext => _$this._appContext;
-  set appContext(String appContext) => _$this._appContext = appContext;
+  String? _appContext;
+  String? get appContext => _$this._appContext;
+  set appContext(String? appContext) => _$this._appContext = appContext;
 
   ActionAppBuilder();
 
@@ -130,7 +130,7 @@ class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
   }
 
   @override
-  void update(void Function(ActionAppBuilder) updates) {
+  void update(void Function(ActionAppBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

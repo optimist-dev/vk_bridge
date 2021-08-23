@@ -20,14 +20,14 @@ class _$VKWebAppShareResultSerializer
   final String wireName = 'VKWebAppShareResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppShareResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.postId;
     if (value != null) {
       result
@@ -39,7 +39,7 @@ class _$VKWebAppShareResultSerializer
 
   @override
   VKWebAppShareResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppShareResultBuilder();
 
@@ -47,7 +47,7 @@ class _$VKWebAppShareResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'post_id':
           result.postId = serializers.deserialize(value,
@@ -66,15 +66,15 @@ class _$VKWebAppShareResultSerializer
 
 class _$VKWebAppShareResult extends VKWebAppShareResult {
   @override
-  final int postId;
+  final int? postId;
   @override
   final String type;
 
   factory _$VKWebAppShareResult(
-          [void Function(VKWebAppShareResultBuilder) updates]) =>
+          [void Function(VKWebAppShareResultBuilder)? updates]) =>
       (new VKWebAppShareResultBuilder()..update(updates)).build();
 
-  _$VKWebAppShareResult._({this.postId, this.type}) : super._() {
+  _$VKWebAppShareResult._({this.postId, required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(type, 'VKWebAppShareResult', 'type');
   }
 
@@ -111,15 +111,15 @@ class _$VKWebAppShareResult extends VKWebAppShareResult {
 
 class VKWebAppShareResultBuilder
     implements Builder<VKWebAppShareResult, VKWebAppShareResultBuilder> {
-  _$VKWebAppShareResult _$v;
+  _$VKWebAppShareResult? _$v;
 
-  int _postId;
-  int get postId => _$this._postId;
-  set postId(int postId) => _$this._postId = postId;
+  int? _postId;
+  int? get postId => _$this._postId;
+  set postId(int? postId) => _$this._postId = postId;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   VKWebAppShareResultBuilder();
 
@@ -140,7 +140,7 @@ class VKWebAppShareResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppShareResultBuilder) updates) {
+  void update(void Function(VKWebAppShareResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

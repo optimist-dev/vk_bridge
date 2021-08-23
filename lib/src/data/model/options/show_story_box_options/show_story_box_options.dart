@@ -33,10 +33,8 @@ abstract class ShowStoryBoxOptions
   String get url;
 
   /// Description of the object of attachment to history
-  @nullable
-  Attachment get attachment;
+  Attachment? get attachment;
 
   /// An array of objects describing stickers on the canvas
-  @nullable
-  BuiltList<StickerContainer> get stickers;
+  BuiltList<StickerContainer>? get stickers;
 }

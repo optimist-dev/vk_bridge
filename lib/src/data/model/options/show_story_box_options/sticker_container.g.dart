@@ -17,9 +17,9 @@ class _$StickerContainerSerializer
   final String wireName = 'StickerContainer';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, StickerContainer object,
+  Iterable<Object?> serialize(Serializers serializers, StickerContainer object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'sticker_type',
       serializers.serialize(object.stickerType,
           specifiedType: const FullType(String)),
@@ -33,7 +33,7 @@ class _$StickerContainerSerializer
 
   @override
   StickerContainer deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StickerContainerBuilder();
 
@@ -41,7 +41,7 @@ class _$StickerContainerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'sticker_type':
           result.stickerType = serializers.deserialize(value,
@@ -49,7 +49,7 @@ class _$StickerContainerSerializer
           break;
         case 'sticker':
           result.sticker.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(RenderableSticker))
+                  specifiedType: const FullType(RenderableSticker))!
               as RenderableSticker);
           break;
       }
@@ -66,10 +66,11 @@ class _$StickerContainer extends StickerContainer {
   final RenderableSticker sticker;
 
   factory _$StickerContainer(
-          [void Function(StickerContainerBuilder) updates]) =>
+          [void Function(StickerContainerBuilder)? updates]) =>
       (new StickerContainerBuilder()..update(updates)).build();
 
-  _$StickerContainer._({this.stickerType, this.sticker}) : super._() {
+  _$StickerContainer._({required this.stickerType, required this.sticker})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         stickerType, 'StickerContainer', 'stickerType');
     BuiltValueNullFieldError.checkNotNull(
@@ -108,16 +109,16 @@ class _$StickerContainer extends StickerContainer {
 
 class StickerContainerBuilder
     implements Builder<StickerContainer, StickerContainerBuilder> {
-  _$StickerContainer _$v;
+  _$StickerContainer? _$v;
 
-  String _stickerType;
-  String get stickerType => _$this._stickerType;
-  set stickerType(String stickerType) => _$this._stickerType = stickerType;
+  String? _stickerType;
+  String? get stickerType => _$this._stickerType;
+  set stickerType(String? stickerType) => _$this._stickerType = stickerType;
 
-  RenderableStickerBuilder _sticker;
+  RenderableStickerBuilder? _sticker;
   RenderableStickerBuilder get sticker =>
       _$this._sticker ??= new RenderableStickerBuilder();
-  set sticker(RenderableStickerBuilder sticker) => _$this._sticker = sticker;
+  set sticker(RenderableStickerBuilder? sticker) => _$this._sticker = sticker;
 
   StickerContainerBuilder();
 
@@ -138,7 +139,7 @@ class StickerContainerBuilder
   }
 
   @override
-  void update(void Function(StickerContainerBuilder) updates) {
+  void update(void Function(StickerContainerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -152,7 +153,7 @@ class StickerContainerBuilder
                   stickerType, 'StickerContainer', 'stickerType'),
               sticker: sticker.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'sticker';
         sticker.build();

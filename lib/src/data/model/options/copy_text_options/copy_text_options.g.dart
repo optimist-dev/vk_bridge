@@ -17,9 +17,9 @@ class _$CopyTextOptionsSerializer
   final String wireName = 'CopyTextOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CopyTextOptions object,
+  Iterable<Object?> serialize(Serializers serializers, CopyTextOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'text',
       serializers.serialize(object.text, specifiedType: const FullType(String)),
     ];
@@ -29,7 +29,7 @@ class _$CopyTextOptionsSerializer
 
   @override
   CopyTextOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CopyTextOptionsBuilder();
 
@@ -37,7 +37,7 @@ class _$CopyTextOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'text':
           result.text = serializers.deserialize(value,
@@ -54,10 +54,10 @@ class _$CopyTextOptions extends CopyTextOptions {
   @override
   final String text;
 
-  factory _$CopyTextOptions([void Function(CopyTextOptionsBuilder) updates]) =>
+  factory _$CopyTextOptions([void Function(CopyTextOptionsBuilder)? updates]) =>
       (new CopyTextOptionsBuilder()..update(updates)).build();
 
-  _$CopyTextOptions._({this.text}) : super._() {
+  _$CopyTextOptions._({required this.text}) : super._() {
     BuiltValueNullFieldError.checkNotNull(text, 'CopyTextOptions', 'text');
   }
 
@@ -89,11 +89,11 @@ class _$CopyTextOptions extends CopyTextOptions {
 
 class CopyTextOptionsBuilder
     implements Builder<CopyTextOptions, CopyTextOptionsBuilder> {
-  _$CopyTextOptions _$v;
+  _$CopyTextOptions? _$v;
 
-  String _text;
-  String get text => _$this._text;
-  set text(String text) => _$this._text = text;
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
 
   CopyTextOptionsBuilder();
 
@@ -113,7 +113,7 @@ class CopyTextOptionsBuilder
   }
 
   @override
-  void update(void Function(CopyTextOptionsBuilder) updates) {
+  void update(void Function(CopyTextOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -17,9 +17,10 @@ class _$VKWebAppBoolResultSerializer
   final String wireName = 'VKWebAppBoolResult';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VKWebAppBoolResult object,
+  Iterable<Object?> serialize(
+      Serializers serializers, VKWebAppBoolResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'result',
       serializers.serialize(object.result, specifiedType: const FullType(bool)),
     ];
@@ -29,7 +30,7 @@ class _$VKWebAppBoolResultSerializer
 
   @override
   VKWebAppBoolResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppBoolResultBuilder();
 
@@ -37,7 +38,7 @@ class _$VKWebAppBoolResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'result':
           result.result = serializers.deserialize(value,
@@ -55,10 +56,10 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
   final bool result;
 
   factory _$VKWebAppBoolResult(
-          [void Function(VKWebAppBoolResultBuilder) updates]) =>
+          [void Function(VKWebAppBoolResultBuilder)? updates]) =>
       (new VKWebAppBoolResultBuilder()..update(updates)).build();
 
-  _$VKWebAppBoolResult._({this.result}) : super._() {
+  _$VKWebAppBoolResult._({required this.result}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         result, 'VKWebAppBoolResult', 'result');
   }
@@ -93,11 +94,11 @@ class _$VKWebAppBoolResult extends VKWebAppBoolResult {
 
 class VKWebAppBoolResultBuilder
     implements Builder<VKWebAppBoolResult, VKWebAppBoolResultBuilder> {
-  _$VKWebAppBoolResult _$v;
+  _$VKWebAppBoolResult? _$v;
 
-  bool _result;
-  bool get result => _$this._result;
-  set result(bool result) => _$this._result = result;
+  bool? _result;
+  bool? get result => _$this._result;
+  set result(bool? result) => _$this._result = result;
 
   VKWebAppBoolResultBuilder();
 
@@ -117,7 +118,7 @@ class VKWebAppBoolResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppBoolResultBuilder) updates) {
+  void update(void Function(VKWebAppBoolResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

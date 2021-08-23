@@ -21,10 +21,10 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
   final String wireName = 'VKWebAppAddToHomeScreenInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppAddToHomeScreenInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'is_feature_supported',
       serializers.serialize(object.isFeatureSupported,
           specifiedType: const FullType(bool)),
@@ -38,7 +38,7 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
 
   @override
   VKWebAppAddToHomeScreenInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppAddToHomeScreenInfoResultBuilder();
 
@@ -46,7 +46,7 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'is_feature_supported':
           result.isFeatureSupported = serializers.deserialize(value,
@@ -71,11 +71,11 @@ class _$VKWebAppAddToHomeScreenInfoResult
   final bool isAddedToHomeScreen;
 
   factory _$VKWebAppAddToHomeScreenInfoResult(
-          [void Function(VKWebAppAddToHomeScreenInfoResultBuilder) updates]) =>
+          [void Function(VKWebAppAddToHomeScreenInfoResultBuilder)? updates]) =>
       (new VKWebAppAddToHomeScreenInfoResultBuilder()..update(updates)).build();
 
   _$VKWebAppAddToHomeScreenInfoResult._(
-      {this.isFeatureSupported, this.isAddedToHomeScreen})
+      {required this.isFeatureSupported, required this.isAddedToHomeScreen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(isFeatureSupported,
         'VKWebAppAddToHomeScreenInfoResult', 'isFeatureSupported');
@@ -119,16 +119,16 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
     implements
         Builder<VKWebAppAddToHomeScreenInfoResult,
             VKWebAppAddToHomeScreenInfoResultBuilder> {
-  _$VKWebAppAddToHomeScreenInfoResult _$v;
+  _$VKWebAppAddToHomeScreenInfoResult? _$v;
 
-  bool _isFeatureSupported;
-  bool get isFeatureSupported => _$this._isFeatureSupported;
-  set isFeatureSupported(bool isFeatureSupported) =>
+  bool? _isFeatureSupported;
+  bool? get isFeatureSupported => _$this._isFeatureSupported;
+  set isFeatureSupported(bool? isFeatureSupported) =>
       _$this._isFeatureSupported = isFeatureSupported;
 
-  bool _isAddedToHomeScreen;
-  bool get isAddedToHomeScreen => _$this._isAddedToHomeScreen;
-  set isAddedToHomeScreen(bool isAddedToHomeScreen) =>
+  bool? _isAddedToHomeScreen;
+  bool? get isAddedToHomeScreen => _$this._isAddedToHomeScreen;
+  set isAddedToHomeScreen(bool? isAddedToHomeScreen) =>
       _$this._isAddedToHomeScreen = isAddedToHomeScreen;
 
   VKWebAppAddToHomeScreenInfoResultBuilder();
@@ -150,7 +150,8 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppAddToHomeScreenInfoResultBuilder) updates) {
+  void update(
+      void Function(VKWebAppAddToHomeScreenInfoResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

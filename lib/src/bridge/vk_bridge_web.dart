@@ -9,7 +9,6 @@ import 'dart:js_util';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:js/js.dart';
-import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
@@ -89,16 +88,16 @@ external set _vkBridgeDartListener(void Function(Object event) f);
 /// Web implementation of the VK Mini Aps platform contact
 class VKBridge implements vk_bridge.VKBridge {
   @override
-  void setLogger(Logger logger) => _logger = logger ?? _Logger();
+  void setLogger(Logger logger) => _logger = logger;
 
   Logger _logger = _Logger();
 
-  LaunchParams _launchParams;
+  late final LaunchParams _launchParams;
 
   @override
   LaunchParams get launchParams => _launchParams;
 
-  String _launchHash;
+  late final String _launchHash;
 
   @override
   String get launchHash => _launchHash;
@@ -125,7 +124,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   Future<Result> _sendInternalWithOptions<Result, Options>(
     String method, [
-    Options props,
+    Options? props,
   ]) async {
     assert(Result.toString() != 'dynamic', "Result type can't be dynamic");
     assert(
@@ -156,9 +155,13 @@ class VKBridge implements vk_bridge.VKBridge {
       final jsObjectResult =
           await promiseToFuture<Object>(_send(method, parse(propsJson)));
       final jsonResult = stringify(jsObjectResult);
-      final Object decodedJson = jsonDecode(jsonResult);
+      final Object decodedJson = jsonDecode(jsonResult) as Object;
       try {
         final result = deserialize<Result>(decodedJson);
+        if (result == null) {
+          _logger.e('send($method) result is null: $jsonResult');
+          throw Exception('Result cannot be null. send($method)');
+        }
         _logger.d('send($method) result: $result');
         return result;
       } catch (e) {
@@ -173,11 +176,11 @@ class VKBridge implements vk_bridge.VKBridge {
       }
 
       final jsonError = stringify(jsObjectError);
-      final Object decodedJson = jsonDecode(jsonError);
+      final Object decodedJson = jsonDecode(jsonError) as Object;
 
       VKWebAppError error;
       try {
-        error = deserialize<VKWebAppError>(decodedJson);
+        error = deserialize<VKWebAppError>(decodedJson)!;
       } catch (e) {
         _logger.e('send($method) jsonError: $jsonError');
         _logger.e("can't deserialize error: $decodedJson");
@@ -194,25 +197,24 @@ class VKBridge implements vk_bridge.VKBridge {
 
     _logger.d('_eventHandler: $jsonEvent');
 
-    final decodedJsonEvent =
-        Map<String, Object>.from(jsonDecode(jsonEvent) as Map);
+    final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, dynamic>;
 
-    final type = decodedJsonEvent['type'] as String;
-    final data = decodedJsonEvent['data'];
+    final type = decodedJsonEvent['type']! as String;
+    final dynamic data = decodedJsonEvent['data'];
 
     switch (type) {
       case 'VKWebAppUpdateConfig':
-        final updateConfig = deserialize<VKWebAppUpdateConfig>(data);
+        final updateConfig = deserialize<VKWebAppUpdateConfig>(data!)!;
         _logger.d(updateConfig);
         _updateConfigSubject.add(updateConfig);
         break;
       case 'VKWebAppLocationChanged':
-        final locationChanged = deserialize<VKWebAppLocationChanged>(data);
+        final locationChanged = deserialize<VKWebAppLocationChanged>(data!)!;
         _logger.d(locationChanged);
         _locationChangedSubject.add(locationChanged);
         break;
       case 'VKWebAppViewHide':
-        final viewHide = deserialize<VKWebAppViewHide>(data);
+        final viewHide = deserialize<VKWebAppViewHide>(data!)!;
         _logger.d(viewHide);
         _viewHideSubject.add(viewHide);
         break;
@@ -228,22 +230,24 @@ class VKBridge implements vk_bridge.VKBridge {
     );
 
     /// https://vk.cc/9AjsnM
-    var rawLaunchParams = window.location.search;
+    var rawLaunchParams = window.location.search ?? '';
     if (rawLaunchParams.startsWith('?')) {
       rawLaunchParams = rawLaunchParams.substring(1);
     }
 
     try {
       _launchParams = LaunchParams.parse(rawLaunchParams);
-      _logger.d(_launchParams);
+      _logger.d(launchParams);
     } catch (e) {
       _logger.e("Can't parse launch params: $rawLaunchParams");
       _logger.e(e);
     }
 
-    _launchHash = window.location.hash;
-    if (_launchHash.startsWith('#')) {
-      _launchHash = launchHash.substring(1);
+    final tmpLaunchHash = window.location.hash;
+    if (tmpLaunchHash.startsWith('#')) {
+      _launchHash = tmpLaunchHash.substring(1);
+    } else {
+      _launchHash = tmpLaunchHash;
     }
 
     return vkWebAppInitResult;
@@ -265,7 +269,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppShareResult> share([String link]) {
+  Future<VKWebAppShareResult> share([String? link]) {
     final options = ShareOptions((b) => b..link = link);
     return _sendInternalWithOptions('VKWebAppShare', options);
   }
@@ -273,9 +277,8 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppBoolResult> showImages(
     List<String> images, {
-    int startIndex,
+    int? startIndex,
   }) {
-    assert(images != null, "Images can't be null");
     assert(images.isNotEmpty, "Images can't be empty");
     assert(
       startIndex == null || (startIndex >= 0 && startIndex < images.length),
@@ -291,13 +294,13 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> downloadFile({
-    @required String url,
-    @required String filename,
+    required String url,
+    required String filename,
   }) {
-    assert(url != null && url.isNotEmpty, "Url can't be null or empty");
+    assert(url.isNotEmpty, "Url can't be empty");
     assert(
-      filename != null && filename.isNotEmpty,
-      "Filename can't be null or empty",
+      filename.isNotEmpty,
+      "Filename can't be empty",
     );
     final options = DownloadFileOptions(
       (b) => b
@@ -351,8 +354,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> openApp({
-    @required int appId,
-    String location,
+    required int appId,
+    String? location,
   }) {
     final options = OpenAppOptions(
       (b) => b
@@ -363,7 +366,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppOpenAppResult> close({String status, Object payload}) {
+  Future<VKWebAppOpenAppResult> close({String? status, Object? payload}) {
     final options = CloseOptions(
       (b) => b
         ..status = status
@@ -383,7 +386,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppBoolResult> sendToClient([String fragment]) {
+  Future<VKWebAppBoolResult> sendToClient([String? fragment]) {
     final options = SendToClientOptions((b) => b..fragment = fragment);
     return _sendInternalWithOptions('VKWebAppSendToClient', options);
   }
@@ -425,8 +428,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> storageSet({
-    @required String key,
-    String value,
+    required String key,
+    String? value,
   }) {
     final options = StorageSetOptions(
       (b) => b
@@ -438,7 +441,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppStorageGetKeysResult> storageGetKeys({
-    int count,
+    int? count,
     int offset = 0,
   }) {
     final options = StorageGetKeysOptions(
@@ -462,8 +465,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
-    @required int appId,
-    @required String scope,
+    required int appId,
+    required String scope,
   }) {
     final options = GetAuthTokenOptions(
       (b) => b
@@ -493,8 +496,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> allowMessagesFromGroup({
-    @required int groupId,
-    String key,
+    required int groupId,
+    String? key,
   }) {
     final options = AllowMessagesFromGroupOptions((b) => b.groupId = groupId);
     return _sendInternalWithOptions('VKWebAppAllowMessagesFromGroup', options);
@@ -502,9 +505,9 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppCommunityAccessTokenResult> getCommunityToken({
-    @required int appId,
-    @required int groupId,
-    @required String scope,
+    required int appId,
+    required int groupId,
+    required String scope,
   }) {
     final options = GetCommunityTokenOptions(
       (b) => b
@@ -522,9 +525,9 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> showCommunityWidgetPreviewBox({
-    @required int groupId,
-    @required String type,
-    @required String code,
+    required int groupId,
+    required String type,
+    required String code,
   }) {
     final options = ShowCommunityWidgetPreviewBoxOptions(
       (b) => b
@@ -551,8 +554,8 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppResizeWindowResult> resizeWindow({
-    @required int width,
-    @required int height,
+    required int width,
+    required int height,
   }) {
     final options = ResizeWindowOptions(
       (b) => b
@@ -563,7 +566,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppScrollResult> scroll({@required int top, int speed = 0}) {
+  Future<VKWebAppScrollResult> scroll({required int top, int speed = 0}) {
     final options = ScrollOptions(
       (b) => b
         ..top = top
@@ -580,9 +583,9 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> setViewSettings({
-    @required String statusBarStyle,
-    String actionBarColor,
-    String navigationBarColor,
+    required String statusBarStyle,
+    String? actionBarColor,
+    String? navigationBarColor,
   }) {
     final options = SetViewSettingsOptions(
       (b) => b
@@ -621,10 +624,10 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppSubscribeStoryAppResult> subscribeStoryApp({
-    @required int storyOwnerId,
-    @required int storyId,
-    @required int stickerId,
-    String accessKey,
+    required int storyOwnerId,
+    required int storyId,
+    required int stickerId,
+    String? accessKey,
   }) {
     final options = SubscribeStoryAppOptions(
       (b) => b

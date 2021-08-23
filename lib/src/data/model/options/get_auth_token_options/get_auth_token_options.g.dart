@@ -20,10 +20,10 @@ class _$GetAuthTokenOptionsSerializer
   final String wireName = 'GetAuthTokenOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GetAuthTokenOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
       'scope',
@@ -36,7 +36,7 @@ class _$GetAuthTokenOptionsSerializer
 
   @override
   GetAuthTokenOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GetAuthTokenOptionsBuilder();
 
@@ -44,7 +44,7 @@ class _$GetAuthTokenOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -68,10 +68,11 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
   final String scope;
 
   factory _$GetAuthTokenOptions(
-          [void Function(GetAuthTokenOptionsBuilder) updates]) =>
+          [void Function(GetAuthTokenOptionsBuilder)? updates]) =>
       (new GetAuthTokenOptionsBuilder()..update(updates)).build();
 
-  _$GetAuthTokenOptions._({this.appId, this.scope}) : super._() {
+  _$GetAuthTokenOptions._({required this.appId, required this.scope})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         appId, 'GetAuthTokenOptions', 'appId');
     BuiltValueNullFieldError.checkNotNull(
@@ -111,15 +112,15 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
 
 class GetAuthTokenOptionsBuilder
     implements Builder<GetAuthTokenOptions, GetAuthTokenOptionsBuilder> {
-  _$GetAuthTokenOptions _$v;
+  _$GetAuthTokenOptions? _$v;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  String _scope;
-  String get scope => _$this._scope;
-  set scope(String scope) => _$this._scope = scope;
+  String? _scope;
+  String? get scope => _$this._scope;
+  set scope(String? scope) => _$this._scope = scope;
 
   GetAuthTokenOptionsBuilder();
 
@@ -140,7 +141,7 @@ class GetAuthTokenOptionsBuilder
   }
 
   @override
-  void update(void Function(GetAuthTokenOptionsBuilder) updates) {
+  void update(void Function(GetAuthTokenOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

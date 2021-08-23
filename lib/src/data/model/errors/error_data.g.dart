@@ -15,9 +15,9 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
   final String wireName = 'ErrorData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ErrorData object,
+  Iterable<Object?> serialize(Serializers serializers, ErrorData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'error_code',
       serializers.serialize(object.errorCode,
           specifiedType: const FullType(int)),
@@ -30,7 +30,7 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
   }
 
   @override
-  ErrorData deserialize(Serializers serializers, Iterable<Object> serialized,
+  ErrorData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ErrorDataBuilder();
 
@@ -38,7 +38,7 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'error_code':
           result.errorCode = serializers.deserialize(value,
@@ -61,10 +61,11 @@ class _$ErrorData extends ErrorData {
   @override
   final String errorReason;
 
-  factory _$ErrorData([void Function(ErrorDataBuilder) updates]) =>
+  factory _$ErrorData([void Function(ErrorDataBuilder)? updates]) =>
       (new ErrorDataBuilder()..update(updates)).build();
 
-  _$ErrorData._({this.errorCode, this.errorReason}) : super._() {
+  _$ErrorData._({required this.errorCode, required this.errorReason})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(errorCode, 'ErrorData', 'errorCode');
     BuiltValueNullFieldError.checkNotNull(
         errorReason, 'ErrorData', 'errorReason');
@@ -100,15 +101,15 @@ class _$ErrorData extends ErrorData {
 }
 
 class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
-  _$ErrorData _$v;
+  _$ErrorData? _$v;
 
-  int _errorCode;
-  int get errorCode => _$this._errorCode;
-  set errorCode(int errorCode) => _$this._errorCode = errorCode;
+  int? _errorCode;
+  int? get errorCode => _$this._errorCode;
+  set errorCode(int? errorCode) => _$this._errorCode = errorCode;
 
-  String _errorReason;
-  String get errorReason => _$this._errorReason;
-  set errorReason(String errorReason) => _$this._errorReason = errorReason;
+  String? _errorReason;
+  String? get errorReason => _$this._errorReason;
+  set errorReason(String? errorReason) => _$this._errorReason = errorReason;
 
   ErrorDataBuilder();
 
@@ -129,7 +130,7 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
   }
 
   @override
-  void update(void Function(ErrorDataBuilder) updates) {
+  void update(void Function(ErrorDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

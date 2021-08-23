@@ -22,7 +22,6 @@ abstract class ActionApp implements Built<ActionApp, ActionAppBuilder>, Action {
   /// in vk_ref, the value of story
   /// {owner_id}_{story_id}_{access_key}_{sticker_id}_{context}
   /// context - Base64 string. Maximum 500 characters
-  @nullable
   @BuiltValueField(wireName: 'app_context')
-  String get appContext;
+  String? get appContext;
 }

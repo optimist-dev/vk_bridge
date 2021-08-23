@@ -45,8 +45,7 @@ abstract class VKWebAppGetGroupInfoResult
   /// Possible values:
   /// deleted - the group has been deleted
   /// banned - the group is blocked
-  @nullable
-  int get deactivated;
+  int? get deactivated;
 
   // TODO: bool
   /// Information about whether the current user is a manager.
@@ -56,8 +55,7 @@ abstract class VKWebAppGetGroupInfoResult
   ///
   /// Requires scope = groups
   @BuiltValueField(wireName: 'is_admin')
-  @nullable
-  int get isAdmin;
+  int? get isAdmin;
 
   // TODO: enum
   /// Permission level of the current user (if is_admin = 1):
@@ -67,8 +65,7 @@ abstract class VKWebAppGetGroupInfoResult
   ///
   /// Requires scope = groups
   @BuiltValueField(wireName: 'admin_level')
-  @nullable
-  int get adminLevel;
+  int? get adminLevel;
 
   // TODO: enum
   /// Information about whether the current user is a member.
@@ -78,8 +75,7 @@ abstract class VKWebAppGetGroupInfoResult
   ///
   /// Requires scope = groups
   @BuiltValueField(wireName: 'is_member')
-  @nullable
-  int get isMember;
+  int? get isMember;
 
   // TODO: enum
   /// Information about whether the current user is an advertiser.
@@ -89,8 +85,7 @@ abstract class VKWebAppGetGroupInfoResult
   ///
   /// Requires scope = groups
   @BuiltValueField(wireName: 'is_advertiser')
-  @nullable
-  int get isAdvertiser;
+  int? get isAdvertiser;
 
   // TODO: enum
   /// The ID of the user who sent the invitation to the community.
@@ -98,8 +93,7 @@ abstract class VKWebAppGetGroupInfoResult
   ///
   /// Requires scope = groups
   @BuiltValueField(wireName: 'invited_by')
-  @nullable
-  int get invitedBy;
+  int? get invitedBy;
 
   // TODO: enum
   /// Community type:
@@ -108,8 +102,7 @@ abstract class VKWebAppGetGroupInfoResult
   /// event - an event.
   ///
   /// Requires scope = groups
-  @nullable
-  String get type;
+  String? get type;
 
   /// The URL of the main photo with a size of 50x50px.
   @BuiltValueField(wireName: 'photo_50')

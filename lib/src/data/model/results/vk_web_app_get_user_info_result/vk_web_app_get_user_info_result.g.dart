@@ -20,10 +20,10 @@ class _$VKWebAppGetUserInfoResultSerializer
   final String wireName = 'VKWebAppGetUserInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetUserInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'first_name',
@@ -47,7 +47,7 @@ class _$VKWebAppGetUserInfoResultSerializer
       serializers.serialize(object.timezone,
           specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.bdate;
     if (value != null) {
       result
@@ -74,7 +74,7 @@ class _$VKWebAppGetUserInfoResultSerializer
 
   @override
   VKWebAppGetUserInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetUserInfoResultBuilder();
 
@@ -82,7 +82,7 @@ class _$VKWebAppGetUserInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -106,11 +106,11 @@ class _$VKWebAppGetUserInfoResultSerializer
           break;
         case 'city':
           result.city.replace(serializers.deserialize(value,
-              specifiedType: const FullType(City)) as City);
+              specifiedType: const FullType(City))! as City);
           break;
         case 'country':
           result.country.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Country)) as Country);
+              specifiedType: const FullType(Country))! as Country);
           break;
         case 'photo_100':
           result.photo100 = serializers.deserialize(value,
@@ -145,11 +145,11 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
   @override
   final int sex;
   @override
-  final String bdate;
+  final String? bdate;
   @override
-  final City city;
+  final City? city;
   @override
-  final Country country;
+  final Country? country;
   @override
   final String photo100;
   @override
@@ -160,21 +160,21 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
   final int timezone;
 
   factory _$VKWebAppGetUserInfoResult(
-          [void Function(VKWebAppGetUserInfoResultBuilder) updates]) =>
+          [void Function(VKWebAppGetUserInfoResultBuilder)? updates]) =>
       (new VKWebAppGetUserInfoResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetUserInfoResult._(
-      {this.id,
-      this.firstName,
-      this.lastName,
-      this.sex,
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.sex,
       this.bdate,
       this.city,
       this.country,
-      this.photo100,
-      this.photo200,
-      this.photoMaxOrig,
-      this.timezone})
+      required this.photo100,
+      required this.photo200,
+      required this.photoMaxOrig,
+      required this.timezone})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, 'VKWebAppGetUserInfoResult', 'id');
@@ -265,51 +265,51 @@ class _$VKWebAppGetUserInfoResult extends VKWebAppGetUserInfoResult {
 class VKWebAppGetUserInfoResultBuilder
     implements
         Builder<VKWebAppGetUserInfoResult, VKWebAppGetUserInfoResultBuilder> {
-  _$VKWebAppGetUserInfoResult _$v;
+  _$VKWebAppGetUserInfoResult? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
-  int _sex;
-  int get sex => _$this._sex;
-  set sex(int sex) => _$this._sex = sex;
+  int? _sex;
+  int? get sex => _$this._sex;
+  set sex(int? sex) => _$this._sex = sex;
 
-  String _bdate;
-  String get bdate => _$this._bdate;
-  set bdate(String bdate) => _$this._bdate = bdate;
+  String? _bdate;
+  String? get bdate => _$this._bdate;
+  set bdate(String? bdate) => _$this._bdate = bdate;
 
-  CityBuilder _city;
+  CityBuilder? _city;
   CityBuilder get city => _$this._city ??= new CityBuilder();
-  set city(CityBuilder city) => _$this._city = city;
+  set city(CityBuilder? city) => _$this._city = city;
 
-  CountryBuilder _country;
+  CountryBuilder? _country;
   CountryBuilder get country => _$this._country ??= new CountryBuilder();
-  set country(CountryBuilder country) => _$this._country = country;
+  set country(CountryBuilder? country) => _$this._country = country;
 
-  String _photo100;
-  String get photo100 => _$this._photo100;
-  set photo100(String photo100) => _$this._photo100 = photo100;
+  String? _photo100;
+  String? get photo100 => _$this._photo100;
+  set photo100(String? photo100) => _$this._photo100 = photo100;
 
-  String _photo200;
-  String get photo200 => _$this._photo200;
-  set photo200(String photo200) => _$this._photo200 = photo200;
+  String? _photo200;
+  String? get photo200 => _$this._photo200;
+  set photo200(String? photo200) => _$this._photo200 = photo200;
 
-  String _photoMaxOrig;
-  String get photoMaxOrig => _$this._photoMaxOrig;
-  set photoMaxOrig(String photoMaxOrig) => _$this._photoMaxOrig = photoMaxOrig;
+  String? _photoMaxOrig;
+  String? get photoMaxOrig => _$this._photoMaxOrig;
+  set photoMaxOrig(String? photoMaxOrig) => _$this._photoMaxOrig = photoMaxOrig;
 
-  int _timezone;
-  int get timezone => _$this._timezone;
-  set timezone(int timezone) => _$this._timezone = timezone;
+  int? _timezone;
+  int? get timezone => _$this._timezone;
+  set timezone(int? timezone) => _$this._timezone = timezone;
 
   VKWebAppGetUserInfoResultBuilder();
 
@@ -339,7 +339,7 @@ class VKWebAppGetUserInfoResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetUserInfoResultBuilder) updates) {
+  void update(void Function(VKWebAppGetUserInfoResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -369,7 +369,7 @@ class VKWebAppGetUserInfoResultBuilder
               timezone: BuiltValueNullFieldError.checkNotNull(
                   timezone, 'VKWebAppGetUserInfoResult', 'timezone'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'city';
         _city?.build();

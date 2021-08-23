@@ -21,10 +21,10 @@ class _$VKWebAppGetPhoneNumberResultSerializer
   final String wireName = 'VKWebAppGetPhoneNumberResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetPhoneNumberResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'sign',
       serializers.serialize(object.sign, specifiedType: const FullType(String)),
       'phone_number',
@@ -37,7 +37,7 @@ class _$VKWebAppGetPhoneNumberResultSerializer
 
   @override
   VKWebAppGetPhoneNumberResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetPhoneNumberResultBuilder();
 
@@ -45,7 +45,7 @@ class _$VKWebAppGetPhoneNumberResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'sign':
           result.sign = serializers.deserialize(value,
@@ -69,10 +69,12 @@ class _$VKWebAppGetPhoneNumberResult extends VKWebAppGetPhoneNumberResult {
   final String phoneNumber;
 
   factory _$VKWebAppGetPhoneNumberResult(
-          [void Function(VKWebAppGetPhoneNumberResultBuilder) updates]) =>
+          [void Function(VKWebAppGetPhoneNumberResultBuilder)? updates]) =>
       (new VKWebAppGetPhoneNumberResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetPhoneNumberResult._({this.sign, this.phoneNumber}) : super._() {
+  _$VKWebAppGetPhoneNumberResult._(
+      {required this.sign, required this.phoneNumber})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         sign, 'VKWebAppGetPhoneNumberResult', 'sign');
     BuiltValueNullFieldError.checkNotNull(
@@ -114,15 +116,15 @@ class VKWebAppGetPhoneNumberResultBuilder
     implements
         Builder<VKWebAppGetPhoneNumberResult,
             VKWebAppGetPhoneNumberResultBuilder> {
-  _$VKWebAppGetPhoneNumberResult _$v;
+  _$VKWebAppGetPhoneNumberResult? _$v;
 
-  String _sign;
-  String get sign => _$this._sign;
-  set sign(String sign) => _$this._sign = sign;
+  String? _sign;
+  String? get sign => _$this._sign;
+  set sign(String? sign) => _$this._sign = sign;
 
-  String _phoneNumber;
-  String get phoneNumber => _$this._phoneNumber;
-  set phoneNumber(String phoneNumber) => _$this._phoneNumber = phoneNumber;
+  String? _phoneNumber;
+  String? get phoneNumber => _$this._phoneNumber;
+  set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
   VKWebAppGetPhoneNumberResultBuilder();
 
@@ -143,7 +145,7 @@ class VKWebAppGetPhoneNumberResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetPhoneNumberResultBuilder) updates) {
+  void update(void Function(VKWebAppGetPhoneNumberResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

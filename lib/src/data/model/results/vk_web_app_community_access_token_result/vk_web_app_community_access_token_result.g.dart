@@ -21,10 +21,10 @@ class _$VKWebAppCommunityAccessTokenResultSerializer
   final String wireName = 'VKWebAppCommunityAccessTokenResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppCommunityAccessTokenResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'access_token',
       serializers.serialize(object.accessToken,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppCommunityAccessTokenResultSerializer
 
   @override
   VKWebAppCommunityAccessTokenResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppCommunityAccessTokenResultBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppCommunityAccessTokenResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'access_token':
           result.accessToken = serializers.deserialize(value,
@@ -62,11 +62,13 @@ class _$VKWebAppCommunityAccessTokenResult
   final String accessToken;
 
   factory _$VKWebAppCommunityAccessTokenResult(
-          [void Function(VKWebAppCommunityAccessTokenResultBuilder) updates]) =>
+          [void Function(VKWebAppCommunityAccessTokenResultBuilder)?
+              updates]) =>
       (new VKWebAppCommunityAccessTokenResultBuilder()..update(updates))
           .build();
 
-  _$VKWebAppCommunityAccessTokenResult._({this.accessToken}) : super._() {
+  _$VKWebAppCommunityAccessTokenResult._({required this.accessToken})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         accessToken, 'VKWebAppCommunityAccessTokenResult', 'accessToken');
   }
@@ -104,11 +106,11 @@ class VKWebAppCommunityAccessTokenResultBuilder
     implements
         Builder<VKWebAppCommunityAccessTokenResult,
             VKWebAppCommunityAccessTokenResultBuilder> {
-  _$VKWebAppCommunityAccessTokenResult _$v;
+  _$VKWebAppCommunityAccessTokenResult? _$v;
 
-  String _accessToken;
-  String get accessToken => _$this._accessToken;
-  set accessToken(String accessToken) => _$this._accessToken = accessToken;
+  String? _accessToken;
+  String? get accessToken => _$this._accessToken;
+  set accessToken(String? accessToken) => _$this._accessToken = accessToken;
 
   VKWebAppCommunityAccessTokenResultBuilder();
 
@@ -129,7 +131,7 @@ class VKWebAppCommunityAccessTokenResultBuilder
 
   @override
   void update(
-      void Function(VKWebAppCommunityAccessTokenResultBuilder) updates) {
+      void Function(VKWebAppCommunityAccessTokenResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

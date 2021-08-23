@@ -20,10 +20,10 @@ class _$VKWebAppContactsDoneSerializer
   final String wireName = 'VKWebAppContactsDone';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppContactsDone object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'phone',
       serializers.serialize(object.phone,
           specifiedType: const FullType(String)),
@@ -40,7 +40,7 @@ class _$VKWebAppContactsDoneSerializer
 
   @override
   VKWebAppContactsDone deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppContactsDoneBuilder();
 
@@ -48,7 +48,7 @@ class _$VKWebAppContactsDoneSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,
@@ -78,10 +78,11 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
   final String lastName;
 
   factory _$VKWebAppContactsDone(
-          [void Function(VKWebAppContactsDoneBuilder) updates]) =>
+          [void Function(VKWebAppContactsDoneBuilder)? updates]) =>
       (new VKWebAppContactsDoneBuilder()..update(updates)).build();
 
-  _$VKWebAppContactsDone._({this.phone, this.firstName, this.lastName})
+  _$VKWebAppContactsDone._(
+      {required this.phone, required this.firstName, required this.lastName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         phone, 'VKWebAppContactsDone', 'phone');
@@ -127,19 +128,19 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
 
 class VKWebAppContactsDoneBuilder
     implements Builder<VKWebAppContactsDone, VKWebAppContactsDoneBuilder> {
-  _$VKWebAppContactsDone _$v;
+  _$VKWebAppContactsDone? _$v;
 
-  String _phone;
-  String get phone => _$this._phone;
-  set phone(String phone) => _$this._phone = phone;
+  String? _phone;
+  String? get phone => _$this._phone;
+  set phone(String? phone) => _$this._phone = phone;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
   VKWebAppContactsDoneBuilder();
 
@@ -161,7 +162,7 @@ class VKWebAppContactsDoneBuilder
   }
 
   @override
-  void update(void Function(VKWebAppContactsDoneBuilder) updates) {
+  void update(void Function(VKWebAppContactsDoneBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

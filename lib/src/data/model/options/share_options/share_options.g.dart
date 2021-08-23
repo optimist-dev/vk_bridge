@@ -16,10 +16,10 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   final String wireName = 'ShareOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ShareOptions object,
+  Iterable<Object?> serialize(Serializers serializers, ShareOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.link;
     if (value != null) {
       result
@@ -31,7 +31,8 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
   }
 
   @override
-  ShareOptions deserialize(Serializers serializers, Iterable<Object> serialized,
+  ShareOptions deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ShareOptionsBuilder();
 
@@ -39,7 +40,7 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,
@@ -54,9 +55,9 @@ class _$ShareOptionsSerializer implements StructuredSerializer<ShareOptions> {
 
 class _$ShareOptions extends ShareOptions {
   @override
-  final String link;
+  final String? link;
 
-  factory _$ShareOptions([void Function(ShareOptionsBuilder) updates]) =>
+  factory _$ShareOptions([void Function(ShareOptionsBuilder)? updates]) =>
       (new ShareOptionsBuilder()..update(updates)).build();
 
   _$ShareOptions._({this.link}) : super._();
@@ -88,11 +89,11 @@ class _$ShareOptions extends ShareOptions {
 
 class ShareOptionsBuilder
     implements Builder<ShareOptions, ShareOptionsBuilder> {
-  _$ShareOptions _$v;
+  _$ShareOptions? _$v;
 
-  String _link;
-  String get link => _$this._link;
-  set link(String link) => _$this._link = link;
+  String? _link;
+  String? get link => _$this._link;
+  set link(String? link) => _$this._link = link;
 
   ShareOptionsBuilder();
 
@@ -112,7 +113,7 @@ class ShareOptionsBuilder
   }
 
   @override
-  void update(void Function(ShareOptionsBuilder) updates) {
+  void update(void Function(ShareOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -49,15 +49,15 @@ class VKWebAppGetGeodataResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final dynamic value = iterator.current;
+      final Object value = iterator.current as Object;
       switch (key) {
         case 'available':
           if (value is bool) {
             result.available = serializers.deserialize(value,
-                specifiedType: const FullType(bool)) as bool;
+                specifiedType: const FullType(bool)) as bool?;
           } else if (value is int) {
-            result.available = serializers.deserialize(value,
-                    specifiedType: const FullType(int)) as int ==
+            result.available = (serializers.deserialize(value,
+                    specifiedType: const FullType(int)) as int?) ==
                 1;
           } else {
             throw StateError('Field available should be boolean');
@@ -65,11 +65,11 @@ class VKWebAppGetGeodataResultSerializer
           break;
         case 'lat':
           result.lat = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'long':
           result.long = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
       }
     }
@@ -78,9 +78,10 @@ class VKWebAppGetGeodataResultSerializer
   }
 
   @override
-  Iterable serialize(Serializers serializers, VKWebAppGetGeodataResult object,
+  Iterable<Object?> serialize(
+      Serializers serializers, VKWebAppGetGeodataResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'available',
       serializers.serialize(object.available,
           specifiedType: const FullType(bool)),

@@ -20,10 +20,10 @@ class _$VKWebAppScrollResultSerializer
   final String wireName = 'VKWebAppScrollResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppScrollResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'result',
       serializers.serialize(object.result,
           specifiedType: const FullType(ScrollResult)),
@@ -34,7 +34,7 @@ class _$VKWebAppScrollResultSerializer
 
   @override
   VKWebAppScrollResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppScrollResultBuilder();
 
@@ -42,11 +42,11 @@ class _$VKWebAppScrollResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'result':
           result.result.replace(serializers.deserialize(value,
-              specifiedType: const FullType(ScrollResult)) as ScrollResult);
+              specifiedType: const FullType(ScrollResult))! as ScrollResult);
           break;
       }
     }
@@ -60,10 +60,10 @@ class _$VKWebAppScrollResult extends VKWebAppScrollResult {
   final ScrollResult result;
 
   factory _$VKWebAppScrollResult(
-          [void Function(VKWebAppScrollResultBuilder) updates]) =>
+          [void Function(VKWebAppScrollResultBuilder)? updates]) =>
       (new VKWebAppScrollResultBuilder()..update(updates)).build();
 
-  _$VKWebAppScrollResult._({this.result}) : super._() {
+  _$VKWebAppScrollResult._({required this.result}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         result, 'VKWebAppScrollResult', 'result');
   }
@@ -98,12 +98,12 @@ class _$VKWebAppScrollResult extends VKWebAppScrollResult {
 
 class VKWebAppScrollResultBuilder
     implements Builder<VKWebAppScrollResult, VKWebAppScrollResultBuilder> {
-  _$VKWebAppScrollResult _$v;
+  _$VKWebAppScrollResult? _$v;
 
-  ScrollResultBuilder _result;
+  ScrollResultBuilder? _result;
   ScrollResultBuilder get result =>
       _$this._result ??= new ScrollResultBuilder();
-  set result(ScrollResultBuilder result) => _$this._result = result;
+  set result(ScrollResultBuilder? result) => _$this._result = result;
 
   VKWebAppScrollResultBuilder();
 
@@ -123,7 +123,7 @@ class VKWebAppScrollResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppScrollResultBuilder) updates) {
+  void update(void Function(VKWebAppScrollResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -133,7 +133,7 @@ class VKWebAppScrollResultBuilder
     try {
       _$result = _$v ?? new _$VKWebAppScrollResult._(result: result.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();

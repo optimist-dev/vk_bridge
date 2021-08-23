@@ -335,10 +335,6 @@ class _ExamplesPageState extends State<ExamplesPage> {
   }
 
   void _showErrorDialog(Object error) {
-    if (error == null) {
-      return;
-    }
-
     showDialog<void>(
       context: context,
       builder: (context) => Dialog(

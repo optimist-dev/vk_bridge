@@ -16,14 +16,14 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
   final String wireName = 'CloseOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CloseOptions object,
+  Iterable<Object?> serialize(Serializers serializers, CloseOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.payload;
     if (value != null) {
       result
@@ -35,7 +35,8 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
   }
 
   @override
-  CloseOptions deserialize(Serializers serializers, Iterable<Object> serialized,
+  CloseOptions deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CloseOptionsBuilder();
 
@@ -43,7 +44,7 @@ class _$CloseOptionsSerializer implements StructuredSerializer<CloseOptions> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status':
           result.status = serializers.deserialize(value,
@@ -64,12 +65,12 @@ class _$CloseOptions extends CloseOptions {
   @override
   final String status;
   @override
-  final Object payload;
+  final Object? payload;
 
-  factory _$CloseOptions([void Function(CloseOptionsBuilder) updates]) =>
+  factory _$CloseOptions([void Function(CloseOptionsBuilder)? updates]) =>
       (new CloseOptionsBuilder()..update(updates)).build();
 
-  _$CloseOptions._({this.status, this.payload}) : super._() {
+  _$CloseOptions._({required this.status, this.payload}) : super._() {
     BuiltValueNullFieldError.checkNotNull(status, 'CloseOptions', 'status');
   }
 
@@ -104,15 +105,15 @@ class _$CloseOptions extends CloseOptions {
 
 class CloseOptionsBuilder
     implements Builder<CloseOptions, CloseOptionsBuilder> {
-  _$CloseOptions _$v;
+  _$CloseOptions? _$v;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  Object _payload;
-  Object get payload => _$this._payload;
-  set payload(Object payload) => _$this._payload = payload;
+  Object? _payload;
+  Object? get payload => _$this._payload;
+  set payload(Object? payload) => _$this._payload = payload;
 
   CloseOptionsBuilder();
 
@@ -133,7 +134,7 @@ class CloseOptionsBuilder
   }
 
   @override
-  void update(void Function(CloseOptionsBuilder) updates) {
+  void update(void Function(CloseOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

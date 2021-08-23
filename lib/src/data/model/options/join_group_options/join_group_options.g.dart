@@ -17,9 +17,9 @@ class _$JoinGroupOptionsSerializer
   final String wireName = 'JoinGroupOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, JoinGroupOptions object,
+  Iterable<Object?> serialize(Serializers serializers, JoinGroupOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
@@ -29,7 +29,7 @@ class _$JoinGroupOptionsSerializer
 
   @override
   JoinGroupOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new JoinGroupOptionsBuilder();
 
@@ -37,7 +37,7 @@ class _$JoinGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -55,10 +55,10 @@ class _$JoinGroupOptions extends JoinGroupOptions {
   final int groupId;
 
   factory _$JoinGroupOptions(
-          [void Function(JoinGroupOptionsBuilder) updates]) =>
+          [void Function(JoinGroupOptionsBuilder)? updates]) =>
       (new JoinGroupOptionsBuilder()..update(updates)).build();
 
-  _$JoinGroupOptions._({this.groupId}) : super._() {
+  _$JoinGroupOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'JoinGroupOptions', 'groupId');
   }
@@ -92,11 +92,11 @@ class _$JoinGroupOptions extends JoinGroupOptions {
 
 class JoinGroupOptionsBuilder
     implements Builder<JoinGroupOptions, JoinGroupOptionsBuilder> {
-  _$JoinGroupOptions _$v;
+  _$JoinGroupOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   JoinGroupOptionsBuilder();
 
@@ -116,7 +116,7 @@ class JoinGroupOptionsBuilder
   }
 
   @override
-  void update(void Function(JoinGroupOptionsBuilder) updates) {
+  void update(void Function(JoinGroupOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

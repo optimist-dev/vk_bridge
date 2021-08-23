@@ -21,7 +21,6 @@ abstract class ShowImagesOptions
   BuiltList<String> get images;
 
   /// Index of the picture from which to start displaying, starting from 0
-  @nullable
   @BuiltValueField(wireName: 'start_index')
-  int get startIndex;
+  int? get startIndex;
 }

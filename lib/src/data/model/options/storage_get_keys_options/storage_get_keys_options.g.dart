@@ -20,14 +20,14 @@ class _$StorageGetKeysOptionsSerializer
   final String wireName = 'StorageGetKeysOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, StorageGetKeysOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'offset',
       serializers.serialize(object.offset, specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.count;
     if (value != null) {
       result
@@ -39,7 +39,7 @@ class _$StorageGetKeysOptionsSerializer
 
   @override
   StorageGetKeysOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StorageGetKeysOptionsBuilder();
 
@@ -47,7 +47,7 @@ class _$StorageGetKeysOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'count':
           result.count = serializers.deserialize(value,
@@ -66,15 +66,15 @@ class _$StorageGetKeysOptionsSerializer
 
 class _$StorageGetKeysOptions extends StorageGetKeysOptions {
   @override
-  final int count;
+  final int? count;
   @override
   final int offset;
 
   factory _$StorageGetKeysOptions(
-          [void Function(StorageGetKeysOptionsBuilder) updates]) =>
+          [void Function(StorageGetKeysOptionsBuilder)? updates]) =>
       (new StorageGetKeysOptionsBuilder()..update(updates)).build();
 
-  _$StorageGetKeysOptions._({this.count, this.offset}) : super._() {
+  _$StorageGetKeysOptions._({this.count, required this.offset}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         offset, 'StorageGetKeysOptions', 'offset');
   }
@@ -112,15 +112,15 @@ class _$StorageGetKeysOptions extends StorageGetKeysOptions {
 
 class StorageGetKeysOptionsBuilder
     implements Builder<StorageGetKeysOptions, StorageGetKeysOptionsBuilder> {
-  _$StorageGetKeysOptions _$v;
+  _$StorageGetKeysOptions? _$v;
 
-  int _count;
-  int get count => _$this._count;
-  set count(int count) => _$this._count = count;
+  int? _count;
+  int? get count => _$this._count;
+  set count(int? count) => _$this._count = count;
 
-  int _offset;
-  int get offset => _$this._offset;
-  set offset(int offset) => _$this._offset = offset;
+  int? _offset;
+  int? get offset => _$this._offset;
+  set offset(int? offset) => _$this._offset = offset;
 
   StorageGetKeysOptionsBuilder();
 
@@ -141,7 +141,7 @@ class StorageGetKeysOptionsBuilder
   }
 
   @override
-  void update(void Function(StorageGetKeysOptionsBuilder) updates) {
+  void update(void Function(StorageGetKeysOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

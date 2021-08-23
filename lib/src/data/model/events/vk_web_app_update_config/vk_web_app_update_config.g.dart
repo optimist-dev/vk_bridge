@@ -20,15 +20,15 @@ class _$VKWebAppUpdateConfigSerializer
   final String wireName = 'VKWebAppUpdateConfig';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppUpdateConfig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'scheme',
       serializers.serialize(object.scheme,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.app;
     if (value != null) {
       result
@@ -87,7 +87,7 @@ class _$VKWebAppUpdateConfigSerializer
 
   @override
   VKWebAppUpdateConfig deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppUpdateConfigBuilder();
 
@@ -95,7 +95,7 @@ class _$VKWebAppUpdateConfigSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app':
           result.app = serializers.deserialize(value,
@@ -107,7 +107,7 @@ class _$VKWebAppUpdateConfigSerializer
           break;
         case 'insets':
           result.insets.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Insets)) as Insets);
+              specifiedType: const FullType(Insets))! as Insets);
           break;
         case 'scheme':
           result.scheme = serializers.deserialize(value,
@@ -142,33 +142,33 @@ class _$VKWebAppUpdateConfigSerializer
 
 class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
-  final String app;
+  final String? app;
   @override
-  final String appearance;
+  final String? appearance;
   @override
-  final Insets insets;
+  final Insets? insets;
   @override
   final String scheme;
   @override
-  final int startTime;
+  final int? startTime;
   @override
-  final int viewportHeight;
+  final int? viewportHeight;
   @override
-  final int viewportWidth;
+  final int? viewportWidth;
   @override
-  final String apiHost;
+  final String? apiHost;
   @override
-  final bool isLayer;
+  final bool? isLayer;
 
   factory _$VKWebAppUpdateConfig(
-          [void Function(VKWebAppUpdateConfigBuilder) updates]) =>
+          [void Function(VKWebAppUpdateConfigBuilder)? updates]) =>
       (new VKWebAppUpdateConfigBuilder()..update(updates)).build();
 
   _$VKWebAppUpdateConfig._(
       {this.app,
       this.appearance,
       this.insets,
-      this.scheme,
+      required this.scheme,
       this.startTime,
       this.viewportHeight,
       this.viewportWidth,
@@ -239,44 +239,45 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
 
 class VKWebAppUpdateConfigBuilder
     implements Builder<VKWebAppUpdateConfig, VKWebAppUpdateConfigBuilder> {
-  _$VKWebAppUpdateConfig _$v;
+  _$VKWebAppUpdateConfig? _$v;
 
-  String _app;
-  String get app => _$this._app;
-  set app(String app) => _$this._app = app;
+  String? _app;
+  String? get app => _$this._app;
+  set app(String? app) => _$this._app = app;
 
-  String _appearance;
-  String get appearance => _$this._appearance;
-  set appearance(String appearance) => _$this._appearance = appearance;
+  String? _appearance;
+  String? get appearance => _$this._appearance;
+  set appearance(String? appearance) => _$this._appearance = appearance;
 
-  InsetsBuilder _insets;
+  InsetsBuilder? _insets;
   InsetsBuilder get insets => _$this._insets ??= new InsetsBuilder();
-  set insets(InsetsBuilder insets) => _$this._insets = insets;
+  set insets(InsetsBuilder? insets) => _$this._insets = insets;
 
-  String _scheme;
-  String get scheme => _$this._scheme;
-  set scheme(String scheme) => _$this._scheme = scheme;
+  String? _scheme;
+  String? get scheme => _$this._scheme;
+  set scheme(String? scheme) => _$this._scheme = scheme;
 
-  int _startTime;
-  int get startTime => _$this._startTime;
-  set startTime(int startTime) => _$this._startTime = startTime;
+  int? _startTime;
+  int? get startTime => _$this._startTime;
+  set startTime(int? startTime) => _$this._startTime = startTime;
 
-  int _viewportHeight;
-  int get viewportHeight => _$this._viewportHeight;
-  set viewportHeight(int viewportHeight) =>
+  int? _viewportHeight;
+  int? get viewportHeight => _$this._viewportHeight;
+  set viewportHeight(int? viewportHeight) =>
       _$this._viewportHeight = viewportHeight;
 
-  int _viewportWidth;
-  int get viewportWidth => _$this._viewportWidth;
-  set viewportWidth(int viewportWidth) => _$this._viewportWidth = viewportWidth;
+  int? _viewportWidth;
+  int? get viewportWidth => _$this._viewportWidth;
+  set viewportWidth(int? viewportWidth) =>
+      _$this._viewportWidth = viewportWidth;
 
-  String _apiHost;
-  String get apiHost => _$this._apiHost;
-  set apiHost(String apiHost) => _$this._apiHost = apiHost;
+  String? _apiHost;
+  String? get apiHost => _$this._apiHost;
+  set apiHost(String? apiHost) => _$this._apiHost = apiHost;
 
-  bool _isLayer;
-  bool get isLayer => _$this._isLayer;
-  set isLayer(bool isLayer) => _$this._isLayer = isLayer;
+  bool? _isLayer;
+  bool? get isLayer => _$this._isLayer;
+  set isLayer(bool? isLayer) => _$this._isLayer = isLayer;
 
   VKWebAppUpdateConfigBuilder();
 
@@ -304,7 +305,7 @@ class VKWebAppUpdateConfigBuilder
   }
 
   @override
-  void update(void Function(VKWebAppUpdateConfigBuilder) updates) {
+  void update(void Function(VKWebAppUpdateConfigBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -325,7 +326,7 @@ class VKWebAppUpdateConfigBuilder
               apiHost: apiHost,
               isLayer: isLayer);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'insets';
         _insets?.build();

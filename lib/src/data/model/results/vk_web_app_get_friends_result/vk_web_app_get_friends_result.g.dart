@@ -20,10 +20,10 @@ class _$VKWebAppGetFriendsResultSerializer
   final String wireName = 'VKWebAppGetFriendsResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetFriendsResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'users',
       serializers.serialize(object.users,
           specifiedType:
@@ -35,7 +35,7 @@ class _$VKWebAppGetFriendsResultSerializer
 
   @override
   VKWebAppGetFriendsResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetFriendsResultBuilder();
 
@@ -43,12 +43,12 @@ class _$VKWebAppGetFriendsResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'users':
           result.users.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(User)]))
+                      const FullType(BuiltList, const [const FullType(User)]))!
               as BuiltList<Object>);
           break;
       }
@@ -63,10 +63,10 @@ class _$VKWebAppGetFriendsResult extends VKWebAppGetFriendsResult {
   final BuiltList<User> users;
 
   factory _$VKWebAppGetFriendsResult(
-          [void Function(VKWebAppGetFriendsResultBuilder) updates]) =>
+          [void Function(VKWebAppGetFriendsResultBuilder)? updates]) =>
       (new VKWebAppGetFriendsResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetFriendsResult._({this.users}) : super._() {
+  _$VKWebAppGetFriendsResult._({required this.users}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         users, 'VKWebAppGetFriendsResult', 'users');
   }
@@ -102,11 +102,11 @@ class _$VKWebAppGetFriendsResult extends VKWebAppGetFriendsResult {
 class VKWebAppGetFriendsResultBuilder
     implements
         Builder<VKWebAppGetFriendsResult, VKWebAppGetFriendsResultBuilder> {
-  _$VKWebAppGetFriendsResult _$v;
+  _$VKWebAppGetFriendsResult? _$v;
 
-  ListBuilder<User> _users;
+  ListBuilder<User>? _users;
   ListBuilder<User> get users => _$this._users ??= new ListBuilder<User>();
-  set users(ListBuilder<User> users) => _$this._users = users;
+  set users(ListBuilder<User>? users) => _$this._users = users;
 
   VKWebAppGetFriendsResultBuilder();
 
@@ -126,7 +126,7 @@ class VKWebAppGetFriendsResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetFriendsResultBuilder) updates) {
+  void update(void Function(VKWebAppGetFriendsResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -136,7 +136,7 @@ class VKWebAppGetFriendsResultBuilder
     try {
       _$result = _$v ?? new _$VKWebAppGetFriendsResult._(users: users.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'users';
         users.build();

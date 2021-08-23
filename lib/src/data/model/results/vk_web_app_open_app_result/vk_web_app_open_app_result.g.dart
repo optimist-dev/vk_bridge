@@ -20,15 +20,15 @@ class _$VKWebAppOpenAppResultSerializer
   final String wireName = 'VKWebAppOpenAppResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppOpenAppResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.payload;
     if (value != null) {
       result
@@ -41,7 +41,7 @@ class _$VKWebAppOpenAppResultSerializer
 
   @override
   VKWebAppOpenAppResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppOpenAppResultBuilder();
 
@@ -49,7 +49,7 @@ class _$VKWebAppOpenAppResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'status':
           result.status = serializers.deserialize(value,
@@ -70,13 +70,13 @@ class _$VKWebAppOpenAppResult extends VKWebAppOpenAppResult {
   @override
   final String status;
   @override
-  final Object payload;
+  final Object? payload;
 
   factory _$VKWebAppOpenAppResult(
-          [void Function(VKWebAppOpenAppResultBuilder) updates]) =>
+          [void Function(VKWebAppOpenAppResultBuilder)? updates]) =>
       (new VKWebAppOpenAppResultBuilder()..update(updates)).build();
 
-  _$VKWebAppOpenAppResult._({this.status, this.payload}) : super._() {
+  _$VKWebAppOpenAppResult._({required this.status, this.payload}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         status, 'VKWebAppOpenAppResult', 'status');
   }
@@ -114,15 +114,15 @@ class _$VKWebAppOpenAppResult extends VKWebAppOpenAppResult {
 
 class VKWebAppOpenAppResultBuilder
     implements Builder<VKWebAppOpenAppResult, VKWebAppOpenAppResultBuilder> {
-  _$VKWebAppOpenAppResult _$v;
+  _$VKWebAppOpenAppResult? _$v;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  Object _payload;
-  Object get payload => _$this._payload;
-  set payload(Object payload) => _$this._payload = payload;
+  Object? _payload;
+  Object? get payload => _$this._payload;
+  set payload(Object? payload) => _$this._payload = payload;
 
   VKWebAppOpenAppResultBuilder();
 
@@ -143,7 +143,7 @@ class VKWebAppOpenAppResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppOpenAppResultBuilder) updates) {
+  void update(void Function(VKWebAppOpenAppResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

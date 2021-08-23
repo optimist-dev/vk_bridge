@@ -21,10 +21,10 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
   final String wireName = 'VKWebAppShowWallPostBoxOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppShowWallPostBoxOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'message',
       serializers.serialize(object.message,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
 
   @override
   VKWebAppShowWallPostBoxOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppShowWallPostBoxOptionsBuilder();
 
@@ -43,7 +43,7 @@ class _$VKWebAppShowWallPostBoxOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'message':
           result.message = serializers.deserialize(value,
@@ -61,10 +61,10 @@ class _$VKWebAppShowWallPostBoxOptions extends VKWebAppShowWallPostBoxOptions {
   final String message;
 
   factory _$VKWebAppShowWallPostBoxOptions(
-          [void Function(VKWebAppShowWallPostBoxOptionsBuilder) updates]) =>
+          [void Function(VKWebAppShowWallPostBoxOptionsBuilder)? updates]) =>
       (new VKWebAppShowWallPostBoxOptionsBuilder()..update(updates)).build();
 
-  _$VKWebAppShowWallPostBoxOptions._({this.message}) : super._() {
+  _$VKWebAppShowWallPostBoxOptions._({required this.message}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         message, 'VKWebAppShowWallPostBoxOptions', 'message');
   }
@@ -101,11 +101,11 @@ class VKWebAppShowWallPostBoxOptionsBuilder
     implements
         Builder<VKWebAppShowWallPostBoxOptions,
             VKWebAppShowWallPostBoxOptionsBuilder> {
-  _$VKWebAppShowWallPostBoxOptions _$v;
+  _$VKWebAppShowWallPostBoxOptions? _$v;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   VKWebAppShowWallPostBoxOptionsBuilder();
 
@@ -125,7 +125,7 @@ class VKWebAppShowWallPostBoxOptionsBuilder
   }
 
   @override
-  void update(void Function(VKWebAppShowWallPostBoxOptionsBuilder) updates) {
+  void update(void Function(VKWebAppShowWallPostBoxOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

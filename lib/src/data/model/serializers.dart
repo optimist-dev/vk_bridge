@@ -157,18 +157,25 @@ part 'serializers.g.dart';
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
 
+Serializer<T> _findSerializerForType<T>() {
+  final serializer = serializers.serializerForType(T);
+  if (serializer == null) throw Exception('Serializer for $T cannot be found');
+  return serializer as Serializer<T>;
+}
+
 /// Deserialize [value]
-T deserialize<T>(dynamic value) => serializers.deserializeWith<T>(
-    serializers.serializerForType(T) as Serializer<T>, value);
+T? deserialize<T>(Object? value) =>
+    serializers.deserializeWith<T>(_findSerializerForType<T>(), value);
 
 /// Deserialize list of [value]
-BuiltList<T> deserializeListOf<T>(dynamic value) => BuiltList<T>.from(value
-    .map<T>((dynamic value) => deserialize<T>(value))
-    .toList(growable: false) as List<T>);
+BuiltList<T?> deserializeListOf<T>(Iterable<Object> value) =>
+    BuiltList<T?>.from(value
+        .map<T?>((Object value) => deserialize<T?>(value))
+        .toList(growable: false));
 
 /// Serialize [value]
-dynamic serialize<T>(T value) => serializers.serializeWith(
-    serializers.serializerForType(T) as Serializer<T>, value);
+dynamic serialize<T>(T value) =>
+    serializers.serializeWith(_findSerializerForType<T>(), value);
 
 /// Serialize iterable of [value]
 dynamic serializeIterable<T>(Iterable<T> value) =>

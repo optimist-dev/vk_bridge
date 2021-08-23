@@ -20,10 +20,10 @@ class _$VKWebAppLocationChangedSerializer
   final String wireName = 'VKWebAppLocationChanged';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppLocationChanged object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'location',
       serializers.serialize(object.location,
           specifiedType: const FullType(String)),
@@ -34,7 +34,7 @@ class _$VKWebAppLocationChangedSerializer
 
   @override
   VKWebAppLocationChanged deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppLocationChangedBuilder();
 
@@ -42,7 +42,7 @@ class _$VKWebAppLocationChangedSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'location':
           result.location = serializers.deserialize(value,
@@ -60,10 +60,10 @@ class _$VKWebAppLocationChanged extends VKWebAppLocationChanged {
   final String location;
 
   factory _$VKWebAppLocationChanged(
-          [void Function(VKWebAppLocationChangedBuilder) updates]) =>
+          [void Function(VKWebAppLocationChangedBuilder)? updates]) =>
       (new VKWebAppLocationChangedBuilder()..update(updates)).build();
 
-  _$VKWebAppLocationChanged._({this.location}) : super._() {
+  _$VKWebAppLocationChanged._({required this.location}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         location, 'VKWebAppLocationChanged', 'location');
   }
@@ -99,11 +99,11 @@ class _$VKWebAppLocationChanged extends VKWebAppLocationChanged {
 class VKWebAppLocationChangedBuilder
     implements
         Builder<VKWebAppLocationChanged, VKWebAppLocationChangedBuilder> {
-  _$VKWebAppLocationChanged _$v;
+  _$VKWebAppLocationChanged? _$v;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
   VKWebAppLocationChangedBuilder();
 
@@ -123,7 +123,7 @@ class VKWebAppLocationChangedBuilder
   }
 
   @override
-  void update(void Function(VKWebAppLocationChangedBuilder) updates) {
+  void update(void Function(VKWebAppLocationChangedBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

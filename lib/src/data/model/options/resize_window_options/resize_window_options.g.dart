@@ -20,10 +20,10 @@ class _$ResizeWindowOptionsSerializer
   final String wireName = 'ResizeWindowOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ResizeWindowOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'width',
       serializers.serialize(object.width, specifiedType: const FullType(int)),
       'height',
@@ -35,7 +35,7 @@ class _$ResizeWindowOptionsSerializer
 
   @override
   ResizeWindowOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ResizeWindowOptionsBuilder();
 
@@ -43,7 +43,7 @@ class _$ResizeWindowOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'width':
           result.width = serializers.deserialize(value,
@@ -67,10 +67,11 @@ class _$ResizeWindowOptions extends ResizeWindowOptions {
   final int height;
 
   factory _$ResizeWindowOptions(
-          [void Function(ResizeWindowOptionsBuilder) updates]) =>
+          [void Function(ResizeWindowOptionsBuilder)? updates]) =>
       (new ResizeWindowOptionsBuilder()..update(updates)).build();
 
-  _$ResizeWindowOptions._({this.width, this.height}) : super._() {
+  _$ResizeWindowOptions._({required this.width, required this.height})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         width, 'ResizeWindowOptions', 'width');
     BuiltValueNullFieldError.checkNotNull(
@@ -110,15 +111,15 @@ class _$ResizeWindowOptions extends ResizeWindowOptions {
 
 class ResizeWindowOptionsBuilder
     implements Builder<ResizeWindowOptions, ResizeWindowOptionsBuilder> {
-  _$ResizeWindowOptions _$v;
+  _$ResizeWindowOptions? _$v;
 
-  int _width;
-  int get width => _$this._width;
-  set width(int width) => _$this._width = width;
+  int? _width;
+  int? get width => _$this._width;
+  set width(int? width) => _$this._width = width;
 
-  int _height;
-  int get height => _$this._height;
-  set height(int height) => _$this._height = height;
+  int? _height;
+  int? get height => _$this._height;
+  set height(int? height) => _$this._height = height;
 
   ResizeWindowOptionsBuilder();
 
@@ -139,7 +140,7 @@ class ResizeWindowOptionsBuilder
   }
 
   @override
-  void update(void Function(ResizeWindowOptionsBuilder) updates) {
+  void update(void Function(ResizeWindowOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

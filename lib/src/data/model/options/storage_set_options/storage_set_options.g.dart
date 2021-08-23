@@ -17,13 +17,13 @@ class _$StorageSetOptionsSerializer
   final String wireName = 'StorageSetOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, StorageSetOptions object,
+  Iterable<Object?> serialize(Serializers serializers, StorageSetOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'key',
       serializers.serialize(object.key, specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.value;
     if (value != null) {
       result
@@ -36,7 +36,7 @@ class _$StorageSetOptionsSerializer
 
   @override
   StorageSetOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StorageSetOptionsBuilder();
 
@@ -44,7 +44,7 @@ class _$StorageSetOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'key':
           result.key = serializers.deserialize(value,
@@ -65,13 +65,13 @@ class _$StorageSetOptions extends StorageSetOptions {
   @override
   final String key;
   @override
-  final String value;
+  final String? value;
 
   factory _$StorageSetOptions(
-          [void Function(StorageSetOptionsBuilder) updates]) =>
+          [void Function(StorageSetOptionsBuilder)? updates]) =>
       (new StorageSetOptionsBuilder()..update(updates)).build();
 
-  _$StorageSetOptions._({this.key, this.value}) : super._() {
+  _$StorageSetOptions._({required this.key, this.value}) : super._() {
     BuiltValueNullFieldError.checkNotNull(key, 'StorageSetOptions', 'key');
   }
 
@@ -107,15 +107,15 @@ class _$StorageSetOptions extends StorageSetOptions {
 
 class StorageSetOptionsBuilder
     implements Builder<StorageSetOptions, StorageSetOptionsBuilder> {
-  _$StorageSetOptions _$v;
+  _$StorageSetOptions? _$v;
 
-  String _key;
-  String get key => _$this._key;
-  set key(String key) => _$this._key = key;
+  String? _key;
+  String? get key => _$this._key;
+  set key(String? key) => _$this._key = key;
 
-  String _value;
-  String get value => _$this._value;
-  set value(String value) => _$this._value = value;
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
 
   StorageSetOptionsBuilder();
 
@@ -136,7 +136,7 @@ class StorageSetOptionsBuilder
   }
 
   @override
-  void update(void Function(StorageSetOptionsBuilder) updates) {
+  void update(void Function(StorageSetOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

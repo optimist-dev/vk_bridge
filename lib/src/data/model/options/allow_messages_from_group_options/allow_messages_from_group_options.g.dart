@@ -21,14 +21,14 @@ class _$AllowMessagesFromGroupOptionsSerializer
   final String wireName = 'AllowMessagesFromGroupOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, AllowMessagesFromGroupOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
-    Object value;
+    Object? value;
     value = object.key;
     if (value != null) {
       result
@@ -41,7 +41,7 @@ class _$AllowMessagesFromGroupOptionsSerializer
 
   @override
   AllowMessagesFromGroupOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new AllowMessagesFromGroupOptionsBuilder();
 
@@ -49,7 +49,7 @@ class _$AllowMessagesFromGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -70,13 +70,14 @@ class _$AllowMessagesFromGroupOptions extends AllowMessagesFromGroupOptions {
   @override
   final int groupId;
   @override
-  final String key;
+  final String? key;
 
   factory _$AllowMessagesFromGroupOptions(
-          [void Function(AllowMessagesFromGroupOptionsBuilder) updates]) =>
+          [void Function(AllowMessagesFromGroupOptionsBuilder)? updates]) =>
       (new AllowMessagesFromGroupOptionsBuilder()..update(updates)).build();
 
-  _$AllowMessagesFromGroupOptions._({this.groupId, this.key}) : super._() {
+  _$AllowMessagesFromGroupOptions._({required this.groupId, this.key})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'AllowMessagesFromGroupOptions', 'groupId');
   }
@@ -116,15 +117,15 @@ class AllowMessagesFromGroupOptionsBuilder
     implements
         Builder<AllowMessagesFromGroupOptions,
             AllowMessagesFromGroupOptionsBuilder> {
-  _$AllowMessagesFromGroupOptions _$v;
+  _$AllowMessagesFromGroupOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
-  String _key;
-  String get key => _$this._key;
-  set key(String key) => _$this._key = key;
+  String? _key;
+  String? get key => _$this._key;
+  set key(String? key) => _$this._key = key;
 
   AllowMessagesFromGroupOptionsBuilder();
 
@@ -145,7 +146,7 @@ class AllowMessagesFromGroupOptionsBuilder
   }
 
   @override
-  void update(void Function(AllowMessagesFromGroupOptionsBuilder) updates) {
+  void update(void Function(AllowMessagesFromGroupOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

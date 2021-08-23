@@ -21,10 +21,10 @@ class _$VKWebAppShowWallPostBoxResultSerializer
   final String wireName = 'VKWebAppShowWallPostBoxResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppShowWallPostBoxResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'post_id',
       serializers.serialize(object.postId, specifiedType: const FullType(int)),
     ];
@@ -34,7 +34,7 @@ class _$VKWebAppShowWallPostBoxResultSerializer
 
   @override
   VKWebAppShowWallPostBoxResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppShowWallPostBoxResultBuilder();
 
@@ -42,7 +42,7 @@ class _$VKWebAppShowWallPostBoxResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'post_id':
           result.postId = serializers.deserialize(value,
@@ -60,10 +60,10 @@ class _$VKWebAppShowWallPostBoxResult extends VKWebAppShowWallPostBoxResult {
   final int postId;
 
   factory _$VKWebAppShowWallPostBoxResult(
-          [void Function(VKWebAppShowWallPostBoxResultBuilder) updates]) =>
+          [void Function(VKWebAppShowWallPostBoxResultBuilder)? updates]) =>
       (new VKWebAppShowWallPostBoxResultBuilder()..update(updates)).build();
 
-  _$VKWebAppShowWallPostBoxResult._({this.postId}) : super._() {
+  _$VKWebAppShowWallPostBoxResult._({required this.postId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         postId, 'VKWebAppShowWallPostBoxResult', 'postId');
   }
@@ -100,11 +100,11 @@ class VKWebAppShowWallPostBoxResultBuilder
     implements
         Builder<VKWebAppShowWallPostBoxResult,
             VKWebAppShowWallPostBoxResultBuilder> {
-  _$VKWebAppShowWallPostBoxResult _$v;
+  _$VKWebAppShowWallPostBoxResult? _$v;
 
-  int _postId;
-  int get postId => _$this._postId;
-  set postId(int postId) => _$this._postId = postId;
+  int? _postId;
+  int? get postId => _$this._postId;
+  set postId(int? postId) => _$this._postId = postId;
 
   VKWebAppShowWallPostBoxResultBuilder();
 
@@ -124,7 +124,7 @@ class VKWebAppShowWallPostBoxResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppShowWallPostBoxResultBuilder) updates) {
+  void update(void Function(VKWebAppShowWallPostBoxResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -20,10 +20,10 @@ class _$FlashSetLevelOptionsSerializer
   final String wireName = 'FlashSetLevelOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, FlashSetLevelOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'level',
       serializers.serialize(object.level, specifiedType: const FullType(int)),
     ];
@@ -33,7 +33,7 @@ class _$FlashSetLevelOptionsSerializer
 
   @override
   FlashSetLevelOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new FlashSetLevelOptionsBuilder();
 
@@ -41,7 +41,7 @@ class _$FlashSetLevelOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'level':
           result.level = serializers.deserialize(value,
@@ -59,10 +59,10 @@ class _$FlashSetLevelOptions extends FlashSetLevelOptions {
   final int level;
 
   factory _$FlashSetLevelOptions(
-          [void Function(FlashSetLevelOptionsBuilder) updates]) =>
+          [void Function(FlashSetLevelOptionsBuilder)? updates]) =>
       (new FlashSetLevelOptionsBuilder()..update(updates)).build();
 
-  _$FlashSetLevelOptions._({this.level}) : super._() {
+  _$FlashSetLevelOptions._({required this.level}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         level, 'FlashSetLevelOptions', 'level');
   }
@@ -97,11 +97,11 @@ class _$FlashSetLevelOptions extends FlashSetLevelOptions {
 
 class FlashSetLevelOptionsBuilder
     implements Builder<FlashSetLevelOptions, FlashSetLevelOptionsBuilder> {
-  _$FlashSetLevelOptions _$v;
+  _$FlashSetLevelOptions? _$v;
 
-  int _level;
-  int get level => _$this._level;
-  set level(int level) => _$this._level = level;
+  int? _level;
+  int? get level => _$this._level;
+  set level(int? level) => _$this._level = level;
 
   FlashSetLevelOptionsBuilder();
 
@@ -121,7 +121,7 @@ class FlashSetLevelOptionsBuilder
   }
 
   @override
-  void update(void Function(FlashSetLevelOptionsBuilder) updates) {
+  void update(void Function(FlashSetLevelOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

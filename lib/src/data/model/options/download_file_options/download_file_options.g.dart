@@ -20,10 +20,10 @@ class _$DownloadFileOptionsSerializer
   final String wireName = 'DownloadFileOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, DownloadFileOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
       'filename',
@@ -36,7 +36,7 @@ class _$DownloadFileOptionsSerializer
 
   @override
   DownloadFileOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DownloadFileOptionsBuilder();
 
@@ -44,7 +44,7 @@ class _$DownloadFileOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
@@ -68,10 +68,11 @@ class _$DownloadFileOptions extends DownloadFileOptions {
   final String filename;
 
   factory _$DownloadFileOptions(
-          [void Function(DownloadFileOptionsBuilder) updates]) =>
+          [void Function(DownloadFileOptionsBuilder)? updates]) =>
       (new DownloadFileOptionsBuilder()..update(updates)).build();
 
-  _$DownloadFileOptions._({this.url, this.filename}) : super._() {
+  _$DownloadFileOptions._({required this.url, required this.filename})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(url, 'DownloadFileOptions', 'url');
     BuiltValueNullFieldError.checkNotNull(
         filename, 'DownloadFileOptions', 'filename');
@@ -110,15 +111,15 @@ class _$DownloadFileOptions extends DownloadFileOptions {
 
 class DownloadFileOptionsBuilder
     implements Builder<DownloadFileOptions, DownloadFileOptionsBuilder> {
-  _$DownloadFileOptions _$v;
+  _$DownloadFileOptions? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _filename;
-  String get filename => _$this._filename;
-  set filename(String filename) => _$this._filename = filename;
+  String? _filename;
+  String? get filename => _$this._filename;
+  set filename(String? filename) => _$this._filename = filename;
 
   DownloadFileOptionsBuilder();
 
@@ -139,7 +140,7 @@ class DownloadFileOptionsBuilder
   }
 
   @override
-  void update(void Function(DownloadFileOptionsBuilder) updates) {
+  void update(void Function(DownloadFileOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

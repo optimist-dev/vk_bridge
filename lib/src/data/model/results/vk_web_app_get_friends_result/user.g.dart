@@ -15,9 +15,9 @@ class _$UserSerializer implements StructuredSerializer<User> {
   final String wireName = 'User';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, User object,
+  Iterable<Object?> serialize(Serializers serializers, User object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'first_name',
@@ -37,7 +37,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
   }
 
   @override
-  User deserialize(Serializers serializers, Iterable<Object> serialized,
+  User deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new UserBuilder();
 
@@ -45,7 +45,7 @@ class _$UserSerializer implements StructuredSerializer<User> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -86,10 +86,15 @@ class _$User extends User {
   @override
   final String photo200;
 
-  factory _$User([void Function(UserBuilder) updates]) =>
+  factory _$User([void Function(UserBuilder)? updates]) =>
       (new UserBuilder()..update(updates)).build();
 
-  _$User._({this.id, this.firstName, this.lastName, this.sex, this.photo200})
+  _$User._(
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.sex,
+      required this.photo200})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, 'User', 'id');
     BuiltValueNullFieldError.checkNotNull(firstName, 'User', 'firstName');
@@ -139,27 +144,27 @@ class _$User extends User {
 }
 
 class UserBuilder implements Builder<User, UserBuilder> {
-  _$User _$v;
+  _$User? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
-  int _sex;
-  int get sex => _$this._sex;
-  set sex(int sex) => _$this._sex = sex;
+  int? _sex;
+  int? get sex => _$this._sex;
+  set sex(int? sex) => _$this._sex = sex;
 
-  String _photo200;
-  String get photo200 => _$this._photo200;
-  set photo200(String photo200) => _$this._photo200 = photo200;
+  String? _photo200;
+  String? get photo200 => _$this._photo200;
+  set photo200(String? photo200) => _$this._photo200 = photo200;
 
   UserBuilder();
 
@@ -183,7 +188,7 @@ class UserBuilder implements Builder<User, UserBuilder> {
   }
 
   @override
-  void update(void Function(UserBuilder) updates) {
+  void update(void Function(UserBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

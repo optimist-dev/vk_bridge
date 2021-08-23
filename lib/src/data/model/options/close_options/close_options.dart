@@ -22,6 +22,5 @@ abstract class CloseOptions
   String get status;
 
   /// Data passed to the parent application.
-  @nullable
-  Object get payload;
+  Object? get payload;
 }

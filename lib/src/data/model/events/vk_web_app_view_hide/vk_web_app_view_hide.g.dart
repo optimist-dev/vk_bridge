@@ -17,14 +17,14 @@ class _$VKWebAppViewHideSerializer
   final String wireName = 'VKWebAppViewHide';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VKWebAppViewHide object,
+  Iterable<Object?> serialize(Serializers serializers, VKWebAppViewHide object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    return <Object?>[];
   }
 
   @override
   VKWebAppViewHide deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     return new VKWebAppViewHideBuilder().build();
   }
@@ -32,7 +32,7 @@ class _$VKWebAppViewHideSerializer
 
 class _$VKWebAppViewHide extends VKWebAppViewHide {
   factory _$VKWebAppViewHide(
-          [void Function(VKWebAppViewHideBuilder) updates]) =>
+          [void Function(VKWebAppViewHideBuilder)? updates]) =>
       (new VKWebAppViewHideBuilder()..update(updates)).build();
 
   _$VKWebAppViewHide._() : super._();
@@ -64,7 +64,7 @@ class _$VKWebAppViewHide extends VKWebAppViewHide {
 
 class VKWebAppViewHideBuilder
     implements Builder<VKWebAppViewHide, VKWebAppViewHideBuilder> {
-  _$VKWebAppViewHide _$v;
+  _$VKWebAppViewHide? _$v;
 
   VKWebAppViewHideBuilder();
 
@@ -75,7 +75,7 @@ class VKWebAppViewHideBuilder
   }
 
   @override
-  void update(void Function(VKWebAppViewHideBuilder) updates) {
+  void update(void Function(VKWebAppViewHideBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

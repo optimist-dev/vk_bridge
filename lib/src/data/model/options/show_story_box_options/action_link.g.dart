@@ -15,9 +15,9 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
   final String wireName = 'ActionLink';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ActionLink object,
+  Iterable<Object?> serialize(Serializers serializers, ActionLink object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'link',
       serializers.serialize(object.link, specifiedType: const FullType(String)),
       'tooltip_text_key',
@@ -29,7 +29,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
   }
 
   @override
-  ActionLink deserialize(Serializers serializers, Iterable<Object> serialized,
+  ActionLink deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ActionLinkBuilder();
 
@@ -37,7 +37,7 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,
@@ -60,10 +60,11 @@ class _$ActionLink extends ActionLink {
   @override
   final String tooltipTextKey;
 
-  factory _$ActionLink([void Function(ActionLinkBuilder) updates]) =>
+  factory _$ActionLink([void Function(ActionLinkBuilder)? updates]) =>
       (new ActionLinkBuilder()..update(updates)).build();
 
-  _$ActionLink._({this.link, this.tooltipTextKey}) : super._() {
+  _$ActionLink._({required this.link, required this.tooltipTextKey})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(link, 'ActionLink', 'link');
     BuiltValueNullFieldError.checkNotNull(
         tooltipTextKey, 'ActionLink', 'tooltipTextKey');
@@ -99,15 +100,15 @@ class _$ActionLink extends ActionLink {
 }
 
 class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
-  _$ActionLink _$v;
+  _$ActionLink? _$v;
 
-  String _link;
-  String get link => _$this._link;
-  set link(String link) => _$this._link = link;
+  String? _link;
+  String? get link => _$this._link;
+  set link(String? link) => _$this._link = link;
 
-  String _tooltipTextKey;
-  String get tooltipTextKey => _$this._tooltipTextKey;
-  set tooltipTextKey(String tooltipTextKey) =>
+  String? _tooltipTextKey;
+  String? get tooltipTextKey => _$this._tooltipTextKey;
+  set tooltipTextKey(String? tooltipTextKey) =>
       _$this._tooltipTextKey = tooltipTextKey;
 
   ActionLinkBuilder();
@@ -129,7 +130,7 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
   }
 
   @override
-  void update(void Function(ActionLinkBuilder) updates) {
+  void update(void Function(ActionLinkBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

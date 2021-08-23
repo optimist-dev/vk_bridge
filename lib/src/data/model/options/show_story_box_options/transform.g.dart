@@ -15,10 +15,10 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
   final String wireName = 'Transform';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Transform object,
+  Iterable<Object?> serialize(Serializers serializers, Transform object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.rotation;
     if (value != null) {
       result
@@ -57,7 +57,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
   }
 
   @override
-  Transform deserialize(Serializers serializers, Iterable<Object> serialized,
+  Transform deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TransformBuilder();
 
@@ -65,7 +65,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'rotation':
           result.rotation = serializers.deserialize(value,
@@ -96,17 +96,17 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
 
 class _$Transform extends Transform {
   @override
-  final int rotation;
+  final int? rotation;
   @override
-  final double relationWidth;
+  final double? relationWidth;
   @override
-  final double translationX;
+  final double? translationX;
   @override
-  final double translationY;
+  final double? translationY;
   @override
-  final String gravity;
+  final String? gravity;
 
-  factory _$Transform([void Function(TransformBuilder) updates]) =>
+  factory _$Transform([void Function(TransformBuilder)? updates]) =>
       (new TransformBuilder()..update(updates)).build();
 
   _$Transform._(
@@ -158,28 +158,28 @@ class _$Transform extends Transform {
 }
 
 class TransformBuilder implements Builder<Transform, TransformBuilder> {
-  _$Transform _$v;
+  _$Transform? _$v;
 
-  int _rotation;
-  int get rotation => _$this._rotation;
-  set rotation(int rotation) => _$this._rotation = rotation;
+  int? _rotation;
+  int? get rotation => _$this._rotation;
+  set rotation(int? rotation) => _$this._rotation = rotation;
 
-  double _relationWidth;
-  double get relationWidth => _$this._relationWidth;
-  set relationWidth(double relationWidth) =>
+  double? _relationWidth;
+  double? get relationWidth => _$this._relationWidth;
+  set relationWidth(double? relationWidth) =>
       _$this._relationWidth = relationWidth;
 
-  double _translationX;
-  double get translationX => _$this._translationX;
-  set translationX(double translationX) => _$this._translationX = translationX;
+  double? _translationX;
+  double? get translationX => _$this._translationX;
+  set translationX(double? translationX) => _$this._translationX = translationX;
 
-  double _translationY;
-  double get translationY => _$this._translationY;
-  set translationY(double translationY) => _$this._translationY = translationY;
+  double? _translationY;
+  double? get translationY => _$this._translationY;
+  set translationY(double? translationY) => _$this._translationY = translationY;
 
-  String _gravity;
-  String get gravity => _$this._gravity;
-  set gravity(String gravity) => _$this._gravity = gravity;
+  String? _gravity;
+  String? get gravity => _$this._gravity;
+  set gravity(String? gravity) => _$this._gravity = gravity;
 
   TransformBuilder();
 
@@ -203,7 +203,7 @@ class TransformBuilder implements Builder<Transform, TransformBuilder> {
   }
 
   @override
-  void update(void Function(TransformBuilder) updates) {
+  void update(void Function(TransformBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

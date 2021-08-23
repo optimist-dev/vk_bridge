@@ -27,6 +27,5 @@ abstract class AllowMessagesFromGroupOptions
   /// arbitrary string.
   /// This parameter can be used to authenticate the user.
   /// Its value will be returned in the message_allow event of the Callback API.
-  @nullable
-  String get key;
+  String? get key;
 }

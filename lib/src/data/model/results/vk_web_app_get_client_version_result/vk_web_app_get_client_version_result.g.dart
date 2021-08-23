@@ -21,10 +21,10 @@ class _$VKWebAppGetClientVersionResultSerializer
   final String wireName = 'VKWebAppGetClientVersionResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetClientVersionResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'platform',
       serializers.serialize(object.platform,
           specifiedType: const FullType(String)),
@@ -38,7 +38,7 @@ class _$VKWebAppGetClientVersionResultSerializer
 
   @override
   VKWebAppGetClientVersionResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetClientVersionResultBuilder();
 
@@ -46,7 +46,7 @@ class _$VKWebAppGetClientVersionResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'platform':
           result.platform = serializers.deserialize(value,
@@ -70,10 +70,11 @@ class _$VKWebAppGetClientVersionResult extends VKWebAppGetClientVersionResult {
   final String version;
 
   factory _$VKWebAppGetClientVersionResult(
-          [void Function(VKWebAppGetClientVersionResultBuilder) updates]) =>
+          [void Function(VKWebAppGetClientVersionResultBuilder)? updates]) =>
       (new VKWebAppGetClientVersionResultBuilder()..update(updates)).build();
 
-  _$VKWebAppGetClientVersionResult._({this.platform, this.version})
+  _$VKWebAppGetClientVersionResult._(
+      {required this.platform, required this.version})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         platform, 'VKWebAppGetClientVersionResult', 'platform');
@@ -116,15 +117,15 @@ class VKWebAppGetClientVersionResultBuilder
     implements
         Builder<VKWebAppGetClientVersionResult,
             VKWebAppGetClientVersionResultBuilder> {
-  _$VKWebAppGetClientVersionResult _$v;
+  _$VKWebAppGetClientVersionResult? _$v;
 
-  String _platform;
-  String get platform => _$this._platform;
-  set platform(String platform) => _$this._platform = platform;
+  String? _platform;
+  String? get platform => _$this._platform;
+  set platform(String? platform) => _$this._platform = platform;
 
-  String _version;
-  String get version => _$this._version;
-  set version(String version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   VKWebAppGetClientVersionResultBuilder();
 
@@ -145,7 +146,7 @@ class VKWebAppGetClientVersionResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetClientVersionResultBuilder) updates) {
+  void update(void Function(VKWebAppGetClientVersionResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

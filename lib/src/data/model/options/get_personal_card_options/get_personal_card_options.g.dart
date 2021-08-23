@@ -20,10 +20,10 @@ class _$GetPersonalCardOptionsSerializer
   final String wireName = 'GetPersonalCardOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, GetPersonalCardOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'type',
       serializers.serialize(object.type,
           specifiedType:
@@ -35,7 +35,7 @@ class _$GetPersonalCardOptionsSerializer
 
   @override
   GetPersonalCardOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new GetPersonalCardOptionsBuilder();
 
@@ -43,12 +43,12 @@ class _$GetPersonalCardOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
               as BuiltList<Object>);
           break;
       }
@@ -63,10 +63,10 @@ class _$GetPersonalCardOptions extends GetPersonalCardOptions {
   final BuiltList<String> type;
 
   factory _$GetPersonalCardOptions(
-          [void Function(GetPersonalCardOptionsBuilder) updates]) =>
+          [void Function(GetPersonalCardOptionsBuilder)? updates]) =>
       (new GetPersonalCardOptionsBuilder()..update(updates)).build();
 
-  _$GetPersonalCardOptions._({this.type}) : super._() {
+  _$GetPersonalCardOptions._({required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         type, 'GetPersonalCardOptions', 'type');
   }
@@ -101,11 +101,11 @@ class _$GetPersonalCardOptions extends GetPersonalCardOptions {
 
 class GetPersonalCardOptionsBuilder
     implements Builder<GetPersonalCardOptions, GetPersonalCardOptionsBuilder> {
-  _$GetPersonalCardOptions _$v;
+  _$GetPersonalCardOptions? _$v;
 
-  ListBuilder<String> _type;
+  ListBuilder<String>? _type;
   ListBuilder<String> get type => _$this._type ??= new ListBuilder<String>();
-  set type(ListBuilder<String> type) => _$this._type = type;
+  set type(ListBuilder<String>? type) => _$this._type = type;
 
   GetPersonalCardOptionsBuilder();
 
@@ -125,7 +125,7 @@ class GetPersonalCardOptionsBuilder
   }
 
   @override
-  void update(void Function(GetPersonalCardOptionsBuilder) updates) {
+  void update(void Function(GetPersonalCardOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -135,7 +135,7 @@ class GetPersonalCardOptionsBuilder
     try {
       _$result = _$v ?? new _$GetPersonalCardOptions._(type: type.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'type';
         type.build();

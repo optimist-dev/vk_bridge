@@ -17,9 +17,9 @@ class _$OpenAppOptionsSerializer
   final String wireName = 'OpenAppOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, OpenAppOptions object,
+  Iterable<Object?> serialize(Serializers serializers, OpenAppOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'app_id',
       serializers.serialize(object.appId, specifiedType: const FullType(int)),
       'location',
@@ -32,7 +32,7 @@ class _$OpenAppOptionsSerializer
 
   @override
   OpenAppOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new OpenAppOptionsBuilder();
 
@@ -40,7 +40,7 @@ class _$OpenAppOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
@@ -63,10 +63,11 @@ class _$OpenAppOptions extends OpenAppOptions {
   @override
   final String location;
 
-  factory _$OpenAppOptions([void Function(OpenAppOptionsBuilder) updates]) =>
+  factory _$OpenAppOptions([void Function(OpenAppOptionsBuilder)? updates]) =>
       (new OpenAppOptionsBuilder()..update(updates)).build();
 
-  _$OpenAppOptions._({this.appId, this.location}) : super._() {
+  _$OpenAppOptions._({required this.appId, required this.location})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(appId, 'OpenAppOptions', 'appId');
     BuiltValueNullFieldError.checkNotNull(
         location, 'OpenAppOptions', 'location');
@@ -104,15 +105,15 @@ class _$OpenAppOptions extends OpenAppOptions {
 
 class OpenAppOptionsBuilder
     implements Builder<OpenAppOptions, OpenAppOptionsBuilder> {
-  _$OpenAppOptions _$v;
+  _$OpenAppOptions? _$v;
 
-  int _appId;
-  int get appId => _$this._appId;
-  set appId(int appId) => _$this._appId = appId;
+  int? _appId;
+  int? get appId => _$this._appId;
+  set appId(int? appId) => _$this._appId = appId;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
   OpenAppOptionsBuilder();
 
@@ -133,7 +134,7 @@ class OpenAppOptionsBuilder
   }
 
   @override
-  void update(void Function(OpenAppOptionsBuilder) updates) {
+  void update(void Function(OpenAppOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

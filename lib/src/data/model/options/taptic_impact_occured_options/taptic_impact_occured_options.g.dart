@@ -21,10 +21,10 @@ class _$TapticImpactOccurredOptionsSerializer
   final String wireName = 'TapticImpactOccurredOptions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, TapticImpactOccurredOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'style',
       serializers.serialize(object.style,
           specifiedType: const FullType(String)),
@@ -35,7 +35,7 @@ class _$TapticImpactOccurredOptionsSerializer
 
   @override
   TapticImpactOccurredOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TapticImpactOccurredOptionsBuilder();
 
@@ -43,7 +43,7 @@ class _$TapticImpactOccurredOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'style':
           result.style = serializers.deserialize(value,
@@ -61,10 +61,10 @@ class _$TapticImpactOccurredOptions extends TapticImpactOccurredOptions {
   final String style;
 
   factory _$TapticImpactOccurredOptions(
-          [void Function(TapticImpactOccurredOptionsBuilder) updates]) =>
+          [void Function(TapticImpactOccurredOptionsBuilder)? updates]) =>
       (new TapticImpactOccurredOptionsBuilder()..update(updates)).build();
 
-  _$TapticImpactOccurredOptions._({this.style}) : super._() {
+  _$TapticImpactOccurredOptions._({required this.style}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         style, 'TapticImpactOccurredOptions', 'style');
   }
@@ -101,11 +101,11 @@ class TapticImpactOccurredOptionsBuilder
     implements
         Builder<TapticImpactOccurredOptions,
             TapticImpactOccurredOptionsBuilder> {
-  _$TapticImpactOccurredOptions _$v;
+  _$TapticImpactOccurredOptions? _$v;
 
-  String _style;
-  String get style => _$this._style;
-  set style(String style) => _$this._style = style;
+  String? _style;
+  String? get style => _$this._style;
+  set style(String? style) => _$this._style = style;
 
   TapticImpactOccurredOptionsBuilder();
 
@@ -125,7 +125,7 @@ class TapticImpactOccurredOptionsBuilder
   }
 
   @override
-  void update(void Function(TapticImpactOccurredOptionsBuilder) updates) {
+  void update(void Function(TapticImpactOccurredOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

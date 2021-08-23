@@ -21,10 +21,10 @@ class _$VKWebAppAddToCommunityResultSerializer
   final String wireName = 'VKWebAppAddToCommunityResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppAddToCommunityResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
@@ -34,7 +34,7 @@ class _$VKWebAppAddToCommunityResultSerializer
 
   @override
   VKWebAppAddToCommunityResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppAddToCommunityResultBuilder();
 
@@ -42,7 +42,7 @@ class _$VKWebAppAddToCommunityResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -60,10 +60,10 @@ class _$VKWebAppAddToCommunityResult extends VKWebAppAddToCommunityResult {
   final int groupId;
 
   factory _$VKWebAppAddToCommunityResult(
-          [void Function(VKWebAppAddToCommunityResultBuilder) updates]) =>
+          [void Function(VKWebAppAddToCommunityResultBuilder)? updates]) =>
       (new VKWebAppAddToCommunityResultBuilder()..update(updates)).build();
 
-  _$VKWebAppAddToCommunityResult._({this.groupId}) : super._() {
+  _$VKWebAppAddToCommunityResult._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'VKWebAppAddToCommunityResult', 'groupId');
   }
@@ -100,11 +100,11 @@ class VKWebAppAddToCommunityResultBuilder
     implements
         Builder<VKWebAppAddToCommunityResult,
             VKWebAppAddToCommunityResultBuilder> {
-  _$VKWebAppAddToCommunityResult _$v;
+  _$VKWebAppAddToCommunityResult? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   VKWebAppAddToCommunityResultBuilder();
 
@@ -124,7 +124,7 @@ class VKWebAppAddToCommunityResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppAddToCommunityResultBuilder) updates) {
+  void update(void Function(VKWebAppAddToCommunityResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

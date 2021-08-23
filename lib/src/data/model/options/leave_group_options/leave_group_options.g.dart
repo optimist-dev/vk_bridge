@@ -17,9 +17,9 @@ class _$LeaveGroupOptionsSerializer
   final String wireName = 'LeaveGroupOptions';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LeaveGroupOptions object,
+  Iterable<Object?> serialize(Serializers serializers, LeaveGroupOptions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'group_id',
       serializers.serialize(object.groupId, specifiedType: const FullType(int)),
     ];
@@ -29,7 +29,7 @@ class _$LeaveGroupOptionsSerializer
 
   @override
   LeaveGroupOptions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new LeaveGroupOptionsBuilder();
 
@@ -37,7 +37,7 @@ class _$LeaveGroupOptionsSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
@@ -55,10 +55,10 @@ class _$LeaveGroupOptions extends LeaveGroupOptions {
   final int groupId;
 
   factory _$LeaveGroupOptions(
-          [void Function(LeaveGroupOptionsBuilder) updates]) =>
+          [void Function(LeaveGroupOptionsBuilder)? updates]) =>
       (new LeaveGroupOptionsBuilder()..update(updates)).build();
 
-  _$LeaveGroupOptions._({this.groupId}) : super._() {
+  _$LeaveGroupOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         groupId, 'LeaveGroupOptions', 'groupId');
   }
@@ -92,11 +92,11 @@ class _$LeaveGroupOptions extends LeaveGroupOptions {
 
 class LeaveGroupOptionsBuilder
     implements Builder<LeaveGroupOptions, LeaveGroupOptionsBuilder> {
-  _$LeaveGroupOptions _$v;
+  _$LeaveGroupOptions? _$v;
 
-  int _groupId;
-  int get groupId => _$this._groupId;
-  set groupId(int groupId) => _$this._groupId = groupId;
+  int? _groupId;
+  int? get groupId => _$this._groupId;
+  set groupId(int? groupId) => _$this._groupId = groupId;
 
   LeaveGroupOptionsBuilder();
 
@@ -116,7 +116,7 @@ class LeaveGroupOptionsBuilder
   }
 
   @override
-  void update(void Function(LeaveGroupOptionsBuilder) updates) {
+  void update(void Function(LeaveGroupOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

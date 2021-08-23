@@ -17,9 +17,9 @@ class _$RenderableStickerSerializer
   final String wireName = 'RenderableSticker';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, RenderableSticker object,
+  Iterable<Object?> serialize(Serializers serializers, RenderableSticker object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'content_type',
       serializers.serialize(object.contentType,
           specifiedType: const FullType(String)),
@@ -31,7 +31,7 @@ class _$RenderableStickerSerializer
       serializers.serialize(object.canDelete,
           specifiedType: const FullType(bool)),
     ];
-    Object value;
+    Object? value;
     value = object.url;
     if (value != null) {
       result
@@ -51,7 +51,7 @@ class _$RenderableStickerSerializer
 
   @override
   RenderableSticker deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RenderableStickerBuilder();
 
@@ -59,7 +59,7 @@ class _$RenderableStickerSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'content_type':
           result.contentType = serializers.deserialize(value,
@@ -71,12 +71,12 @@ class _$RenderableStickerSerializer
           break;
         case 'transform':
           result.transform.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Transform)) as Transform);
+              specifiedType: const FullType(Transform))! as Transform);
           break;
         case 'clickable_zones':
           result.clickableZones.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(ClickableZone)]))
+                      BuiltList, const [const FullType(ClickableZone)]))!
               as BuiltList<Object>);
           break;
         case 'can_delete':
@@ -94,24 +94,24 @@ class _$RenderableSticker extends RenderableSticker {
   @override
   final String contentType;
   @override
-  final String url;
+  final String? url;
   @override
-  final Transform transform;
+  final Transform? transform;
   @override
   final BuiltList<ClickableZone> clickableZones;
   @override
   final bool canDelete;
 
   factory _$RenderableSticker(
-          [void Function(RenderableStickerBuilder) updates]) =>
+          [void Function(RenderableStickerBuilder)? updates]) =>
       (new RenderableStickerBuilder()..update(updates)).build();
 
   _$RenderableSticker._(
-      {this.contentType,
+      {required this.contentType,
       this.url,
       this.transform,
-      this.clickableZones,
-      this.canDelete})
+      required this.clickableZones,
+      required this.canDelete})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         contentType, 'RenderableSticker', 'contentType');
@@ -164,30 +164,30 @@ class _$RenderableSticker extends RenderableSticker {
 
 class RenderableStickerBuilder
     implements Builder<RenderableSticker, RenderableStickerBuilder> {
-  _$RenderableSticker _$v;
+  _$RenderableSticker? _$v;
 
-  String _contentType;
-  String get contentType => _$this._contentType;
-  set contentType(String contentType) => _$this._contentType = contentType;
+  String? _contentType;
+  String? get contentType => _$this._contentType;
+  set contentType(String? contentType) => _$this._contentType = contentType;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  TransformBuilder _transform;
+  TransformBuilder? _transform;
   TransformBuilder get transform =>
       _$this._transform ??= new TransformBuilder();
-  set transform(TransformBuilder transform) => _$this._transform = transform;
+  set transform(TransformBuilder? transform) => _$this._transform = transform;
 
-  ListBuilder<ClickableZone> _clickableZones;
+  ListBuilder<ClickableZone>? _clickableZones;
   ListBuilder<ClickableZone> get clickableZones =>
       _$this._clickableZones ??= new ListBuilder<ClickableZone>();
-  set clickableZones(ListBuilder<ClickableZone> clickableZones) =>
+  set clickableZones(ListBuilder<ClickableZone>? clickableZones) =>
       _$this._clickableZones = clickableZones;
 
-  bool _canDelete;
-  bool get canDelete => _$this._canDelete;
-  set canDelete(bool canDelete) => _$this._canDelete = canDelete;
+  bool? _canDelete;
+  bool? get canDelete => _$this._canDelete;
+  set canDelete(bool? canDelete) => _$this._canDelete = canDelete;
 
   RenderableStickerBuilder();
 
@@ -211,7 +211,7 @@ class RenderableStickerBuilder
   }
 
   @override
-  void update(void Function(RenderableStickerBuilder) updates) {
+  void update(void Function(RenderableStickerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -229,7 +229,7 @@ class RenderableStickerBuilder
               canDelete: BuiltValueNullFieldError.checkNotNull(
                   canDelete, 'RenderableSticker', 'canDelete'));
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'transform';
         _transform?.build();

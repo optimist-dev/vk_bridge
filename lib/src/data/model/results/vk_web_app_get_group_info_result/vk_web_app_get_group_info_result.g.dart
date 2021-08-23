@@ -20,10 +20,10 @@ class _$VKWebAppGetGroupInfoResultSerializer
   final String wireName = 'VKWebAppGetGroupInfoResult';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VKWebAppGetGroupInfoResult object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'name',
@@ -44,7 +44,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
       serializers.serialize(object.photo200,
           specifiedType: const FullType(String)),
     ];
-    Object value;
+    Object? value;
     value = object.deactivated;
     if (value != null) {
       result
@@ -93,7 +93,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
 
   @override
   VKWebAppGetGroupInfoResult deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new VKWebAppGetGroupInfoResultBuilder();
 
@@ -101,7 +101,7 @@ class _$VKWebAppGetGroupInfoResultSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -176,19 +176,19 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
   @override
   final int isClosed;
   @override
-  final int deactivated;
+  final int? deactivated;
   @override
-  final int isAdmin;
+  final int? isAdmin;
   @override
-  final int adminLevel;
+  final int? adminLevel;
   @override
-  final int isMember;
+  final int? isMember;
   @override
-  final int isAdvertiser;
+  final int? isAdvertiser;
   @override
-  final int invitedBy;
+  final int? invitedBy;
   @override
-  final String type;
+  final String? type;
   @override
   final String photo50;
   @override
@@ -197,14 +197,14 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
   final String photo200;
 
   factory _$VKWebAppGetGroupInfoResult(
-          [void Function(VKWebAppGetGroupInfoResultBuilder) updates]) =>
+          [void Function(VKWebAppGetGroupInfoResultBuilder)? updates]) =>
       (new VKWebAppGetGroupInfoResultBuilder()..update(updates)).build();
 
   _$VKWebAppGetGroupInfoResult._(
-      {this.id,
-      this.name,
-      this.screenName,
-      this.isClosed,
+      {required this.id,
+      required this.name,
+      required this.screenName,
+      required this.isClosed,
       this.deactivated,
       this.isAdmin,
       this.adminLevel,
@@ -212,9 +212,9 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
       this.isAdvertiser,
       this.invitedBy,
       this.type,
-      this.photo50,
-      this.photo100,
-      this.photo200})
+      required this.photo50,
+      required this.photo100,
+      required this.photo200})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, 'VKWebAppGetGroupInfoResult', 'id');
@@ -315,63 +315,63 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
 class VKWebAppGetGroupInfoResultBuilder
     implements
         Builder<VKWebAppGetGroupInfoResult, VKWebAppGetGroupInfoResultBuilder> {
-  _$VKWebAppGetGroupInfoResult _$v;
+  _$VKWebAppGetGroupInfoResult? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _screenName;
-  String get screenName => _$this._screenName;
-  set screenName(String screenName) => _$this._screenName = screenName;
+  String? _screenName;
+  String? get screenName => _$this._screenName;
+  set screenName(String? screenName) => _$this._screenName = screenName;
 
-  int _isClosed;
-  int get isClosed => _$this._isClosed;
-  set isClosed(int isClosed) => _$this._isClosed = isClosed;
+  int? _isClosed;
+  int? get isClosed => _$this._isClosed;
+  set isClosed(int? isClosed) => _$this._isClosed = isClosed;
 
-  int _deactivated;
-  int get deactivated => _$this._deactivated;
-  set deactivated(int deactivated) => _$this._deactivated = deactivated;
+  int? _deactivated;
+  int? get deactivated => _$this._deactivated;
+  set deactivated(int? deactivated) => _$this._deactivated = deactivated;
 
-  int _isAdmin;
-  int get isAdmin => _$this._isAdmin;
-  set isAdmin(int isAdmin) => _$this._isAdmin = isAdmin;
+  int? _isAdmin;
+  int? get isAdmin => _$this._isAdmin;
+  set isAdmin(int? isAdmin) => _$this._isAdmin = isAdmin;
 
-  int _adminLevel;
-  int get adminLevel => _$this._adminLevel;
-  set adminLevel(int adminLevel) => _$this._adminLevel = adminLevel;
+  int? _adminLevel;
+  int? get adminLevel => _$this._adminLevel;
+  set adminLevel(int? adminLevel) => _$this._adminLevel = adminLevel;
 
-  int _isMember;
-  int get isMember => _$this._isMember;
-  set isMember(int isMember) => _$this._isMember = isMember;
+  int? _isMember;
+  int? get isMember => _$this._isMember;
+  set isMember(int? isMember) => _$this._isMember = isMember;
 
-  int _isAdvertiser;
-  int get isAdvertiser => _$this._isAdvertiser;
-  set isAdvertiser(int isAdvertiser) => _$this._isAdvertiser = isAdvertiser;
+  int? _isAdvertiser;
+  int? get isAdvertiser => _$this._isAdvertiser;
+  set isAdvertiser(int? isAdvertiser) => _$this._isAdvertiser = isAdvertiser;
 
-  int _invitedBy;
-  int get invitedBy => _$this._invitedBy;
-  set invitedBy(int invitedBy) => _$this._invitedBy = invitedBy;
+  int? _invitedBy;
+  int? get invitedBy => _$this._invitedBy;
+  set invitedBy(int? invitedBy) => _$this._invitedBy = invitedBy;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String _photo50;
-  String get photo50 => _$this._photo50;
-  set photo50(String photo50) => _$this._photo50 = photo50;
+  String? _photo50;
+  String? get photo50 => _$this._photo50;
+  set photo50(String? photo50) => _$this._photo50 = photo50;
 
-  String _photo100;
-  String get photo100 => _$this._photo100;
-  set photo100(String photo100) => _$this._photo100 = photo100;
+  String? _photo100;
+  String? get photo100 => _$this._photo100;
+  set photo100(String? photo100) => _$this._photo100 = photo100;
 
-  String _photo200;
-  String get photo200 => _$this._photo200;
-  set photo200(String photo200) => _$this._photo200 = photo200;
+  String? _photo200;
+  String? get photo200 => _$this._photo200;
+  set photo200(String? photo200) => _$this._photo200 = photo200;
 
   VKWebAppGetGroupInfoResultBuilder();
 
@@ -404,7 +404,7 @@ class VKWebAppGetGroupInfoResultBuilder
   }
 
   @override
-  void update(void Function(VKWebAppGetGroupInfoResultBuilder) updates) {
+  void update(void Function(VKWebAppGetGroupInfoResultBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -15,10 +15,10 @@ class _$CitySerializer implements StructuredSerializer<City> {
   final String wireName = 'City';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, City object,
+  Iterable<Object?> serialize(Serializers serializers, City object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.id;
     if (value != null) {
       result
@@ -36,7 +36,7 @@ class _$CitySerializer implements StructuredSerializer<City> {
   }
 
   @override
-  City deserialize(Serializers serializers, Iterable<Object> serialized,
+  City deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CityBuilder();
 
@@ -44,7 +44,7 @@ class _$CitySerializer implements StructuredSerializer<City> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -63,11 +63,11 @@ class _$CitySerializer implements StructuredSerializer<City> {
 
 class _$City extends City {
   @override
-  final int id;
+  final int? id;
   @override
-  final String title;
+  final String? title;
 
-  factory _$City([void Function(CityBuilder) updates]) =>
+  factory _$City([void Function(CityBuilder)? updates]) =>
       (new CityBuilder()..update(updates)).build();
 
   _$City._({this.id, this.title}) : super._();
@@ -100,15 +100,15 @@ class _$City extends City {
 }
 
 class CityBuilder implements Builder<City, CityBuilder> {
-  _$City _$v;
+  _$City? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
   CityBuilder();
 
@@ -129,7 +129,7 @@ class CityBuilder implements Builder<City, CityBuilder> {
   }
 
   @override
-  void update(void Function(CityBuilder) updates) {
+  void update(void Function(CityBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
