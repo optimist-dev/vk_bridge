@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Fix LaunchParams parsing: vk_group_id and vk_viewer_group_role can be null
+
 ## 2.0.1
 
 - Update dependencies

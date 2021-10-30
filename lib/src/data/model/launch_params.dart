@@ -25,8 +25,8 @@ abstract class LaunchParams
         ..language = paramsMap['vk_language']!
         ..ref = paramsMap['vk_ref']!
         ..accessTokenSettings = paramsMap['vk_access_token_settings']!
-        ..groupId = int.tryParse(paramsMap['vk_group_id'] ?? '')!
-        ..viewerGroupRole = paramsMap['vk_viewer_group_role']!
+        ..groupId = int.tryParse(paramsMap['vk_group_id'] ?? '')
+        ..viewerGroupRole = paramsMap['vk_viewer_group_role']
         ..platform = paramsMap['vk_platform']!
         ..isFavorite = int.parse(paramsMap['vk_is_favorite']!) == 1
         ..ts = int.parse(paramsMap['vk_ts']!)
