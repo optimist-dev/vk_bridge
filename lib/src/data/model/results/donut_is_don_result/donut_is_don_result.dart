@@ -8,8 +8,7 @@ part 'donut_is_don_result.g.dart';
 abstract class DonutIsDonResult
     implements Built<DonutIsDonResult, DonutIsDonResultBuilder> {
   /// [DonutIsDonResult] factory
-  factory DonutIsDonResult(
-          [void Function(DonutIsDonResultBuilder) updates]) =
+  factory DonutIsDonResult([void Function(DonutIsDonResultBuilder) updates]) =
       _$DonutIsDonResult;
 
   DonutIsDonResult._();
