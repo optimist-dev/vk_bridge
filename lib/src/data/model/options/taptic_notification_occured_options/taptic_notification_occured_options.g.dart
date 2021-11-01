@@ -26,7 +26,8 @@ class _$TapticNotificationOccurredOptionsSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
+      serializers.serialize(object.type,
+          specifiedType: const FullType(TapticType)),
     ];
 
     return result;
@@ -46,7 +47,7 @@ class _$TapticNotificationOccurredOptionsSerializer
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(TapticType)) as TapticType;
           break;
       }
     }
@@ -58,7 +59,7 @@ class _$TapticNotificationOccurredOptionsSerializer
 class _$TapticNotificationOccurredOptions
     extends TapticNotificationOccurredOptions {
   @override
-  final String type;
+  final TapticType type;
 
   factory _$TapticNotificationOccurredOptions(
           [void Function(TapticNotificationOccurredOptionsBuilder)? updates]) =>
@@ -103,9 +104,9 @@ class TapticNotificationOccurredOptionsBuilder
             TapticNotificationOccurredOptionsBuilder> {
   _$TapticNotificationOccurredOptions? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  TapticType? _type;
+  TapticType? get type => _$this._type;
+  set type(TapticType? type) => _$this._type = type;
 
   TapticNotificationOccurredOptionsBuilder();
 

@@ -27,7 +27,7 @@ class _$TapticImpactOccurredOptionsSerializer
     final result = <Object?>[
       'style',
       serializers.serialize(object.style,
-          specifiedType: const FullType(String)),
+          specifiedType: const FullType(TapticStyle)),
     ];
 
     return result;
@@ -47,7 +47,7 @@ class _$TapticImpactOccurredOptionsSerializer
       switch (key) {
         case 'style':
           result.style = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(TapticStyle)) as TapticStyle;
           break;
       }
     }
@@ -58,7 +58,7 @@ class _$TapticImpactOccurredOptionsSerializer
 
 class _$TapticImpactOccurredOptions extends TapticImpactOccurredOptions {
   @override
-  final String style;
+  final TapticStyle style;
 
   factory _$TapticImpactOccurredOptions(
           [void Function(TapticImpactOccurredOptionsBuilder)? updates]) =>
@@ -103,9 +103,9 @@ class TapticImpactOccurredOptionsBuilder
             TapticImpactOccurredOptionsBuilder> {
   _$TapticImpactOccurredOptions? _$v;
 
-  String? _style;
-  String? get style => _$this._style;
-  set style(String? style) => _$this._style = style;
+  TapticStyle? _style;
+  TapticStyle? get style => _$this._style;
+  set style(TapticStyle? style) => _$this._style = style;
 
   TapticImpactOccurredOptionsBuilder();
 

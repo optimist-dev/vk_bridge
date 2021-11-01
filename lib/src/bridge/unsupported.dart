@@ -4,7 +4,11 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_w
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_type.dart';
+import 'package:vk_bridge/src/data/model/results/donut_is_don_result/donut_is_don_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -168,7 +172,7 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
     required int appId,
-    required String scope,
+    required List<Scope> scope,
   }) =>
       throw _unsupportedError;
 
@@ -244,7 +248,7 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type) =>
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(TapticType type) =>
       throw _unsupportedError;
 
   @override
@@ -252,7 +256,7 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppBoolResult> tapticImpactOccurred(String style) =>
+  Future<VKWebAppBoolResult> tapticImpactOccurred(TapticStyle style) =>
       throw _unsupportedError;
 
   @override
@@ -266,5 +270,13 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> showNativeAds(String adFormat) =>
+      throw _unsupportedError;
+
+  @override
+  Future<DonutIsDonResult> donutIsDon({
+    required int ownerId,
+    required String accessToken,
+    double version = 5.131,
+  }) =>
       throw _unsupportedError;
 }

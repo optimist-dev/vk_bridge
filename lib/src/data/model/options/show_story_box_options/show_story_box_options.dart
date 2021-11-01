@@ -2,6 +2,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/attachment.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/background_type.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/sticker_container.dart';
 
 part 'show_story_box_options.g.dart';
@@ -26,14 +27,23 @@ abstract class ShowStoryBoxOptions
   /// - none (for the case of transferring the sticker directly to the camera,
   /// Platforms: iOS, Android).
   @BuiltValueField(wireName: 'background_type')
-  String get backgroundType;
+  BackgroundType get backgroundType;
 
   /// Link to an image or video (the transmission must follow a direct link to
   /// mp4)
-  String get url;
+  String? get url;
+
+  /// Base64 string with BLOB (only supported for image).
+  /// The following prefix must be added before the string:
+  /// data:image/png;base64,<blob-base64> or data:image/jpeg;base64,<blob-base64>
+  /// depending on the image type
+  String? get blob;
 
   /// Description of the object of attachment to history
   Attachment? get attachment;
+
+  /// Is it possible to move a photo
+  bool get locked;
 
   /// An array of objects describing stickers on the canvas
   BuiltList<StickerContainer>? get stickers;

@@ -20,12 +20,12 @@ abstract class AllowMessagesFromGroupOptions
   static Serializer<AllowMessagesFromGroupOptions> get serializer =>
       _$allowMessagesFromGroupOptionsSerializer;
 
-  /// Group ID.
+  /// Group ID
   @BuiltValueField(wireName: 'group_id')
   int get groupId;
 
   /// arbitrary string.
   /// This parameter can be used to authenticate the user.
-  /// Its value will be returned in the message_allow event of the Callback API.
+  /// Its value will be returned in the message_allow event of the Callback API
   String? get key;
 }

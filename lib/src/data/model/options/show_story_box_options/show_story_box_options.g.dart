@@ -26,11 +26,25 @@ class _$ShowStoryBoxOptionsSerializer
     final result = <Object?>[
       'background_type',
       serializers.serialize(object.backgroundType,
-          specifiedType: const FullType(String)),
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
+          specifiedType: const FullType(BackgroundType)),
+      'locked',
+      serializers.serialize(object.locked, specifiedType: const FullType(bool)),
     ];
     Object? value;
+    value = object.url;
+    if (value != null) {
+      result
+        ..add('url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.blob;
+    if (value != null) {
+      result
+        ..add('blob')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.attachment;
     if (value != null) {
       result
@@ -63,15 +77,23 @@ class _$ShowStoryBoxOptionsSerializer
       switch (key) {
         case 'background_type':
           result.backgroundType = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(BackgroundType)) as BackgroundType;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'blob':
+          result.blob = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'attachment':
           result.attachment.replace(serializers.deserialize(value,
               specifiedType: const FullType(Attachment))! as Attachment);
+          break;
+        case 'locked':
+          result.locked = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
           break;
         case 'stickers':
           result.stickers.replace(serializers.deserialize(value,
@@ -88,11 +110,15 @@ class _$ShowStoryBoxOptionsSerializer
 
 class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
   @override
-  final String backgroundType;
+  final BackgroundType backgroundType;
   @override
-  final String url;
+  final String? url;
+  @override
+  final String? blob;
   @override
   final Attachment? attachment;
+  @override
+  final bool locked;
   @override
   final BuiltList<StickerContainer>? stickers;
 
@@ -102,13 +128,16 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
 
   _$ShowStoryBoxOptions._(
       {required this.backgroundType,
-      required this.url,
+      this.url,
+      this.blob,
       this.attachment,
+      required this.locked,
       this.stickers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         backgroundType, 'ShowStoryBoxOptions', 'backgroundType');
-    BuiltValueNullFieldError.checkNotNull(url, 'ShowStoryBoxOptions', 'url');
+    BuiltValueNullFieldError.checkNotNull(
+        locked, 'ShowStoryBoxOptions', 'locked');
   }
 
   @override
@@ -126,15 +155,21 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
     return other is ShowStoryBoxOptions &&
         backgroundType == other.backgroundType &&
         url == other.url &&
+        blob == other.blob &&
         attachment == other.attachment &&
+        locked == other.locked &&
         stickers == other.stickers;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, backgroundType.hashCode), url.hashCode),
-            attachment.hashCode),
+        $jc(
+            $jc(
+                $jc($jc($jc(0, backgroundType.hashCode), url.hashCode),
+                    blob.hashCode),
+                attachment.hashCode),
+            locked.hashCode),
         stickers.hashCode));
   }
 
@@ -143,7 +178,9 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
     return (newBuiltValueToStringHelper('ShowStoryBoxOptions')
           ..add('backgroundType', backgroundType)
           ..add('url', url)
+          ..add('blob', blob)
           ..add('attachment', attachment)
+          ..add('locked', locked)
           ..add('stickers', stickers))
         .toString();
   }
@@ -153,20 +190,28 @@ class ShowStoryBoxOptionsBuilder
     implements Builder<ShowStoryBoxOptions, ShowStoryBoxOptionsBuilder> {
   _$ShowStoryBoxOptions? _$v;
 
-  String? _backgroundType;
-  String? get backgroundType => _$this._backgroundType;
-  set backgroundType(String? backgroundType) =>
+  BackgroundType? _backgroundType;
+  BackgroundType? get backgroundType => _$this._backgroundType;
+  set backgroundType(BackgroundType? backgroundType) =>
       _$this._backgroundType = backgroundType;
 
   String? _url;
   String? get url => _$this._url;
   set url(String? url) => _$this._url = url;
 
+  String? _blob;
+  String? get blob => _$this._blob;
+  set blob(String? blob) => _$this._blob = blob;
+
   AttachmentBuilder? _attachment;
   AttachmentBuilder get attachment =>
       _$this._attachment ??= new AttachmentBuilder();
   set attachment(AttachmentBuilder? attachment) =>
       _$this._attachment = attachment;
+
+  bool? _locked;
+  bool? get locked => _$this._locked;
+  set locked(bool? locked) => _$this._locked = locked;
 
   ListBuilder<StickerContainer>? _stickers;
   ListBuilder<StickerContainer> get stickers =>
@@ -181,7 +226,9 @@ class ShowStoryBoxOptionsBuilder
     if ($v != null) {
       _backgroundType = $v.backgroundType;
       _url = $v.url;
+      _blob = $v.blob;
       _attachment = $v.attachment?.toBuilder();
+      _locked = $v.locked;
       _stickers = $v.stickers?.toBuilder();
       _$v = null;
     }
@@ -207,15 +254,18 @@ class ShowStoryBoxOptionsBuilder
           new _$ShowStoryBoxOptions._(
               backgroundType: BuiltValueNullFieldError.checkNotNull(
                   backgroundType, 'ShowStoryBoxOptions', 'backgroundType'),
-              url: BuiltValueNullFieldError.checkNotNull(
-                  url, 'ShowStoryBoxOptions', 'url'),
+              url: url,
+              blob: blob,
               attachment: _attachment?.build(),
+              locked: BuiltValueNullFieldError.checkNotNull(
+                  locked, 'ShowStoryBoxOptions', 'locked'),
               stickers: _stickers?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'attachment';
         _attachment?.build();
+
         _$failedField = 'stickers';
         _stickers?.build();
       } catch (e) {

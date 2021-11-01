@@ -1,6 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
 
 part 'taptic_impact_occured_options.g.dart';
 
@@ -19,7 +20,6 @@ abstract class TapticImpactOccurredOptions
   static Serializer<TapticImpactOccurredOptions> get serializer =>
       _$tapticImpactOccurredOptionsSerializer;
 
-  // TODO: enum
-  /// The strength of vibration. Possible options: light, medium, heavy.
-  String get style;
+  /// The strength of vibration. Possible options: light, medium, heavy
+  TapticStyle get style;
 }

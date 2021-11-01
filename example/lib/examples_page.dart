@@ -10,7 +10,6 @@ class ExamplesPage extends StatefulWidget {
 class _ExamplesPageState extends State<ExamplesPage> {
   static const _flutterSampleVkMiniAppId = 7638841;
   static const _vkBridgeOriginalVKMiniAppId = 6909581;
-
   static const _vkMiniAppGroupId = 166562603;
 
   @override
@@ -142,7 +141,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 title: 'getAuthToken',
                 call: (it) => it.getAuthToken(
                   appId: _flutterSampleVkMiniAppId,
-                  scope: 'status',
+                  scope: [Scope.status],
                 ),
               ),
               const Text('Community events'),
@@ -235,7 +234,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
               const Text('Interacting with Taptic Engine'),
               _button(
                 title: 'tapticNotificationOccurred',
-                call: (it) => it.tapticNotificationOccurred('error'),
+                call: (it) => it.tapticNotificationOccurred(TapticType.error),
               ),
               _button(
                 title: 'tapticSelectionChanged',
@@ -243,7 +242,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
               ),
               _button(
                 title: 'tapticImpactOccurred',
-                call: (it) => it.tapticImpactOccurred('heavy'),
+                call: (it) => it.tapticImpactOccurred(TapticStyle.heavy),
               ),
               // const Text('Payments in mini apps using VK Pay'),
               // _button(
@@ -264,9 +263,10 @@ class _ExamplesPageState extends State<ExamplesPage> {
                 call: (it) => it.showStoryBox(
                   ShowStoryBoxOptions(
                     (b) => b
-                      ..backgroundType = 'image'
+                      ..backgroundType = BackgroundType.image
                       ..url =
-                          'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg',
+                          'https://sun9-65.userapi.com/c850136/v850136098/1b77eb/0YK6suXkY24.jpg'
+                      ..locked = false,
                   ),
                 ),
               ),

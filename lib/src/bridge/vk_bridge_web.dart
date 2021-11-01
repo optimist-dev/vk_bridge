@@ -20,9 +20,12 @@ import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
+import 'package:vk_bridge/src/data/model/options/donut_is_don_options/donut_is_don_options.dart';
+import 'package:vk_bridge/src/data/model/options/donut_is_don_options/donut_is_don_params.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/flash_set_level_options/flash_set_level_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_auth_token_options/get_auth_token_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/get_community_token_options/get_community_token_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_friends_options/get_friends_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_group_info_options/get_group_info_options.dart';
@@ -46,7 +49,9 @@ import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get
 import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
 import 'package:vk_bridge/src/data/model/options/subscribe_story_app_options/subscribe_story_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_impact_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_notification_occured_options.dart';
+import 'package:vk_bridge/src/data/model/results/donut_is_don_result/donut_is_don_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -466,12 +471,12 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
     required int appId,
-    required String scope,
+    required List<Scope> scope,
   }) {
     final options = GetAuthTokenOptions(
       (b) => b
         ..appId = appId
-        ..scope = scope,
+        ..scope = scope.join(','),
     );
     return _sendInternalWithOptions('VKWebAppGetAuthToken', options);
   }
@@ -499,7 +504,11 @@ class VKBridge implements vk_bridge.VKBridge {
     required int groupId,
     String? key,
   }) {
-    final options = AllowMessagesFromGroupOptions((b) => b.groupId = groupId);
+    final options = AllowMessagesFromGroupOptions(
+      (b) => b
+        ..groupId = groupId
+        ..key = key,
+    );
     return _sendInternalWithOptions('VKWebAppAllowMessagesFromGroup', options);
   }
 
@@ -603,7 +612,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type) {
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(TapticType type) {
     final options = TapticNotificationOccurredOptions((b) => b..type = type);
     return _sendInternalWithOptions(
       'VKWebAppTapticNotificationOccurred',
@@ -617,7 +626,7 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppBoolResult> tapticImpactOccurred(String style) {
+  Future<VKWebAppBoolResult> tapticImpactOccurred(TapticStyle style) {
     final options = TapticImpactOccurredOptions((b) => b..style = style);
     return _sendInternalWithOptions('VKWebAppTapticImpactOccurred', options);
   }
@@ -642,6 +651,32 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> showNativeAds(String adFormat) {
     final options = ShowNativeAdsOptions((b) => b..adFormat = adFormat);
     return _sendInternalWithOptions('VKWebAppShowNativeAds', options);
+  }
+
+  @override
+  Future<DonutIsDonResult> donutIsDon({
+    required int ownerId,
+    required String accessToken,
+    double version = 5.131,
+  }) async {
+    final requestId = '${DateTime.now().millisecondsSinceEpoch}';
+
+    final options = DonutIsDonOptions(
+      (b) => b
+        ..method = 'donut.isDon'
+        ..params = DonutIsDonParams(
+          (b) => b
+            ..ownerId = -ownerId // '-' VK wtf!
+            ..version = version
+            ..accessToken = accessToken,
+        ).toBuilder()
+        ..requestId = requestId,
+    );
+
+    return await _sendInternalWithOptions(
+      'VKWebAppCallAPIMethod',
+      options,
+    );
   }
 }
 

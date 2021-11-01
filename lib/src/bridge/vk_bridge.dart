@@ -3,7 +3,11 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_w
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_type.dart';
+import 'package:vk_bridge/src/data/model/results/donut_is_don_result/donut_is_don_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
@@ -317,26 +321,10 @@ abstract class VKBridge {
   /// Platforms: iOS, Android, Web, Mobile Web
   ///
   /// [app_id] - application ID.
-  /// [scope] - list of access rights, separated by commas.
-  /// To get a token without additional rights,
-  /// pass an empty string in the parameter. Available Values:
-  /// friends - access to the user's friends list,
-  /// photos - access to photos,
-  /// video - access to videos,
-  /// stories - access to stories,
-  /// pages - access to wiki pages,
-  /// status - access to user status,
-  /// notes - access to user notes,
-  /// wall - to methods of working with a wall,
-  /// docs - access to documents,
-  /// groups - access to user communities,
-  /// stats - access to statistics of groups and applications of the user, of which he is the administrator,
-  /// market - access to goods.
-  ///
-  // TODO: Set<Scope> scopes
+  /// [scope] - list of access rights
   Future<VKWebAppGetAuthTokenResult> getAuthToken({
     required int appId,
-    required String scope,
+    required List<Scope> scope,
   });
 
   /// [VKWebAppGetGroupInfo] allows you to get information about the group.
@@ -537,7 +525,7 @@ abstract class VKBridge {
   ///
   /// If successful, the generator reproduces the tactile response
   /// corresponding to the passed parameter.
-  Future<VKWebAppBoolResult> tapticNotificationOccurred(String type);
+  Future<VKWebAppBoolResult> tapticNotificationOccurred(TapticType type);
 
   /// The event to call selectionChanged (https://developer.apple.com/documentation/uikit/uiselectionfeedbackgenerator/2374284-selectionchanged)
   /// on the Taptic Engine.
@@ -562,7 +550,7 @@ abstract class VKBridge {
   ///
   /// If successful, the generator reproduces a tactile response
   /// corresponding to the strength of the passed style parameter.
-  Future<VKWebAppBoolResult> tapticImpactOccurred(String style);
+  Future<VKWebAppBoolResult> tapticImpactOccurred(TapticStyle style);
 
   /// VKWebAppSubscribeStoryApp allows the current user to subscribe
   /// to updates from an app in history. After successful completion,
@@ -596,4 +584,17 @@ abstract class VKBridge {
   ///
   /// Return true if an advertisement was shown to the user.
   Future<VKWebAppBoolResult> showNativeAds(String adFormat);
+
+  ///
+  /// Returns information about whether the user is subscribed to paid content (is a don)
+  /// [ownerId] - community identifier
+  /// [accessToken] - token from [getAuthToken] with [Scope.groups] scope
+  /// [version] - query version
+  ///
+  /// Return true if user is don
+  Future<DonutIsDonResult> donutIsDon({
+    required int ownerId,
+    required String accessToken,
+    double version = 5.131,
+  });
 }
