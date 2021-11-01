@@ -21,7 +21,6 @@ abstract class TapticNotificationOccurredOptions
   static Serializer<TapticNotificationOccurredOptions> get serializer =>
       _$tapticNotificationOccurredOptionsSerializer;
 
-  /// The type of notification.
-  /// Available values: error, success, warning.
+  /// The type of notification
   TapticType get type;
 }

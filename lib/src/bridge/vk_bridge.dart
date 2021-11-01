@@ -521,7 +521,6 @@ abstract class VKBridge {
   /// Platforms: iOS
   ///
   /// [type] - the type of notification.
-  /// Available values: error, success, warning.
   ///
   /// If successful, the generator reproduces the tactile response
   /// corresponding to the passed parameter.
@@ -591,7 +590,7 @@ abstract class VKBridge {
   /// [accessToken] - token from [getAuthToken] with [Scope.groups] scope
   /// [version] - query version
   ///
-  /// Return true if user is don
+  /// If the user is a don, it returns 1. If not, it returns 0
   Future<DonutIsDonResult> donutIsDon({
     required int ownerId,
     required String accessToken,

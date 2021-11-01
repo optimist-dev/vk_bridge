@@ -20,6 +20,6 @@ abstract class TapticImpactOccurredOptions
   static Serializer<TapticImpactOccurredOptions> get serializer =>
       _$tapticImpactOccurredOptionsSerializer;
 
-  /// The strength of vibration. Possible options: light, medium, heavy
+  /// The strength of vibration
   TapticStyle get style;
 }
