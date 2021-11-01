@@ -22,21 +22,6 @@ abstract class GetAuthTokenOptions
   @BuiltValueField(wireName: 'app_id')
   int get appId;
 
-  // TODO: enum
-  /// List of access rights, separated by commas.
-  /// To get a token without additional rights,
-  /// pass an empty string in the parameter. Available Values:
-  /// friends - access to the user's friends list,
-  /// photos - access to photos,
-  /// video - access to videos,
-  /// stories - access to stories,
-  /// pages - access to wiki pages,
-  /// status - access to user status,
-  /// notes - access to user notes,
-  /// wall - to methods of working with a wall,
-  /// docs - access to documents,
-  /// groups - access to user communities,
-  /// stats - access to statistics of groups and applications of the user, of which he is the administrator,
-  /// market - access to goods.
+  /// List of access rights, separated by commas
   String get scope;
 }

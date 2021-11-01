@@ -1,6 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_type.dart';
 
 part 'taptic_notification_occured_options.g.dart';
 
@@ -20,8 +21,6 @@ abstract class TapticNotificationOccurredOptions
   static Serializer<TapticNotificationOccurredOptions> get serializer =>
       _$tapticNotificationOccurredOptionsSerializer;
 
-  // TODO: enum
-  /// The type of notification.
-  /// Available values: error, success, warning.
-  String get type;
+  /// The type of notification
+  TapticType get type;
 }

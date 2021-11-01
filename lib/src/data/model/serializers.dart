@@ -10,9 +10,12 @@ import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
+import 'package:vk_bridge/src/data/model/options/donut_is_don_options/donut_is_don_options.dart';
+import 'package:vk_bridge/src/data/model/options/donut_is_don_options/donut_is_don_params.dart';
 import 'package:vk_bridge/src/data/model/options/download_file_options/download_file_options.dart';
 import 'package:vk_bridge/src/data/model/options/flash_set_level_options/flash_set_level_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_auth_token_options/get_auth_token_options.dart';
+import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/get_community_token_options/get_community_token_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_friends_options/get_friends_options.dart';
 import 'package:vk_bridge/src/data/model/options/get_group_info_options/get_group_info_options.dart';
@@ -29,9 +32,11 @@ import 'package:vk_bridge/src/data/model/options/set_view_settings_options/set_v
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_app.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/action_link.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/attachment.dart';
+import 'package:vk_bridge/src/data/model/options/show_story_box_options/background_type.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/clickable_zone.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/renderable_sticker.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
@@ -43,9 +48,12 @@ import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get
 import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
 import 'package:vk_bridge/src/data/model/options/subscribe_story_app_options/subscribe_story_app_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_impact_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_notification_occured_options.dart';
+import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_type.dart';
 import 'package:vk_bridge/src/data/model/results/common/city.dart';
 import 'package:vk_bridge/src/data/model/results/common/country.dart';
+import 'package:vk_bridge/src/data/model/results/donut_is_don_result/donut_is_don_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
@@ -73,7 +81,6 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_keys_res
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/key_value_pair.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_storage_get_result/vk_web_app_storage_get_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_result/vk_web_app_subscribe_story_app_result.dart';
-import 'package:vk_bridge/src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 
 part 'serializers.g.dart';
 
@@ -125,6 +132,7 @@ part 'serializers.g.dart';
   User,
   VKWebAppContactsDone,
   GetAuthTokenOptions,
+  Scope,
   VKWebAppGetAuthTokenResult,
   GetGroupInfoOptions,
   VKWebAppGetGroupInfoResult,
@@ -151,6 +159,12 @@ part 'serializers.g.dart';
   SubscribeStoryAppOptions,
   VKWebAppSubscribeStoryAppResult,
   ShowNativeAdsOptions,
+  DonutIsDonOptions,
+  DonutIsDonParams,
+  DonutIsDonResult,
+  TapticStyle,
+  TapticType,
+  BackgroundType,
 ])
 
 /// Serializers
