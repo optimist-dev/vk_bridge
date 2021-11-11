@@ -3,6 +3,7 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:vk_bridge/src/data/model/errors/error_data.dart';
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/events/show_wall_post_options/show_wall_post_options.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
@@ -165,6 +166,7 @@ part 'serializers.g.dart';
   TapticStyle,
   TapticType,
   BackgroundType,
+  OpenWallPostOptions,
 ])
 
 /// Serializers

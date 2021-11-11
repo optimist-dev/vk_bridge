@@ -596,4 +596,18 @@ abstract class VKBridge {
     required String accessToken,
     double version = 5.131,
   });
+
+  ///
+  /// Opens in a separate window the entry with the [postId] identifier,
+  /// published on the wall of the user or community with the [ownerId] identifier.
+  /// [ownerId] - The ID of the community (negative number) or user (positive number)
+  /// on whose wall the entry was published
+  /// [postId] -The ID of the entry on the wall (a positive number)
+  /// [version] - query version
+  ///
+  ///  Platforms: Web
+  Future<VKWebAppBoolResult> openWallPost({
+    required int ownerId,
+    required int postId,
+  });
 }
