@@ -584,7 +584,6 @@ abstract class VKBridge {
   /// Return true if an advertisement was shown to the user.
   Future<VKWebAppBoolResult> showNativeAds(String adFormat);
 
-  ///
   /// Returns information about whether the user is subscribed to paid content (is a don)
   /// [ownerId] - community identifier
   /// [accessToken] - token from [getAuthToken] with [Scope.groups] scope
@@ -595,5 +594,18 @@ abstract class VKBridge {
     required int ownerId,
     required String accessToken,
     double version = 5.131,
+  });
+
+  /// Opens in a separate window the entry with the [postId] identifier,
+  /// published on the wall of the user or community with the [ownerId] identifier.
+  /// [ownerId] - The ID of the community (negative number) or user (positive number)
+  /// on whose wall the entry was published
+  /// [postId] -The ID of the entry on the wall (a positive number)
+  /// [version] - query version
+  ///
+  ///  Platforms: Web
+  Future<VKWebAppBoolResult> openWallPost({
+    required int ownerId,
+    required int postId,
   });
 }

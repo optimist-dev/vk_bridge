@@ -1,3 +1,8 @@
+## 2.2.0
+
+- Add new method openWallPost
+- Update build_runner to 2.1.5
+
 ## 2.1.0
 
 - Add new method donutIsDon

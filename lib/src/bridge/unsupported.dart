@@ -279,4 +279,11 @@ class VKBridge implements vk_bridge.VKBridge {
     double version = 5.131,
   }) =>
       throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> openWallPost({
+    required int ownerId,
+    required int postId,
+  }) =>
+      throw _unsupportedError;
 }

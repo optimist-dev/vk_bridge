@@ -13,6 +13,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/logger.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
+import 'package:vk_bridge/src/data/model/events/show_wall_post_options/show_wall_post_options.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
@@ -675,6 +676,23 @@ class VKBridge implements vk_bridge.VKBridge {
 
     return await _sendInternalWithOptions(
       'VKWebAppCallAPIMethod',
+      options,
+    );
+  }
+
+  @override
+  Future<VKWebAppBoolResult> openWallPost({
+    required int ownerId,
+    required int postId,
+  }) async {
+    final options = OpenWallPostOptions(
+      (b) => b
+        ..ownerId = ownerId
+        ..postId = postId,
+    );
+
+    return await _sendInternalWithOptions(
+      'VKWebAppOpenWallPost',
       options,
     );
   }
