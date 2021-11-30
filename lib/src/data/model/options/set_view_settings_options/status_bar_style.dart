@@ -9,7 +9,8 @@ class StatusBarStyle extends EnumClass {
   const StatusBarStyle._(String name) : super(name);
 
   /// Appearance serializer
-  static Serializer<StatusBarStyle> get serializer => _$statusBarStyleSerializer;
+  static Serializer<StatusBarStyle> get serializer =>
+      _$statusBarStyleSerializer;
 
   /// light
   static const StatusBarStyle light = _$light;
