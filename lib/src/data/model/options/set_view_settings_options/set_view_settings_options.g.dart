@@ -26,15 +26,23 @@ class _$SetViewSettingsOptionsSerializer
     final result = <Object?>[
       'status_bar_style',
       serializers.serialize(object.statusBarStyle,
-          specifiedType: const FullType(String)),
-      'action_bar_color',
-      serializers.serialize(object.actionBarColor,
-          specifiedType: const FullType(String)),
-      'navigation_bar_color',
-      serializers.serialize(object.navigationBarColor,
-          specifiedType: const FullType(String)),
+          specifiedType: const FullType(StatusBarStyle)),
     ];
-
+    Object? value;
+    value = object.actionBarColor;
+    if (value != null) {
+      result
+        ..add('action_bar_color')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.navigationBarColor;
+    if (value != null) {
+      result
+        ..add('navigation_bar_color')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -52,15 +60,15 @@ class _$SetViewSettingsOptionsSerializer
       switch (key) {
         case 'status_bar_style':
           result.statusBarStyle = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(StatusBarStyle)) as StatusBarStyle;
           break;
         case 'action_bar_color':
           result.actionBarColor = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'navigation_bar_color':
           result.navigationBarColor = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -71,11 +79,11 @@ class _$SetViewSettingsOptionsSerializer
 
 class _$SetViewSettingsOptions extends SetViewSettingsOptions {
   @override
-  final String statusBarStyle;
+  final StatusBarStyle statusBarStyle;
   @override
-  final String actionBarColor;
+  final String? actionBarColor;
   @override
-  final String navigationBarColor;
+  final String? navigationBarColor;
 
   factory _$SetViewSettingsOptions(
           [void Function(SetViewSettingsOptionsBuilder)? updates]) =>
@@ -83,15 +91,11 @@ class _$SetViewSettingsOptions extends SetViewSettingsOptions {
 
   _$SetViewSettingsOptions._(
       {required this.statusBarStyle,
-      required this.actionBarColor,
-      required this.navigationBarColor})
+      this.actionBarColor,
+      this.navigationBarColor})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         statusBarStyle, 'SetViewSettingsOptions', 'statusBarStyle');
-    BuiltValueNullFieldError.checkNotNull(
-        actionBarColor, 'SetViewSettingsOptions', 'actionBarColor');
-    BuiltValueNullFieldError.checkNotNull(
-        navigationBarColor, 'SetViewSettingsOptions', 'navigationBarColor');
   }
 
   @override
@@ -133,9 +137,9 @@ class SetViewSettingsOptionsBuilder
     implements Builder<SetViewSettingsOptions, SetViewSettingsOptionsBuilder> {
   _$SetViewSettingsOptions? _$v;
 
-  String? _statusBarStyle;
-  String? get statusBarStyle => _$this._statusBarStyle;
-  set statusBarStyle(String? statusBarStyle) =>
+  StatusBarStyle? _statusBarStyle;
+  StatusBarStyle? get statusBarStyle => _$this._statusBarStyle;
+  set statusBarStyle(StatusBarStyle? statusBarStyle) =>
       _$this._statusBarStyle = statusBarStyle;
 
   String? _actionBarColor;
@@ -178,12 +182,8 @@ class SetViewSettingsOptionsBuilder
         new _$SetViewSettingsOptions._(
             statusBarStyle: BuiltValueNullFieldError.checkNotNull(
                 statusBarStyle, 'SetViewSettingsOptions', 'statusBarStyle'),
-            actionBarColor: BuiltValueNullFieldError.checkNotNull(
-                actionBarColor, 'SetViewSettingsOptions', 'actionBarColor'),
-            navigationBarColor: BuiltValueNullFieldError.checkNotNull(
-                navigationBarColor,
-                'SetViewSettingsOptions',
-                'navigationBarColor'));
+            actionBarColor: actionBarColor,
+            navigationBarColor: navigationBarColor);
     replace(_$result);
     return _$result;
   }
