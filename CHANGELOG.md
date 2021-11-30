@@ -1,3 +1,8 @@
+## 2.2.1
+
+- Add Appearance enum for VKWebAppUpdateConfig
+- Add StatusBarStyle enum for SetViewSettingsOptions
+
 ## 2.2.0
 
 - Add new method openWallPost

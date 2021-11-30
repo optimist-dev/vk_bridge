@@ -5,6 +5,7 @@ import 'package:vk_bridge/src/data/model/errors/error_data.dart';
 import 'package:vk_bridge/src/data/model/errors/vk_web_app_error.dart';
 import 'package:vk_bridge/src/data/model/events/show_wall_post_options/show_wall_post_options.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/appearance.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
@@ -30,6 +31,7 @@ import 'package:vk_bridge/src/data/model/options/scroll_options/scroll_options.d
 import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
 import 'package:vk_bridge/src/data/model/options/set_swipe_settings_options/set_swipe_settings_options.dart';
 import 'package:vk_bridge/src/data/model/options/set_view_settings_options/set_view_settings_options.dart';
+import 'package:vk_bridge/src/data/model/options/set_view_settings_options/status_bar_style.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
@@ -167,6 +169,8 @@ part 'serializers.g.dart';
   TapticType,
   BackgroundType,
   OpenWallPostOptions,
+  StatusBarStyle,
+  Appearance,
 ])
 
 /// Serializers

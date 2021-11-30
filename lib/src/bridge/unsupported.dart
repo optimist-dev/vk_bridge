@@ -5,6 +5,7 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
+import 'package:vk_bridge/src/data/model/options/set_view_settings_options/status_bar_style.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_impact_occured_options/taptic_style.dart';
 import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_options/taptic_type.dart';
@@ -237,7 +238,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> setViewSettings({
-    required String statusBarStyle,
+    required StatusBarStyle statusBarStyle,
     String? actionBarColor,
     String? navigationBarColor,
   }) =>

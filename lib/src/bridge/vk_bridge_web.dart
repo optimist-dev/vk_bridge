@@ -40,6 +40,7 @@ import 'package:vk_bridge/src/data/model/options/scroll_options/scroll_options.d
 import 'package:vk_bridge/src/data/model/options/send_to_client_options/send_to_client_options.dart';
 import 'package:vk_bridge/src/data/model/options/set_swipe_settings_options/set_swipe_settings_options.dart';
 import 'package:vk_bridge/src/data/model/options/set_view_settings_options/set_view_settings_options.dart';
+import 'package:vk_bridge/src/data/model/options/set_view_settings_options/status_bar_style.dart';
 import 'package:vk_bridge/src/data/model/options/share_options/share_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
@@ -593,7 +594,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> setViewSettings({
-    required String statusBarStyle,
+    required StatusBarStyle statusBarStyle,
     String? actionBarColor,
     String? navigationBarColor,
   }) {

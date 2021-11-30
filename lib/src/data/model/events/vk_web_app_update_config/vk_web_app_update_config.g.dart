@@ -41,7 +41,7 @@ class _$VKWebAppUpdateConfigSerializer
       result
         ..add('appearance')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+            specifiedType: const FullType(Appearance)));
     }
     value = object.insets;
     if (value != null) {
@@ -103,7 +103,7 @@ class _$VKWebAppUpdateConfigSerializer
           break;
         case 'appearance':
           result.appearance = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(Appearance)) as Appearance?;
           break;
         case 'insets':
           result.insets.replace(serializers.deserialize(value,
@@ -144,7 +144,7 @@ class _$VKWebAppUpdateConfig extends VKWebAppUpdateConfig {
   @override
   final String? app;
   @override
-  final String? appearance;
+  final Appearance? appearance;
   @override
   final Insets? insets;
   @override
@@ -245,9 +245,9 @@ class VKWebAppUpdateConfigBuilder
   String? get app => _$this._app;
   set app(String? app) => _$this._app = app;
 
-  String? _appearance;
-  String? get appearance => _$this._appearance;
-  set appearance(String? appearance) => _$this._appearance = appearance;
+  Appearance? _appearance;
+  Appearance? get appearance => _$this._appearance;
+  set appearance(Appearance? appearance) => _$this._appearance = appearance;
 
   InsetsBuilder? _insets;
   InsetsBuilder get insets => _$this._insets ??= new InsetsBuilder();

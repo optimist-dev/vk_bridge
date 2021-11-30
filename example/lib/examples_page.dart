@@ -208,7 +208,7 @@ class _ExamplesPageState extends State<ExamplesPage> {
               _button(
                 title: 'setViewSettings',
                 call: (it) => it.setViewSettings(
-                  statusBarStyle: 'light',
+                  statusBarStyle: StatusBarStyle.light,
                   actionBarColor: '#ff00ff',
                   navigationBarColor: '#ff0000',
                 ),
