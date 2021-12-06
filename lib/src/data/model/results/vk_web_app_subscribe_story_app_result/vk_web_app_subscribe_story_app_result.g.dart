@@ -26,7 +26,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'access_key',
-      serializers.serialize(object.access_key,
+      serializers.serialize(object.accessKey,
           specifiedType: const FullType(String)),
     ];
 
@@ -46,7 +46,7 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'access_key':
-          result.access_key = serializers.deserialize(value,
+          result.accessKey = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -59,15 +59,15 @@ class _$VKWebAppSubscribeStoryAppResultSerializer
 class _$VKWebAppSubscribeStoryAppResult
     extends VKWebAppSubscribeStoryAppResult {
   @override
-  final String access_key;
+  final String accessKey;
 
   factory _$VKWebAppSubscribeStoryAppResult(
           [void Function(VKWebAppSubscribeStoryAppResultBuilder)? updates]) =>
       (new VKWebAppSubscribeStoryAppResultBuilder()..update(updates)).build();
 
-  _$VKWebAppSubscribeStoryAppResult._({required this.access_key}) : super._() {
+  _$VKWebAppSubscribeStoryAppResult._({required this.accessKey}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        access_key, 'VKWebAppSubscribeStoryAppResult', 'access_key');
+        accessKey, 'VKWebAppSubscribeStoryAppResult', 'accessKey');
   }
 
   @override
@@ -83,18 +83,18 @@ class _$VKWebAppSubscribeStoryAppResult
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VKWebAppSubscribeStoryAppResult &&
-        access_key == other.access_key;
+        accessKey == other.accessKey;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, access_key.hashCode));
+    return $jf($jc(0, accessKey.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('VKWebAppSubscribeStoryAppResult')
-          ..add('access_key', access_key))
+          ..add('accessKey', accessKey))
         .toString();
   }
 }
@@ -105,16 +105,16 @@ class VKWebAppSubscribeStoryAppResultBuilder
             VKWebAppSubscribeStoryAppResultBuilder> {
   _$VKWebAppSubscribeStoryAppResult? _$v;
 
-  String? _access_key;
-  String? get access_key => _$this._access_key;
-  set access_key(String? access_key) => _$this._access_key = access_key;
+  String? _accessKey;
+  String? get accessKey => _$this._accessKey;
+  set accessKey(String? accessKey) => _$this._accessKey = accessKey;
 
   VKWebAppSubscribeStoryAppResultBuilder();
 
   VKWebAppSubscribeStoryAppResultBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _access_key = $v.access_key;
+      _accessKey = $v.accessKey;
       _$v = null;
     }
     return this;
@@ -135,8 +135,8 @@ class VKWebAppSubscribeStoryAppResultBuilder
   _$VKWebAppSubscribeStoryAppResult build() {
     final _$result = _$v ??
         new _$VKWebAppSubscribeStoryAppResult._(
-            access_key: BuiltValueNullFieldError.checkNotNull(
-                access_key, 'VKWebAppSubscribeStoryAppResult', 'access_key'));
+            accessKey: BuiltValueNullFieldError.checkNotNull(
+                accessKey, 'VKWebAppSubscribeStoryAppResult', 'accessKey'));
     replace(_$result);
     return _$result;
   }

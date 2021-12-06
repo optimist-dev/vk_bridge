@@ -1,3 +1,8 @@
+## 2.2.2
+
+- Add forgotten VKWebAppAddToCommunityResult, VKWebAppOpenCodeReaderResult, VKWebAppViewHide serializers
+- Set fixed version to vk-bridge script
+
 ## 2.2.1
 
 - Add Appearance enum for VKWebAppUpdateConfig

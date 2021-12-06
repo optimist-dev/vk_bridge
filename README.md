@@ -22,7 +22,7 @@ Add this part of code in your index.html before Flutter part.
 
 ```html
 
-<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+<script src="https://unpkg.com/@vkontakte/vk-bridge@2.5.1/dist/browser.min.js"></script>
 
 <script>
     vkBridge.subscribe((event) => {

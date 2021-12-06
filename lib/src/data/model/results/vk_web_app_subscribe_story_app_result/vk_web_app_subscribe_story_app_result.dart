@@ -20,7 +20,7 @@ abstract class VKWebAppSubscribeStoryAppResult
   static Serializer<VKWebAppSubscribeStoryAppResult> get serializer =>
       _$vKWebAppSubscribeStoryAppResultSerializer;
 
-  /// Access key for private stories.
+  /// Access key for private stories
   @BuiltValueField(wireName: 'access_key')
-  String get access_key;
+  String get accessKey;
 }
