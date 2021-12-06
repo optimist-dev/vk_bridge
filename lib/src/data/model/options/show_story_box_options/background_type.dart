@@ -24,6 +24,6 @@ class BackgroundType extends EnumClass {
   /// List of all types
   static BuiltSet<BackgroundType> get values => _$values;
 
-  /// Parse scope from string
+  /// Parse BackgroundType from string
   static BackgroundType valueOf(String name) => _$valueOf(name);
 }

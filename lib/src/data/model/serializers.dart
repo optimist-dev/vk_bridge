@@ -8,6 +8,7 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_w
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/appearance.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/insets.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
+import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
@@ -57,6 +58,7 @@ import 'package:vk_bridge/src/data/model/options/taptic_notification_occured_opt
 import 'package:vk_bridge/src/data/model/results/common/city.dart';
 import 'package:vk_bridge/src/data/model/results/common/country.dart';
 import 'package:vk_bridge/src/data/model/results/donut_is_don_result/donut_is_don_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_community_result/vk_web_app_add_to_community_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_info_result/vk_web_app_add_to_home_screen_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_app_bool_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
@@ -74,6 +76,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_re
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_phone_number_result/vk_web_app_get_phone_number_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_user_info_result/vk_web_app_get_user_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_open_app_result/vk_web_app_open_app_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_open_code_reader_result/vk_web_app_open_code_reader_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_resize_window_result/size.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_resize_window_result/vk_web_app_resize_window_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_scroll_result/scroll_result.dart';
@@ -171,6 +174,9 @@ part 'serializers.g.dart';
   OpenWallPostOptions,
   StatusBarStyle,
   Appearance,
+  VKWebAppViewHide,
+  VKWebAppAddToCommunityResult,
+  VKWebAppOpenCodeReaderResult,
 ])
 
 /// Serializers
