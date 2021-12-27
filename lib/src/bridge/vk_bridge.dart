@@ -604,9 +604,14 @@ abstract class VKBridge {
   /// [postId] -The ID of the entry on the wall (a positive number)
   /// [version] - query version
   ///
-  ///  Platforms: Web
+  /// Platforms: Web
   Future<VKWebAppBoolResult> openWallPost({
     required int ownerId,
     required int postId,
   });
+
+  /// Opens a virtual value purchase window in a game or mini-app
+  /// [item] - virtual value
+  /// Platforms: Android, Mobile Web, Web
+  Future<VKWebAppBoolResult> showOrderBox(String item);
 }

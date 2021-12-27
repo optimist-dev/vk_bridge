@@ -287,4 +287,8 @@ class VKBridge implements vk_bridge.VKBridge {
     required int postId,
   }) =>
       throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> showOrderBox(String item) =>
+      throw _unsupportedError;
 }
