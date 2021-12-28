@@ -1,3 +1,7 @@
+## 2.3.0
+
+- Add VKWebAppShowOrderBox
+
 ## 2.2.2
 
 - Add forgotten VKWebAppAddToCommunityResult, VKWebAppOpenCodeReaderResult, VKWebAppViewHide serializers
