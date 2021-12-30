@@ -4,6 +4,7 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_w
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
 import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/set_view_settings_options/status_bar_style.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
@@ -16,6 +17,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_a
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_ads_result/vk_web_app_get_ads_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -270,10 +272,6 @@ class VKBridge implements vk_bridge.VKBridge {
       throw _unsupportedError;
 
   @override
-  Future<VKWebAppBoolResult> showNativeAds(String adFormat) =>
-      throw _unsupportedError;
-
-  @override
   Future<DonutIsDonResult> donutIsDon({
     required int ownerId,
     required String accessToken,
@@ -291,4 +289,21 @@ class VKBridge implements vk_bridge.VKBridge {
   @override
   Future<VKWebAppBoolResult> showOrderBox(String item) =>
       throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> checkNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppBoolResult> showNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  }) =>
+      throw _unsupportedError;
+
+  @override
+  Future<VKWebAppGetAdsResult> getAds() => throw UnimplementedError();
 }

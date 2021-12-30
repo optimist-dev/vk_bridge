@@ -1,0 +1,30 @@
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'package:vk_bridge/src/bridge/vk_bridge.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
+
+part 'check_native_ads_options.g.dart';
+
+/// Options of [VKBridge.checkNativeAds]
+abstract class CheckNativeAdsOptions
+    implements Built<CheckNativeAdsOptions, CheckNativeAdsOptionsBuilder> {
+  /// [CheckNativeAdsOptions] factory
+  factory CheckNativeAdsOptions(
+          [void Function(CheckNativeAdsOptionsBuilder) updates]) =
+      _$CheckNativeAdsOptions;
+
+  CheckNativeAdsOptions._();
+
+  /// [CheckNativeAdsOptions] serializer
+  static Serializer<CheckNativeAdsOptions> get serializer =>
+      _$checkNativeAdsOptionsSerializer;
+
+  /// Type of advertisement
+  @BuiltValueField(wireName: 'ad_format')
+  AdFormat get adFormat;
+
+  /// Only for adFormat = reward.
+  /// Whether to use the interstitial advertising mechanism when there is no rewarded video
+  @BuiltValueField(wireName: 'use_waterfall')
+  bool? get useWaterfall;
+}
