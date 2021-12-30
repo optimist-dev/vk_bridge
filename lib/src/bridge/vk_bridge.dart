@@ -3,6 +3,7 @@ import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_w
 import 'package:vk_bridge/src/data/model/events/vk_web_app_update_config/vk_web_app_update_config.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/launch_params.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
 import 'package:vk_bridge/src/data/model/options/get_auth_token_options/scope.dart';
 import 'package:vk_bridge/src/data/model/options/set_view_settings_options/status_bar_style.dart';
 import 'package:vk_bridge/src/data/model/options/show_story_box_options/show_story_box_options.dart';
@@ -15,6 +16,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_bool_result/vk_web_a
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_ads_result/vk_web_app_get_ads_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_auth_token_result/vk_web_app_get_auth_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_client_version_result/vk_web_app_get_client_version_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_email_result/vk_web_app_get_email_result.dart';
@@ -576,15 +578,6 @@ abstract class VKBridge {
     String? accessKey,
   });
 
-  // TODO: change string (adFormat) to enum
-  /// [VKWebAppShowNativeAds] Shows ads to the user. The method is available on Android and iOS platforms.
-  ///
-  /// [adFormat] - advertising format.
-  /// Possible options: ​preloader, reward, interstitial.
-  ///
-  /// Return true if an advertisement was shown to the user.
-  Future<VKWebAppBoolResult> showNativeAds(String adFormat);
-
   /// Returns information about whether the user is subscribed to paid content (is a don)
   /// [ownerId] - community identifier
   /// [accessToken] - token from [getAuthToken] with [Scope.groups] scope
@@ -612,6 +605,34 @@ abstract class VKBridge {
 
   /// Opens a virtual value purchase window in a game or mini-app
   /// [item] - virtual value
+  ///
   /// Platforms: Android, Mobile Web, Web
   Future<VKWebAppBoolResult> showOrderBox(String item);
+
+  /// Checks if there are ads available for display in the specified format
+  /// [adFormat] - type of advertisement
+  /// [useWaterfall] - Only for adFormat = reward.
+  /// Whether to use the interstitial advertising mechanism when there is no rewarded video
+  ///
+  /// Platforms: Android, iOS, Web, Mobile Web
+  Future<VKWebAppBoolResult> checkNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  });
+
+  /// Shows full-screen ads to the user
+  /// [adFormat] - type of advertisement
+  /// [useWaterfall] - Only for adFormat = reward.
+  /// Whether to use the interstitial advertising mechanism when there is no rewarded video
+  ///
+  /// Platforms: Android, iOS, Web, Mobile Web
+  Future<VKWebAppBoolResult> showNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  });
+
+  /// Getting adblock data
+  ///
+  /// Platforms: Android, iOS
+  Future<VKWebAppGetAdsResult> getAds();
 }

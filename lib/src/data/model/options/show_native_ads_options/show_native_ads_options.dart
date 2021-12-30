@@ -1,6 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
 
 part 'show_native_ads_options.g.dart';
 
@@ -18,7 +19,12 @@ abstract class ShowNativeAdsOptions
   static Serializer<ShowNativeAdsOptions> get serializer =>
       _$showNativeAdsOptionsSerializer;
 
-  /// Advertising format. Possible values: ​​preloader, reward, interstitial.
+  /// Type of advertisement
   @BuiltValueField(wireName: 'ad_format')
-  String get adFormat;
+  AdFormat get adFormat;
+
+  /// Only for adFormat = reward.
+  /// Whether to use the interstitial advertising mechanism when there is no rewarded video
+  @BuiltValueField(wireName: 'use_waterfall')
+  bool? get useWaterfall;
 }

@@ -272,16 +272,15 @@ class _ExamplesPageState extends State<ExamplesPage> {
               ),
               const Text('Ads'),
               _button(
-                title: 'showNativeAds (preloader)',
-                call: (it) => it.showNativeAds('preloader'),
-              ),
-              _button(
                 title: 'showNativeAds (reward)',
-                call: (it) => it.showNativeAds('reward'),
+                call: (it) => it.showNativeAds(
+                  AdFormat.reward,
+                  useWaterfall: true,
+                ),
               ),
               _button(
                 title: 'showNativeAds (interstitial)',
-                call: (it) => it.showNativeAds('interstitial'),
+                call: (it) => it.showNativeAds(AdFormat.interstitial),
               ),
             ],
           ),

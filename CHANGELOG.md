@@ -1,3 +1,7 @@
+## 2.4.0
+
+- Add ads methods
+
 ## 2.3.0
 
 - Add VKWebAppShowOrderBox

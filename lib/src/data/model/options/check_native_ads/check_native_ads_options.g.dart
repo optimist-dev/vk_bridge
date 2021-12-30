@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'show_native_ads_options.dart';
+part of 'check_native_ads_options.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<ShowNativeAdsOptions> _$showNativeAdsOptionsSerializer =
-    new _$ShowNativeAdsOptionsSerializer();
+Serializer<CheckNativeAdsOptions> _$checkNativeAdsOptionsSerializer =
+    new _$CheckNativeAdsOptionsSerializer();
 
-class _$ShowNativeAdsOptionsSerializer
-    implements StructuredSerializer<ShowNativeAdsOptions> {
+class _$CheckNativeAdsOptionsSerializer
+    implements StructuredSerializer<CheckNativeAdsOptions> {
   @override
   final Iterable<Type> types = const [
-    ShowNativeAdsOptions,
-    _$ShowNativeAdsOptions
+    CheckNativeAdsOptions,
+    _$CheckNativeAdsOptions
   ];
   @override
-  final String wireName = 'ShowNativeAdsOptions';
+  final String wireName = 'CheckNativeAdsOptions';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, ShowNativeAdsOptions object,
+      Serializers serializers, CheckNativeAdsOptions object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'ad_format',
@@ -40,10 +40,10 @@ class _$ShowNativeAdsOptionsSerializer
   }
 
   @override
-  ShowNativeAdsOptions deserialize(
+  CheckNativeAdsOptions deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ShowNativeAdsOptionsBuilder();
+    final result = new CheckNativeAdsOptionsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -66,35 +66,35 @@ class _$ShowNativeAdsOptionsSerializer
   }
 }
 
-class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
+class _$CheckNativeAdsOptions extends CheckNativeAdsOptions {
   @override
   final AdFormat adFormat;
   @override
   final bool? useWaterfall;
 
-  factory _$ShowNativeAdsOptions(
-          [void Function(ShowNativeAdsOptionsBuilder)? updates]) =>
-      (new ShowNativeAdsOptionsBuilder()..update(updates)).build();
+  factory _$CheckNativeAdsOptions(
+          [void Function(CheckNativeAdsOptionsBuilder)? updates]) =>
+      (new CheckNativeAdsOptionsBuilder()..update(updates)).build();
 
-  _$ShowNativeAdsOptions._({required this.adFormat, this.useWaterfall})
+  _$CheckNativeAdsOptions._({required this.adFormat, this.useWaterfall})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        adFormat, 'ShowNativeAdsOptions', 'adFormat');
+        adFormat, 'CheckNativeAdsOptions', 'adFormat');
   }
 
   @override
-  ShowNativeAdsOptions rebuild(
-          void Function(ShowNativeAdsOptionsBuilder) updates) =>
+  CheckNativeAdsOptions rebuild(
+          void Function(CheckNativeAdsOptionsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ShowNativeAdsOptionsBuilder toBuilder() =>
-      new ShowNativeAdsOptionsBuilder()..replace(this);
+  CheckNativeAdsOptionsBuilder toBuilder() =>
+      new CheckNativeAdsOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ShowNativeAdsOptions &&
+    return other is CheckNativeAdsOptions &&
         adFormat == other.adFormat &&
         useWaterfall == other.useWaterfall;
   }
@@ -106,16 +106,16 @@ class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowNativeAdsOptions')
+    return (newBuiltValueToStringHelper('CheckNativeAdsOptions')
           ..add('adFormat', adFormat)
           ..add('useWaterfall', useWaterfall))
         .toString();
   }
 }
 
-class ShowNativeAdsOptionsBuilder
-    implements Builder<ShowNativeAdsOptions, ShowNativeAdsOptionsBuilder> {
-  _$ShowNativeAdsOptions? _$v;
+class CheckNativeAdsOptionsBuilder
+    implements Builder<CheckNativeAdsOptions, CheckNativeAdsOptionsBuilder> {
+  _$CheckNativeAdsOptions? _$v;
 
   AdFormat? _adFormat;
   AdFormat? get adFormat => _$this._adFormat;
@@ -125,9 +125,9 @@ class ShowNativeAdsOptionsBuilder
   bool? get useWaterfall => _$this._useWaterfall;
   set useWaterfall(bool? useWaterfall) => _$this._useWaterfall = useWaterfall;
 
-  ShowNativeAdsOptionsBuilder();
+  CheckNativeAdsOptionsBuilder();
 
-  ShowNativeAdsOptionsBuilder get _$this {
+  CheckNativeAdsOptionsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _adFormat = $v.adFormat;
@@ -138,22 +138,22 @@ class ShowNativeAdsOptionsBuilder
   }
 
   @override
-  void replace(ShowNativeAdsOptions other) {
+  void replace(CheckNativeAdsOptions other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ShowNativeAdsOptions;
+    _$v = other as _$CheckNativeAdsOptions;
   }
 
   @override
-  void update(void Function(ShowNativeAdsOptionsBuilder)? updates) {
+  void update(void Function(CheckNativeAdsOptionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ShowNativeAdsOptions build() {
+  _$CheckNativeAdsOptions build() {
     final _$result = _$v ??
-        new _$ShowNativeAdsOptions._(
+        new _$CheckNativeAdsOptions._(
             adFormat: BuiltValueNullFieldError.checkNotNull(
-                adFormat, 'ShowNativeAdsOptions', 'adFormat'),
+                adFormat, 'CheckNativeAdsOptions', 'adFormat'),
             useWaterfall: useWaterfall);
     replace(_$result);
     return _$result;

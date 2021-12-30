@@ -9,11 +9,11 @@ import 'package:built_collection/built_collection.dart';
 import 'package:js/js.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
-import 'package:vk_bridge/src/data/model/events/show_order_box_options/show_order_box_options.dart';
-import 'package:vk_bridge/src/data/model/events/show_wall_post_options/show_wall_post_options.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
+import 'package:vk_bridge/src/data/model/options/check_native_ads/check_native_ads_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
 import 'package:vk_bridge/src/data/model/options/donut_is_don_options/donut_is_don_options.dart';
@@ -36,7 +36,9 @@ import 'package:vk_bridge/src/data/model/options/set_swipe_settings_options/set_
 import 'package:vk_bridge/src/data/model/options/set_view_settings_options/set_view_settings_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_community_widget_preview_box_options/show_community_widget_preview_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_images_options/show_images_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_order_box_options/show_order_box_options.dart';
 import 'package:vk_bridge/src/data/model/options/show_wall_post_box_options/show_wall_post_box_options.dart';
+import 'package:vk_bridge/src/data/model/options/show_wall_post_options/show_wall_post_options.dart';
 import 'package:vk_bridge/src/data/model/options/storage_get_keys_options/storage_get_keys_options.dart';
 import 'package:vk_bridge/src/data/model/options/storage_get_options/storage_get_options.dart';
 import 'package:vk_bridge/src/data/model/options/storage_set_options/storage_set_options.dart';
@@ -49,6 +51,7 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_i
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
+import 'package:vk_bridge/src/data/model/results/vk_web_app_get_ads_result/vk_web_app_get_ads_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_group_info_result/vk_web_app_get_group_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
@@ -634,12 +637,6 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
-  Future<VKWebAppBoolResult> showNativeAds(String adFormat) {
-    final options = ShowNativeAdsOptions((b) => b..adFormat = adFormat);
-    return _sendInternalWithOptions('VKWebAppShowNativeAds', options);
-  }
-
-  @override
   Future<DonutIsDonResult> donutIsDon({
     required int ownerId,
     required String accessToken,
@@ -693,6 +690,63 @@ class VKBridge implements vk_bridge.VKBridge {
     return await _sendInternalWithOptions(
       'VKWebAppShowOrderBox',
       options,
+    );
+  }
+
+  @override
+  Future<VKWebAppBoolResult> checkNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  }) async {
+    assert(
+      !(adFormat == AdFormat.reward && useWaterfall == null),
+      'You should set [useWaterfall] for reward AdFormat',
+    );
+    assert(
+      !(adFormat != AdFormat.reward && useWaterfall != null),
+      "You shouldn't set [useWaterfall] for non reward AdFormat",
+    );
+    final options = CheckNativeAdsOptions(
+      (b) => b
+        ..adFormat = adFormat
+        ..useWaterfall = useWaterfall,
+    );
+
+    return await _sendInternalWithOptions(
+      'VKWebAppCheckNativeAds',
+      options,
+    );
+  }
+
+  @override
+  Future<VKWebAppBoolResult> showNativeAds(
+    AdFormat adFormat, {
+    bool? useWaterfall,
+  }) async {
+    assert(
+      !(adFormat == AdFormat.reward && useWaterfall == null),
+      'You should set [useWaterfall] for reward AdFormat',
+    );
+    assert(
+      !(adFormat != AdFormat.reward && useWaterfall != null),
+      "You shouldn't set [useWaterfall] for non reward AdFormat",
+    );
+    final options = ShowNativeAdsOptions(
+      (b) => b
+        ..adFormat = adFormat
+        ..useWaterfall = useWaterfall,
+    );
+
+    return await _sendInternalWithOptions(
+      'VKWebAppShowNativeAds',
+      options,
+    );
+  }
+
+  @override
+  Future<VKWebAppGetAdsResult> getAds() async {
+    return await _sendInternal(
+      'VKWebAppGetAds',
     );
   }
 }
