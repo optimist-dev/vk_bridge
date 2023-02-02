@@ -191,7 +191,7 @@ abstract class VKBridge {
   Future<VKWebAppBoolResult> showInviteBox();
 
   /// [VKWebAppShowLeaderBoardBox] invokes a request window
-  /// for inviting friends to the game.
+  /// with game leaderboard.
   ///
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppBoolResult> showLeaderBoardBox();
