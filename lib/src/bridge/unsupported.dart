@@ -114,6 +114,12 @@ class VKBridge implements vk_bridge.VKBridge {
   Future<VKWebAppBoolResult> addToFavorites() => throw _unsupportedError;
 
   @override
+  Future<VKWebAppBoolResult> showInviteBox() => throw _unsupportedError;
+
+   @override
+  Future<VKWebAppBoolResult> showLeaderBoardBox() => throw _unsupportedError;
+
+  @override
   Future<VKWebAppOpenCodeReaderResult> openCodeReader() =>
       throw _unsupportedError;
 
