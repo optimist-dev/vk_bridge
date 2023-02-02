@@ -184,6 +184,18 @@ abstract class VKBridge {
   /// Platforms: iOS, Android, Web, Mobile Web
   Future<VKWebAppBoolResult> addToFavorites();
 
+  /// [VKWebAppShowInviteBox] invokes a request window
+  /// for inviting friends to the game.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppBoolResult> showInviteBox();
+
+  /// [VKWebAppShowLeaderBoardBox] invokes a request window
+  /// with game leaderboard.
+  ///
+  /// Platforms: iOS, Android, Web, Mobile Web
+  Future<VKWebAppBoolResult> showLeaderBoardBox();
+
   /// [VKWebAppOpenCodeReader] allows you to open the camera
   /// to read the QR code and get the scan result.
   ///

@@ -342,6 +342,16 @@ class VKBridge implements vk_bridge.VKBridge {
   }
 
   @override
+  Future<VKWebAppBoolResult> showInviteBox() {
+    return _sendInternal('VKWebAppShowInviteBox');
+  }
+
+   @override
+  Future<VKWebAppBoolResult> showLeaderBoardBox() {
+    return _sendInternal('VKWebAppShowLeaderBoardBox');
+  }
+
+  @override
   Future<VKWebAppOpenCodeReaderResult> openCodeReader() {
     return _sendInternal('VKWebAppOpenCodeReader');
   }
