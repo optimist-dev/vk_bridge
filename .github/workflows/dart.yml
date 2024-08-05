@@ -33,11 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dart SDK
-        uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: '3.4.1'
+          channel: 'stable'
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
       - name: Run tests
-        run: dart test
+        run: flutter test
