@@ -31,10 +31,12 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    container:
-      image: google/dart:latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.4.1'
       - name: Install dependencies
         run: dart pub get
       - name: Run tests
