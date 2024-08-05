@@ -9,7 +9,6 @@ export 'src/data/model/options/check_native_ads/ad_format.dart';
 export 'src/data/model/options/get_auth_token_options/scope.dart';
 export 'src/data/model/options/set_view_settings_options/status_bar_style.dart';
 export 'src/data/model/options/share_options/share_options.dart';
-export 'src/data/model/options/share_options/share_options.dart';
 export 'src/data/model/options/show_native_ads_options/show_native_ads_options.dart';
 export 'src/data/model/options/show_story_box_options/action.dart';
 export 'src/data/model/options/show_story_box_options/action_app.dart';

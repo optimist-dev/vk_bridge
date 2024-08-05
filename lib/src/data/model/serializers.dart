@@ -197,7 +197,9 @@ final Serializers serializers =
 
 Serializer<T> _findSerializerForType<T>() {
   final serializer = serializers.serializerForType(T);
-  if (serializer == null) throw Exception('Serializer for $T cannot be found');
+  if (serializer == null) {
+    throw Exception('Serializer for $T cannot be found');
+  }
   return serializer as Serializer<T>;
 }
 

@@ -40,25 +40,25 @@ class _$InsetsSerializer implements StructuredSerializer<Insets> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'right':
           result.right = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
         case 'top':
           result.top = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
         case 'left':
           result.left = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
         case 'bottom':
           result.bottom = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
       }
     }
@@ -78,7 +78,7 @@ class _$Insets extends Insets {
   final double bottom;
 
   factory _$Insets([void Function(InsetsBuilder)? updates]) =>
-      (new InsetsBuilder()..update(updates)).build();
+      (new InsetsBuilder()..update(updates))._build();
 
   _$Insets._(
       {required this.right,
@@ -86,10 +86,10 @@ class _$Insets extends Insets {
       required this.left,
       required this.bottom})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(right, 'Insets', 'right');
-    BuiltValueNullFieldError.checkNotNull(top, 'Insets', 'top');
-    BuiltValueNullFieldError.checkNotNull(left, 'Insets', 'left');
-    BuiltValueNullFieldError.checkNotNull(bottom, 'Insets', 'bottom');
+    BuiltValueNullFieldError.checkNotNull(right, r'Insets', 'right');
+    BuiltValueNullFieldError.checkNotNull(top, r'Insets', 'top');
+    BuiltValueNullFieldError.checkNotNull(left, r'Insets', 'left');
+    BuiltValueNullFieldError.checkNotNull(bottom, r'Insets', 'bottom');
   }
 
   @override
@@ -111,14 +111,18 @@ class _$Insets extends Insets {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, right.hashCode), top.hashCode), left.hashCode),
-        bottom.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, right.hashCode);
+    _$hash = $jc(_$hash, top.hashCode);
+    _$hash = $jc(_$hash, left.hashCode);
+    _$hash = $jc(_$hash, bottom.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Insets')
+    return (newBuiltValueToStringHelper(r'Insets')
           ..add('right', right)
           ..add('top', top)
           ..add('left', left)
@@ -172,18 +176,21 @@ class InsetsBuilder implements Builder<Insets, InsetsBuilder> {
   }
 
   @override
-  _$Insets build() {
+  Insets build() => _build();
+
+  _$Insets _build() {
     final _$result = _$v ??
         new _$Insets._(
-            right:
-                BuiltValueNullFieldError.checkNotNull(right, 'Insets', 'right'),
-            top: BuiltValueNullFieldError.checkNotNull(top, 'Insets', 'top'),
-            left: BuiltValueNullFieldError.checkNotNull(left, 'Insets', 'left'),
+            right: BuiltValueNullFieldError.checkNotNull(
+                right, r'Insets', 'right'),
+            top: BuiltValueNullFieldError.checkNotNull(top, r'Insets', 'top'),
+            left:
+                BuiltValueNullFieldError.checkNotNull(left, r'Insets', 'left'),
             bottom: BuiltValueNullFieldError.checkNotNull(
-                bottom, 'Insets', 'bottom'));
+                bottom, r'Insets', 'bottom'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

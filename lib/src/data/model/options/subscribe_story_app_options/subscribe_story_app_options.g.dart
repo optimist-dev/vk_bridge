@@ -52,21 +52,21 @@ class _$SubscribeStoryAppOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'story_owner_id':
           result.storyOwnerId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'story_id':
           result.storyId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'sticker_id':
           result.stickerId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'access_key':
           result.accessKey = serializers.deserialize(value,
@@ -91,7 +91,7 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
 
   factory _$SubscribeStoryAppOptions(
           [void Function(SubscribeStoryAppOptionsBuilder)? updates]) =>
-      (new SubscribeStoryAppOptionsBuilder()..update(updates)).build();
+      (new SubscribeStoryAppOptionsBuilder()..update(updates))._build();
 
   _$SubscribeStoryAppOptions._(
       {required this.storyOwnerId,
@@ -100,11 +100,11 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
       this.accessKey})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        storyOwnerId, 'SubscribeStoryAppOptions', 'storyOwnerId');
+        storyOwnerId, r'SubscribeStoryAppOptions', 'storyOwnerId');
     BuiltValueNullFieldError.checkNotNull(
-        storyId, 'SubscribeStoryAppOptions', 'storyId');
+        storyId, r'SubscribeStoryAppOptions', 'storyId');
     BuiltValueNullFieldError.checkNotNull(
-        stickerId, 'SubscribeStoryAppOptions', 'stickerId');
+        stickerId, r'SubscribeStoryAppOptions', 'stickerId');
   }
 
   @override
@@ -128,15 +128,18 @@ class _$SubscribeStoryAppOptions extends SubscribeStoryAppOptions {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, storyOwnerId.hashCode), storyId.hashCode),
-            stickerId.hashCode),
-        accessKey.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, storyOwnerId.hashCode);
+    _$hash = $jc(_$hash, storyId.hashCode);
+    _$hash = $jc(_$hash, stickerId.hashCode);
+    _$hash = $jc(_$hash, accessKey.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('SubscribeStoryAppOptions')
+    return (newBuiltValueToStringHelper(r'SubscribeStoryAppOptions')
           ..add('storyOwnerId', storyOwnerId)
           ..add('storyId', storyId)
           ..add('stickerId', stickerId)
@@ -192,19 +195,21 @@ class SubscribeStoryAppOptionsBuilder
   }
 
   @override
-  _$SubscribeStoryAppOptions build() {
+  SubscribeStoryAppOptions build() => _build();
+
+  _$SubscribeStoryAppOptions _build() {
     final _$result = _$v ??
         new _$SubscribeStoryAppOptions._(
             storyOwnerId: BuiltValueNullFieldError.checkNotNull(
-                storyOwnerId, 'SubscribeStoryAppOptions', 'storyOwnerId'),
+                storyOwnerId, r'SubscribeStoryAppOptions', 'storyOwnerId'),
             storyId: BuiltValueNullFieldError.checkNotNull(
-                storyId, 'SubscribeStoryAppOptions', 'storyId'),
+                storyId, r'SubscribeStoryAppOptions', 'storyId'),
             stickerId: BuiltValueNullFieldError.checkNotNull(
-                stickerId, 'SubscribeStoryAppOptions', 'stickerId'),
+                stickerId, r'SubscribeStoryAppOptions', 'stickerId'),
             accessKey: accessKey);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

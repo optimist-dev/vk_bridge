@@ -63,7 +63,7 @@ class _$TransformSerializer implements StructuredSerializer<Transform> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -107,7 +107,7 @@ class _$Transform extends Transform {
   final String? gravity;
 
   factory _$Transform([void Function(TransformBuilder)? updates]) =>
-      (new TransformBuilder()..update(updates)).build();
+      (new TransformBuilder()..update(updates))._build();
 
   _$Transform._(
       {this.rotation,
@@ -137,17 +137,19 @@ class _$Transform extends Transform {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, rotation.hashCode), relationWidth.hashCode),
-                translationX.hashCode),
-            translationY.hashCode),
-        gravity.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, rotation.hashCode);
+    _$hash = $jc(_$hash, relationWidth.hashCode);
+    _$hash = $jc(_$hash, translationX.hashCode);
+    _$hash = $jc(_$hash, translationY.hashCode);
+    _$hash = $jc(_$hash, gravity.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Transform')
+    return (newBuiltValueToStringHelper(r'Transform')
           ..add('rotation', rotation)
           ..add('relationWidth', relationWidth)
           ..add('translationX', translationX)
@@ -208,7 +210,9 @@ class TransformBuilder implements Builder<Transform, TransformBuilder> {
   }
 
   @override
-  _$Transform build() {
+  Transform build() => _build();
+
+  _$Transform _build() {
     final _$result = _$v ??
         new _$Transform._(
             rotation: rotation,
@@ -221,4 +225,4 @@ class TransformBuilder implements Builder<Transform, TransformBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

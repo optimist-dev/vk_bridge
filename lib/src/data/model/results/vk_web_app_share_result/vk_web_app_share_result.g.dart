@@ -45,7 +45,7 @@ class _$VKWebAppShareResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -55,7 +55,7 @@ class _$VKWebAppShareResultSerializer
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -72,10 +72,10 @@ class _$VKWebAppShareResult extends VKWebAppShareResult {
 
   factory _$VKWebAppShareResult(
           [void Function(VKWebAppShareResultBuilder)? updates]) =>
-      (new VKWebAppShareResultBuilder()..update(updates)).build();
+      (new VKWebAppShareResultBuilder()..update(updates))._build();
 
   _$VKWebAppShareResult._({this.postId, required this.type}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'VKWebAppShareResult', 'type');
+    BuiltValueNullFieldError.checkNotNull(type, r'VKWebAppShareResult', 'type');
   }
 
   @override
@@ -97,12 +97,16 @@ class _$VKWebAppShareResult extends VKWebAppShareResult {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, postId.hashCode), type.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, postId.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppShareResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppShareResult')
           ..add('postId', postId)
           ..add('type', type))
         .toString();
@@ -145,15 +149,17 @@ class VKWebAppShareResultBuilder
   }
 
   @override
-  _$VKWebAppShareResult build() {
+  VKWebAppShareResult build() => _build();
+
+  _$VKWebAppShareResult _build() {
     final _$result = _$v ??
         new _$VKWebAppShareResult._(
             postId: postId,
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'VKWebAppShareResult', 'type'));
+                type, r'VKWebAppShareResult', 'type'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -41,13 +41,13 @@ class _$TapticNotificationOccurredOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(TapticType)) as TapticType;
+              specifiedType: const FullType(TapticType))! as TapticType;
           break;
       }
     }
@@ -63,11 +63,12 @@ class _$TapticNotificationOccurredOptions
 
   factory _$TapticNotificationOccurredOptions(
           [void Function(TapticNotificationOccurredOptionsBuilder)? updates]) =>
-      (new TapticNotificationOccurredOptionsBuilder()..update(updates)).build();
+      (new TapticNotificationOccurredOptionsBuilder()..update(updates))
+          ._build();
 
   _$TapticNotificationOccurredOptions._({required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, 'TapticNotificationOccurredOptions', 'type');
+        type, r'TapticNotificationOccurredOptions', 'type');
   }
 
   @override
@@ -87,12 +88,15 @@ class _$TapticNotificationOccurredOptions
 
   @override
   int get hashCode {
-    return $jf($jc(0, type.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('TapticNotificationOccurredOptions')
+    return (newBuiltValueToStringHelper(r'TapticNotificationOccurredOptions')
           ..add('type', type))
         .toString();
   }
@@ -132,14 +136,16 @@ class TapticNotificationOccurredOptionsBuilder
   }
 
   @override
-  _$TapticNotificationOccurredOptions build() {
+  TapticNotificationOccurredOptions build() => _build();
+
+  _$TapticNotificationOccurredOptions _build() {
     final _$result = _$v ??
         new _$TapticNotificationOccurredOptions._(
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'TapticNotificationOccurredOptions', 'type'));
+                type, r'TapticNotificationOccurredOptions', 'type'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

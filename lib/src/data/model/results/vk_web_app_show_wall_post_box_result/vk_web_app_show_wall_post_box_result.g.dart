@@ -40,13 +40,13 @@ class _$VKWebAppShowWallPostBoxResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'post_id':
           result.postId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -61,11 +61,11 @@ class _$VKWebAppShowWallPostBoxResult extends VKWebAppShowWallPostBoxResult {
 
   factory _$VKWebAppShowWallPostBoxResult(
           [void Function(VKWebAppShowWallPostBoxResultBuilder)? updates]) =>
-      (new VKWebAppShowWallPostBoxResultBuilder()..update(updates)).build();
+      (new VKWebAppShowWallPostBoxResultBuilder()..update(updates))._build();
 
   _$VKWebAppShowWallPostBoxResult._({required this.postId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        postId, 'VKWebAppShowWallPostBoxResult', 'postId');
+        postId, r'VKWebAppShowWallPostBoxResult', 'postId');
   }
 
   @override
@@ -85,12 +85,15 @@ class _$VKWebAppShowWallPostBoxResult extends VKWebAppShowWallPostBoxResult {
 
   @override
   int get hashCode {
-    return $jf($jc(0, postId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, postId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppShowWallPostBoxResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppShowWallPostBoxResult')
           ..add('postId', postId))
         .toString();
   }
@@ -129,14 +132,16 @@ class VKWebAppShowWallPostBoxResultBuilder
   }
 
   @override
-  _$VKWebAppShowWallPostBoxResult build() {
+  VKWebAppShowWallPostBoxResult build() => _build();
+
+  _$VKWebAppShowWallPostBoxResult _build() {
     final _$result = _$v ??
         new _$VKWebAppShowWallPostBoxResult._(
             postId: BuiltValueNullFieldError.checkNotNull(
-                postId, 'VKWebAppShowWallPostBoxResult', 'postId'));
+                postId, r'VKWebAppShowWallPostBoxResult', 'postId'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

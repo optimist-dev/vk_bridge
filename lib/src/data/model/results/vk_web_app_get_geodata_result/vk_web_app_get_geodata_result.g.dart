@@ -16,17 +16,17 @@ class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
 
   factory _$VKWebAppGetGeodataResult(
           [void Function(VKWebAppGetGeodataResultBuilder)? updates]) =>
-      (new VKWebAppGetGeodataResultBuilder()..update(updates)).build();
+      (new VKWebAppGetGeodataResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetGeodataResult._(
       {required this.available, required this.lat, required this.long})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        available, 'VKWebAppGetGeodataResult', 'available');
+        available, r'VKWebAppGetGeodataResult', 'available');
     BuiltValueNullFieldError.checkNotNull(
-        lat, 'VKWebAppGetGeodataResult', 'lat');
+        lat, r'VKWebAppGetGeodataResult', 'lat');
     BuiltValueNullFieldError.checkNotNull(
-        long, 'VKWebAppGetGeodataResult', 'long');
+        long, r'VKWebAppGetGeodataResult', 'long');
   }
 
   @override
@@ -49,13 +49,17 @@ class _$VKWebAppGetGeodataResult extends VKWebAppGetGeodataResult {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, available.hashCode), lat.hashCode), long.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, available.hashCode);
+    _$hash = $jc(_$hash, lat.hashCode);
+    _$hash = $jc(_$hash, long.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetGeodataResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetGeodataResult')
           ..add('available', available)
           ..add('lat', lat)
           ..add('long', long))
@@ -105,18 +109,20 @@ class VKWebAppGetGeodataResultBuilder
   }
 
   @override
-  _$VKWebAppGetGeodataResult build() {
+  VKWebAppGetGeodataResult build() => _build();
+
+  _$VKWebAppGetGeodataResult _build() {
     final _$result = _$v ??
         new _$VKWebAppGetGeodataResult._(
             available: BuiltValueNullFieldError.checkNotNull(
-                available, 'VKWebAppGetGeodataResult', 'available'),
+                available, r'VKWebAppGetGeodataResult', 'available'),
             lat: BuiltValueNullFieldError.checkNotNull(
-                lat, 'VKWebAppGetGeodataResult', 'lat'),
+                lat, r'VKWebAppGetGeodataResult', 'lat'),
             long: BuiltValueNullFieldError.checkNotNull(
-                long, 'VKWebAppGetGeodataResult', 'long'));
+                long, r'VKWebAppGetGeodataResult', 'long'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

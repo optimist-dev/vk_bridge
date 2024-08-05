@@ -35,17 +35,17 @@ class _$StatsSerializer implements StructuredSerializer<Stats> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(StatsType)) as StatsType;
+              specifiedType: const FullType(StatsType))! as StatsType;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -61,11 +61,11 @@ class _$Stats extends Stats {
   final String url;
 
   factory _$Stats([void Function(StatsBuilder)? updates]) =>
-      (new StatsBuilder()..update(updates)).build();
+      (new StatsBuilder()..update(updates))._build();
 
   _$Stats._({required this.type, required this.url}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'Stats', 'type');
-    BuiltValueNullFieldError.checkNotNull(url, 'Stats', 'url');
+    BuiltValueNullFieldError.checkNotNull(type, r'Stats', 'type');
+    BuiltValueNullFieldError.checkNotNull(url, r'Stats', 'url');
   }
 
   @override
@@ -83,12 +83,16 @@ class _$Stats extends Stats {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), url.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Stats')
+    return (newBuiltValueToStringHelper(r'Stats')
           ..add('type', type)
           ..add('url', url))
         .toString();
@@ -130,14 +134,16 @@ class StatsBuilder implements Builder<Stats, StatsBuilder> {
   }
 
   @override
-  _$Stats build() {
+  Stats build() => _build();
+
+  _$Stats _build() {
     final _$result = _$v ??
         new _$Stats._(
-            type: BuiltValueNullFieldError.checkNotNull(type, 'Stats', 'type'),
-            url: BuiltValueNullFieldError.checkNotNull(url, 'Stats', 'url'));
+            type: BuiltValueNullFieldError.checkNotNull(type, r'Stats', 'type'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Stats', 'url'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

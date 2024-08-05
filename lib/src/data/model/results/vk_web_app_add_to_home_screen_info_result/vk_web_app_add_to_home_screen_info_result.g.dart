@@ -44,17 +44,17 @@ class _$VKWebAppAddToHomeScreenInfoResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'is_feature_supported':
           result.isFeatureSupported = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'is_added_to_home_screen':
           result.isAddedToHomeScreen = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
       }
     }
@@ -72,15 +72,16 @@ class _$VKWebAppAddToHomeScreenInfoResult
 
   factory _$VKWebAppAddToHomeScreenInfoResult(
           [void Function(VKWebAppAddToHomeScreenInfoResultBuilder)? updates]) =>
-      (new VKWebAppAddToHomeScreenInfoResultBuilder()..update(updates)).build();
+      (new VKWebAppAddToHomeScreenInfoResultBuilder()..update(updates))
+          ._build();
 
   _$VKWebAppAddToHomeScreenInfoResult._(
       {required this.isFeatureSupported, required this.isAddedToHomeScreen})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(isFeatureSupported,
-        'VKWebAppAddToHomeScreenInfoResult', 'isFeatureSupported');
+        r'VKWebAppAddToHomeScreenInfoResult', 'isFeatureSupported');
     BuiltValueNullFieldError.checkNotNull(isAddedToHomeScreen,
-        'VKWebAppAddToHomeScreenInfoResult', 'isAddedToHomeScreen');
+        r'VKWebAppAddToHomeScreenInfoResult', 'isAddedToHomeScreen');
   }
 
   @override
@@ -102,13 +103,16 @@ class _$VKWebAppAddToHomeScreenInfoResult
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc(0, isFeatureSupported.hashCode), isAddedToHomeScreen.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, isFeatureSupported.hashCode);
+    _$hash = $jc(_$hash, isAddedToHomeScreen.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppAddToHomeScreenInfoResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppAddToHomeScreenInfoResult')
           ..add('isFeatureSupported', isFeatureSupported)
           ..add('isAddedToHomeScreen', isAddedToHomeScreen))
         .toString();
@@ -156,20 +160,22 @@ class VKWebAppAddToHomeScreenInfoResultBuilder
   }
 
   @override
-  _$VKWebAppAddToHomeScreenInfoResult build() {
+  VKWebAppAddToHomeScreenInfoResult build() => _build();
+
+  _$VKWebAppAddToHomeScreenInfoResult _build() {
     final _$result = _$v ??
         new _$VKWebAppAddToHomeScreenInfoResult._(
             isFeatureSupported: BuiltValueNullFieldError.checkNotNull(
                 isFeatureSupported,
-                'VKWebAppAddToHomeScreenInfoResult',
+                r'VKWebAppAddToHomeScreenInfoResult',
                 'isFeatureSupported'),
             isAddedToHomeScreen: BuiltValueNullFieldError.checkNotNull(
                 isAddedToHomeScreen,
-                'VKWebAppAddToHomeScreenInfoResult',
+                r'VKWebAppAddToHomeScreenInfoResult',
                 'isAddedToHomeScreen'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

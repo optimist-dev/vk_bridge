@@ -6,7 +6,6 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_get_geodata_result/v
 import 'package:vk_bridge/src/data/model/serializers.dart';
 
 void main() {
-  // TODO: использовать [group]
   test('VKWebAppGetGeodataResult deserialize test. Available is bool', () {
     final Object json = jsonDecode('''
 {

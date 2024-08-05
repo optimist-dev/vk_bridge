@@ -47,13 +47,13 @@ class _$ShowNativeAdsOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'ad_format':
           result.adFormat = serializers.deserialize(value,
-              specifiedType: const FullType(AdFormat)) as AdFormat;
+              specifiedType: const FullType(AdFormat))! as AdFormat;
           break;
         case 'use_waterfall':
           result.useWaterfall = serializers.deserialize(value,
@@ -74,12 +74,12 @@ class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
 
   factory _$ShowNativeAdsOptions(
           [void Function(ShowNativeAdsOptionsBuilder)? updates]) =>
-      (new ShowNativeAdsOptionsBuilder()..update(updates)).build();
+      (new ShowNativeAdsOptionsBuilder()..update(updates))._build();
 
   _$ShowNativeAdsOptions._({required this.adFormat, this.useWaterfall})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        adFormat, 'ShowNativeAdsOptions', 'adFormat');
+        adFormat, r'ShowNativeAdsOptions', 'adFormat');
   }
 
   @override
@@ -101,12 +101,16 @@ class _$ShowNativeAdsOptions extends ShowNativeAdsOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, adFormat.hashCode), useWaterfall.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, adFormat.hashCode);
+    _$hash = $jc(_$hash, useWaterfall.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowNativeAdsOptions')
+    return (newBuiltValueToStringHelper(r'ShowNativeAdsOptions')
           ..add('adFormat', adFormat)
           ..add('useWaterfall', useWaterfall))
         .toString();
@@ -149,15 +153,17 @@ class ShowNativeAdsOptionsBuilder
   }
 
   @override
-  _$ShowNativeAdsOptions build() {
+  ShowNativeAdsOptions build() => _build();
+
+  _$ShowNativeAdsOptions _build() {
     final _$result = _$v ??
         new _$ShowNativeAdsOptions._(
             adFormat: BuiltValueNullFieldError.checkNotNull(
-                adFormat, 'ShowNativeAdsOptions', 'adFormat'),
+                adFormat, r'ShowNativeAdsOptions', 'adFormat'),
             useWaterfall: useWaterfall);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

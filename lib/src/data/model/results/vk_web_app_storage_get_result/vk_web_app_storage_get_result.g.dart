@@ -41,7 +41,7 @@ class _$VKWebAppStorageGetResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -64,11 +64,11 @@ class _$VKWebAppStorageGetResult extends VKWebAppStorageGetResult {
 
   factory _$VKWebAppStorageGetResult(
           [void Function(VKWebAppStorageGetResultBuilder)? updates]) =>
-      (new VKWebAppStorageGetResultBuilder()..update(updates)).build();
+      (new VKWebAppStorageGetResultBuilder()..update(updates))._build();
 
   _$VKWebAppStorageGetResult._({required this.keys}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        keys, 'VKWebAppStorageGetResult', 'keys');
+        keys, r'VKWebAppStorageGetResult', 'keys');
   }
 
   @override
@@ -88,12 +88,15 @@ class _$VKWebAppStorageGetResult extends VKWebAppStorageGetResult {
 
   @override
   int get hashCode {
-    return $jf($jc(0, keys.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, keys.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppStorageGetResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppStorageGetResult')
           ..add('keys', keys))
         .toString();
   }
@@ -132,7 +135,9 @@ class VKWebAppStorageGetResultBuilder
   }
 
   @override
-  _$VKWebAppStorageGetResult build() {
+  VKWebAppStorageGetResult build() => _build();
+
+  _$VKWebAppStorageGetResult _build() {
     _$VKWebAppStorageGetResult _$result;
     try {
       _$result = _$v ?? new _$VKWebAppStorageGetResult._(keys: keys.build());
@@ -143,7 +148,7 @@ class VKWebAppStorageGetResultBuilder
         keys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'VKWebAppStorageGetResult', _$failedField, e.toString());
+            r'VKWebAppStorageGetResult', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -152,4 +157,4 @@ class VKWebAppStorageGetResultBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

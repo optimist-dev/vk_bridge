@@ -47,17 +47,17 @@ class _$VKWebAppGetPersonalCardResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'email':
           result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'address':
           result.address.replace(serializers.deserialize(value,
@@ -80,17 +80,17 @@ class _$VKWebAppGetPersonalCardResult extends VKWebAppGetPersonalCardResult {
 
   factory _$VKWebAppGetPersonalCardResult(
           [void Function(VKWebAppGetPersonalCardResultBuilder)? updates]) =>
-      (new VKWebAppGetPersonalCardResultBuilder()..update(updates)).build();
+      (new VKWebAppGetPersonalCardResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetPersonalCardResult._(
       {required this.phone, required this.email, required this.address})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        phone, 'VKWebAppGetPersonalCardResult', 'phone');
+        phone, r'VKWebAppGetPersonalCardResult', 'phone');
     BuiltValueNullFieldError.checkNotNull(
-        email, 'VKWebAppGetPersonalCardResult', 'email');
+        email, r'VKWebAppGetPersonalCardResult', 'email');
     BuiltValueNullFieldError.checkNotNull(
-        address, 'VKWebAppGetPersonalCardResult', 'address');
+        address, r'VKWebAppGetPersonalCardResult', 'address');
   }
 
   @override
@@ -113,13 +113,17 @@ class _$VKWebAppGetPersonalCardResult extends VKWebAppGetPersonalCardResult {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, phone.hashCode), email.hashCode), address.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, address.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetPersonalCardResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetPersonalCardResult')
           ..add('phone', phone)
           ..add('email', email)
           ..add('address', address))
@@ -170,15 +174,17 @@ class VKWebAppGetPersonalCardResultBuilder
   }
 
   @override
-  _$VKWebAppGetPersonalCardResult build() {
+  VKWebAppGetPersonalCardResult build() => _build();
+
+  _$VKWebAppGetPersonalCardResult _build() {
     _$VKWebAppGetPersonalCardResult _$result;
     try {
       _$result = _$v ??
           new _$VKWebAppGetPersonalCardResult._(
               phone: BuiltValueNullFieldError.checkNotNull(
-                  phone, 'VKWebAppGetPersonalCardResult', 'phone'),
+                  phone, r'VKWebAppGetPersonalCardResult', 'phone'),
               email: BuiltValueNullFieldError.checkNotNull(
-                  email, 'VKWebAppGetPersonalCardResult', 'email'),
+                  email, r'VKWebAppGetPersonalCardResult', 'email'),
               address: address.build());
     } catch (_) {
       late String _$failedField;
@@ -187,7 +193,7 @@ class VKWebAppGetPersonalCardResultBuilder
         address.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'VKWebAppGetPersonalCardResult', _$failedField, e.toString());
+            r'VKWebAppGetPersonalCardResult', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -196,4 +202,4 @@ class VKWebAppGetPersonalCardResultBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

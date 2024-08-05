@@ -76,41 +76,41 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'rawLaunchParams':
           result.rawLaunchParams = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'vk_user_id':
           result.userId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'vk_app_id':
           result.appId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'vk_is_app_user':
           result.isAppUser = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'vk_are_notifications_enabled':
           result.areNotificationsEnabled = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'vk_language':
           result.language = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'vk_ref':
           result.ref = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'vk_access_token_settings':
           result.accessTokenSettings = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'vk_group_id':
           result.groupId = serializers.deserialize(value,
@@ -122,19 +122,19 @@ class _$LaunchParamsSerializer implements StructuredSerializer<LaunchParams> {
           break;
         case 'vk_platform':
           result.platform = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'vk_is_favorite':
           result.isFavorite = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'vk_ts':
           result.ts = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'sign':
           result.sign = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -174,7 +174,7 @@ class _$LaunchParams extends LaunchParams {
   final String sign;
 
   factory _$LaunchParams([void Function(LaunchParamsBuilder)? updates]) =>
-      (new LaunchParamsBuilder()..update(updates)).build();
+      (new LaunchParamsBuilder()..update(updates))._build();
 
   _$LaunchParams._(
       {required this.rawLaunchParams,
@@ -193,22 +193,24 @@ class _$LaunchParams extends LaunchParams {
       required this.sign})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        rawLaunchParams, 'LaunchParams', 'rawLaunchParams');
-    BuiltValueNullFieldError.checkNotNull(userId, 'LaunchParams', 'userId');
-    BuiltValueNullFieldError.checkNotNull(appId, 'LaunchParams', 'appId');
+        rawLaunchParams, r'LaunchParams', 'rawLaunchParams');
+    BuiltValueNullFieldError.checkNotNull(userId, r'LaunchParams', 'userId');
+    BuiltValueNullFieldError.checkNotNull(appId, r'LaunchParams', 'appId');
     BuiltValueNullFieldError.checkNotNull(
-        isAppUser, 'LaunchParams', 'isAppUser');
+        isAppUser, r'LaunchParams', 'isAppUser');
     BuiltValueNullFieldError.checkNotNull(
-        areNotificationsEnabled, 'LaunchParams', 'areNotificationsEnabled');
-    BuiltValueNullFieldError.checkNotNull(language, 'LaunchParams', 'language');
-    BuiltValueNullFieldError.checkNotNull(ref, 'LaunchParams', 'ref');
+        areNotificationsEnabled, r'LaunchParams', 'areNotificationsEnabled');
     BuiltValueNullFieldError.checkNotNull(
-        accessTokenSettings, 'LaunchParams', 'accessTokenSettings');
-    BuiltValueNullFieldError.checkNotNull(platform, 'LaunchParams', 'platform');
+        language, r'LaunchParams', 'language');
+    BuiltValueNullFieldError.checkNotNull(ref, r'LaunchParams', 'ref');
     BuiltValueNullFieldError.checkNotNull(
-        isFavorite, 'LaunchParams', 'isFavorite');
-    BuiltValueNullFieldError.checkNotNull(ts, 'LaunchParams', 'ts');
-    BuiltValueNullFieldError.checkNotNull(sign, 'LaunchParams', 'sign');
+        accessTokenSettings, r'LaunchParams', 'accessTokenSettings');
+    BuiltValueNullFieldError.checkNotNull(
+        platform, r'LaunchParams', 'platform');
+    BuiltValueNullFieldError.checkNotNull(
+        isFavorite, r'LaunchParams', 'isFavorite');
+    BuiltValueNullFieldError.checkNotNull(ts, r'LaunchParams', 'ts');
+    BuiltValueNullFieldError.checkNotNull(sign, r'LaunchParams', 'sign');
   }
 
   @override
@@ -240,41 +242,28 @@ class _$LaunchParams extends LaunchParams {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            0,
-                                                            rawLaunchParams
-                                                                .hashCode),
-                                                        userId.hashCode),
-                                                    appId.hashCode),
-                                                isAppUser.hashCode),
-                                            areNotificationsEnabled.hashCode),
-                                        language.hashCode),
-                                    ref.hashCode),
-                                accessTokenSettings.hashCode),
-                            groupId.hashCode),
-                        viewerGroupRole.hashCode),
-                    platform.hashCode),
-                isFavorite.hashCode),
-            ts.hashCode),
-        sign.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, rawLaunchParams.hashCode);
+    _$hash = $jc(_$hash, userId.hashCode);
+    _$hash = $jc(_$hash, appId.hashCode);
+    _$hash = $jc(_$hash, isAppUser.hashCode);
+    _$hash = $jc(_$hash, areNotificationsEnabled.hashCode);
+    _$hash = $jc(_$hash, language.hashCode);
+    _$hash = $jc(_$hash, ref.hashCode);
+    _$hash = $jc(_$hash, accessTokenSettings.hashCode);
+    _$hash = $jc(_$hash, groupId.hashCode);
+    _$hash = $jc(_$hash, viewerGroupRole.hashCode);
+    _$hash = $jc(_$hash, platform.hashCode);
+    _$hash = $jc(_$hash, isFavorite.hashCode);
+    _$hash = $jc(_$hash, ts.hashCode);
+    _$hash = $jc(_$hash, sign.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LaunchParams')
+    return (newBuiltValueToStringHelper(r'LaunchParams')
           ..add('rawLaunchParams', rawLaunchParams)
           ..add('userId', userId)
           ..add('appId', appId)
@@ -393,35 +382,37 @@ class LaunchParamsBuilder
   }
 
   @override
-  _$LaunchParams build() {
+  LaunchParams build() => _build();
+
+  _$LaunchParams _build() {
     final _$result = _$v ??
         new _$LaunchParams._(
             rawLaunchParams: BuiltValueNullFieldError.checkNotNull(
-                rawLaunchParams, 'LaunchParams', 'rawLaunchParams'),
+                rawLaunchParams, r'LaunchParams', 'rawLaunchParams'),
             userId: BuiltValueNullFieldError.checkNotNull(
-                userId, 'LaunchParams', 'userId'),
+                userId, r'LaunchParams', 'userId'),
             appId: BuiltValueNullFieldError.checkNotNull(
-                appId, 'LaunchParams', 'appId'),
+                appId, r'LaunchParams', 'appId'),
             isAppUser: BuiltValueNullFieldError.checkNotNull(
-                isAppUser, 'LaunchParams', 'isAppUser'),
+                isAppUser, r'LaunchParams', 'isAppUser'),
             areNotificationsEnabled: BuiltValueNullFieldError.checkNotNull(
-                areNotificationsEnabled, 'LaunchParams', 'areNotificationsEnabled'),
+                areNotificationsEnabled, r'LaunchParams', 'areNotificationsEnabled'),
             language: BuiltValueNullFieldError.checkNotNull(
-                language, 'LaunchParams', 'language'),
+                language, r'LaunchParams', 'language'),
             ref: BuiltValueNullFieldError.checkNotNull(
-                ref, 'LaunchParams', 'ref'),
+                ref, r'LaunchParams', 'ref'),
             accessTokenSettings: BuiltValueNullFieldError.checkNotNull(
-                accessTokenSettings, 'LaunchParams', 'accessTokenSettings'),
+                accessTokenSettings, r'LaunchParams', 'accessTokenSettings'),
             groupId: groupId,
             viewerGroupRole: viewerGroupRole,
             platform:
-                BuiltValueNullFieldError.checkNotNull(platform, 'LaunchParams', 'platform'),
-            isFavorite: BuiltValueNullFieldError.checkNotNull(isFavorite, 'LaunchParams', 'isFavorite'),
-            ts: BuiltValueNullFieldError.checkNotNull(ts, 'LaunchParams', 'ts'),
-            sign: BuiltValueNullFieldError.checkNotNull(sign, 'LaunchParams', 'sign'));
+                BuiltValueNullFieldError.checkNotNull(platform, r'LaunchParams', 'platform'),
+            isFavorite: BuiltValueNullFieldError.checkNotNull(isFavorite, r'LaunchParams', 'isFavorite'),
+            ts: BuiltValueNullFieldError.checkNotNull(ts, r'LaunchParams', 'ts'),
+            sign: BuiltValueNullFieldError.checkNotNull(sign, r'LaunchParams', 'sign'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

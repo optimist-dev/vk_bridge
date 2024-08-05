@@ -43,17 +43,17 @@ class _$VKWebAppGetPhoneNumberResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'sign':
           result.sign = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'phone_number':
           result.phoneNumber = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -70,15 +70,15 @@ class _$VKWebAppGetPhoneNumberResult extends VKWebAppGetPhoneNumberResult {
 
   factory _$VKWebAppGetPhoneNumberResult(
           [void Function(VKWebAppGetPhoneNumberResultBuilder)? updates]) =>
-      (new VKWebAppGetPhoneNumberResultBuilder()..update(updates)).build();
+      (new VKWebAppGetPhoneNumberResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetPhoneNumberResult._(
       {required this.sign, required this.phoneNumber})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        sign, 'VKWebAppGetPhoneNumberResult', 'sign');
+        sign, r'VKWebAppGetPhoneNumberResult', 'sign');
     BuiltValueNullFieldError.checkNotNull(
-        phoneNumber, 'VKWebAppGetPhoneNumberResult', 'phoneNumber');
+        phoneNumber, r'VKWebAppGetPhoneNumberResult', 'phoneNumber');
   }
 
   @override
@@ -100,12 +100,16 @@ class _$VKWebAppGetPhoneNumberResult extends VKWebAppGetPhoneNumberResult {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, sign.hashCode), phoneNumber.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, sign.hashCode);
+    _$hash = $jc(_$hash, phoneNumber.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetPhoneNumberResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetPhoneNumberResult')
           ..add('sign', sign)
           ..add('phoneNumber', phoneNumber))
         .toString();
@@ -150,16 +154,18 @@ class VKWebAppGetPhoneNumberResultBuilder
   }
 
   @override
-  _$VKWebAppGetPhoneNumberResult build() {
+  VKWebAppGetPhoneNumberResult build() => _build();
+
+  _$VKWebAppGetPhoneNumberResult _build() {
     final _$result = _$v ??
         new _$VKWebAppGetPhoneNumberResult._(
             sign: BuiltValueNullFieldError.checkNotNull(
-                sign, 'VKWebAppGetPhoneNumberResult', 'sign'),
+                sign, r'VKWebAppGetPhoneNumberResult', 'sign'),
             phoneNumber: BuiltValueNullFieldError.checkNotNull(
-                phoneNumber, 'VKWebAppGetPhoneNumberResult', 'phoneNumber'));
+                phoneNumber, r'VKWebAppGetPhoneNumberResult', 'phoneNumber'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

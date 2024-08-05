@@ -36,13 +36,13 @@ class _$DonutIsDonResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'response':
           result.response = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -57,11 +57,11 @@ class _$DonutIsDonResult extends DonutIsDonResult {
 
   factory _$DonutIsDonResult(
           [void Function(DonutIsDonResultBuilder)? updates]) =>
-      (new DonutIsDonResultBuilder()..update(updates)).build();
+      (new DonutIsDonResultBuilder()..update(updates))._build();
 
   _$DonutIsDonResult._({required this.response}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        response, 'DonutIsDonResult', 'response');
+        response, r'DonutIsDonResult', 'response');
   }
 
   @override
@@ -80,12 +80,15 @@ class _$DonutIsDonResult extends DonutIsDonResult {
 
   @override
   int get hashCode {
-    return $jf($jc(0, response.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, response.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DonutIsDonResult')
+    return (newBuiltValueToStringHelper(r'DonutIsDonResult')
           ..add('response', response))
         .toString();
   }
@@ -122,14 +125,16 @@ class DonutIsDonResultBuilder
   }
 
   @override
-  _$DonutIsDonResult build() {
+  DonutIsDonResult build() => _build();
+
+  _$DonutIsDonResult _build() {
     final _$result = _$v ??
         new _$DonutIsDonResult._(
             response: BuiltValueNullFieldError.checkNotNull(
-                response, 'DonutIsDonResult', 'response'));
+                response, r'DonutIsDonResult', 'response'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

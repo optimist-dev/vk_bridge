@@ -39,13 +39,13 @@ class _$StickerContainerSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'sticker_type':
           result.stickerType = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'sticker':
           result.sticker.replace(serializers.deserialize(value,
@@ -67,14 +67,14 @@ class _$StickerContainer extends StickerContainer {
 
   factory _$StickerContainer(
           [void Function(StickerContainerBuilder)? updates]) =>
-      (new StickerContainerBuilder()..update(updates)).build();
+      (new StickerContainerBuilder()..update(updates))._build();
 
   _$StickerContainer._({required this.stickerType, required this.sticker})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        stickerType, 'StickerContainer', 'stickerType');
+        stickerType, r'StickerContainer', 'stickerType');
     BuiltValueNullFieldError.checkNotNull(
-        sticker, 'StickerContainer', 'sticker');
+        sticker, r'StickerContainer', 'sticker');
   }
 
   @override
@@ -95,12 +95,16 @@ class _$StickerContainer extends StickerContainer {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, stickerType.hashCode), sticker.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, stickerType.hashCode);
+    _$hash = $jc(_$hash, sticker.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('StickerContainer')
+    return (newBuiltValueToStringHelper(r'StickerContainer')
           ..add('stickerType', stickerType)
           ..add('sticker', sticker))
         .toString();
@@ -144,13 +148,15 @@ class StickerContainerBuilder
   }
 
   @override
-  _$StickerContainer build() {
+  StickerContainer build() => _build();
+
+  _$StickerContainer _build() {
     _$StickerContainer _$result;
     try {
       _$result = _$v ??
           new _$StickerContainer._(
               stickerType: BuiltValueNullFieldError.checkNotNull(
-                  stickerType, 'StickerContainer', 'stickerType'),
+                  stickerType, r'StickerContainer', 'stickerType'),
               sticker: sticker.build());
     } catch (_) {
       late String _$failedField;
@@ -159,7 +165,7 @@ class StickerContainerBuilder
         sticker.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'StickerContainer', _$failedField, e.toString());
+            r'StickerContainer', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -168,4 +174,4 @@ class StickerContainerBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

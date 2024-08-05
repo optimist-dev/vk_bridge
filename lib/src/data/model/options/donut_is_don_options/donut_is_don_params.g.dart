@@ -41,21 +41,21 @@ class _$DonutIsDonParamsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'owner_id':
           result.ownerId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'v':
           result.version = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double))! as double;
           break;
         case 'access_token':
           result.accessToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -74,17 +74,17 @@ class _$DonutIsDonParams extends DonutIsDonParams {
 
   factory _$DonutIsDonParams(
           [void Function(DonutIsDonParamsBuilder)? updates]) =>
-      (new DonutIsDonParamsBuilder()..update(updates)).build();
+      (new DonutIsDonParamsBuilder()..update(updates))._build();
 
   _$DonutIsDonParams._(
       {required this.ownerId, required this.version, required this.accessToken})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        ownerId, 'DonutIsDonParams', 'ownerId');
+        ownerId, r'DonutIsDonParams', 'ownerId');
     BuiltValueNullFieldError.checkNotNull(
-        version, 'DonutIsDonParams', 'version');
+        version, r'DonutIsDonParams', 'version');
     BuiltValueNullFieldError.checkNotNull(
-        accessToken, 'DonutIsDonParams', 'accessToken');
+        accessToken, r'DonutIsDonParams', 'accessToken');
   }
 
   @override
@@ -106,13 +106,17 @@ class _$DonutIsDonParams extends DonutIsDonParams {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, ownerId.hashCode), version.hashCode), accessToken.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, version.hashCode);
+    _$hash = $jc(_$hash, accessToken.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DonutIsDonParams')
+    return (newBuiltValueToStringHelper(r'DonutIsDonParams')
           ..add('ownerId', ownerId)
           ..add('version', version)
           ..add('accessToken', accessToken))
@@ -161,18 +165,20 @@ class DonutIsDonParamsBuilder
   }
 
   @override
-  _$DonutIsDonParams build() {
+  DonutIsDonParams build() => _build();
+
+  _$DonutIsDonParams _build() {
     final _$result = _$v ??
         new _$DonutIsDonParams._(
             ownerId: BuiltValueNullFieldError.checkNotNull(
-                ownerId, 'DonutIsDonParams', 'ownerId'),
+                ownerId, r'DonutIsDonParams', 'ownerId'),
             version: BuiltValueNullFieldError.checkNotNull(
-                version, 'DonutIsDonParams', 'version'),
+                version, r'DonutIsDonParams', 'version'),
             accessToken: BuiltValueNullFieldError.checkNotNull(
-                accessToken, 'DonutIsDonParams', 'accessToken'));
+                accessToken, r'DonutIsDonParams', 'accessToken'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

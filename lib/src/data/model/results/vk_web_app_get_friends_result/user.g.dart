@@ -43,29 +43,29 @@ class _$UserSerializer implements StructuredSerializer<User> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'first_name':
           result.firstName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'last_name':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'sex':
           result.sex = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'photo_200':
           result.photo200 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -87,7 +87,7 @@ class _$User extends User {
   final String photo200;
 
   factory _$User([void Function(UserBuilder)? updates]) =>
-      (new UserBuilder()..update(updates)).build();
+      (new UserBuilder()..update(updates))._build();
 
   _$User._(
       {required this.id,
@@ -96,11 +96,11 @@ class _$User extends User {
       required this.sex,
       required this.photo200})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'User', 'id');
-    BuiltValueNullFieldError.checkNotNull(firstName, 'User', 'firstName');
-    BuiltValueNullFieldError.checkNotNull(lastName, 'User', 'lastName');
-    BuiltValueNullFieldError.checkNotNull(sex, 'User', 'sex');
-    BuiltValueNullFieldError.checkNotNull(photo200, 'User', 'photo200');
+    BuiltValueNullFieldError.checkNotNull(id, r'User', 'id');
+    BuiltValueNullFieldError.checkNotNull(firstName, r'User', 'firstName');
+    BuiltValueNullFieldError.checkNotNull(lastName, r'User', 'lastName');
+    BuiltValueNullFieldError.checkNotNull(sex, r'User', 'sex');
+    BuiltValueNullFieldError.checkNotNull(photo200, r'User', 'photo200');
   }
 
   @override
@@ -123,17 +123,19 @@ class _$User extends User {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, id.hashCode), firstName.hashCode),
-                lastName.hashCode),
-            sex.hashCode),
-        photo200.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jc(_$hash, sex.hashCode);
+    _$hash = $jc(_$hash, photo200.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('User')
+    return (newBuiltValueToStringHelper(r'User')
           ..add('id', id)
           ..add('firstName', firstName)
           ..add('lastName', lastName)
@@ -193,20 +195,22 @@ class UserBuilder implements Builder<User, UserBuilder> {
   }
 
   @override
-  _$User build() {
+  User build() => _build();
+
+  _$User _build() {
     final _$result = _$v ??
         new _$User._(
-            id: BuiltValueNullFieldError.checkNotNull(id, 'User', 'id'),
+            id: BuiltValueNullFieldError.checkNotNull(id, r'User', 'id'),
             firstName: BuiltValueNullFieldError.checkNotNull(
-                firstName, 'User', 'firstName'),
+                firstName, r'User', 'firstName'),
             lastName: BuiltValueNullFieldError.checkNotNull(
-                lastName, 'User', 'lastName'),
-            sex: BuiltValueNullFieldError.checkNotNull(sex, 'User', 'sex'),
+                lastName, r'User', 'lastName'),
+            sex: BuiltValueNullFieldError.checkNotNull(sex, r'User', 'sex'),
             photo200: BuiltValueNullFieldError.checkNotNull(
-                photo200, 'User', 'photo200'));
+                photo200, r'User', 'photo200'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

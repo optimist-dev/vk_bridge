@@ -39,13 +39,13 @@ class _$GetGroupInfoOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -60,11 +60,11 @@ class _$GetGroupInfoOptions extends GetGroupInfoOptions {
 
   factory _$GetGroupInfoOptions(
           [void Function(GetGroupInfoOptionsBuilder)? updates]) =>
-      (new GetGroupInfoOptionsBuilder()..update(updates)).build();
+      (new GetGroupInfoOptionsBuilder()..update(updates))._build();
 
   _$GetGroupInfoOptions._({required this.groupId}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        groupId, 'GetGroupInfoOptions', 'groupId');
+        groupId, r'GetGroupInfoOptions', 'groupId');
   }
 
   @override
@@ -84,12 +84,15 @@ class _$GetGroupInfoOptions extends GetGroupInfoOptions {
 
   @override
   int get hashCode {
-    return $jf($jc(0, groupId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, groupId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GetGroupInfoOptions')
+    return (newBuiltValueToStringHelper(r'GetGroupInfoOptions')
           ..add('groupId', groupId))
         .toString();
   }
@@ -126,14 +129,16 @@ class GetGroupInfoOptionsBuilder
   }
 
   @override
-  _$GetGroupInfoOptions build() {
+  GetGroupInfoOptions build() => _build();
+
+  _$GetGroupInfoOptions _build() {
     final _$result = _$v ??
         new _$GetGroupInfoOptions._(
             groupId: BuiltValueNullFieldError.checkNotNull(
-                groupId, 'GetGroupInfoOptions', 'groupId'));
+                groupId, r'GetGroupInfoOptions', 'groupId'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

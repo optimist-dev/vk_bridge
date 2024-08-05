@@ -35,13 +35,13 @@ class _$CopyTextOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'text':
           result.text = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -55,10 +55,10 @@ class _$CopyTextOptions extends CopyTextOptions {
   final String text;
 
   factory _$CopyTextOptions([void Function(CopyTextOptionsBuilder)? updates]) =>
-      (new CopyTextOptionsBuilder()..update(updates)).build();
+      (new CopyTextOptionsBuilder()..update(updates))._build();
 
   _$CopyTextOptions._({required this.text}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(text, 'CopyTextOptions', 'text');
+    BuiltValueNullFieldError.checkNotNull(text, r'CopyTextOptions', 'text');
   }
 
   @override
@@ -77,12 +77,15 @@ class _$CopyTextOptions extends CopyTextOptions {
 
   @override
   int get hashCode {
-    return $jf($jc(0, text.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, text.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('CopyTextOptions')..add('text', text))
+    return (newBuiltValueToStringHelper(r'CopyTextOptions')..add('text', text))
         .toString();
   }
 }
@@ -118,14 +121,16 @@ class CopyTextOptionsBuilder
   }
 
   @override
-  _$CopyTextOptions build() {
+  CopyTextOptions build() => _build();
+
+  _$CopyTextOptions _build() {
     final _$result = _$v ??
         new _$CopyTextOptions._(
             text: BuiltValueNullFieldError.checkNotNull(
-                text, 'CopyTextOptions', 'text'));
+                text, r'CopyTextOptions', 'text'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

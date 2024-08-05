@@ -41,7 +41,7 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -55,11 +55,11 @@ class _$AddressSerializer implements StructuredSerializer<Address> {
           break;
         case 'specified_address':
           result.specifiedAddress = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'postal_code':
           result.postalCode = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -79,7 +79,7 @@ class _$Address extends Address {
   final String postalCode;
 
   factory _$Address([void Function(AddressBuilder)? updates]) =>
-      (new AddressBuilder()..update(updates)).build();
+      (new AddressBuilder()..update(updates))._build();
 
   _$Address._(
       {required this.country,
@@ -87,11 +87,11 @@ class _$Address extends Address {
       required this.specifiedAddress,
       required this.postalCode})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(country, 'Address', 'country');
-    BuiltValueNullFieldError.checkNotNull(city, 'Address', 'city');
+    BuiltValueNullFieldError.checkNotNull(country, r'Address', 'country');
+    BuiltValueNullFieldError.checkNotNull(city, r'Address', 'city');
     BuiltValueNullFieldError.checkNotNull(
-        specifiedAddress, 'Address', 'specifiedAddress');
-    BuiltValueNullFieldError.checkNotNull(postalCode, 'Address', 'postalCode');
+        specifiedAddress, r'Address', 'specifiedAddress');
+    BuiltValueNullFieldError.checkNotNull(postalCode, r'Address', 'postalCode');
   }
 
   @override
@@ -113,15 +113,18 @@ class _$Address extends Address {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, country.hashCode), city.hashCode),
-            specifiedAddress.hashCode),
-        postalCode.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, country.hashCode);
+    _$hash = $jc(_$hash, city.hashCode);
+    _$hash = $jc(_$hash, specifiedAddress.hashCode);
+    _$hash = $jc(_$hash, postalCode.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Address')
+    return (newBuiltValueToStringHelper(r'Address')
           ..add('country', country)
           ..add('city', city)
           ..add('specifiedAddress', specifiedAddress)
@@ -176,7 +179,9 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   }
 
   @override
-  _$Address build() {
+  Address build() => _build();
+
+  _$Address _build() {
     _$Address _$result;
     try {
       _$result = _$v ??
@@ -184,9 +189,9 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
               country: country.build(),
               city: city.build(),
               specifiedAddress: BuiltValueNullFieldError.checkNotNull(
-                  specifiedAddress, 'Address', 'specifiedAddress'),
+                  specifiedAddress, r'Address', 'specifiedAddress'),
               postalCode: BuiltValueNullFieldError.checkNotNull(
-                  postalCode, 'Address', 'postalCode'));
+                  postalCode, r'Address', 'postalCode'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -196,7 +201,7 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
         city.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Address', _$failedField, e.toString());
+            r'Address', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -205,4 +210,4 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

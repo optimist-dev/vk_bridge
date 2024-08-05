@@ -177,7 +177,7 @@ class _$VKWebAppGetAdsResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -314,7 +314,7 @@ class _$VKWebAppGetAdsResult extends VKWebAppGetAdsResult {
 
   factory _$VKWebAppGetAdsResult(
           [void Function(VKWebAppGetAdsResultBuilder)? updates]) =>
-      (new VKWebAppGetAdsResultBuilder()..update(updates)).build();
+      (new VKWebAppGetAdsResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetAdsResult._(
       {this.title,
@@ -376,49 +376,34 @@ class _$VKWebAppGetAdsResult extends VKWebAppGetAdsResult {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc($jc(0, title.hashCode),
-                                                                                urlTypes.hashCode),
-                                                                            bannerID.hashCode),
-                                                                        imageWidth.hashCode),
-                                                                    imageHeight.hashCode),
-                                                                imageLink.hashCode),
-                                                            trackingLink.hashCode),
-                                                        type.hashCode),
-                                                    iconWidth.hashCode),
-                                                domain.hashCode),
-                                            ctaText.hashCode),
-                                        advertisingLabel.hashCode),
-                                    iconLink.hashCode),
-                                statistics.hashCode),
-                            openInBrowser.hashCode),
-                        iconHeight.hashCode),
-                    directLink.hashCode),
-                navigationType.hashCode),
-            description.hashCode),
-        ageRestrictions.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, urlTypes.hashCode);
+    _$hash = $jc(_$hash, bannerID.hashCode);
+    _$hash = $jc(_$hash, imageWidth.hashCode);
+    _$hash = $jc(_$hash, imageHeight.hashCode);
+    _$hash = $jc(_$hash, imageLink.hashCode);
+    _$hash = $jc(_$hash, trackingLink.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, iconWidth.hashCode);
+    _$hash = $jc(_$hash, domain.hashCode);
+    _$hash = $jc(_$hash, ctaText.hashCode);
+    _$hash = $jc(_$hash, advertisingLabel.hashCode);
+    _$hash = $jc(_$hash, iconLink.hashCode);
+    _$hash = $jc(_$hash, statistics.hashCode);
+    _$hash = $jc(_$hash, openInBrowser.hashCode);
+    _$hash = $jc(_$hash, iconHeight.hashCode);
+    _$hash = $jc(_$hash, directLink.hashCode);
+    _$hash = $jc(_$hash, navigationType.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, ageRestrictions.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetAdsResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetAdsResult')
           ..add('title', title)
           ..add('urlTypes', urlTypes)
           ..add('bannerID', bannerID)
@@ -575,7 +560,9 @@ class VKWebAppGetAdsResultBuilder
   }
 
   @override
-  _$VKWebAppGetAdsResult build() {
+  VKWebAppGetAdsResult build() => _build();
+
+  _$VKWebAppGetAdsResult _build() {
     _$VKWebAppGetAdsResult _$result;
     try {
       _$result = _$v ??
@@ -607,7 +594,7 @@ class VKWebAppGetAdsResultBuilder
         _statistics?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'VKWebAppGetAdsResult', _$failedField, e.toString());
+            r'VKWebAppGetAdsResult', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -616,4 +603,4 @@ class VKWebAppGetAdsResultBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

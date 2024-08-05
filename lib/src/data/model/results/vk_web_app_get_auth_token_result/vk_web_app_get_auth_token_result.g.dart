@@ -47,13 +47,13 @@ class _$VKWebAppGetAuthTokenResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'access_token':
           result.accessToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'scope':
           result.scope = serializers.deserialize(value,
@@ -74,12 +74,12 @@ class _$VKWebAppGetAuthTokenResult extends VKWebAppGetAuthTokenResult {
 
   factory _$VKWebAppGetAuthTokenResult(
           [void Function(VKWebAppGetAuthTokenResultBuilder)? updates]) =>
-      (new VKWebAppGetAuthTokenResultBuilder()..update(updates)).build();
+      (new VKWebAppGetAuthTokenResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetAuthTokenResult._({required this.accessToken, this.scope})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        accessToken, 'VKWebAppGetAuthTokenResult', 'accessToken');
+        accessToken, r'VKWebAppGetAuthTokenResult', 'accessToken');
   }
 
   @override
@@ -101,12 +101,16 @@ class _$VKWebAppGetAuthTokenResult extends VKWebAppGetAuthTokenResult {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, accessToken.hashCode), scope.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, accessToken.hashCode);
+    _$hash = $jc(_$hash, scope.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetAuthTokenResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetAuthTokenResult')
           ..add('accessToken', accessToken)
           ..add('scope', scope))
         .toString();
@@ -150,15 +154,17 @@ class VKWebAppGetAuthTokenResultBuilder
   }
 
   @override
-  _$VKWebAppGetAuthTokenResult build() {
+  VKWebAppGetAuthTokenResult build() => _build();
+
+  _$VKWebAppGetAuthTokenResult _build() {
     final _$result = _$v ??
         new _$VKWebAppGetAuthTokenResult._(
             accessToken: BuiltValueNullFieldError.checkNotNull(
-                accessToken, 'VKWebAppGetAuthTokenResult', 'accessToken'),
+                accessToken, r'VKWebAppGetAuthTokenResult', 'accessToken'),
             scope: scope);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

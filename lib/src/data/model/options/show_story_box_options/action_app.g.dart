@@ -39,13 +39,13 @@ class _$ActionAppSerializer implements StructuredSerializer<ActionApp> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'app_context':
           result.appContext = serializers.deserialize(value,
@@ -65,10 +65,10 @@ class _$ActionApp extends ActionApp {
   final String? appContext;
 
   factory _$ActionApp([void Function(ActionAppBuilder)? updates]) =>
-      (new ActionAppBuilder()..update(updates)).build();
+      (new ActionAppBuilder()..update(updates))._build();
 
   _$ActionApp._({required this.appId, this.appContext}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(appId, 'ActionApp', 'appId');
+    BuiltValueNullFieldError.checkNotNull(appId, r'ActionApp', 'appId');
   }
 
   @override
@@ -88,12 +88,16 @@ class _$ActionApp extends ActionApp {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, appId.hashCode), appContext.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, appId.hashCode);
+    _$hash = $jc(_$hash, appContext.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ActionApp')
+    return (newBuiltValueToStringHelper(r'ActionApp')
           ..add('appId', appId)
           ..add('appContext', appContext))
         .toString();
@@ -135,15 +139,17 @@ class ActionAppBuilder implements Builder<ActionApp, ActionAppBuilder> {
   }
 
   @override
-  _$ActionApp build() {
+  ActionApp build() => _build();
+
+  _$ActionApp _build() {
     final _$result = _$v ??
         new _$ActionApp._(
             appId: BuiltValueNullFieldError.checkNotNull(
-                appId, 'ActionApp', 'appId'),
+                appId, r'ActionApp', 'appId'),
             appContext: appContext);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

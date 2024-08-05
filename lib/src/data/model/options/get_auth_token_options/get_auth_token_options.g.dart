@@ -42,17 +42,17 @@ class _$GetAuthTokenOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'app_id':
           result.appId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'scope':
           result.scope = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -69,14 +69,14 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
 
   factory _$GetAuthTokenOptions(
           [void Function(GetAuthTokenOptionsBuilder)? updates]) =>
-      (new GetAuthTokenOptionsBuilder()..update(updates)).build();
+      (new GetAuthTokenOptionsBuilder()..update(updates))._build();
 
   _$GetAuthTokenOptions._({required this.appId, required this.scope})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        appId, 'GetAuthTokenOptions', 'appId');
+        appId, r'GetAuthTokenOptions', 'appId');
     BuiltValueNullFieldError.checkNotNull(
-        scope, 'GetAuthTokenOptions', 'scope');
+        scope, r'GetAuthTokenOptions', 'scope');
   }
 
   @override
@@ -98,12 +98,16 @@ class _$GetAuthTokenOptions extends GetAuthTokenOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, appId.hashCode), scope.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, appId.hashCode);
+    _$hash = $jc(_$hash, scope.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GetAuthTokenOptions')
+    return (newBuiltValueToStringHelper(r'GetAuthTokenOptions')
           ..add('appId', appId)
           ..add('scope', scope))
         .toString();
@@ -146,16 +150,18 @@ class GetAuthTokenOptionsBuilder
   }
 
   @override
-  _$GetAuthTokenOptions build() {
+  GetAuthTokenOptions build() => _build();
+
+  _$GetAuthTokenOptions _build() {
     final _$result = _$v ??
         new _$GetAuthTokenOptions._(
             appId: BuiltValueNullFieldError.checkNotNull(
-                appId, 'GetAuthTokenOptions', 'appId'),
+                appId, r'GetAuthTokenOptions', 'appId'),
             scope: BuiltValueNullFieldError.checkNotNull(
-                scope, 'GetAuthTokenOptions', 'scope'));
+                scope, r'GetAuthTokenOptions', 'scope'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

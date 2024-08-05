@@ -42,17 +42,17 @@ class _$VKWebAppGetEmailResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'email':
           result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'sign':
           result.sign = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -69,14 +69,14 @@ class _$VKWebAppGetEmailResult extends VKWebAppGetEmailResult {
 
   factory _$VKWebAppGetEmailResult(
           [void Function(VKWebAppGetEmailResultBuilder)? updates]) =>
-      (new VKWebAppGetEmailResultBuilder()..update(updates)).build();
+      (new VKWebAppGetEmailResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetEmailResult._({required this.email, required this.sign})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        email, 'VKWebAppGetEmailResult', 'email');
+        email, r'VKWebAppGetEmailResult', 'email');
     BuiltValueNullFieldError.checkNotNull(
-        sign, 'VKWebAppGetEmailResult', 'sign');
+        sign, r'VKWebAppGetEmailResult', 'sign');
   }
 
   @override
@@ -98,12 +98,16 @@ class _$VKWebAppGetEmailResult extends VKWebAppGetEmailResult {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, email.hashCode), sign.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, email.hashCode);
+    _$hash = $jc(_$hash, sign.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetEmailResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetEmailResult')
           ..add('email', email)
           ..add('sign', sign))
         .toString();
@@ -146,16 +150,18 @@ class VKWebAppGetEmailResultBuilder
   }
 
   @override
-  _$VKWebAppGetEmailResult build() {
+  VKWebAppGetEmailResult build() => _build();
+
+  _$VKWebAppGetEmailResult _build() {
     final _$result = _$v ??
         new _$VKWebAppGetEmailResult._(
             email: BuiltValueNullFieldError.checkNotNull(
-                email, 'VKWebAppGetEmailResult', 'email'),
+                email, r'VKWebAppGetEmailResult', 'email'),
             sign: BuiltValueNullFieldError.checkNotNull(
-                sign, 'VKWebAppGetEmailResult', 'sign'));
+                sign, r'VKWebAppGetEmailResult', 'sign'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

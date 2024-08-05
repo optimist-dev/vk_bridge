@@ -37,17 +37,17 @@ class _$KeyValuePairSerializer implements StructuredSerializer<KeyValuePair> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'key':
           result.key = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'value':
           result.value = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -63,11 +63,11 @@ class _$KeyValuePair extends KeyValuePair {
   final String value;
 
   factory _$KeyValuePair([void Function(KeyValuePairBuilder)? updates]) =>
-      (new KeyValuePairBuilder()..update(updates)).build();
+      (new KeyValuePairBuilder()..update(updates))._build();
 
   _$KeyValuePair._({required this.key, required this.value}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(key, 'KeyValuePair', 'key');
-    BuiltValueNullFieldError.checkNotNull(value, 'KeyValuePair', 'value');
+    BuiltValueNullFieldError.checkNotNull(key, r'KeyValuePair', 'key');
+    BuiltValueNullFieldError.checkNotNull(value, r'KeyValuePair', 'value');
   }
 
   @override
@@ -85,12 +85,16 @@ class _$KeyValuePair extends KeyValuePair {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, key.hashCode), value.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, key.hashCode);
+    _$hash = $jc(_$hash, value.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('KeyValuePair')
+    return (newBuiltValueToStringHelper(r'KeyValuePair')
           ..add('key', key)
           ..add('value', value))
         .toString();
@@ -133,16 +137,18 @@ class KeyValuePairBuilder
   }
 
   @override
-  _$KeyValuePair build() {
+  KeyValuePair build() => _build();
+
+  _$KeyValuePair _build() {
     final _$result = _$v ??
         new _$KeyValuePair._(
             key: BuiltValueNullFieldError.checkNotNull(
-                key, 'KeyValuePair', 'key'),
+                key, r'KeyValuePair', 'key'),
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'KeyValuePair', 'value'));
+                value, r'KeyValuePair', 'value'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

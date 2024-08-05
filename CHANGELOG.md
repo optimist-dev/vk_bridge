@@ -1,3 +1,8 @@
+## 2.5.0
+
+- Update deps
+
+
 ## 2.4.0
 
 - Add ads methods

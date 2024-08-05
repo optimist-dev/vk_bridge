@@ -57,13 +57,13 @@ class _$RenderableStickerSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'content_type':
           result.contentType = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
@@ -81,7 +81,7 @@ class _$RenderableStickerSerializer
           break;
         case 'can_delete':
           result.canDelete = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
       }
     }
@@ -104,7 +104,7 @@ class _$RenderableSticker extends RenderableSticker {
 
   factory _$RenderableSticker(
           [void Function(RenderableStickerBuilder)? updates]) =>
-      (new RenderableStickerBuilder()..update(updates)).build();
+      (new RenderableStickerBuilder()..update(updates))._build();
 
   _$RenderableSticker._(
       {required this.contentType,
@@ -114,11 +114,11 @@ class _$RenderableSticker extends RenderableSticker {
       required this.canDelete})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        contentType, 'RenderableSticker', 'contentType');
+        contentType, r'RenderableSticker', 'contentType');
     BuiltValueNullFieldError.checkNotNull(
-        clickableZones, 'RenderableSticker', 'clickableZones');
+        clickableZones, r'RenderableSticker', 'clickableZones');
     BuiltValueNullFieldError.checkNotNull(
-        canDelete, 'RenderableSticker', 'canDelete');
+        canDelete, r'RenderableSticker', 'canDelete');
   }
 
   @override
@@ -142,17 +142,19 @@ class _$RenderableSticker extends RenderableSticker {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, contentType.hashCode), url.hashCode),
-                transform.hashCode),
-            clickableZones.hashCode),
-        canDelete.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, contentType.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, transform.hashCode);
+    _$hash = $jc(_$hash, clickableZones.hashCode);
+    _$hash = $jc(_$hash, canDelete.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('RenderableSticker')
+    return (newBuiltValueToStringHelper(r'RenderableSticker')
           ..add('contentType', contentType)
           ..add('url', url)
           ..add('transform', transform)
@@ -216,18 +218,20 @@ class RenderableStickerBuilder
   }
 
   @override
-  _$RenderableSticker build() {
+  RenderableSticker build() => _build();
+
+  _$RenderableSticker _build() {
     _$RenderableSticker _$result;
     try {
       _$result = _$v ??
           new _$RenderableSticker._(
               contentType: BuiltValueNullFieldError.checkNotNull(
-                  contentType, 'RenderableSticker', 'contentType'),
+                  contentType, r'RenderableSticker', 'contentType'),
               url: url,
               transform: _transform?.build(),
               clickableZones: clickableZones.build(),
               canDelete: BuiltValueNullFieldError.checkNotNull(
-                  canDelete, 'RenderableSticker', 'canDelete'));
+                  canDelete, r'RenderableSticker', 'canDelete'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -237,7 +241,7 @@ class RenderableStickerBuilder
         clickableZones.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'RenderableSticker', _$failedField, e.toString());
+            r'RenderableSticker', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -246,4 +250,4 @@ class RenderableStickerBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

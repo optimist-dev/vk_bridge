@@ -46,21 +46,21 @@ class _$VKWebAppContactsDoneSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'phone':
           result.phone = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'first_name':
           result.firstName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'last_name':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -79,17 +79,17 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
 
   factory _$VKWebAppContactsDone(
           [void Function(VKWebAppContactsDoneBuilder)? updates]) =>
-      (new VKWebAppContactsDoneBuilder()..update(updates)).build();
+      (new VKWebAppContactsDoneBuilder()..update(updates))._build();
 
   _$VKWebAppContactsDone._(
       {required this.phone, required this.firstName, required this.lastName})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        phone, 'VKWebAppContactsDone', 'phone');
+        phone, r'VKWebAppContactsDone', 'phone');
     BuiltValueNullFieldError.checkNotNull(
-        firstName, 'VKWebAppContactsDone', 'firstName');
+        firstName, r'VKWebAppContactsDone', 'firstName');
     BuiltValueNullFieldError.checkNotNull(
-        lastName, 'VKWebAppContactsDone', 'lastName');
+        lastName, r'VKWebAppContactsDone', 'lastName');
   }
 
   @override
@@ -112,13 +112,17 @@ class _$VKWebAppContactsDone extends VKWebAppContactsDone {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, phone.hashCode), firstName.hashCode), lastName.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, phone.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppContactsDone')
+    return (newBuiltValueToStringHelper(r'VKWebAppContactsDone')
           ..add('phone', phone)
           ..add('firstName', firstName)
           ..add('lastName', lastName))
@@ -167,18 +171,20 @@ class VKWebAppContactsDoneBuilder
   }
 
   @override
-  _$VKWebAppContactsDone build() {
+  VKWebAppContactsDone build() => _build();
+
+  _$VKWebAppContactsDone _build() {
     final _$result = _$v ??
         new _$VKWebAppContactsDone._(
             phone: BuiltValueNullFieldError.checkNotNull(
-                phone, 'VKWebAppContactsDone', 'phone'),
+                phone, r'VKWebAppContactsDone', 'phone'),
             firstName: BuiltValueNullFieldError.checkNotNull(
-                firstName, 'VKWebAppContactsDone', 'firstName'),
+                firstName, r'VKWebAppContactsDone', 'firstName'),
             lastName: BuiltValueNullFieldError.checkNotNull(
-                lastName, 'VKWebAppContactsDone', 'lastName'));
+                lastName, r'VKWebAppContactsDone', 'lastName'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

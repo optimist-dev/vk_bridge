@@ -41,17 +41,17 @@ class _$OpenWallPostOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'owner_id':
           result.ownerId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'post_id':
           result.postId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -68,14 +68,14 @@ class _$OpenWallPostOptions extends OpenWallPostOptions {
 
   factory _$OpenWallPostOptions(
           [void Function(OpenWallPostOptionsBuilder)? updates]) =>
-      (new OpenWallPostOptionsBuilder()..update(updates)).build();
+      (new OpenWallPostOptionsBuilder()..update(updates))._build();
 
   _$OpenWallPostOptions._({required this.ownerId, required this.postId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        ownerId, 'OpenWallPostOptions', 'ownerId');
+        ownerId, r'OpenWallPostOptions', 'ownerId');
     BuiltValueNullFieldError.checkNotNull(
-        postId, 'OpenWallPostOptions', 'postId');
+        postId, r'OpenWallPostOptions', 'postId');
   }
 
   @override
@@ -97,12 +97,16 @@ class _$OpenWallPostOptions extends OpenWallPostOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, ownerId.hashCode), postId.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, ownerId.hashCode);
+    _$hash = $jc(_$hash, postId.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('OpenWallPostOptions')
+    return (newBuiltValueToStringHelper(r'OpenWallPostOptions')
           ..add('ownerId', ownerId)
           ..add('postId', postId))
         .toString();
@@ -145,16 +149,18 @@ class OpenWallPostOptionsBuilder
   }
 
   @override
-  _$OpenWallPostOptions build() {
+  OpenWallPostOptions build() => _build();
+
+  _$OpenWallPostOptions _build() {
     final _$result = _$v ??
         new _$OpenWallPostOptions._(
             ownerId: BuiltValueNullFieldError.checkNotNull(
-                ownerId, 'OpenWallPostOptions', 'ownerId'),
+                ownerId, r'OpenWallPostOptions', 'ownerId'),
             postId: BuiltValueNullFieldError.checkNotNull(
-                postId, 'OpenWallPostOptions', 'postId'));
+                postId, r'OpenWallPostOptions', 'postId'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

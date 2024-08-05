@@ -3,6 +3,7 @@ import 'package:vk_bridge/vk_bridge.dart';
 
 import 'examples_page.dart';
 
+/// Simple logger implementations
 class SimpleLogger implements Logger {
   @override
   void d(Object message) {
@@ -25,6 +26,7 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+/// Sample app
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

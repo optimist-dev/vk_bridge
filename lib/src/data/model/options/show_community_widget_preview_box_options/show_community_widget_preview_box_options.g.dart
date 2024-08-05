@@ -44,21 +44,21 @@ class _$ShowCommunityWidgetPreviewBoxOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'group_id':
           result.groupId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'code':
           result.code = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -80,17 +80,17 @@ class _$ShowCommunityWidgetPreviewBoxOptions
           [void Function(ShowCommunityWidgetPreviewBoxOptionsBuilder)?
               updates]) =>
       (new ShowCommunityWidgetPreviewBoxOptionsBuilder()..update(updates))
-          .build();
+          ._build();
 
   _$ShowCommunityWidgetPreviewBoxOptions._(
       {required this.groupId, required this.type, required this.code})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        groupId, 'ShowCommunityWidgetPreviewBoxOptions', 'groupId');
+        groupId, r'ShowCommunityWidgetPreviewBoxOptions', 'groupId');
     BuiltValueNullFieldError.checkNotNull(
-        type, 'ShowCommunityWidgetPreviewBoxOptions', 'type');
+        type, r'ShowCommunityWidgetPreviewBoxOptions', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        code, 'ShowCommunityWidgetPreviewBoxOptions', 'code');
+        code, r'ShowCommunityWidgetPreviewBoxOptions', 'code');
   }
 
   @override
@@ -113,13 +113,17 @@ class _$ShowCommunityWidgetPreviewBoxOptions
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, groupId.hashCode), type.hashCode), code.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, groupId.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, code.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowCommunityWidgetPreviewBoxOptions')
+    return (newBuiltValueToStringHelper(r'ShowCommunityWidgetPreviewBoxOptions')
           ..add('groupId', groupId)
           ..add('type', type)
           ..add('code', code))
@@ -171,18 +175,20 @@ class ShowCommunityWidgetPreviewBoxOptionsBuilder
   }
 
   @override
-  _$ShowCommunityWidgetPreviewBoxOptions build() {
+  ShowCommunityWidgetPreviewBoxOptions build() => _build();
+
+  _$ShowCommunityWidgetPreviewBoxOptions _build() {
     final _$result = _$v ??
         new _$ShowCommunityWidgetPreviewBoxOptions._(
             groupId: BuiltValueNullFieldError.checkNotNull(
-                groupId, 'ShowCommunityWidgetPreviewBoxOptions', 'groupId'),
+                groupId, r'ShowCommunityWidgetPreviewBoxOptions', 'groupId'),
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'ShowCommunityWidgetPreviewBoxOptions', 'type'),
+                type, r'ShowCommunityWidgetPreviewBoxOptions', 'type'),
             code: BuiltValueNullFieldError.checkNotNull(
-                code, 'ShowCommunityWidgetPreviewBoxOptions', 'code'));
+                code, r'ShowCommunityWidgetPreviewBoxOptions', 'code'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

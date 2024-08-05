@@ -43,7 +43,7 @@ class _$ShowImagesOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -72,11 +72,11 @@ class _$ShowImagesOptions extends ShowImagesOptions {
 
   factory _$ShowImagesOptions(
           [void Function(ShowImagesOptionsBuilder)? updates]) =>
-      (new ShowImagesOptionsBuilder()..update(updates)).build();
+      (new ShowImagesOptionsBuilder()..update(updates))._build();
 
   _$ShowImagesOptions._({required this.images, this.startIndex}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        images, 'ShowImagesOptions', 'images');
+        images, r'ShowImagesOptions', 'images');
   }
 
   @override
@@ -97,12 +97,16 @@ class _$ShowImagesOptions extends ShowImagesOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, images.hashCode), startIndex.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, images.hashCode);
+    _$hash = $jc(_$hash, startIndex.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowImagesOptions')
+    return (newBuiltValueToStringHelper(r'ShowImagesOptions')
           ..add('images', images)
           ..add('startIndex', startIndex))
         .toString();
@@ -146,7 +150,9 @@ class ShowImagesOptionsBuilder
   }
 
   @override
-  _$ShowImagesOptions build() {
+  ShowImagesOptions build() => _build();
+
+  _$ShowImagesOptions _build() {
     _$ShowImagesOptions _$result;
     try {
       _$result = _$v ??
@@ -159,7 +165,7 @@ class ShowImagesOptionsBuilder
         images.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ShowImagesOptions', _$failedField, e.toString());
+            r'ShowImagesOptions', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -168,4 +174,4 @@ class ShowImagesOptionsBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

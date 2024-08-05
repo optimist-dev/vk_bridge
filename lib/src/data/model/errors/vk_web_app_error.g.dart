@@ -38,13 +38,13 @@ class _$VKWebAppErrorSerializer implements StructuredSerializer<VKWebAppError> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'error_type':
           result.errorType = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'error_data':
           result.errorData.replace(serializers.deserialize(value,
@@ -64,14 +64,14 @@ class _$VKWebAppError extends VKWebAppError {
   final ErrorData errorData;
 
   factory _$VKWebAppError([void Function(VKWebAppErrorBuilder)? updates]) =>
-      (new VKWebAppErrorBuilder()..update(updates)).build();
+      (new VKWebAppErrorBuilder()..update(updates))._build();
 
   _$VKWebAppError._({required this.errorType, required this.errorData})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        errorType, 'VKWebAppError', 'errorType');
+        errorType, r'VKWebAppError', 'errorType');
     BuiltValueNullFieldError.checkNotNull(
-        errorData, 'VKWebAppError', 'errorData');
+        errorData, r'VKWebAppError', 'errorData');
   }
 
   @override
@@ -91,12 +91,16 @@ class _$VKWebAppError extends VKWebAppError {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, errorType.hashCode), errorData.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, errorType.hashCode);
+    _$hash = $jc(_$hash, errorData.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppError')
+    return (newBuiltValueToStringHelper(r'VKWebAppError')
           ..add('errorType', errorType)
           ..add('errorData', errorData))
         .toString();
@@ -140,13 +144,15 @@ class VKWebAppErrorBuilder
   }
 
   @override
-  _$VKWebAppError build() {
+  VKWebAppError build() => _build();
+
+  _$VKWebAppError _build() {
     _$VKWebAppError _$result;
     try {
       _$result = _$v ??
           new _$VKWebAppError._(
               errorType: BuiltValueNullFieldError.checkNotNull(
-                  errorType, 'VKWebAppError', 'errorType'),
+                  errorType, r'VKWebAppError', 'errorType'),
               errorData: errorData.build());
     } catch (_) {
       late String _$failedField;
@@ -155,7 +161,7 @@ class VKWebAppErrorBuilder
         errorData.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'VKWebAppError', _$failedField, e.toString());
+            r'VKWebAppError', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -164,4 +170,4 @@ class VKWebAppErrorBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

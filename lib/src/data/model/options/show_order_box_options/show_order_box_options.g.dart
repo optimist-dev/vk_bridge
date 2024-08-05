@@ -41,17 +41,17 @@ class _$ShowOrderBoxOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'item':
           result.item = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -68,12 +68,12 @@ class _$ShowOrderBoxOptions extends ShowOrderBoxOptions {
 
   factory _$ShowOrderBoxOptions(
           [void Function(ShowOrderBoxOptionsBuilder)? updates]) =>
-      (new ShowOrderBoxOptionsBuilder()..update(updates)).build();
+      (new ShowOrderBoxOptionsBuilder()..update(updates))._build();
 
   _$ShowOrderBoxOptions._({required this.type, required this.item})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'ShowOrderBoxOptions', 'type');
-    BuiltValueNullFieldError.checkNotNull(item, 'ShowOrderBoxOptions', 'item');
+    BuiltValueNullFieldError.checkNotNull(type, r'ShowOrderBoxOptions', 'type');
+    BuiltValueNullFieldError.checkNotNull(item, r'ShowOrderBoxOptions', 'item');
   }
 
   @override
@@ -95,12 +95,16 @@ class _$ShowOrderBoxOptions extends ShowOrderBoxOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), item.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, item.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowOrderBoxOptions')
+    return (newBuiltValueToStringHelper(r'ShowOrderBoxOptions')
           ..add('type', type)
           ..add('item', item))
         .toString();
@@ -143,16 +147,18 @@ class ShowOrderBoxOptionsBuilder
   }
 
   @override
-  _$ShowOrderBoxOptions build() {
+  ShowOrderBoxOptions build() => _build();
+
+  _$ShowOrderBoxOptions _build() {
     final _$result = _$v ??
         new _$ShowOrderBoxOptions._(
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'ShowOrderBoxOptions', 'type'),
+                type, r'ShowOrderBoxOptions', 'type'),
             item: BuiltValueNullFieldError.checkNotNull(
-                item, 'ShowOrderBoxOptions', 'item'));
+                item, r'ShowOrderBoxOptions', 'item'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

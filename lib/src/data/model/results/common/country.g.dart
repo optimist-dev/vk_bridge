@@ -35,17 +35,17 @@ class _$CountrySerializer implements StructuredSerializer<Country> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -61,11 +61,11 @@ class _$Country extends Country {
   final String title;
 
   factory _$Country([void Function(CountryBuilder)? updates]) =>
-      (new CountryBuilder()..update(updates)).build();
+      (new CountryBuilder()..update(updates))._build();
 
   _$Country._({required this.id, required this.title}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'Country', 'id');
-    BuiltValueNullFieldError.checkNotNull(title, 'Country', 'title');
+    BuiltValueNullFieldError.checkNotNull(id, r'Country', 'id');
+    BuiltValueNullFieldError.checkNotNull(title, r'Country', 'title');
   }
 
   @override
@@ -83,12 +83,16 @@ class _$Country extends Country {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, id.hashCode), title.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Country')
+    return (newBuiltValueToStringHelper(r'Country')
           ..add('id', id)
           ..add('title', title))
         .toString();
@@ -130,15 +134,17 @@ class CountryBuilder implements Builder<Country, CountryBuilder> {
   }
 
   @override
-  _$Country build() {
+  Country build() => _build();
+
+  _$Country _build() {
     final _$result = _$v ??
         new _$Country._(
-            id: BuiltValueNullFieldError.checkNotNull(id, 'Country', 'id'),
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Country', 'id'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'Country', 'title'));
+                title, r'Country', 'title'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

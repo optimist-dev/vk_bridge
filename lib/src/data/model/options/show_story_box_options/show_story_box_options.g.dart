@@ -71,13 +71,13 @@ class _$ShowStoryBoxOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'background_type':
           result.backgroundType = serializers.deserialize(value,
-              specifiedType: const FullType(BackgroundType)) as BackgroundType;
+              specifiedType: const FullType(BackgroundType))! as BackgroundType;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
@@ -93,7 +93,7 @@ class _$ShowStoryBoxOptionsSerializer
           break;
         case 'locked':
           result.locked = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool))! as bool;
           break;
         case 'stickers':
           result.stickers.replace(serializers.deserialize(value,
@@ -124,7 +124,7 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
 
   factory _$ShowStoryBoxOptions(
           [void Function(ShowStoryBoxOptionsBuilder)? updates]) =>
-      (new ShowStoryBoxOptionsBuilder()..update(updates)).build();
+      (new ShowStoryBoxOptionsBuilder()..update(updates))._build();
 
   _$ShowStoryBoxOptions._(
       {required this.backgroundType,
@@ -135,9 +135,9 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
       this.stickers})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        backgroundType, 'ShowStoryBoxOptions', 'backgroundType');
+        backgroundType, r'ShowStoryBoxOptions', 'backgroundType');
     BuiltValueNullFieldError.checkNotNull(
-        locked, 'ShowStoryBoxOptions', 'locked');
+        locked, r'ShowStoryBoxOptions', 'locked');
   }
 
   @override
@@ -163,19 +163,20 @@ class _$ShowStoryBoxOptions extends ShowStoryBoxOptions {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, backgroundType.hashCode), url.hashCode),
-                    blob.hashCode),
-                attachment.hashCode),
-            locked.hashCode),
-        stickers.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, backgroundType.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, blob.hashCode);
+    _$hash = $jc(_$hash, attachment.hashCode);
+    _$hash = $jc(_$hash, locked.hashCode);
+    _$hash = $jc(_$hash, stickers.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShowStoryBoxOptions')
+    return (newBuiltValueToStringHelper(r'ShowStoryBoxOptions')
           ..add('backgroundType', backgroundType)
           ..add('url', url)
           ..add('blob', blob)
@@ -247,18 +248,20 @@ class ShowStoryBoxOptionsBuilder
   }
 
   @override
-  _$ShowStoryBoxOptions build() {
+  ShowStoryBoxOptions build() => _build();
+
+  _$ShowStoryBoxOptions _build() {
     _$ShowStoryBoxOptions _$result;
     try {
       _$result = _$v ??
           new _$ShowStoryBoxOptions._(
               backgroundType: BuiltValueNullFieldError.checkNotNull(
-                  backgroundType, 'ShowStoryBoxOptions', 'backgroundType'),
+                  backgroundType, r'ShowStoryBoxOptions', 'backgroundType'),
               url: url,
               blob: blob,
               attachment: _attachment?.build(),
               locked: BuiltValueNullFieldError.checkNotNull(
-                  locked, 'ShowStoryBoxOptions', 'locked'),
+                  locked, r'ShowStoryBoxOptions', 'locked'),
               stickers: _stickers?.build());
     } catch (_) {
       late String _$failedField;
@@ -270,7 +273,7 @@ class ShowStoryBoxOptionsBuilder
         _stickers?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ShowStoryBoxOptions', _$failedField, e.toString());
+            r'ShowStoryBoxOptions', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -279,4 +282,4 @@ class ShowStoryBoxOptionsBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

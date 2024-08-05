@@ -45,7 +45,7 @@ class _$StorageGetKeysOptionsSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
@@ -55,7 +55,7 @@ class _$StorageGetKeysOptionsSerializer
           break;
         case 'offset':
           result.offset = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -72,11 +72,11 @@ class _$StorageGetKeysOptions extends StorageGetKeysOptions {
 
   factory _$StorageGetKeysOptions(
           [void Function(StorageGetKeysOptionsBuilder)? updates]) =>
-      (new StorageGetKeysOptionsBuilder()..update(updates)).build();
+      (new StorageGetKeysOptionsBuilder()..update(updates))._build();
 
   _$StorageGetKeysOptions._({this.count, required this.offset}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        offset, 'StorageGetKeysOptions', 'offset');
+        offset, r'StorageGetKeysOptions', 'offset');
   }
 
   @override
@@ -98,12 +98,16 @@ class _$StorageGetKeysOptions extends StorageGetKeysOptions {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, count.hashCode), offset.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, count.hashCode);
+    _$hash = $jc(_$hash, offset.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('StorageGetKeysOptions')
+    return (newBuiltValueToStringHelper(r'StorageGetKeysOptions')
           ..add('count', count)
           ..add('offset', offset))
         .toString();
@@ -146,15 +150,17 @@ class StorageGetKeysOptionsBuilder
   }
 
   @override
-  _$StorageGetKeysOptions build() {
+  StorageGetKeysOptions build() => _build();
+
+  _$StorageGetKeysOptions _build() {
     final _$result = _$v ??
         new _$StorageGetKeysOptions._(
             count: count,
             offset: BuiltValueNullFieldError.checkNotNull(
-                offset, 'StorageGetKeysOptions', 'offset'));
+                offset, r'StorageGetKeysOptions', 'offset'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

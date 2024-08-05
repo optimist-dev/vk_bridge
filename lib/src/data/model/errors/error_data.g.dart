@@ -36,17 +36,17 @@ class _$ErrorDataSerializer implements StructuredSerializer<ErrorData> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'error_code':
           result.errorCode = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'error_reason':
           result.errorReason = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -62,13 +62,13 @@ class _$ErrorData extends ErrorData {
   final String errorReason;
 
   factory _$ErrorData([void Function(ErrorDataBuilder)? updates]) =>
-      (new ErrorDataBuilder()..update(updates)).build();
+      (new ErrorDataBuilder()..update(updates))._build();
 
   _$ErrorData._({required this.errorCode, required this.errorReason})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(errorCode, 'ErrorData', 'errorCode');
+    BuiltValueNullFieldError.checkNotNull(errorCode, r'ErrorData', 'errorCode');
     BuiltValueNullFieldError.checkNotNull(
-        errorReason, 'ErrorData', 'errorReason');
+        errorReason, r'ErrorData', 'errorReason');
   }
 
   @override
@@ -88,12 +88,16 @@ class _$ErrorData extends ErrorData {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, errorCode.hashCode), errorReason.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, errorCode.hashCode);
+    _$hash = $jc(_$hash, errorReason.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ErrorData')
+    return (newBuiltValueToStringHelper(r'ErrorData')
           ..add('errorCode', errorCode)
           ..add('errorReason', errorReason))
         .toString();
@@ -135,16 +139,18 @@ class ErrorDataBuilder implements Builder<ErrorData, ErrorDataBuilder> {
   }
 
   @override
-  _$ErrorData build() {
+  ErrorData build() => _build();
+
+  _$ErrorData _build() {
     final _$result = _$v ??
         new _$ErrorData._(
             errorCode: BuiltValueNullFieldError.checkNotNull(
-                errorCode, 'ErrorData', 'errorCode'),
+                errorCode, r'ErrorData', 'errorCode'),
             errorReason: BuiltValueNullFieldError.checkNotNull(
-                errorReason, 'ErrorData', 'errorReason'));
+                errorReason, r'ErrorData', 'errorReason'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

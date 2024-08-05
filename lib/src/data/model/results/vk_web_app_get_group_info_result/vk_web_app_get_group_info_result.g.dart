@@ -99,25 +99,25 @@ class _$VKWebAppGetGroupInfoResultSerializer
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'screen_name':
           result.screenName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'is_closed':
           result.isClosed = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'deactivated':
           result.deactivated = serializers.deserialize(value,
@@ -149,15 +149,15 @@ class _$VKWebAppGetGroupInfoResultSerializer
           break;
         case 'photo_50':
           result.photo50 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'photo_100':
           result.photo100 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'photo_200':
           result.photo200 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -198,7 +198,7 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
 
   factory _$VKWebAppGetGroupInfoResult(
           [void Function(VKWebAppGetGroupInfoResultBuilder)? updates]) =>
-      (new VKWebAppGetGroupInfoResultBuilder()..update(updates)).build();
+      (new VKWebAppGetGroupInfoResultBuilder()..update(updates))._build();
 
   _$VKWebAppGetGroupInfoResult._(
       {required this.id,
@@ -217,19 +217,19 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
       required this.photo200})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        id, 'VKWebAppGetGroupInfoResult', 'id');
+        id, r'VKWebAppGetGroupInfoResult', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, 'VKWebAppGetGroupInfoResult', 'name');
+        name, r'VKWebAppGetGroupInfoResult', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        screenName, 'VKWebAppGetGroupInfoResult', 'screenName');
+        screenName, r'VKWebAppGetGroupInfoResult', 'screenName');
     BuiltValueNullFieldError.checkNotNull(
-        isClosed, 'VKWebAppGetGroupInfoResult', 'isClosed');
+        isClosed, r'VKWebAppGetGroupInfoResult', 'isClosed');
     BuiltValueNullFieldError.checkNotNull(
-        photo50, 'VKWebAppGetGroupInfoResult', 'photo50');
+        photo50, r'VKWebAppGetGroupInfoResult', 'photo50');
     BuiltValueNullFieldError.checkNotNull(
-        photo100, 'VKWebAppGetGroupInfoResult', 'photo100');
+        photo100, r'VKWebAppGetGroupInfoResult', 'photo100');
     BuiltValueNullFieldError.checkNotNull(
-        photo200, 'VKWebAppGetGroupInfoResult', 'photo200');
+        photo200, r'VKWebAppGetGroupInfoResult', 'photo200');
   }
 
   @override
@@ -263,37 +263,28 @@ class _$VKWebAppGetGroupInfoResult extends VKWebAppGetGroupInfoResult {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc($jc(0, id.hashCode),
-                                                        name.hashCode),
-                                                    screenName.hashCode),
-                                                isClosed.hashCode),
-                                            deactivated.hashCode),
-                                        isAdmin.hashCode),
-                                    adminLevel.hashCode),
-                                isMember.hashCode),
-                            isAdvertiser.hashCode),
-                        invitedBy.hashCode),
-                    type.hashCode),
-                photo50.hashCode),
-            photo100.hashCode),
-        photo200.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, screenName.hashCode);
+    _$hash = $jc(_$hash, isClosed.hashCode);
+    _$hash = $jc(_$hash, deactivated.hashCode);
+    _$hash = $jc(_$hash, isAdmin.hashCode);
+    _$hash = $jc(_$hash, adminLevel.hashCode);
+    _$hash = $jc(_$hash, isMember.hashCode);
+    _$hash = $jc(_$hash, isAdvertiser.hashCode);
+    _$hash = $jc(_$hash, invitedBy.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, photo50.hashCode);
+    _$hash = $jc(_$hash, photo100.hashCode);
+    _$hash = $jc(_$hash, photo200.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VKWebAppGetGroupInfoResult')
+    return (newBuiltValueToStringHelper(r'VKWebAppGetGroupInfoResult')
           ..add('id', id)
           ..add('name', name)
           ..add('screenName', screenName)
@@ -409,17 +400,19 @@ class VKWebAppGetGroupInfoResultBuilder
   }
 
   @override
-  _$VKWebAppGetGroupInfoResult build() {
+  VKWebAppGetGroupInfoResult build() => _build();
+
+  _$VKWebAppGetGroupInfoResult _build() {
     final _$result = _$v ??
         new _$VKWebAppGetGroupInfoResult._(
             id: BuiltValueNullFieldError.checkNotNull(
-                id, 'VKWebAppGetGroupInfoResult', 'id'),
+                id, r'VKWebAppGetGroupInfoResult', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
-                name, 'VKWebAppGetGroupInfoResult', 'name'),
+                name, r'VKWebAppGetGroupInfoResult', 'name'),
             screenName: BuiltValueNullFieldError.checkNotNull(
-                screenName, 'VKWebAppGetGroupInfoResult', 'screenName'),
+                screenName, r'VKWebAppGetGroupInfoResult', 'screenName'),
             isClosed: BuiltValueNullFieldError.checkNotNull(
-                isClosed, 'VKWebAppGetGroupInfoResult', 'isClosed'),
+                isClosed, r'VKWebAppGetGroupInfoResult', 'isClosed'),
             deactivated: deactivated,
             isAdmin: isAdmin,
             adminLevel: adminLevel,
@@ -428,14 +421,14 @@ class VKWebAppGetGroupInfoResultBuilder
             invitedBy: invitedBy,
             type: type,
             photo50: BuiltValueNullFieldError.checkNotNull(
-                photo50, 'VKWebAppGetGroupInfoResult', 'photo50'),
+                photo50, r'VKWebAppGetGroupInfoResult', 'photo50'),
             photo100: BuiltValueNullFieldError.checkNotNull(
-                photo100, 'VKWebAppGetGroupInfoResult', 'photo100'),
+                photo100, r'VKWebAppGetGroupInfoResult', 'photo100'),
             photo200: BuiltValueNullFieldError.checkNotNull(
-                photo200, 'VKWebAppGetGroupInfoResult', 'photo200'));
+                photo200, r'VKWebAppGetGroupInfoResult', 'photo200'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

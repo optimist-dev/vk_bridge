@@ -36,17 +36,17 @@ class _$ScrollResultSerializer implements StructuredSerializer<ScrollResult> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'top':
           result.top = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'height':
           result.height = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -62,11 +62,11 @@ class _$ScrollResult extends ScrollResult {
   final int height;
 
   factory _$ScrollResult([void Function(ScrollResultBuilder)? updates]) =>
-      (new ScrollResultBuilder()..update(updates)).build();
+      (new ScrollResultBuilder()..update(updates))._build();
 
   _$ScrollResult._({required this.top, required this.height}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(top, 'ScrollResult', 'top');
-    BuiltValueNullFieldError.checkNotNull(height, 'ScrollResult', 'height');
+    BuiltValueNullFieldError.checkNotNull(top, r'ScrollResult', 'top');
+    BuiltValueNullFieldError.checkNotNull(height, r'ScrollResult', 'height');
   }
 
   @override
@@ -84,12 +84,16 @@ class _$ScrollResult extends ScrollResult {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, top.hashCode), height.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, top.hashCode);
+    _$hash = $jc(_$hash, height.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ScrollResult')
+    return (newBuiltValueToStringHelper(r'ScrollResult')
           ..add('top', top)
           ..add('height', height))
         .toString();
@@ -132,16 +136,18 @@ class ScrollResultBuilder
   }
 
   @override
-  _$ScrollResult build() {
+  ScrollResult build() => _build();
+
+  _$ScrollResult _build() {
     final _$result = _$v ??
         new _$ScrollResult._(
             top: BuiltValueNullFieldError.checkNotNull(
-                top, 'ScrollResult', 'top'),
+                top, r'ScrollResult', 'top'),
             height: BuiltValueNullFieldError.checkNotNull(
-                height, 'ScrollResult', 'height'));
+                height, r'ScrollResult', 'height'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

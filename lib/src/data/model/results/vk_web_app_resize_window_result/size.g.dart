@@ -34,17 +34,17 @@ class _$SizeSerializer implements StructuredSerializer<Size> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'width':
           result.width = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'height':
           result.height = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
       }
     }
@@ -60,11 +60,11 @@ class _$Size extends Size {
   final int height;
 
   factory _$Size([void Function(SizeBuilder)? updates]) =>
-      (new SizeBuilder()..update(updates)).build();
+      (new SizeBuilder()..update(updates))._build();
 
   _$Size._({required this.width, required this.height}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(width, 'Size', 'width');
-    BuiltValueNullFieldError.checkNotNull(height, 'Size', 'height');
+    BuiltValueNullFieldError.checkNotNull(width, r'Size', 'width');
+    BuiltValueNullFieldError.checkNotNull(height, r'Size', 'height');
   }
 
   @override
@@ -82,12 +82,16 @@ class _$Size extends Size {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, width.hashCode), height.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, width.hashCode);
+    _$hash = $jc(_$hash, height.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Size')
+    return (newBuiltValueToStringHelper(r'Size')
           ..add('width', width)
           ..add('height', height))
         .toString();
@@ -129,16 +133,18 @@ class SizeBuilder implements Builder<Size, SizeBuilder> {
   }
 
   @override
-  _$Size build() {
+  Size build() => _build();
+
+  _$Size _build() {
     final _$result = _$v ??
         new _$Size._(
             width:
-                BuiltValueNullFieldError.checkNotNull(width, 'Size', 'width'),
+                BuiltValueNullFieldError.checkNotNull(width, r'Size', 'width'),
             height: BuiltValueNullFieldError.checkNotNull(
-                height, 'Size', 'height'));
+                height, r'Size', 'height'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

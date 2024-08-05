@@ -35,17 +35,17 @@ class _$ActionLinkSerializer implements StructuredSerializer<ActionLink> {
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
         case 'link':
           result.link = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
         case 'tooltip_text_key':
           result.tooltipTextKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -61,13 +61,13 @@ class _$ActionLink extends ActionLink {
   final String tooltipTextKey;
 
   factory _$ActionLink([void Function(ActionLinkBuilder)? updates]) =>
-      (new ActionLinkBuilder()..update(updates)).build();
+      (new ActionLinkBuilder()..update(updates))._build();
 
   _$ActionLink._({required this.link, required this.tooltipTextKey})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(link, 'ActionLink', 'link');
+    BuiltValueNullFieldError.checkNotNull(link, r'ActionLink', 'link');
     BuiltValueNullFieldError.checkNotNull(
-        tooltipTextKey, 'ActionLink', 'tooltipTextKey');
+        tooltipTextKey, r'ActionLink', 'tooltipTextKey');
   }
 
   @override
@@ -87,12 +87,16 @@ class _$ActionLink extends ActionLink {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, link.hashCode), tooltipTextKey.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, link.hashCode);
+    _$hash = $jc(_$hash, tooltipTextKey.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ActionLink')
+    return (newBuiltValueToStringHelper(r'ActionLink')
           ..add('link', link)
           ..add('tooltipTextKey', tooltipTextKey))
         .toString();
@@ -135,16 +139,18 @@ class ActionLinkBuilder implements Builder<ActionLink, ActionLinkBuilder> {
   }
 
   @override
-  _$ActionLink build() {
+  ActionLink build() => _build();
+
+  _$ActionLink _build() {
     final _$result = _$v ??
         new _$ActionLink._(
             link: BuiltValueNullFieldError.checkNotNull(
-                link, 'ActionLink', 'link'),
+                link, r'ActionLink', 'link'),
             tooltipTextKey: BuiltValueNullFieldError.checkNotNull(
-                tooltipTextKey, 'ActionLink', 'tooltipTextKey'));
+                tooltipTextKey, r'ActionLink', 'tooltipTextKey'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
