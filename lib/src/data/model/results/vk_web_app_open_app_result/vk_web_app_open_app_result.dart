@@ -18,7 +18,7 @@ abstract class VKWebAppOpenAppResult
   static Serializer<VKWebAppOpenAppResult> get serializer =>
       _$vKWebAppOpenAppResultSerializer;
 
-  /// TODO(sanekyy): enum
+  // TODO(sanekyy): enum
   /// The application close status passed to the parent application.
   /// Possible values: Possible values: failed, success
   String get status;

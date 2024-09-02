@@ -1,12 +1,12 @@
 @JS()
 library stringify;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 /// Calls invoke JavaScript `JSON.stringify(obj)`
 @JS('JSON.stringify')
-external String stringify(Object obj);
+external JSString stringify(JSObject obj);
 
 /// Calls invoke JavaScript `JSON.stringify(obj)`
 @JS('JSON.parse')
-external Object parse(String json);
+external JSObject parse(JSString json);

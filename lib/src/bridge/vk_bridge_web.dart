@@ -3,16 +3,14 @@ library vk_bridge;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:js/js.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:vk_bridge/src/bridge/vk_bridge.dart' as vk_bridge;
 import 'package:vk_bridge/src/data/model/events/vk_web_app_location_changed/vk_web_app_location_changed.dart';
 import 'package:vk_bridge/src/data/model/events/vk_web_app_view_hide/vk_web_app_view_hide.dart';
 import 'package:vk_bridge/src/data/model/options/allow_messages_from_group_options/allow_messages_from_group_options.dart';
-import 'package:vk_bridge/src/data/model/options/check_native_ads/ad_format.dart';
 import 'package:vk_bridge/src/data/model/options/check_native_ads/check_native_ads_options.dart';
 import 'package:vk_bridge/src/data/model/options/close_options/close_options.dart';
 import 'package:vk_bridge/src/data/model/options/copy_text_options/copy_text_options.dart';
@@ -51,7 +49,6 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_add_to_home_screen_i
 import 'package:vk_bridge/src/data/model/results/vk_web_app_community_access_token_result/vk_web_app_community_access_token_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_contacts_done/vk_web_app_contacts_done.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_flash_get_info_result/vk_web_app_flash_get_info_result.dart';
-import 'package:vk_bridge/src/data/model/results/vk_web_app_get_ads_result/vk_web_app_get_ads_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_friends_result/vk_web_app_get_friends_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_group_info_result/vk_web_app_get_group_info_result.dart';
 import 'package:vk_bridge/src/data/model/results/vk_web_app_get_personal_card_result/vk_web_app_get_personal_card_result.dart';
@@ -69,15 +66,16 @@ import 'package:vk_bridge/src/data/model/results/vk_web_app_subscribe_story_app_
 import 'package:vk_bridge/src/data/model/serializers.dart';
 import 'package:vk_bridge/src/utils.dart';
 import 'package:vk_bridge/vk_bridge.dart';
+import 'package:web/web.dart' hide ScrollOptions;
 
 /// Method for sending something to the VK Mini Aps platform
 @JS('vkBridge.send')
-external Object _send(String method, [Object props]);
+external JSAny _send(JSString method, [JSObject props]);
 
 /// Allows assigning a function to be callable from
 /// `window.vkBridgeDartListener()`
 @JS('vkBridgeDartListener')
-external set _vkBridgeDartListener(void Function(Object event) f);
+external set _vkBridgeDartListener(JSFunction f);
 
 /// Web implementation of the VK Mini Aps platform contact
 class VKBridge implements vk_bridge.VKBridge {
@@ -145,11 +143,10 @@ class VKBridge implements vk_bridge.VKBridge {
       }
 
       _logger.d('send($method, $propsJson)');
-
       final jsObjectResult =
-          await promiseToFuture<Object>(_send(method, parse(propsJson)));
-      final jsonResult = stringify(jsObjectResult);
-      final Object decodedJson = jsonDecode(jsonResult) as Object;
+          await (_send(method.toJS, parse(propsJson.toJS)) as JSPromise).toDart;
+      final jsonResult = stringify(jsObjectResult! as JSObject);
+      final Object decodedJson = jsonDecode(jsonResult.toDart);
       try {
         final result = deserialize<Result>(decodedJson);
         if (result == null) {
@@ -169,8 +166,8 @@ class VKBridge implements vk_bridge.VKBridge {
         rethrow;
       }
 
-      final jsonError = stringify(jsObjectError);
-      final Object decodedJson = jsonDecode(jsonError) as Object;
+      final jsonError = stringify(jsObjectError as JSObject);
+      final Object decodedJson = jsonDecode(jsonError.toDart) as Object;
 
       VKWebAppError error;
       try {
@@ -186,12 +183,12 @@ class VKBridge implements vk_bridge.VKBridge {
     }
   }
 
-  void _eventHandler(Object jsEvent) {
+  void _eventHandler(JSObject jsEvent) {
     final jsonEvent = stringify(jsEvent);
 
     _logger.d('_eventHandler: $jsonEvent');
 
-    final decodedJsonEvent = jsonDecode(jsonEvent) as Map<String, dynamic>;
+    final decodedJsonEvent = jsonDecode(jsonEvent.toDart) as Map<String, dynamic>;
 
     final type = decodedJsonEvent['type']! as String;
     final dynamic data = decodedJsonEvent['data'];
@@ -217,7 +214,7 @@ class VKBridge implements vk_bridge.VKBridge {
 
   @override
   Future<VKWebAppBoolResult> init() async {
-    _vkBridgeDartListener = allowInterop(_eventHandler);
+    _vkBridgeDartListener = _eventHandler.toJS;
 
     final vkWebAppInitResult = await _sendInternal<VKWebAppBoolResult>(
       'VKWebAppInit',
